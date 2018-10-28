@@ -1,8 +1,11 @@
 @import '../variables';
 
+$label-line-height: 2rem;
+
 .TranslationsSwitch {
   & &__label {
     display: inline-block;
     margin-right: $spacing-xs;
+    line-height: $label-line-height;
   }
 }

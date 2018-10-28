@@ -20,9 +20,7 @@ const DrawCard = props => {
     <LinkComponent className={c('DrawCard__link')} to={props.to} href={props.externalHref}>
       <div className={c('DrawCard')}>
         <img className={c('DrawCard__icon')} src={props.icon} alt={props.children} />
-        <Typography className={c('DrawCard__title')} variant="subheading">
-          {props.children}
-        </Typography>
+        <Typography className={c('DrawCard__title')}>{props.children}</Typography>
       </div>
     </LinkComponent>
   );

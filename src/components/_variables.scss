@@ -3,6 +3,7 @@ $color-primary: #4caf50;
 $color-primary-dark: #357a38;
 $color-primary-light: #6fbf73;
 $color-white: #fff;
+$color-gray: #949494;
 
 // #######  Spacing
 $one-pixel-rem: .0625rem;
@@ -10,7 +11,6 @@ $spacing-xs: .375rem;
 $spacing-sm: .75rem;
 $spacing-md: 1.125rem;
 $spacing-lg: 1.875rem;
-$footer-background-color: $color-primary;
 
 // ###### Media queries
 $media-phone: 320px; /* stylelint-disable-line unit-blacklist */

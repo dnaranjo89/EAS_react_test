@@ -1,7 +1,7 @@
-$winner-chip-border-color: #797979;
-$winner-chip-leftside-background-color: #7d7;
-$one-pixel-rem: .0625rem;
-$spacing-xs: .375rem;
+@import '../variables';
+
+$winner-chip-border-color: $color-gray;
+$winner-chip-leftside-background-color: $color-primary-light;
 
 .WinnerChip {
   display: flex;

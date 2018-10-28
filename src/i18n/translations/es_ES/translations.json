@@ -2,11 +2,15 @@
   "ApiError": {
     "api_error": "Estamos teniendo problemas en nuestro servidor."
   },
+  "Header": {
+    "brand_name": "ÉchaloASuerte"
+  },
   "DateTimePicker": {
     "cancel": "Cancelar",
     "ok": "Ok",
     "only_future_date_valid": "Tienes que elegir una fecha en el futuro",
-    "today": "Hoy"
+    "today": "Hoy",
+    "date": "Fecha"
   },
   "FacebookDraw": {
     "check_participants": "Ver participantes",

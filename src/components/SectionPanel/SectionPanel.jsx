@@ -8,9 +8,7 @@ const c = className => STYLES[className];
 
 const SectionPanel = ({ title, children }) => (
   <div className={c('SectionPanel')}>
-    <Typography variant="title" component="span">
-      {title}
-    </Typography>
+    <Typography variant="h3">{title}</Typography>
     {children}
   </div>
 );

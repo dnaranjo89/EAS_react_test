@@ -1,5 +1,7 @@
 @import '../variables';
 
+$footer-background-color: $color-primary;
+
 .Footer {
   padding: $spacing-sm 0 $spacing-sm;
   background: $footer-background-color;

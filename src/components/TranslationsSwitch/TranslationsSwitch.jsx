@@ -17,7 +17,7 @@ const localeMap = {
 
 const TranslationsSwitch = ({ available, onChange, t }) => (
   <div className={c('TranslationsSwitch')}>
-    <Typography className={c('TranslationsSwitch__label')} display="body2" component="span">
+    <Typography className={c('TranslationsSwitch__label')} variant="body1" component="span">
       {t('change_language')}
     </Typography>
     <FormControl>

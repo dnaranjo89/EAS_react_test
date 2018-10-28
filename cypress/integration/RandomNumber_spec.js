@@ -8,17 +8,17 @@ describe('Number Draw Page', () => {
     cy.mockFixture('RandomNumber');
   });
 
-  it('Google Analytics pageview event is sent', () => {
-    cy.mockGA();
-    cy.visit('/number');
-
-    cy.get('@ga')
-      .should('be.calledWith', 'create', 'UA-XXXXX-Y')
-      .and('be.calledWith', 'send', { hitType: 'pageview', page: '/number' });
-  });
-
   describe('Quick Draw', () => {
-    it('Should contain a working link to the certified draw', () => {
+    it('Google Analytics pageview event is sent', () => {
+      cy.mockGA();
+      cy.visit('/number');
+
+      cy.get('@ga')
+        .should('be.calledWith', 'create', 'UA-XXXXX-Y')
+        .and('be.calledWith', 'send', { hitType: 'pageview', page: '/number' });
+    });
+
+    it('Should contain a working link to the public draw', () => {
       cy.visit('/number');
       cy.getComponent('MakeCertifiedDrawPanel__button').click();
       cy.location('pathname').should('eq', '/number/public');
@@ -97,6 +97,52 @@ describe('Number Draw Page', () => {
         });
       cy.mockedRequestWait('POST', '/api/random_number/6ce5042f-f931-4a79-a716-dfadccc978d0/toss');
     });
+
+    describe('Invalid configurations', function() {
+      it('Should show error when any required field is empty', function() {
+        cy.visit('/number');
+        cy.getComponent('RandomNumber__from-field').within(() => {
+          cy.getComponent('RandomNumber__from-field-input').clear();
+          cy.getError().should('be.visible');
+          cy.getComponent('RandomNumber__from-field-input').type(2);
+          cy.getError().should('not.exist');
+        });
+
+        cy.getComponent('RandomNumber__to-field').within(() => {
+          cy.getComponent('RandomNumber__to-field-input').clear();
+          cy.getError().should('be.visible');
+          cy.getComponent('RandomNumber__to-field-input').type(10);
+          cy.getError().should('not.exist');
+        });
+
+        cy.getComponent('RandomNumber__number-of-results-field').within(() => {
+          cy.getComponent('RandomNumber__number-of-results-field-input').clear();
+          cy.getError().should('be.visible');
+          cy.getComponent('RandomNumber__number-of-results-field-input').type(2);
+          cy.getError().should('not.exist');
+        });
+      });
+
+      it('Should show error when range is invalid', function() {
+        cy.visit('/number');
+        cy.getComponent('RandomNumber__from-field-input')
+          .clear()
+          .type(12);
+        cy.getComponent('SubmitDrawButton').click();
+        cy.getComponent('ErrorFeedback').should('be.visible');
+      });
+
+      it('Should show error when range is too small', function() {
+        cy.visit('/number');
+        cy.getComponent('RandomNumber__number-of-results-field-input')
+          .clear()
+          .type(12);
+        cy.getComponent('SubmitDrawButton').click();
+        cy.getComponent('ErrorFeedback').should('be.visible');
+        cy.getComponent('RandomNumber__allow-repeated-field-input').check();
+        cy.getComponent('ErrorFeedback').should('not.exist');
+      });
+    });
   });
 
   describe('Public Draw', () => {
@@ -146,53 +192,58 @@ describe('Number Draw Page', () => {
           title: 'The title',
         });
       cy.mockedRequestWait('POST', '/api/random_number/6ce5042f-f931-4a79-a716-dfadccc978d0/toss');
-      cy.location('pathname').should('eq', '/number/public/6ce5042f-f931-4a79-a716-dfadccc978d0');
+      cy.location('pathname').should('eq', '/number/6ce5042f-f931-4a79-a716-dfadccc978d0');
     });
   });
-
-  describe('Invalid configurations', function() {
-    it('Should show error when any required field is empty', function() {
-      cy.visit('/number');
-      cy.getComponent('RandomNumber__from-field').within(() => {
-        cy.getComponent('RandomNumber__from-field-input').clear();
-        cy.getError().should('be.visible');
-        cy.getComponent('RandomNumber__from-field-input').type(2);
-        cy.getError().should('not.exist');
-      });
-
-      cy.getComponent('RandomNumber__to-field').within(() => {
-        cy.getComponent('RandomNumber__to-field-input').clear();
-        cy.getError().should('be.visible');
-        cy.getComponent('RandomNumber__to-field-input').type(10);
-        cy.getError().should('not.exist');
-      });
-
-      cy.getComponent('RandomNumber__number-of-results-field').within(() => {
-        cy.getComponent('RandomNumber__number-of-results-field-input').clear();
-        cy.getError().should('be.visible');
-        cy.getComponent('RandomNumber__number-of-results-field-input').type(2);
-        cy.getError().should('not.exist');
-      });
+  describe('Published page', () => {
+    it('Google Analytics pageview event is sent', () => {
+      cy.mockGA();
+      cy.visit('/number/6ce5042f-f931-4a79-a716-dfadccc978d0');
+      cy.get('@ga')
+        .should('be.calledWith', 'create', 'UA-XXXXX-Y')
+        .and('be.calledWith', 'send', {
+          hitType: 'pageview',
+          page: '/number/6ce5042f-f931-4a79-a716-dfadccc978d0',
+        });
     });
-
-    it('Should show error when range is invalid', function() {
-      cy.visit('/number');
-      cy.getComponent('RandomNumber__from-field-input')
-        .clear()
-        .type(12);
-      cy.getComponent('SubmitDrawButton').click();
-      cy.getComponent('ErrorFeedback').should('be.visible');
+    it('Should show the countdown if there are not results', () => {
+      const now = new Date();
+      now.setHours(now.getHours() + 1);
+      const dateInFuture = now.toISOString();
+      cy.route({
+        method: 'GET',
+        url: '/api/random_number/6ce5042f-f931-4a79-a716-dfadccc978d0',
+        status: 200,
+        response: {
+          id: 'ee870985-eeef-4457-a914-7e96372a3c69',
+          created_at: '2018-10-28T22:40:41.964247Z',
+          updated_at: '2018-10-28T22:40:41.964294Z',
+          title: 'asdada',
+          description: 'asdas',
+          results: [
+            {
+              created_at: '2018-10-28T22:40:41.990740Z',
+              value: null,
+              schedule_date: dateInFuture,
+            },
+          ],
+          metadata: [],
+          private_id: '6ce5042f-f931-4a79-a716-dfadccc978d0',
+          range_min: 2,
+          range_max: 10,
+          number_of_results: 1,
+          allow_repeated_results: false,
+        },
+      }).as('request');
+      cy.visit('/number/6ce5042f-f931-4a79-a716-dfadccc978d0');
+      cy.wait('@request');
+      cy.getComponent('Countdown').should('be.visible');
     });
-
-    it('Should show error when range is too small', function() {
-      cy.visit('/number');
-      cy.getComponent('RandomNumber__number-of-results-field-input')
-        .clear()
-        .type(12);
-      cy.getComponent('SubmitDrawButton').click();
-      cy.getComponent('ErrorFeedback').should('be.visible');
-      cy.getComponent('RandomNumber__allow-repeated-field-input').check();
-      cy.getComponent('ErrorFeedback').should('not.exist');
+    it('Should show results and the raffle details', () => {
+      cy.visit('/number/6ce5042f-f931-4a79-a716-dfadccc978d0');
+      cy.mockedRequestWait('GET', '/api/random_number/6ce5042f-f931-4a79-a716-dfadccc978d0');
+      cy.getComponent('PublishedRandomNumberPage__Title').contains('The title');
+      cy.getComponent('RandomNumberResult__result').should('be.visible');
     });
   });
 });

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { translate } from 'react-i18next';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import { RandomNumberResult as RandomNumberResultClass } from 'echaloasuerte-js-sdk';
 import SubmitButton from '../../SubmitButton/SubmitButton';
 import withFormValidation from '../../withValidation/withFormValidation';
 import Page from '../../Page/Page';
@@ -11,6 +11,7 @@ import RandomNumberConfigurationSection from './RandomNumberConfigurationSection
 import RandomNumberResult from './RandomNumberResult';
 import ErrorFeedback from '../../ErrorFeedback/ErrorFeedback';
 import MakeCertifiedDrawPanel from '../../MakeCertifiedDrawPanel/MakeCertifiedDrawPanel';
+import ShareDrawModal from '../../ShareDrawModal/ShareDrawModal';
 
 const ValidatedForm = withFormValidation(props => <form {...props} />);
 
@@ -19,7 +20,6 @@ const RandomNumberQuickPage = props => {
     apiError,
     values,
     quickResult,
-    shareResultLink,
     handleToss,
     onFieldChange,
     handleCheckErrorsInConfiguration,
@@ -35,10 +35,10 @@ const RandomNumberQuickPage = props => {
           </MakeCertifiedDrawPanel>
         }
       >
-        <Typography color="primary" variant="display1" align="center">
-          {t('page_title')}
+        <Typography variant="h1" align="center">
+          {t('page_title_quick')}
         </Typography>
-        <Typography variant="body1" align="center" color={'textSecondary'}>
+        <Typography variant="subtitle1" align="center">
           {t('draw_subheading')}
         </Typography>
         <ValidatedForm
@@ -52,16 +52,12 @@ const RandomNumberQuickPage = props => {
           {apiError && <ErrorFeedback error={t('ApiError:api_error')} />}
           <SubmitButton label={t('generate_numbers')} />
         </ValidatedForm>
-        {quickResult.length > 0 && (
-          <div>
+
+        {quickResult && (
+          <Fragment>
             <RandomNumberResult result={quickResult} />
-            <br />
-            {true && (
-              <Button variant="raised" color="primary" href={shareResultLink}>
-                {t('share_result')}
-              </Button>
-            )}
-          </div>
+            <ShareDrawModal />
+          </Fragment>
         )}
       </QuickDrawLayout>
     </Page>
@@ -78,18 +74,16 @@ RandomNumberQuickPage.propTypes = {
     numberOfResults: PropTypes.string.isRequired,
     allowRepeated: PropTypes.bool.isRequired,
   }).isRequired,
-  shareResultLink: PropTypes.string,
   onFieldChange: PropTypes.func.isRequired,
   handleToss: PropTypes.func.isRequired,
   handleCheckErrorsInConfiguration: PropTypes.func.isRequired,
-  quickResult: PropTypes.arrayOf(PropTypes.number),
+  quickResult: PropTypes.instanceOf(RandomNumberResultClass),
   t: PropTypes.func.isRequired,
 };
 
 RandomNumberQuickPage.defaultProps = {
   apiError: false,
-  quickResult: [],
-  shareResultLink: '',
+  quickResult: null,
 };
 
 export default translate('RandomNumber')(RandomNumberQuickPage);

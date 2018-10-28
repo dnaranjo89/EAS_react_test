@@ -79,6 +79,11 @@ const withFieldValidation = WrappedComponent => {
       if (error) {
         message = error.message || this.getDefaultErrorMessage(error);
       }
+      if (props.checked !== undefined) {
+        // If the prop 'checked' is pass, the field is a checkbox
+        // and we aren't showing any feedback in checkboxes
+        return <WrappedComponent {...props} error={undefined} />;
+      }
       return (
         <WrappedComponent
           {...props}

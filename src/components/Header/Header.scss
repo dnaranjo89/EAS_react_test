@@ -1,5 +1,7 @@
 @import '../variables';
 
+$brand-font-size: 1.375rem;
+
 .Header {
   padding: $spacing-xs $spacing-lg;
   background-color: $color-primary;
@@ -7,6 +9,8 @@
   & &__title {
     display: inline;
     margin-left: $spacing-xs;
+    color: $color-white;
+    font-size: $brand-font-size;
     vertical-align: middle;
   }
 

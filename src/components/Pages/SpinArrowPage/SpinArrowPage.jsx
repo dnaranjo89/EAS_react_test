@@ -20,10 +20,8 @@ const SpinArrowPage = ({ angle, animate, handleToss, t }) => {
 
   return (
     <Page htmlTitle={t('html_tittle')} className={c('SpinArrowPage')}>
-      <Typography color="primary" variant="display1">
-        {t('page_title')}
-      </Typography>
-      <Typography variant="subheading">{t('draw_subheading')}</Typography>
+      <Typography variant="h1">{t('page_title')}</Typography>
+      <Typography variant="subtitle1">{t('draw_subheading')}</Typography>
 
       <div className={c('SpinArrowPage__container')}>
         <button className={c('SpinArrowPage__button')} onClick={handleToss}>

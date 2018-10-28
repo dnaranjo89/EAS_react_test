@@ -22,7 +22,7 @@ const FacebookLoginRafflePage = props => {
         <Grid item sm={3} />
         <Grid item xs={6}>
           <div>
-            <Typography variant="display1">{t('facebook_login_raffle_default_title')}</Typography>
+            <Typography variant="h1">{t('facebook_login_raffle_default_title')}</Typography>
             <BannerAlert title={t('raffle_explanation')} type={ALERT_TYPES.NEUTRAL} />
             <SectionPanel title={t('general_details_raffle')}>
               <PublicDetails

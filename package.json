@@ -9,7 +9,7 @@
     "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
-    "@material-ui/core": "^1.1.0",
+    "@material-ui/core": "^3.3.1",
     "@material-ui/icons": "^1.1.0",
     "backpack-react-scripts": "4.0.8",
     "classnames": "^2.2.5",
@@ -27,6 +27,7 @@
     "prettier": "^1.14.2",
     "prop-types": "^15.6.0",
     "react": "^16.3.1",
+    "react-countdown-now": "^1.3.0",
     "react-dom": "^16.3.1",
     "react-ga": "^2.5.3",
     "react-i18next": "^7.6.0",
@@ -48,6 +49,7 @@
     "lint": "npm run lint:js && npm run lint:scss",
     "test:integration:ci": "cypress run",
     "test:integration": "cypress open",
+    "test:integration:full": "cypress open & REACT_APP_ENV=test react-scripts start",
     "eject": "react-scripts eject"
   },
   "backpack-react-scripts": {

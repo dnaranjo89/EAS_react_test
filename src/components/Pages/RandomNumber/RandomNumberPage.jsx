@@ -67,13 +67,11 @@ const RandomNumberPage = props => {
   return (
     <Page htmlTitle={t('html_title')}>
       <div className={c('RandomNumberPage__container')}>
-        <Typography color="primary" variant="display1">
-          {t('page_title')}
-        </Typography>
+        <Typography variant="h1">{t('page_title_public')}</Typography>
         <WizardForm
           steps={steps}
           onSubmit={handlePublish}
-          submitButtonLabel={t('publish_raffle')}
+          submitButtonLabel={t('publish_draw')}
           apiError={apiError}
         />
       </div>

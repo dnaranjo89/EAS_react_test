@@ -1,9 +1,5 @@
-$one-pixel-rem: .0625rem;
-$spacing-xs: .375rem;
-$spacing-sm: .75rem;
-$spacing-md: 1.125rem;
-$spacing-lg: 1.875rem;
-$gray-color: #949494;
+@import '../variables';
+
 $border-radius: .2rem;
 
 .MultiValueDisplay {
@@ -12,12 +8,12 @@ $border-radius: .2rem;
   border-width: $one-pixel-rem;
   border-style: solid;
   border-radius: $border-radius;
-  border-color: $gray-color;
+  border-color: $color-gray;
 
   &__label {
     margin-top: $spacing-xs;
     margin-left: $spacing-xs;
-    color: $gray-color;
+    color: $color-gray;
   }
 
   &__values-list {
@@ -25,6 +21,6 @@ $border-radius: .2rem;
   }
 
   &__empty-message {
-    color: $gray-color;
+    color: $color-gray;
   }
 }

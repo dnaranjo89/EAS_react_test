@@ -75,7 +75,7 @@ const ChoosePostSection = ({
       type="text"
       fullWidth
     />
-    <Button variant="raised" color="primary" onClick={onGetLikes}>
+    <Button variant="contained" color="primary" onClick={onGetLikes}>
       {t('check_participants')}
     </Button>
     {participantsFetched && (
@@ -152,7 +152,7 @@ const FacebookPhotoRafflePage = props => {
   return (
     <Page htmlTitle={t('html_title')} className={c('FacebookPhotoRafflePage')}>
       <div className={c('FacebookPhotoRafflePage__container')}>
-        <Typography color="primary" variant="display1" align="center">
+        <Typography variant="h1" align="center">
           {t('page_title')}
         </Typography>
         <Typography variant="body1" align="center" color={'textSecondary'}>

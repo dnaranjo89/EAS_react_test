@@ -1,27 +1,21 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import white from '@material-ui/core/colors/red';
 
 // Example of theme creation
 // https://github.com/mui-org/material-ui/issues/1915#issuecomment-310849153
+// Default theme: https://material-ui.com/customization/default-theme/
 
-const themeBase = createMuiTheme({
+const fontFamilySecondary =
+  '"Fredoka One", -apple-system, BlinkMacSystemFont, "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica", "Arial", sans-serif';
+
+const fontFamilyPrimary =
+  '"Montserrat", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica", "Arial", sans-serif';
+
+const baseTheme = createMuiTheme({
   typography: {
-    fontFamily:
-      '"Montserrat", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica", "Arial", sans-serif',
-    fontSize: 14,
-    fontWeightLight: 300,
-    fontWeightRegular: 400,
-    fontWeightMedium: 500,
-    color: '#8bc34a',
-    body1: {
-      lineHeight: `1.5rem`,
-    },
-    display1: {
-      // fontSize: 60,
-    },
+    useNextVariants: true,
+    fontFamily: fontFamilyPrimary,
   },
   palette: {
-    type: 'light',
     primary: {
       main: '#4caf50',
     },
@@ -30,16 +24,6 @@ const themeBase = createMuiTheme({
     },
   },
   overrides: {
-    // MuiFormControl: {
-    //   root: {
-    //     margin: 10,
-    //   },
-    // },
-    // MuiPaper: {
-    //   root: {
-    //     padding: '0.125rem 1rem',
-    //   },
-    // },
     MuiButton: {
       root: {
         'text-transform': 'inherit',
@@ -48,64 +32,60 @@ const themeBase = createMuiTheme({
   },
 });
 
-const fontFamilySecondary =
-  '"Fredoka One", -apple-system, BlinkMacSystemFont, "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica", "Arial", sans-serif';
 const fontHeader = {
-  color: themeBase.palette.primary.main,
+  color: baseTheme.palette.primary.main,
   fontFamily: fontFamilySecondary,
 };
 
+const fontHeaderSecondary = {
+  color: baseTheme.palette.text.primary,
+  fontFamily: fontFamilyPrimary,
+};
+
 const theme = {
-  ...themeBase,
+  ...baseTheme,
   typography: {
-    ...themeBase.typography,
-    fontFamilySecondary,
-    display4: {
-      ...themeBase.typography.display4,
+    ...baseTheme.typography,
+    h1: {
+      ...baseTheme.typography.h1,
       ...fontHeader,
-      color: white,
-      lineHeight: 1,
-      fontSize: 20,
+      fontSize: '2.125rem',
+      lineHeight: '2.5rem',
     },
-    display3: {
-      ...themeBase.typography.display3,
+    h2: {
+      ...baseTheme.typography.h2,
       ...fontHeader,
-      fontSize: 48,
+      fontSize: '1.625rem',
+      lineHeight: '1.875rem',
     },
-    display2: {
-      ...themeBase.typography.display2,
+
+    h3: {
+      ...baseTheme.typography.h3,
       ...fontHeader,
-      fontSize: 42,
+      fontSize: '1.125rem',
+      lineHeight: '1.3125rem',
     },
-    display1: {
-      ...themeBase.typography.display1,
+    h4: {
+      ...baseTheme.typography.h4,
       ...fontHeader,
-      // fontSize: 36,
     },
-    headline: {
-      ...themeBase.typography.headline,
-      fontSize: 20,
-      fontWeight: themeBase.typography.fontWeightLight,
+    h5: {
+      ...baseTheme.typography.h5,
+      ...fontHeaderSecondary,
     },
-    title: {
-      ...themeBase.typography.title,
-      ...fontHeader,
-      fontSize: 18,
+    h6: {
+      ...baseTheme.typography.h6,
+      ...fontHeaderSecondary,
     },
-    subheading: {
-      ...themeBase.typography.subheading,
-      fontSize: 18,
+    subtitle1: {
+      ...baseTheme.typography.subtitle1,
+      color: baseTheme.palette.text.secondary,
+      fontSize: '.875rem',
     },
     body2: {
-      ...themeBase.typography.body2,
-      fontWeight: themeBase.typography.fontWeightRegular,
-      fontSize: 16,
-    },
-    body1: {
-      ...themeBase.typography.body1,
-      fontSize: 14,
+      ...baseTheme.typography.body2,
+      lineHeight: '1.5rem',
     },
   },
 };
-
 export default theme;

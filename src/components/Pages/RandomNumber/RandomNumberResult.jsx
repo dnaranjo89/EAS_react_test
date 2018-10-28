@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-
+import { RandomNumberResult as RandomNumberResultClass } from 'echaloasuerte-js-sdk';
 import classnames from 'classnames/bind';
 import STYLES from './RandomNumberResult.scss';
 
@@ -15,13 +15,13 @@ const RandomNumberResult = ({ result }) => (
       align="center"
       data-component={'RandomNumberResult__result'}
     >
-      {result.join(', ')}
+      {result.value.join(', ')}
     </Typography>
   </div>
 );
 
 RandomNumberResult.propTypes = {
-  result: PropTypes.arrayOf(PropTypes.object).isRequired,
+  result: PropTypes.instanceOf(RandomNumberResultClass).isRequired,
 };
 
 export default RandomNumberResult;

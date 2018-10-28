@@ -5,6 +5,13 @@ $spacing-md: 1.125rem;
 $spacing-lg: 1.875rem;
 
 .PublishedRafflePage {
+  display: flex;
+  width: 50%;
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   &__content {
     width: 80%;
     margin: auto;

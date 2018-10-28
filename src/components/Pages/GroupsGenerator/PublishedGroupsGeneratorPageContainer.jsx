@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import { RandomNumberApi } from 'echaloasuerte-js-sdk';
+import { GroupsApi } from 'echaloasuerte-js-sdk';
 
-import PublishedRandomNumberPage from './PublishedRandomNumberPage';
+import PublishedGroupsGeneratorPage from './PublishedGroupsGeneratorPage';
 
-const randomNumberApi = new RandomNumberApi();
+const groupsApi = new GroupsApi();
 
-class PublishedRandomNumberPageContainer extends Component {
+class PublishedGroupsGeneratorPageContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       title: '',
       description: '',
-      rangeMin: null,
-      rangeMax: null,
-      numberOfResults: null,
-      allowRepeated: null,
+      participants: [],
+      numberOfGroups: null,
       result: null,
       isOwner: false,
       isLoading: true,
@@ -30,7 +28,7 @@ class PublishedRandomNumberPageContainer extends Component {
   onToss = async () => {
     const drawId = this.props.match.params.drawId;
     try {
-      await randomNumberApi.randomNumberToss(drawId, {});
+      await groupsApi.groupsToss(drawId, {});
       this.loadData();
     } catch (err) {
       alert(err);
@@ -40,29 +38,24 @@ class PublishedRandomNumberPageContainer extends Component {
   async loadData() {
     const drawId = this.props.match.params.drawId;
 
-    const draw = await randomNumberApi.randomNumberRead(drawId);
+    const draw = await groupsApi.groupsRead(drawId);
     const {
       private_id: privateId,
       title,
       description,
-      range_min: rangeMin,
-      range_max: rangeMax,
-      number_of_results: numberOfResults,
-      allow_repeated_results: allowRepeated,
+      participants,
+      number_of_groups: numberOfGroups,
     } = draw;
     let lastToss;
     if (draw.results.length) {
       lastToss = draw.results[0];
     }
-    console.log('lastToss', lastToss);
 
     this.setState({
       title,
       description,
-      rangeMin,
-      rangeMax,
-      numberOfResults,
-      allowRepeated,
+      participants,
+      numberOfGroups,
       result: lastToss,
       isOwner: Boolean(privateId),
       isLoading: false,
@@ -73,23 +66,19 @@ class PublishedRandomNumberPageContainer extends Component {
     const {
       title,
       description,
-      rangeMin,
-      rangeMax,
-      numberOfResults,
-      allowRepeated,
+      participants,
+      numberOfGroups,
       result,
       isOwner,
       isLoading,
     } = this.state;
 
     return (
-      <PublishedRandomNumberPage
+      <PublishedGroupsGeneratorPage
         title={title}
         description={description}
-        rangeMin={rangeMin}
-        rangeMax={rangeMax}
-        numberOfResults={numberOfResults}
-        allowRepeated={allowRepeated}
+        participants={participants}
+        numberOfGroups={numberOfGroups}
         result={result}
         isOwner={isOwner}
         onToss={this.onToss}
@@ -99,8 +88,8 @@ class PublishedRandomNumberPageContainer extends Component {
   }
 }
 
-PublishedRandomNumberPageContainer.propTypes = {
+PublishedGroupsGeneratorPageContainer.propTypes = {
   match: ReactRouterPropTypes.match.isRequired,
 };
 
-export default PublishedRandomNumberPageContainer;
+export default PublishedGroupsGeneratorPageContainer;

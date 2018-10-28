@@ -4,14 +4,11 @@ $spacing-md: 1.125rem;
 $spacing-lg: 1.875rem;
 
 .PrizesOverview {
-  display: inline-block;
-  margin-top: $spacing-md;
-  margin-bottom: $spacing-md;
-  padding: $spacing-lg;
-  border-radius: $border-radius;
-  background-color: $prize-overview-background-color;
+  margin-top: $spacing-lg;
+  margin-bottom: $spacing-lg;
 
   &__prizes-list {
+    padding: 0;
     list-style-type: none;
   }
 }

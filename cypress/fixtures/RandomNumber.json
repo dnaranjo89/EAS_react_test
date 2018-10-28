@@ -23,7 +23,35 @@
     "response": {
       "created_at": "2018-08-26T00:54:09.374848Z",
       "schedule_date": null,
-      "value": [7]
+      "value": [
+        7
+      ]
+    }
+  },
+  {
+    "path": "/api/random_number/6ce5042f-f931-4a79-a716-dfadccc978d0",
+    "method": "GET",
+    "response": {
+      "id": "29d7fcac-93c1-43d1-881f-30c1ae170ab8",
+      "created_at": "2018-10-28T22:45:37.180534Z",
+      "updated_at": "2018-10-28T22:45:37.180601Z",
+      "title": "The title",
+      "description": "A description",
+      "results": [
+        {
+          "created_at": "2018-10-28T22:45:37.226125Z",
+          "value": [
+            4
+          ],
+          "schedule_date": "2018-10-28T22:45:29Z"
+        }
+      ],
+      "metadata": [],
+      "private_id": "6ce5042f-f931-4a79-a716-dfadccc978d0",
+      "range_min": 3,
+      "range_max": 10,
+      "number_of_results": 1,
+      "allow_repeated_results": false
     }
   }
 ]

@@ -13,7 +13,6 @@ class PublishedRafflePageContainer extends Component {
       title: '',
       description: '',
       participants: [],
-      numberOfWinners: 1,
       prizes: [],
       result: null,
       isOwner: false,
@@ -51,23 +50,13 @@ class PublishedRafflePageContainer extends Component {
   }
 
   render() {
-    const {
-      title,
-      description,
-      participants,
-      numberOfWinners,
-      prizes,
-      result,
-      isOwner,
-      isLoading,
-    } = this.state;
+    const { title, description, participants, prizes, result, isOwner, isLoading } = this.state;
     return (
       <PublishedRafflePage
         isLoading={isLoading}
         title={title}
         description={description}
         participants={participants}
-        numberOfWinners={numberOfWinners}
         result={result}
         prizes={prizes}
         onToss={this.onToss}

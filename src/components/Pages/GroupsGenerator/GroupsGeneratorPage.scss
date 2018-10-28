@@ -1,13 +1,6 @@
 $result-font-size: 10rem;
 
 .GroupsGeneratorPage {
-  &__container {
-    width: 50%;
-    margin: auto;
-  }
-
-  &__results {
-    font-size: $result-font-size;
-    text-align: center;
-  }
+  width: 50%;
+  margin: auto;
 }

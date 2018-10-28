@@ -9,9 +9,22 @@ const c = className => STYLES[className];
 
 const availableLocales = ['es-ES', 'en-GB'];
 
-const redirect = domain => {
+const redirect = locale => {
   const { protocol, pathname, search } = window.location;
-  const targetUrl = `${protocol}//${domain}${pathname}${search}`;
+  const environment = config.environment;
+  let newDomain;
+  if (locale === 'en-GB') {
+    if (environment === 'production') {
+      newDomain = 'woreep.com';
+    } else {
+      newDomain = 'dev.woreep.com';
+    }
+  } else if (environment === 'production') {
+    newDomain = 'echaloasuerte.com';
+  } else {
+    newDomain = 'beta-dev.echaloasuerte.com';
+  }
+  const targetUrl = `${protocol}//${newDomain}${pathname}${search}`;
   window.location.replace(targetUrl);
 };
 
@@ -20,16 +33,7 @@ const handleChangeLanguage = l => {
     // Avoid redirecting to ease the translation process in local
     i18n.changeLanguage(l);
   } else {
-    switch (l) {
-      case 'en-GB':
-        redirect('woreep.com');
-        break;
-      case 'es-ES':
-        redirect('echaloasuerte.com');
-        break;
-      default:
-        throw Error('Trying to set incorrect locale:', l);
-    }
+    redirect(l);
   }
 };
 
