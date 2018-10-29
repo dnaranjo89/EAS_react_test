@@ -12,7 +12,7 @@ const c = classNames.bind(STYLES);
 
 const PrizesOverview = ({ prizes, t }) => (
   <div className={c('PrizesOverview')}>
-    <Typography variant="h2">{t('prizes')}</Typography>
+    <Typography variant="display1">{t('prizes')}</Typography>
     <ul className={c('PrizesOverview__prizes-list')}>
       {prizes.map((prize, i) => (
         <li key={`prize-${prize}-${i}`}>

@@ -9,7 +9,7 @@ const getLanguageBasedOnHostname = () => {
   const hostnameRegex = /(woreep|echaloasuerte)\.com/;
   const match = hostname.match(hostnameRegex);
   const hostnameMatch = match ? match[1] : null;
-  const defaultLanguage = 'en-GB';
+  const defaultLanguage = 'es-ES';
 
   switch (hostnameMatch) {
     case 'woreep':
@@ -27,7 +27,7 @@ i18n.init({
     'es-ES': esES,
     'en-GB': enGB,
   },
-  fallbackLng: 'es-ES',
+  fallbackLng: 'en-GB',
   lng: getLanguageBasedOnHostname(),
   debug: config.environment === 'local',
 

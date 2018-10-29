@@ -2,20 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import ReactGA from 'react-ga';
-import { RandomNumberApi, RandomNumber, DrawTossPayload } from 'echaloasuerte-js-sdk';
+import EASApi from '../../../services/EASApi';
 
 import RandomNumberPage from './RandomNumberPage';
 import RandomNumberQuickPage from './RandomNumberQuickPage';
 
-const randomNumberApi = new RandomNumberApi();
+const randomNumberApi = new EASApi.RandomNumberApi();
 class RandomNumberPageContainer extends React.Component {
   constructor(props) {
     super(props);
-
-    const now = new Date();
-    now.setHours(now.getHours() + 1);
-    const dateScheduled = now;
-
     this.state = {
       privateId: null,
       values: {
@@ -25,9 +20,9 @@ class RandomNumberPageContainer extends React.Component {
         rangeMax: '10',
         numberOfResults: '1',
         allowRepeated: false,
-        dateScheduled,
+        dateScheduled: null,
       },
-      quickResult: null,
+      quickResult: [],
       APIError: false,
     };
   }
@@ -35,7 +30,7 @@ class RandomNumberPageContainer extends React.Component {
   onFieldChange = (fieldName, value) => {
     this.setState(previousState => ({
       privateId: null,
-      quickResult: null,
+      quickResult: [],
       values: {
         ...previousState.values,
         ...{
@@ -72,7 +67,7 @@ class RandomNumberPageContainer extends React.Component {
         ...publicDetails,
       };
     }
-    const randomNumberDraw = RandomNumber.constructFromObject(drawData);
+    const randomNumberDraw = EASApi.RandomNumber.constructFromObject(drawData);
     return randomNumberApi.randomNumberCreate(randomNumberDraw);
   };
 
@@ -84,24 +79,21 @@ class RandomNumberPageContainer extends React.Component {
         privateId = draw.private_id;
         this.setState({ privateId });
       }
-      const tossResponse = await randomNumberApi.randomNumberToss(privateId, {});
+      const tossResponse = await randomNumberApi.randomNumberToss(this.state.privateId, {});
       ReactGA.event({ category: 'Toss', action: 'Random Number', label: 'Local' });
-      this.setState({ quickResult: tossResponse, APIError: false });
+      this.setState({ quickResult: tossResponse.value, APIError: false });
     } catch (err) {
       this.setState({ APIError: true });
     }
   };
 
   handlePublish = async () => {
-    const { match, history } = this.props;
     try {
       const draw = await this.createDraw();
-      const { dateScheduled } = this.state.values;
-      const drawTossPayload = DrawTossPayload.constructFromObject({ schedule_date: dateScheduled });
-      await randomNumberApi.randomNumberToss(draw.private_id, drawTossPayload);
-      ReactGA.event({ category: 'Publish', action: 'Random Number', label: draw.id });
-      const drawPathname = match.path.replace('public', draw.private_id);
-      history.push(drawPathname);
+      if (!this.state.values.dateScheduled) {
+        await randomNumberApi.randomNumberToss(draw.private_id, {});
+        this.props.history.push(`${this.props.location.pathname}/${draw.private_id}`);
+      }
     } catch (err) {
       this.setState({ APIError: true });
     }
@@ -124,24 +116,25 @@ class RandomNumberPageContainer extends React.Component {
   };
 
   render() {
-    const { APIError, values, quickResult } = this.state;
+    const { APIError, values, quickResult, privateId } = this.state;
     const { isPublic } = this.props;
     return isPublic ? (
       <RandomNumberPage
         apiError={APIError}
         values={values}
         onFieldChange={this.onFieldChange}
-        handleCheckErrorsInConfiguration={this.handleCheckErrorsInConfiguration}
         handlePublish={this.handlePublish}
+        handleCheckErrorsInConfiguration={this.handleCheckErrorsInConfiguration}
       />
     ) : (
       <RandomNumberQuickPage
         apiError={APIError}
         values={values}
-        onFieldChange={this.onFieldChange}
-        handleCheckErrorsInConfiguration={this.handleCheckErrorsInConfiguration}
+        shareResultLink={privateId ? `/number/${privateId}` : ''}
         quickResult={quickResult}
+        onFieldChange={this.onFieldChange}
         handleToss={this.handleToss}
+        handleCheckErrorsInConfiguration={this.handleCheckErrorsInConfiguration}
       />
     );
   }
@@ -149,8 +142,7 @@ class RandomNumberPageContainer extends React.Component {
 
 RandomNumberPageContainer.propTypes = {
   isPublic: PropTypes.bool,
-  history: ReactRouterPropTypes.history.isRequired,
-  match: ReactRouterPropTypes.match.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
 };
 
 RandomNumberPageContainer.defaultProps = {

@@ -58,9 +58,17 @@ const GroupsGeneratorPage = props => {
     },
   ];
   return (
-    <Page htmlTitle={t('html_title')} className={c('GroupsGeneratorPage')}>
-      <Typography variant="h1">{t('page_title')}</Typography>
-      <WizardForm steps={steps} onSubmit={handlePublish} submitButtonLabel={t('publish_raffle')} />
+    <Page htmlTitle={t('html_title')}>
+      <div className={c('GroupsGeneratorPage__container')}>
+        <Typography color="primary" variant="display1">
+          {t('page_title')}
+        </Typography>
+        <WizardForm
+          steps={steps}
+          onSubmit={handlePublish}
+          submitButtonLabel={t('publish_raffle')}
+        />
+      </div>
     </Page>
   );
 };

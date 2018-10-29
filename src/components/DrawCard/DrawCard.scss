@@ -1,25 +1,23 @@
 @import '../variables';
-$eas-card-icon-width: 3.125rem;
-$eas-card-padding: $spacing-xs .5rem;
-$eas-card-font-size: 1.125rem;
+$eas-chip-icon-width: 3.125rem;
+$eas-chip-padding: $spacing-xs .5rem;
 
 .DrawCard {
   display: flex;
   min-height: $spacing-md;
   margin: $spacing-xs 0;
-  padding: $eas-card-padding;
+  padding: $eas-chip-padding;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
 
   &__icon {
-    width: $eas-card-icon-width;
-    height: $eas-card-icon-width;
+    width: $eas-chip-icon-width;
+    height: $eas-chip-icon-width;
   }
 
-  & &__title {
+  &__title {
     padding-left: $spacing-md;
-    font-size: $eas-card-font-size;
   }
 
   &__link {

@@ -1,19 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DateTimePicker from '../DateTimePicker/DateTimePicker';
+import PublishDrawOptions from '../PublishDrawOptions/PublishDrawOptions';
 import SectionPanel from '../SectionPanel/SectionPanel';
 
 const WhenToTossSection = ({ sectionTitle, dateScheduled, onFieldChange }) => (
   <SectionPanel title={sectionTitle}>
-    <DateTimePicker
-      value={dateScheduled}
-      onChange={datetime => {
-        onFieldChange('dateScheduled', datetime);
-      }}
-      autoOk
-      // ampm={false}
-      disablePast
-      showTodayButton
+    <PublishDrawOptions
+      options={['now', 'schedule']}
+      dateScheduled={dateScheduled}
+      onFieldChange={onFieldChange}
     />
   </SectionPanel>
 );

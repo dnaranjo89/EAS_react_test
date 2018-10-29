@@ -1,39 +1,34 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import ReactGA from 'react-ga';
-import { GroupsApi, Groups, DrawTossPayload } from 'echaloasuerte-js-sdk';
+import EASApi from '../../../services/EASApi';
 
 import GroupsGeneratorPage from './GroupsGeneratorPage';
 import GroupsGeneratorQuickPage from './GroupsGeneratorQuickPage';
 
-const groupsApi = new GroupsApi();
+const groupsApi = new EASApi.GroupsApi();
 class GroupsGeneratorPageContainer extends React.Component {
   constructor(props) {
     super(props);
-
-    const now = new Date();
-    now.setHours(now.getHours() + 1);
-    const dateScheduled = now;
-
     this.state = {
       privateId: null,
-      quickResult: null,
-      APIError: false,
+      isPublic: false,
       values: {
         title: '',
         description: '',
         participants: [],
-        numberOfGroups: '2',
-        dateScheduled,
+        numberOfGroups: 2,
+        dateScheduled: null,
       },
+      quickResult: [],
+      APIError: false,
     };
   }
 
   onFieldChange = (fieldName, value) => {
     this.setState(previousState => ({
       privateId: null,
-      quickResult: null,
+      quickResult: [],
       values: {
         ...previousState.values,
         ...{
@@ -55,13 +50,13 @@ class GroupsGeneratorPageContainer extends React.Component {
       number_of_groups: numberOfGroups,
     };
 
-    if (this.props.isPublic) {
+    if (this.state.isPublic) {
       drawData = {
         ...drawData,
         ...publicDetails,
       };
     }
-    const groupGeneratorDraw = Groups.constructFromObject(drawData);
+    const groupGeneratorDraw = EASApi.Groups.constructFromObject(drawData);
     return groupsApi.groupsCreate(groupGeneratorDraw);
   };
 
@@ -73,27 +68,28 @@ class GroupsGeneratorPageContainer extends React.Component {
         privateId = draw.private_id;
         this.setState({ privateId });
       }
-      const tossResponse = await groupsApi.groupsToss(privateId, {});
-      ReactGA.event({ category: 'Toss', action: 'Group Generator', label: 'Local' });
-      this.setState({ quickResult: tossResponse, APIError: false });
+      const tossResponse = await groupsApi.groupsToss(this.state.privateId, {});
+      ReactGA.event({ category: 'Toss', action: 'Random Number', label: 'Local' });
+      this.setState({ quickResult: tossResponse.value });
     } catch (err) {
       this.setState({ APIError: true });
     }
   };
 
   handlePublish = async () => {
-    const { match, history } = this.props;
-    try {
-      const draw = await this.createDraw();
-      const { dateScheduled } = this.state.values;
-      const drawTossPayload = DrawTossPayload.constructFromObject({ schedule_date: dateScheduled });
-      await groupsApi.groupsToss(draw.private_id, drawTossPayload);
-      ReactGA.event({ category: 'Publish', action: 'Group Generator', label: draw.id });
-      const drawPathname = match.path.replace('public', draw.private_id);
-      history.push(drawPathname);
-    } catch (err) {
-      this.setState({ APIError: true });
+    const draw = await this.createDraw();
+    if (!this.state.values.dateScheduled) {
+      try {
+        await groupsApi.groupsToss(draw.private_id, {});
+        this.props.history.push(`${this.props.location.pathname}/${draw.private_id}`);
+      } catch (err) {
+        this.setState({ APIError: true });
+      }
     }
+  };
+
+  handleMakePublic = () => {
+    this.setState({ isPublic: true });
   };
 
   handleCheckErrorsInConfiguration = t => {
@@ -114,11 +110,9 @@ class GroupsGeneratorPageContainer extends React.Component {
   };
 
   render() {
-    const { APIError, values, quickResult } = this.state;
-    const { isPublic } = this.props;
+    const { isPublic, values, quickResult, privateId } = this.state;
     return isPublic ? (
       <GroupsGeneratorPage
-        apiError={APIError}
         values={values}
         onFieldChange={this.onFieldChange}
         handlePublish={this.handlePublish}
@@ -126,24 +120,20 @@ class GroupsGeneratorPageContainer extends React.Component {
       />
     ) : (
       <GroupsGeneratorQuickPage
-        apiError={APIError}
         values={values}
-        onFieldChange={this.onFieldChange}
-        handleCheckErrorsInConfiguration={this.handleCheckErrorsInConfiguration}
+        shareResultLink={privateId ? `/number/${privateId}` : ''}
         quickResult={quickResult}
+        onFieldChange={this.onFieldChange}
         handleToss={this.handleToss}
+        handleMakePublic={this.handleMakePublic}
+        handleCheckErrorsInConfiguration={this.handleCheckErrorsInConfiguration}
       />
     );
   }
 }
 
 GroupsGeneratorPageContainer.propTypes = {
-  isPublic: PropTypes.bool,
-  history: ReactRouterPropTypes.history.isRequired,
-  match: ReactRouterPropTypes.match.isRequired,
-};
-GroupsGeneratorPageContainer.defaultProps = {
-  isPublic: false,
+  location: ReactRouterPropTypes.location.isRequired,
 };
 
 export default GroupsGeneratorPageContainer;

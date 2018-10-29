@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { translate } from 'react-i18next';
 import classNames from 'classnames/bind';
-import Button from '@material-ui/core/Button';
-import { RandomNumberResult as RandomNumberResultClass } from 'echaloasuerte-js-sdk';
+
 import Page from '../../Page/Page';
 import RandomNumberResult from './RandomNumberResult';
 import ResultsBox from '../../ResultsBox/ResultsBox';
-import Countdown from '../../Countdown/Countdown';
-import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
+import BannerAlert, { ALERT_TYPES } from '../../BannerAlert/BannerAlert';
+import SubmitButton from '../../SubmitButton/SubmitButton';
 import STYLES from './PublishedRandomNumberPage.scss';
 
 const c = classNames.bind(STYLES);
@@ -17,7 +16,7 @@ const c = classNames.bind(STYLES);
 const PublishedRandomNumberPage = props => {
   const {
     title,
-    result,
+    results,
     isOwner,
     rangeMin,
     rangeMax,
@@ -25,60 +24,53 @@ const PublishedRandomNumberPage = props => {
     allowRepeated,
     description,
     onToss,
-    isLoading,
     t,
   } = props;
-  if (isLoading) {
-    return <LoadingSpinner fullpage />;
-  }
   return (
-    <Page htmlTitle={title} noIndex className={c('PublishedRandomNumberPage')}>
-      <div>
-        <Typography
-          variant="h1"
-          align={'center'}
-          data-component={'PublishedRandomNumberPage__Title'}
-        >
-          {title}
-        </Typography>
-        {result.value ? (
+    <Page htmlTitle={title} noIndex>
+      <div className={c('PublishedRandomNumberPage__content')}>
+        {title && (
+          <div>
+            <Typography
+              variant="display2"
+              align={'center'}
+              data-component={'PublishedRandomNumberPage__Title'}
+            >
+              {title}
+            </Typography>
+          </div>
+        )}
+        {results.length ? (
           <ResultsBox title={t('generated_numbers')}>
-            <RandomNumberResult result={result} />
+            <RandomNumberResult result={results} />
           </ResultsBox>
         ) : (
           <div>
-            <Countdown date={result.schedule_date} />
-            {isOwner && (
-              <Button type="submit" onClick={onToss}>
-                {' '}
-              </Button>
-            )}
+            <BannerAlert title={t('results_not_generated_yet')} type={ALERT_TYPES.NEUTRAL} />
+            {isOwner && <SubmitButton label={t('generate_resuts')} onClick={onToss} />}
           </div>
         )}
         <section className={c('PublishedRandomNumberPage__details')}>
           <div>
-            <Typography variant="h5">{t('published_draw_details')}</Typography>
-            {description && <Typography variant="body2">{description}</Typography>}
+            <Typography variant="display1">{t('published_draw_details')}</Typography>
             <div>
-              <Typography variant="body2">
-                {t('field_label_from')} {rangeMin}
-              </Typography>
+              {t('field_label_from')} {rangeMin}
             </div>
             <div>
-              <Typography variant="body2">
-                {t('field_label_to')} {rangeMax}
-              </Typography>
+              {t('field_label_to')} {rangeMax}
             </div>
             <div>
-              <Typography variant="body2">
-                {t('field_label_number_of_results')} {numberOfResults}
-              </Typography>
+              {t('field_label_number_of_results')} {numberOfResults}
             </div>
             {numberOfResults > 1 && (
               <div>
-                <Typography variant="body2">
-                  {t('field_label_allow_repeated')} {allowRepeated ? 'yes' : 'no'}
-                </Typography>
+                {t('field_label_allow_repeated')} {allowRepeated ? 'yes' : 'no'}
+              </div>
+            )}
+            {description && (
+              <div>
+                {t('description')}
+                <p>{description}</p>
               </div>
             )}
           </div>
@@ -90,14 +82,13 @@ const PublishedRandomNumberPage = props => {
 
 PublishedRandomNumberPage.propTypes = {
   title: PropTypes.string,
-  rangeMin: PropTypes.number,
-  rangeMax: PropTypes.number,
-  numberOfResults: PropTypes.number,
-  allowRepeated: PropTypes.bool,
+  rangeMin: PropTypes.number.isRequired,
+  rangeMax: PropTypes.number.isRequired,
+  numberOfResults: PropTypes.number.isRequired,
+  allowRepeated: PropTypes.bool.isRequired,
   description: PropTypes.string,
-  result: PropTypes.instanceOf(RandomNumberResultClass),
+  results: PropTypes.arrayOf(PropTypes.object),
   isOwner: PropTypes.bool,
-  isLoading: PropTypes.bool,
   onToss: PropTypes.func,
   t: PropTypes.func.isRequired,
 };
@@ -105,13 +96,8 @@ PublishedRandomNumberPage.propTypes = {
 PublishedRandomNumberPage.defaultProps = {
   title: '',
   description: '',
-  rangeMin: null,
-  rangeMax: null,
-  numberOfResults: null,
-  allowRepeated: null,
-  result: null,
+  results: [],
   isOwner: false,
-  isLoading: false,
   onToss: () => {},
 };
 

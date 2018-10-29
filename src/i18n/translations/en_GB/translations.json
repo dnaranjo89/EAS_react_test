@@ -2,15 +2,11 @@
   "ApiError": {
     "api_error": "We are having some trouble in our servers."
   },
-  "Header": {
-    "brand_name": "Woreep"
-  },
   "DateTimePicker": {
     "cancel": "Cancel",
     "ok": "Ok",
     "only_future_date_valid": "You have to choose a date in the future",
-    "today": "Today",
-    "date": "Date"
+    "today": "Today"
   },
   "FacebookDraw": {
     "check_participants": "Get participants",
@@ -36,9 +32,7 @@
     "draw_title_random_number": "Generate random numbers",
     "draw_title_roll_dice": "Roll a dice",
     "draw_title_spin_arrow": "Spin an arrow",
-    "draw_title_tournament": "Organize a tournament",
-    "section_title_online_raffles": "Online raffles",
-    "section_title_simple_draws": "Simple choices"
+    "draw_title_tournament": "Organize a tournament"
   },
   "LetterDrawPage": {
     "draw_configuration": "Draw configuration",
@@ -85,8 +79,7 @@
     "winners": "Winners"
   },
   "Raffle": {
-    "field_label_list_of_participants": "List of participants",
-    "field_label_number_of_participants": "Number of participants",
+    "field_label_list_of_participants": "LIst of participants",
     "field_label_list_of_prizes": "List of prizes",
     "field_label_participants": "Participants",
     "field_label_prizes": "Prizes",
@@ -95,8 +88,6 @@
     "message_no_prizes_added": "You haven't added any prizes",
     "page_title": "Raffle with a closed list of participants",
     "publish_raffle": "Publish raffle",
-    "published_draw_details": "Detalles del sorteo",
-    "section_title_winners": "Winners",
     "step_label_general_details": "General details",
     "step_label_participants": "Choose participants",
     "step_label_prizes": "Choose prizes",
@@ -105,9 +96,6 @@
     "step_title_participants": "Who will participate in the raffle",
     "step_title_prizes": "What are the prices?",
     "step_title_when_to_toss": "When do you want the results to be generated?"
-  },
-  "Countdown": {
-    "time_remaining": "Time remaining"
   },
   "RandomNumber": {
     "create_certificated_draw": "Create a certified draw",
@@ -119,13 +107,11 @@
     "field_label_from": "From",
     "field_label_number_of_results": "Number of results",
     "field_label_to": "To",
-    "field_label_description": "Description",
     "generate_numbers": "Generate numbers",
     "generated_numbers": "Generated numbers",
     "html_title": "Generate random numbers",
-    "page_title_quick": "Generate random numbers",
-    "page_title_public": "Create public raffle with numbers",
-    "publish_draw": "Publish raffle",
+    "page_title": "Generate random numbers",
+    "publish_draw": "Publish draw",
     "published_draw_details": "Draw details",
     "step_label_configuration": "Configure the draw",
     "step_label_general_details": "General details",
@@ -133,26 +119,6 @@
     "step_title_draw_configuration": "Configure the toss",
     "step_title_general_details": "General details",
     "step_title_when_to_toss": "When do you want to generate the results?"
-  },
-  "GroupsGenerator": {
-    "draw_subheading": "Create groups online",
-    "error_form_not_enough_participants": "There are not enough participants to make {{numberOfGroups}} groups",
-    "field_label_list_of_participants": "List of participants",
-    "field_label_number_of_groups": "Number of groups",
-    "field_label_participants": "Participants",
-    "generate_groups": "Generate groups",
-    "html_title": "Generate groups online",
-    "message_no_participants_added": "You haven't added any participants",
-    "page_title": "Generate groups",
-    "publish_draw": "Publish draw",
-    "step_label_general_details": "General details",
-    "step_label_participants": "Choose participants",
-    "step_label_when_to_toss": "When will the results be published?",
-    "step_title_draw_configuration": "Configure the draw",
-    "step_title_general_details": "General details",
-    "result_label_group": "Group {{groupNumber}}",
-    "published_draw_details": "Detalles del sorteo",
-    "generated_groups": "Generated groups"
   },
   "SpinArrow": {
     "draw_subheading": "(Hit the arrow to make it spin)",

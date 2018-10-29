@@ -33,7 +33,7 @@ const WinnersTitle = ({ winnersLabel }) => (
       <TrumpetIcon inverted />
     </Grid>
     <Grid item>
-      <Typography variant="h2" component={'p'}>
+      <Typography variant="display1" component={'p'}>
         {winnersLabel}
       </Typography>
     </Grid>
@@ -52,7 +52,7 @@ const ResultsBox = ({ title, children }) => (
     <div>
       <WinnersTitle winnersLabel={title} />
     </div>
-    {children}
+    <div>{children}</div>
   </section>
 );
 

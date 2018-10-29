@@ -20,13 +20,13 @@ const PublishedFacebookLoginRafflePage = props => (
       {props.results.length ? (
         <Fragment>
           <PublicResultsPanel>
-            <Typography variant="h1">{props.t('winners')}</Typography>
+            <Typography variant="display1">{props.t('winners')}</Typography>
             {props.results.map(result => (
               <div>{result}</div>
             ))}
           </PublicResultsPanel>
           <PublicSummaryPanel>
-            <Typography variant="h1">{props.t('draw_details')}</Typography>
+            <Typography variant="display1">{props.t('draw_details')}</Typography>
             <div>Participants: {props.participants.join(', ')}</div>
             <div>prizes: {props.prizes}</div>
             <div>
@@ -48,7 +48,7 @@ const PublishedFacebookLoginRafflePage = props => (
                 <Typography variant="title">{props.t('registration_is_open')}</Typography>
                 <br />
                 {props.isLoggedInFB ? (
-                  <Button variant="contained" color="primary" onClick={props.onRegisterInRaffle}>
+                  <Button variant="raised" color="primary" onClick={props.onRegisterInRaffle}>
                     {props.t('participate_as', { username: props.userName })}
                   </Button>
                 ) : (

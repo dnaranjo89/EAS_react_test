@@ -5,15 +5,13 @@ $spacing-md: 1.125rem;
 $spacing-lg: 1.875rem;
 
 .PublishedRandomNumberPage {
-  display: flex;
-  width: 50%;
-  margin: auto;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  &__content {
+    width: 50rem;
+    margin: auto;
+    text-align: center;
+  }
 
   &__details {
-    margin-top: 5rem;
     text-align: left;
   }
 }

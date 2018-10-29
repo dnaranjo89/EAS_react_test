@@ -16,6 +16,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     if (config.enableGoogleAnalytics) {
+      console.log('GAID', config.googleAnalyticsID);
       ReactGA.initialize(config.googleAnalyticsID);
     }
     if (config.enableSentry) {

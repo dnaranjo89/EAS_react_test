@@ -17,20 +17,16 @@ const DateTimePicker = ({ t, ...props }) => {
     'en-GB': 'en',
     'es-ES': 'es',
   };
-  const currentLocale = localeMap[locale];
-  moment.locale(currentLocale);
+  moment.locale(localeMap[locale]);
 
   return (
-    <MuiPickersUtilsProvider utils={MomentUtils} locale={currentLocale} moment={moment}>
+    <MuiPickersUtilsProvider utils={MomentUtils} locale={'es'} moment={moment}>
       <MuiDateTimePicker
         minDateMessage={t('only_future_date_valid')}
         cancelLabel={t('cancel')}
         okLabel={t('ok')}
         todayLabel={t('today')}
         format={'LLL'}
-        label={t('date')}
-        margin="normal"
-        fullWidth
         {...rest}
       />
     </MuiPickersUtilsProvider>

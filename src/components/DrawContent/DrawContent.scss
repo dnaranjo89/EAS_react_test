@@ -1,0 +1,10 @@
+$draw-content-footer-background-color: rgba(0, 0, 0, .09);
+
+.DrawContent {
+  &__footer {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: $draw-content-footer-background-color;
+    text-align: left;
+  }
+}
