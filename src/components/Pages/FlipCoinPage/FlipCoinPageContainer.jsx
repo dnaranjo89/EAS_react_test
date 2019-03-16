@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import ReactGA from 'react-ga';
+import PropTypes from 'prop-types';
 import FlipCoinPage from './FlipCoinPage.jsx';
+import withTracking from '../../withTracking/withTracking.jsx';
+
+const analyticsDrawType = 'Coin';
 
 class FlipCoinPageContainer extends Component {
   constructor(props) {
@@ -11,8 +14,12 @@ class FlipCoinPageContainer extends Component {
   }
 
   handleFlipCoin = () => {
+    const { track } = this.props;
     const coinSide = Math.floor(Math.random() * 2) ? 'heads' : 'tails';
-    ReactGA.event({ category: 'Toss', action: 'Coin' });
+    track({
+      mp: { name: `Toss - ${analyticsDrawType}`, properties: { drawType: analyticsDrawType } },
+      ga: { action: 'Toss', category: analyticsDrawType },
+    });
     this.setState({ coinSide });
   };
 
@@ -22,6 +29,8 @@ class FlipCoinPageContainer extends Component {
   }
 }
 
-FlipCoinPageContainer.propTypes = {};
+FlipCoinPageContainer.propTypes = {
+  track: PropTypes.func.isRequired,
+};
 
-export default FlipCoinPageContainer;
+export default withTracking(FlipCoinPageContainer);

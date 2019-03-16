@@ -32,7 +32,6 @@ class Page extends Component {
     const metaTags = [
       { name: 'description', content: pageDescription },
       { name: 'keywords', content: htmlKeywords },
-      { property: 'og:type', content: 'website' },
       { property: 'og:title', content: pageTitle },
       { property: 'og:image', content: config.OGImagesFullDomain + ogImage },
       { property: 'og:description', content: pageDescription },

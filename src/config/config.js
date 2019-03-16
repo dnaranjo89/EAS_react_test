@@ -24,7 +24,7 @@ if (environment) {
     }
 
     const baseConfig = {
-      OGImagesFullDomain: 'https://immense-thicket-32273.herokuapp.com/',
+      OGImagesFullDomain: 'https://echaloasuerte.com',
       environment,
       domain: isServer ? 'https://echaloasuerte.com' : window.location.origin,
       isServer,

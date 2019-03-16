@@ -10,7 +10,7 @@ const DrawHeading = ({ title, subtitle }) => (
   <div className={c('DrawHeading')}>
     <Typography variant="h1">{title}</Typography>
     {subtitle && (
-      <Typography variant="body1" color="textSecondary" className={c('DrawHeading__subtitle')}>
+      <Typography variant="subtitle1" className={c('DrawHeading__subtitle')}>
         {subtitle}
       </Typography>
     )}

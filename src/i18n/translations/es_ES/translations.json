@@ -48,8 +48,11 @@
   },
   "FlipCoinPage": {
     "draw_subheading": "Lanza una moneda. Sólo toca la moneda para hacerla girar.",
-    "html_description": "¿Necesitas tomar una decision? Lanza una moneda online. Cara o cruz, deja que la suerte decida.",
+    "html_description": "¿Necesitas tomar una decisión? Lanza una moneda online. Cara o cruz, deja que la suerte decida.",
+    "html_keywords": "tirar moneda, lanzar una moneda, moneda al aire, suerte, decidir, cara o cruz, pares, nones, si, no, 50 por ciernto, moneda virtual",
     "html_title": "Cara o cruz",
+    "learn_more_content": "El cara o cruz es un juego de azar en el que se emplea una moneda. Los participates tienen que elegir un lado de la moneda y lanzarla. Gana quien acierte qué lado de la moneda caerá cara arriba. Este juego recibe diferentes nombres en otros paises, como cara o escudo, cara o ceca, cara o sello, volado o águila o sol.",
+    "learn_more_title": "¿Qué es \"Cara o Cruz\"?",
     "page_title": "Cara o cruz"
   },
   "Footer": {

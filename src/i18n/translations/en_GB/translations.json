@@ -29,7 +29,10 @@
   "FlipCoinPage": {
     "draw_subheading": "Flip a coin. Just hit it to make it spin.",
     "html_description": "Do you need to make a decision? Flip a coin online. Head or tails, let the luck decide.",
+    "html_keywords": "flip a coin, heads or tails, luck, decide, yes, no 50 percent, virtual coin, flip online",
     "html_title": "Heads or Tails",
+    "learn_more_content": "Coin flipping, coin tossing, or heads or tails is the practice of throwing a coin in the air and checking which side is showing when it lands, in order to choose between two alternatives. It is a form of sortition which inherently has two possible outcomes. The party who calls the side wins.",
+    "learn_more_title": "What is \"Heads or Tails\"?",
     "page_title": "Head or tails"
   },
   "Footer": {

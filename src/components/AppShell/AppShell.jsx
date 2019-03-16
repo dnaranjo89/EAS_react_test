@@ -24,7 +24,7 @@ import GroupsGeneratorPageContainer from '../Pages/GroupsGenerator/GroupsGenerat
 // import PublishedFacebookPhotoRafflePageContainer from '../Pages/FacebookPhotoRaffle/PublishedFacebookPhotoRafflePageContainer.jsx';
 // import LetterDrawPageContainer from '../Pages/LetterDrawPage/LetterDrawPageContainer.jsx';
 // import SpinArrowPageContainer from '../Pages/SpinArrowPage/SpinArrowPageContainer.jsx';
-// import FlipCoinPageContainer from '../Pages/FlipCoinPage/FlipCoinPageContainer.jsx';
+import FlipCoinPageContainer from '../Pages/FlipCoinPage/FlipCoinPageContainer.jsx';
 import NotFoundPage from '../Pages/NotFoundPage/NotFoundPage.jsx';
 
 const c = classnames.bind(STYLES);
@@ -50,6 +50,8 @@ const AppShell = () => (
         component={PublishedGroupsGeneratorPageContainer}
       />
 
+      <Route exact path="/draw/new/coin" component={FlipCoinPageContainer} />
+
       <Route exact path="/privacy-policy" component={PrivacyPolicyPage} />
       <Route exact path="/recent" component={RecentDraws} />
       {/* <Route exact path="/number" component={RandomNumberPageContainer} />
@@ -63,7 +65,6 @@ const AppShell = () => (
       <Route exact path="/raffle" component={props => <RafflePageContainer {...props} />} />
       <Route path="/raffle/:drawId" component={PublishedRafflePageContainer} />
 
-      <Route exact path="/flip-a-coin" component={FlipCoinPageContainer} />
       <Route exact path="/arrow" component={SpinArrowPageContainer} /> */}
 
       {/* <Route exact path="/facebook_photo" component={FacebookPhotoRafflePageContainer} />

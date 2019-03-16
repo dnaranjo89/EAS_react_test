@@ -1,6 +1,7 @@
 @import '../../variables';
 
 $coin-size: 12.5rem;
+$color-transparent: rgba(0, 0, 0, 0);
 
 @keyframes flipHeads {
   from { transform: rotateY(0); }
@@ -15,12 +16,17 @@ $coin-size: 12.5rem;
 .FlipCoinPage {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  align-items: center;
 
   &__container {
     display: flex;
-    padding-top: 10vh;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
     flex: 1;
+
+    @media (min-width: $media-desktop) {
+      padding-top: 10vh;
+    }
   }
 
   &__coin {
@@ -57,7 +63,18 @@ $coin-size: 12.5rem;
 
     &--tails {
       transform: rotateY(-180deg);
-      background-color: $color-white;
+      background-color: $web-background-color;
+    }
+  }
+
+  &__learn-more {
+    margin: $spacing-sm $spacing-sm $spacing-lg $spacing-sm;
+    text-align: center;
+
+    @media (min-width: $media-desktop) {
+      width: 60rem;
+      padding-right: $spacing-lg;
+      padding-left: $spacing-lg;
     }
   }
 }

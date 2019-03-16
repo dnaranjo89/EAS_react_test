@@ -1,14 +1,11 @@
 /* eslint-disable func-names, prefer-arrow-callback */
 
-describe('Groups Generator Draw Page', () => {
-  beforeEach(() => {
-    cy.server();
-    cy.mockFixture('GroupsGenerator');
-  });
-
+describe('Groups Generator Page', () => {
   ['macbook-13', 'iphone-5'].forEach(device => {
     context(`Device ${device}`, () => {
       beforeEach(() => {
+        cy.server();
+        cy.mockFixture('GroupsGenerator');
         cy.viewport(device);
       });
 

@@ -9,6 +9,7 @@ import Page from '../../Page/Page.jsx';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import GroupsGeneratorConfigurationSection from './GroupsGeneratorConfigurationSection.jsx';
 import DrawLayout from '../../DrawLayout/DrawLayout.jsx';
+import groupsOgImage from './groups_og_image.png';
 
 const GeneralDetailsForm = withFormValidation(GeneralDetailsSection);
 const ConfigurationForm = withFormValidation(GroupsGeneratorConfigurationSection);
@@ -67,6 +68,7 @@ const GroupsGeneratorPage = props => {
       htmlDescription={t('html_description')}
       htmlKeywords={t('html_description')}
       pageType="groups_public_draw"
+      ogImage={groupsOgImage}
     >
       <DrawLayout isPublic>
         <DrawHeading title={t('page_title')} subtitle={t('draw_subheading')} />

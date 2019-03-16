@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames/bind';
 import { translate } from 'react-i18next';
 import Typography from '@material-ui/core/Typography';
-
+import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import Page from '../../Page/Page.jsx';
 import STYLES from './FlipCoinPage.scss';
 import headsIcon from './heads.png';
 import tailsIcon from './tails.png';
+import coinOgImage from './coin_og_image.png';
 
 const c = classnames.bind(STYLES);
 
@@ -33,10 +34,12 @@ class FlipCoinPage extends Component {
       <Page
         htmlTitle={t('html_title')}
         htmlDescription={t('html_description')}
+        htmlKeywords={t('html_keywords')}
+        pageType="Flip a Coin"
+        ogImage={coinOgImage}
         className={c('FlipCoinPage')}
       >
-        <Typography variant="h1">{t('page_title')}</Typography>
-        <Typography variant="subtitle1">{t('draw_subheading')}</Typography>
+        <DrawHeading title={t('page_title')} subtitle={t('draw_subheading')} />
 
         <div className={c('FlipCoinPage__container')}>
           <button
@@ -57,6 +60,10 @@ class FlipCoinPage extends Component {
               alt="tails"
             />
           </button>
+        </div>
+        <div className={c('FlipCoinPage__learn-more')}>
+          <Typography variant="h3">{t('learn_more_title')}</Typography>
+          <Typography variant="subtitle1">{t('learn_more_content')}</Typography>
         </div>
       </Page>
     );
