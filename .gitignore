@@ -34,3 +34,6 @@ src/i18n/translations/.i18n-editor-metadata
 
 # Direnv
 .envrc
+
+# Logs directory
+logs
