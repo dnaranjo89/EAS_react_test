@@ -29,7 +29,7 @@ const GroupsGeneratorQuickPage = props => {
     loadingResult,
     t,
   } = props;
-  const publicDrawUrl = '/draw/new/groups/shared';
+  const publicDrawUrl = '/groups/public';
   return (
     <Page
       htmlTitle={t('html_title')}

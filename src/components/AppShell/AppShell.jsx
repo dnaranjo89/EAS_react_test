@@ -37,6 +37,7 @@ const AppShell = () => (
     <Switch>
       <Route exact path="/" component={props => <HomePage {...props} />} />
 
+      {/* To be removed once we can confirm that this url is no longer used */}
       <Route
         exact
         path="/draw/new/groups/:isPublic(shared)?"

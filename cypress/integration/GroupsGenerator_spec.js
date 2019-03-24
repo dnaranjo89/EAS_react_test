@@ -108,13 +108,13 @@ describe('Groups Generator Draw Page', () => {
         cy.getComponent('ShareDrawButton__cancel').click();
         cy.getComponent('ShareDrawButton').click();
         cy.getComponent('ShareDrawButton__confirm').click();
-        cy.location('pathname').should('eq', '/draw/new/groups/shared');
+        cy.location('pathname').should('eq', '/groups/public');
       });
 
       it('Should contain a working link to the public draw', () => {
         cy.visit('/draw/new/groups');
         cy.getComponent('MakeCertifiedDrawPanel__button').click();
-        cy.location('pathname').should('eq', '/draw/new/groups/shared');
+        cy.location('pathname').should('eq', '/groups/public');
       });
 
       describe('Invalid configurations', function() {
