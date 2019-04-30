@@ -1,18 +1,18 @@
 @import '../../variables';
 
-$animation-duration: 3s;
-
 $coin-size: 12.5rem;
 $color-transparent: rgba(0, 0, 0, 0);
+$animation-duration: 2s;
+$animation-bezier: $animation-duration cubic-bezier(.43, .72, .54, .87) forwards;
 
 @keyframes flipHeads {
   from { transform: rotateY(0); }
-  to { transform: rotateY(1800deg); }
+  to { transform: rotateY(1440deg); }  // 4 flips
 }
 
 @keyframes flipTails {
   from { transform: rotateY(0); }
-  to { transform: rotateY(1980deg); }
+  to { transform: rotateY(1620deg); } // 4.5 flips
 }
 
 .FlipCoinPage {
@@ -42,11 +42,11 @@ $color-transparent: rgba(0, 0, 0, 0);
     transform-style: preserve-3d;
 
     &--heads {
-      animation: flipHeads $animation-duration cubic-bezier(.43, .72, .54, .87) forwards;
+      animation: flipHeads $animation-bezier;
     }
 
     &--tails {
-      animation: flipTails $animation-duration cubic-bezier(.43, .72, .54, .87) forwards;
+      animation: flipTails $animation-bezier;
     }
   }
 
@@ -73,7 +73,7 @@ $color-transparent: rgba(0, 0, 0, 0);
     opacity: 0;
 
     &--animated {
-      animation: fade-in $animation-duration linear;
+      animation: fade-in $animation-duration + .1 linear;
       animation-fill-mode: forwards;
     }
   }
@@ -84,7 +84,7 @@ $color-transparent: rgba(0, 0, 0, 0);
     opacity: 0;
   }
 
-  90% {
+  95% {
     opacity: 0;
   }
 
