@@ -1,8 +1,6 @@
 # build environment
 FROM node:dubnium
 
-ARG commit_sha=none
-
 RUN mkdir /usr/src/app
 RUN mkdir -p /var/log/eas3/
 
@@ -15,6 +13,7 @@ COPY package-lock.json /usr/src/app/package-lock.json
 RUN npm install --silent --production
 COPY . /usr/src/app
 
+ARG commit_sha=none
 ENV REACT_APP_ENV=production
 ENV REACT_APP_COMMIT=$commit_sha
 RUN npm run build
