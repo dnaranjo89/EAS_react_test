@@ -32,7 +32,7 @@ class FlipCoinPage extends Component {
   }
 
   render() {
-    const { coinSide, onFlip, t } = this.props;
+    const { coinSide, showTossHelp, onFlip, t } = this.props;
     return (
       <Page
         htmlTitle={t('html_title')}
@@ -63,6 +63,11 @@ class FlipCoinPage extends Component {
               alt="tails"
             />
           </button>
+          {showTossHelp && (
+            <Typography variant="subtitle1" align="center">
+              {t('touch_to_toss')}
+            </Typography>
+          )}
           <Typography
             id="resultLabel"
             variant="h2"
@@ -81,6 +86,7 @@ class FlipCoinPage extends Component {
 
 FlipCoinPage.propTypes = {
   coinSide: PropTypes.string.isRequired,
+  showTossHelp: PropTypes.bool.isRequired,
   onFlip: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
 };
