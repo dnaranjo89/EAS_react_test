@@ -35,6 +35,7 @@ $animation-bezier: $animation-duration cubic-bezier(.43, .72, .54, .87) forwards
     width: $coin-size;
     height: $coin-size;
     margin: 0 auto;
+    margin-bottom: $spacing-sm;
     border: none;
     outline: none;
     background-color: transparent;
@@ -69,7 +70,6 @@ $animation-bezier: $animation-duration cubic-bezier(.43, .72, .54, .87) forwards
   }
 
   & &__result {
-    margin-top: $spacing-sm;
     opacity: 0;
 
     &--animated {
