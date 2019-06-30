@@ -27,7 +27,7 @@
     "publish_draw": "Publish raffle"
   },
   "FlipCoinPage": {
-    "draw_subheading": "Flip a coin. Just hit it to make it spin.",
+    "draw_subheading": "Flip a coin",
     "html_description": "Do you need to make a decision? Flip a coin online. Head or tails, let the luck decide.",
     "html_keywords": "flip a coin, heads or tails, luck, decide, yes, no 50 percent, virtual coin, flip online",
     "html_title": "Heads or Tails",
@@ -35,7 +35,8 @@
     "learn_more_title": "What is \"Heads or Tails\"?",
     "page_title": "Head or tails",
     "result_heads": "Heads",
-    "result_tails": "Tails"
+    "result_tails": "Tails",
+    "touch_to_toss": "Touch the coin to make it spin"
   },
   "Footer": {
     "privacy_policy": "Privacy Policy"

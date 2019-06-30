@@ -60,7 +60,7 @@
     "winners": "Ganadores del sorteo"
   },
   "FlipCoinPage": {
-    "draw_subheading": "Lanza una moneda. Sólo toca la moneda para hacerla girar.",
+    "draw_subheading": "Lanza una moneda al aire",
     "html_description": "¿Necesitas tomar una decisión? Lanza una moneda online. Cara o cruz, deja que la suerte decida.",
     "html_keywords": "tirar moneda, lanzar una moneda, moneda al aire, suerte, decidir, cara o cruz, pares, nones, si, no, 50 por ciento, moneda virtual",
     "html_title": "Cara o cruz",
@@ -68,7 +68,8 @@
     "learn_more_title": "¿Qué es \"Cara o Cruz\"?",
     "page_title": "Cara o cruz",
     "result_heads": "Cara",
-    "result_tails": "Cruz"
+    "result_tails": "Cruz",
+    "touch_to_toss": "Toca la moneda para lanzarla"
   },
   "Footer": {
     "privacy_policy": "Politica de privacidad"

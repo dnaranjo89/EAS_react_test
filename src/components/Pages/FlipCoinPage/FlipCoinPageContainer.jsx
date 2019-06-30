@@ -10,6 +10,7 @@ class FlipCoinPageContainer extends Component {
     super(props);
     this.state = {
       coinSide: 'heads',
+      showTossHelp: true,
     };
   }
 
@@ -20,12 +21,17 @@ class FlipCoinPageContainer extends Component {
       mp: { name: `Toss - ${analyticsDrawType}`, properties: { drawType: analyticsDrawType } },
       ga: { action: 'Toss', category: analyticsDrawType },
     });
-    this.setState({ coinSide });
+    this.setState({
+      coinSide,
+      showTossHelp: false,
+    });
   };
 
   render() {
-    const { coinSide } = this.state;
-    return <FlipCoinPage coinSide={coinSide} onFlip={this.handleFlipCoin} />;
+    const { coinSide, showTossHelp } = this.state;
+    return (
+      <FlipCoinPage coinSide={coinSide} onFlip={this.handleFlipCoin} showTossHelp={showTossHelp} />
+    );
   }
 }
 
