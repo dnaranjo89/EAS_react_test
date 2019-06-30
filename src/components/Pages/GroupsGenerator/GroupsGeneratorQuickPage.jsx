@@ -106,6 +106,7 @@ const GroupsGeneratorQuickPage = props => {
                     label: 'From Quick Result',
                   },
                 }}
+                t={t}
               />
             </Fragment>
           )}

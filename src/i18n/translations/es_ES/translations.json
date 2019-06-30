@@ -75,8 +75,8 @@
     "privacy_policy": "Politica de privacidad"
   },
   "GroupsGenerator": {
-    "certified_draw_description": "Si quieres hacer un sorteo público para asegurar a los participantes una eleccion imparcial del resultado, te recomendamos que hagas un sorteo certificado.",
-    "create_certificated_draw": "Genera grupos certificados",
+    "certified_draw_description": "Si quieres hacer un sorteo público para asegurar a los participantes una eleccion imparcial del resultado, te recomendamos que hagas un sorteo público.",
+    "create_certificated_draw": "Genera grupos publicamente",
     "draw_subheading": "Simple generador de grupos aleatorios. Sólo pega la lista de participantes y la cantidad de grupos a generar",
     "error_form_not_enough_participants": "No hay suficientes participantes para hacer {{numberOfGroups}} grupos",
     "field_help_separate_participants_commas": "Separa los participantes por comas",
@@ -99,6 +99,10 @@
     "result_label_group": "Grupo {{groupNumber}}",
     "share_draw": "Comparte este sorteo",
     "share_result": "Comparte este resultado",
+    "share_result_dialog_body": "Si quieres asegurar a tus participantes que el sorteo ha sido aleatorio y justo tendrás que crear un sorteo público.\nPodrás especificar una fecha en la que el resultado se hara público y compartir un link para que los participantes puedan ver el resultado en directo.",
+    "share_result_dialog_cancel": "Cancel",
+    "share_result_dialog_ok": "Generar grupos publicamente",
+    "share_result_dialog_title": "Genera los grupos publicamente",
     "step_label_configure": "Configura los grupos",
     "step_label_general_details": "Detalles generales",
     "step_label_when_to_toss": "Cuándo se realizara el sorteo?"

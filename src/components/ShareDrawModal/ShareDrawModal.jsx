@@ -31,11 +31,11 @@ class ShareDrawModal extends Component {
 
   render() {
     const { open } = this.state;
-    const { publicDrawUrl, trackingData } = this.props;
+    const { publicDrawUrl, trackingData, t } = this.props;
     return (
       <div className={c('ShareDrawModal__button-row')}>
         <Button onClick={this.handleClickOpen} data-testid="ShareDrawButton">
-          Compartir resultado
+          {t('share_result')}
         </Button>
         <Dialog
           fullScreen={this.fullScreen}
@@ -43,12 +43,9 @@ class ShareDrawModal extends Component {
           onClose={this.handleClose}
           aria-labelledby="responsive-dialog-title"
         >
-          <DialogTitle>¿Quieres compartir los resultados de un sorteo?</DialogTitle>
+          <DialogTitle>{t('share_result_dialog_title')}</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              Para compartir los resultados necesitas crear un sorteo público. De esta manera,
-              garantizarás a los participantes que el sorteo sólo se realizó una vez
-            </DialogContentText>
+            <DialogContentText>{t('share_result_dialog_body')}</DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button
@@ -56,10 +53,10 @@ class ShareDrawModal extends Component {
               onClick={this.handleClose}
               color="primary"
             >
-              Cancelar
+              {t('share_result_dialog_cancel')}
             </Button>
             <PublicModeButton
-              label="Crear sorteo público"
+              label={t('share_result_dialog_ok')}
               to={publicDrawUrl}
               trackingData={trackingData}
               dataComponent="ShareDrawButton__confirm"
@@ -75,6 +72,7 @@ class ShareDrawModal extends Component {
 ShareDrawModal.propTypes = {
   publicDrawUrl: PropTypes.string.isRequired,
   trackingData: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  t: PropTypes.func.isRequired,
 };
 
 export default withMobileDialog()(ShareDrawModal);

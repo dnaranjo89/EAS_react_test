@@ -42,8 +42,8 @@
     "privacy_policy": "Privacy Policy"
   },
   "GroupsGenerator": {
-    "certified_draw_description": "If you want to make a public raffle to ensure an impartial result you should create a certified raffle.",
-    "create_certificated_draw": "Generate certified groups",
+    "certified_draw_description": "If you want to make a public raffle to ensure an impartial result you should create a public raffle.",
+    "create_certificated_draw": "Generate groups publicly",
     "draw_subheading": "Create groups online",
     "error_form_not_enough_participants": "There are not enough participants to make {{numberOfGroups}} groups",
     "field_help_separate_participants_commas": "Separate participants by commas",
@@ -66,6 +66,10 @@
     "result_label_group": "Group {{groupNumber}}",
     "share_draw": "Share this raffle",
     "share_result": "Share this result",
+    "share_result_dialog_body": "If you want to ensure that the groups were created fair and randomly you need to create them publicly.\nYou will be able to schedule when the results will be made public and share a link with the participants so they can see the results live.",
+    "share_result_dialog_cancel": "Cancelar",
+    "share_result_dialog_ok": "Generate groups publicly",
+    "share_result_dialog_title": "Generate the groups publicly to share the results",
     "step_label_configure": "Set up the groups",
     "step_label_general_details": "General details",
     "step_label_when_to_toss": "When will the results be published?"
@@ -144,7 +148,7 @@
     "step_label_when_to_toss": "When will the results be generated?"
   },
   "RandomNumber": {
-    "create_certificated_draw": "Create a certified draw",
+    "create_certificated_draw": "Create a public draw",
     "draw_subheading": "Simple random number generator. Simply choose the range and the amount of numbers to generate.",
     "error_field_message_min_results": "You must generate at least one number",
     "error_form_invalid_ranges": "The chosen range (numbers between {{min}} and {{max}}) is not valid",
