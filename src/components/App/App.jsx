@@ -12,7 +12,7 @@ import FacebookProvider from '../FacebookProvider/FacebookProvider.jsx';
 import config from '../../config/config';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary.jsx';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage.jsx';
-import { hotjar } from '../../services/hotjar';
+// import { hotjar } from '../../services/hotjar';
 
 class App extends Component {
   constructor(props) {
@@ -26,9 +26,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    if (config.hotjarEnabled) {
-      hotjar.initialize(1051921, 6);
-    }
+    // Disabling hotjar as we are enabling it at page level
+    // if (config.hotjarEnabled) {
+    //   hotjar.initialize(1051921, 6);
+    // }
     // showCookieBanner();
   }
 
