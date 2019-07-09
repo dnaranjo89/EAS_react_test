@@ -69,6 +69,7 @@ const GroupsGeneratorPage = props => {
       htmlKeywords={t('html_keywords')}
       pageType="groups_public_draw"
       ogImage={groupsOgImage}
+      enableHotjar
     >
       <DrawLayout isPublic>
         <DrawHeading title={t('page_title')} subtitle={t('draw_subheading')} />

@@ -31,6 +31,7 @@ exports[`MultiValueInput Should not mutate the original value when values are re
     <ForwardRef
       inputProps={
         Object {
+          "data-hj-whitelist": true,
           "data-testid": "MultiValueInput__field-input",
         }
       }
@@ -513,6 +514,7 @@ exports[`MultiValueInput Should not mutate the original value when values are re
             <WithStyles(Input)
               inputProps={
                 Object {
+                  "data-hj-whitelist": true,
                   "data-testid": "MultiValueInput__field-input",
                 }
               }
@@ -541,6 +543,7 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                 }
                 inputProps={
                   Object {
+                    "data-hj-whitelist": true,
                     "data-testid": "MultiValueInput__field-input",
                   }
                 }
@@ -571,6 +574,7 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                   inputComponent="input"
                   inputProps={
                     Object {
+                      "data-hj-whitelist": true,
                       "data-testid": "MultiValueInput__field-input",
                     }
                   }
@@ -606,6 +610,7 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                     inputComponent="input"
                     inputProps={
                       Object {
+                        "data-hj-whitelist": true,
                         "data-testid": "MultiValueInput__field-input",
                       }
                     }
@@ -641,6 +646,7 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                       inputComponent="input"
                       inputProps={
                         Object {
+                          "data-hj-whitelist": true,
                           "data-testid": "MultiValueInput__field-input",
                         }
                       }
@@ -673,6 +679,7 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                         <input
                           aria-invalid={false}
                           className="MuiInputBase-input-64 MuiInput-input-49"
+                          data-hj-whitelist={true}
                           data-testid="MultiValueInput__field-input"
                           disabled={false}
                           name="field1"
@@ -1274,6 +1281,11 @@ exports[`MultiValueInput Should render correctly with values 1`] = `
   data-testid=""
 >
   <ForwardRef
+    inputProps={
+      Object {
+        "data-hj-whitelist": true,
+      }
+    }
     label="Input label"
     margin="normal"
     name="field1"
@@ -1301,6 +1313,11 @@ exports[`MultiValueInput Should render correctly without values 1`] = `
   data-testid=""
 >
   <ForwardRef
+    inputProps={
+      Object {
+        "data-hj-whitelist": true,
+      }
+    }
     label="Input label"
     margin="normal"
     name="field1"

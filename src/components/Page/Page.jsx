@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import i18n from 'i18next';
 import withMixpanel from '../withMixpanel/withMixpanel.jsx';
+import { hotjar } from '../../services/hotjar';
 
 import config from '../../config/config';
 import defaultOgImage from './logo_og.png';
@@ -17,11 +18,14 @@ const c = classNames.bind(STYLES);
 
 class Page extends Component {
   componentDidMount() {
+    const { mixpanel, pageType, location, enableHotjar } = this.props;
     if (config.analiticsEnabled) {
-      const { mixpanel, pageType, location } = this.props;
       const page = location.pathname;
       ReactGA.pageview(page);
       mixpanel.track(`Page Loaded - ${pageType}`, { pageType });
+    }
+    if (config.hotjarEnabled && enableHotjar) {
+      hotjar.initialize(1051921, 6);
     }
   }
 
@@ -86,6 +90,7 @@ Page.propTypes = {
   htmlDescription: PropTypes.string,
   htmlKeywords: PropTypes.string,
   pageType: PropTypes.string.isRequired,
+  enableHotjar: PropTypes.bool,
   className: PropTypes.string,
   mixpanel: PropTypes.shape({}).isRequired,
   children: PropTypes.node.isRequired,
@@ -101,6 +106,7 @@ Page.defaultProps = {
   ogImage: defaultOgImage,
   htmlKeywords: '',
   htmlDescription: '',
+  enableHotjar: false,
 };
 
 const mapsStateToProps = state => ({ hostname: state.hostname.hostname });
