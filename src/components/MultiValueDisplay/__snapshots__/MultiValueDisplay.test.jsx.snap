@@ -5,16 +5,16 @@ exports[`MultiValueDisplay Chip.onDelete should be null if onDelete is not suppl
   className="MultiValueDisplay"
   data-testid="MultiValueDisplay"
 >
-  <WithStyles(Typography)
+  <WithStyles(ForwardRef(Typography))
     color="textSecondary"
     variant="caption"
   >
     Input label
-  </WithStyles(Typography)>
+  </WithStyles(ForwardRef(Typography))>
   <div
     className="MultiValueDisplay__values-list"
   >
-    <WithStyles(Chip)
+    <WithStyles(ForwardRef(Chip))
       data-testid="MultiValueDisplay__chip"
       key="1"
       label="value 2"
@@ -29,16 +29,16 @@ exports[`MultiValueDisplay Chip.onDelete should be onDelete when supplied 1`] = 
   className="MultiValueDisplay"
   data-testid="MultiValueDisplay"
 >
-  <WithStyles(Typography)
+  <WithStyles(ForwardRef(Typography))
     color="textSecondary"
     variant="caption"
   >
     Input label
-  </WithStyles(Typography)>
+  </WithStyles(ForwardRef(Typography))>
   <div
     className="MultiValueDisplay__values-list"
   >
-    <WithStyles(Chip)
+    <WithStyles(ForwardRef(Chip))
       data-testid="MultiValueDisplay__chip"
       key="1"
       label="value 2"
@@ -53,22 +53,22 @@ exports[`MultiValueDisplay Should render correctly with values 1`] = `
   className="MultiValueDisplay"
   data-testid="MultiValueDisplay"
 >
-  <WithStyles(Typography)
+  <WithStyles(ForwardRef(Typography))
     color="textSecondary"
     variant="caption"
   >
     Input label
-  </WithStyles(Typography)>
+  </WithStyles(ForwardRef(Typography))>
   <div
     className="MultiValueDisplay__values-list"
   >
-    <WithStyles(Chip)
+    <WithStyles(ForwardRef(Chip))
       data-testid="MultiValueDisplay__chip"
       key="1"
       label="value 1"
       onDelete={null}
     />
-    <WithStyles(Chip)
+    <WithStyles(ForwardRef(Chip))
       data-testid="MultiValueDisplay__chip"
       key="1"
       label="value 2"
@@ -83,22 +83,22 @@ exports[`MultiValueDisplay Should render correctly without values 1`] = `
   className="MultiValueDisplay"
   data-testid="MultiValueDisplay"
 >
-  <WithStyles(Typography)
+  <WithStyles(ForwardRef(Typography))
     color="textSecondary"
     variant="caption"
   >
     Input label
-  </WithStyles(Typography)>
+  </WithStyles(ForwardRef(Typography))>
   <div
     className="MultiValueDisplay__values-list"
   >
-    <WithStyles(Typography)
+    <WithStyles(ForwardRef(Typography))
       className="MultiValueDisplay__empty-message"
       color="textSecondary"
       variant="body1"
     >
       No items selected
-    </WithStyles(Typography)>
+    </WithStyles(ForwardRef(Typography))>
   </div>
 </div>
 `;

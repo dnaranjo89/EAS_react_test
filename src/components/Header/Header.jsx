@@ -15,7 +15,7 @@ const Header = ({ t }) => (
   <header className={c('Header')}>
     <a href="/" className={c('Header__link')}>
       <img className={c('Header__logo')} src={logo} alt={t('brand_name')} />
-      <Typography inline variant="h4" component="span" className={c('Header__title')}>
+      <Typography variant="h4" component="span" className={c('Header__title')}>
         {t('brand_name')}
       </Typography>
     </a>
