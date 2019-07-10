@@ -4,16 +4,22 @@ import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import withTracking from '../withTracking/withTracking.jsx';
 
-const PublicModeButton = ({ to, label, trackingData, inputProps, dataComponent, track }) => (
-  <Button
-    component={props => <Link to={to} onClick={() => track(trackingData)} {...props} />}
-    variant="contained"
-    data-testid={dataComponent}
-    {...inputProps}
-  >
-    {label}
-  </Button>
-);
+const PublicModeButton = ({ to, label, trackingData, inputProps, dataComponent, track }) => {
+  const CollisionLink = React.forwardRef((props, ref) => (
+    <Link innerRef={ref} to={to} onClick={() => track(trackingData)} {...props} />
+  ));
+
+  return (
+    <Button
+      component={CollisionLink}
+      variant="contained"
+      data-testid={dataComponent}
+      {...inputProps}
+    >
+      {label}
+    </Button>
+  );
+};
 
 PublicModeButton.propTypes = {
   to: PropTypes.string.isRequired,

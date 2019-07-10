@@ -1,9 +1,7 @@
 import path from 'path';
 import fs from 'fs';
-import { SheetsRegistry } from 'jss';
-import JssProvider from 'react-jss/lib/JssProvider';
-import { MuiThemeProvider, createGenerateClassName } from '@material-ui/core/styles';
 import React from 'react';
+import { ServerStyleSheets, ThemeProvider } from '@material-ui/styles';
 import { renderToString } from 'react-dom/server';
 import Helmet from 'react-helmet';
 import { Provider } from 'react-redux';
@@ -43,14 +41,7 @@ export default (req, res) => {
   // Setup the EAS API
   setupApi(hostname);
 
-  // Create a sheetsRegistry instance.
-  const sheetsRegistry = new SheetsRegistry();
-
-  // Create a sheetsManager instance.
-  const sheetsManager = new Map();
-
-  // Create a new class name generator.
-  const generateClassName = createGenerateClassName();
+  const sheets = new ServerStyleSheets();
 
   // Load in our HTML file from our build
   // eslint-disable-next-line consistent-return
@@ -68,26 +59,26 @@ export default (req, res) => {
     const context = {};
     frontloadServerRender(() =>
       renderToString(
-        <Provider store={store}>
-          <StaticRouter location={req.url} context={context}>
-            <JssProvider registry={sheetsRegistry} generateClassName={generateClassName}>
-              <MuiThemeProvider theme={theme} sheetsManager={sheetsManager}>
+        sheets.collect(
+          <Provider store={store}>
+            <StaticRouter location={req.url} context={context}>
+              <ThemeProvider theme={theme}>
                 <DeviceDetector userAgent={req.headers['user-agent']}>
                   <Frontload isServer>
                     <App />
                   </Frontload>
                 </DeviceDetector>
-              </MuiThemeProvider>
-            </JssProvider>
-          </StaticRouter>
-        </Provider>,
+              </ThemeProvider>
+            </StaticRouter>
+          </Provider>,
+        ),
       ),
     ).then(routeMarkup => {
       // We need to tell Helmet to compute the right meta tags, title, and such
       const helmet = Helmet.renderStatic();
 
-      // Grab the CSS from our sheetsRegistry.
-      const css = sheetsRegistry.toString();
+      // Grab the materialUI CSS.
+      const css = sheets.toString();
 
       // Build the markup
       const html = injectHTML(htmlData, {

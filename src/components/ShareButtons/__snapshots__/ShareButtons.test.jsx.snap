@@ -4,12 +4,12 @@ exports[`ShareButtons renders the title if given 1`] = `
 <div
   className="ShareButtons"
 >
-  <WithStyles(Typography)
+  <WithStyles(ForwardRef(Typography))
     align="center"
     variant="subtitle2"
   >
     The title
-  </WithStyles(Typography)>
+  </WithStyles(ForwardRef(Typography))>
   <WithMixpanel
     drawType="groups"
     key="facebook"

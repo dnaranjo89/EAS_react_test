@@ -42,104 +42,67 @@ exports[`MultiValueInput Should not mutate the original value when values are re
       type="text"
       value=""
     >
-      <WithStyles(FormControl)
+      <WithStyles(ForwardRef(FormControl))
         margin="normal"
         required={false}
         variant="standard"
       >
-        <FormControl
+        <ForwardRef(FormControl)
           classes={
             Object {
-              "fullWidth": "MuiFormControl-fullWidth-4",
-              "marginDense": "MuiFormControl-marginDense-3",
-              "marginNormal": "MuiFormControl-marginNormal-2",
-              "root": "MuiFormControl-root-1",
+              "fullWidth": "MuiFormControl-fullWidth",
+              "marginDense": "MuiFormControl-marginDense",
+              "marginNormal": "MuiFormControl-marginNormal",
+              "root": "MuiFormControl-root",
             }
           }
-          component="div"
-          disabled={false}
-          error={false}
-          fullWidth={false}
           margin="normal"
           required={false}
           variant="standard"
         >
           <div
-            className="MuiFormControl-root-1 MuiFormControl-marginNormal-2"
+            className="MuiFormControl-root MuiFormControl-marginNormal"
           >
-            <WithStyles(Typography)
+            <WithStyles(ForwardRef(Typography))
               component="label"
               variant="h3"
             >
-              <Typography
-                align="inherit"
+              <ForwardRef(Typography)
                 classes={
                   Object {
-                    "alignCenter": "MuiTypography-alignCenter-28",
-                    "alignJustify": "MuiTypography-alignJustify-30",
-                    "alignLeft": "MuiTypography-alignLeft-27",
-                    "alignRight": "MuiTypography-alignRight-29",
-                    "body1": "MuiTypography-body1-14",
-                    "body2": "MuiTypography-body2-13",
-                    "button": "MuiTypography-button-16",
-                    "caption": "MuiTypography-caption-15",
-                    "colorError": "MuiTypography-colorError-39",
-                    "colorInherit": "MuiTypography-colorInherit-34",
-                    "colorPrimary": "MuiTypography-colorPrimary-35",
-                    "colorSecondary": "MuiTypography-colorSecondary-36",
-                    "colorTextPrimary": "MuiTypography-colorTextPrimary-37",
-                    "colorTextSecondary": "MuiTypography-colorTextSecondary-38",
-                    "display1": "MuiTypography-display1-9",
-                    "display2": "MuiTypography-display2-8",
-                    "display3": "MuiTypography-display3-7",
-                    "display4": "MuiTypography-display4-6",
-                    "gutterBottom": "MuiTypography-gutterBottom-32",
-                    "h1": "MuiTypography-h1-17",
-                    "h2": "MuiTypography-h2-18",
-                    "h3": "MuiTypography-h3-19",
-                    "h4": "MuiTypography-h4-20",
-                    "h5": "MuiTypography-h5-21",
-                    "h6": "MuiTypography-h6-22",
-                    "headline": "MuiTypography-headline-10",
-                    "inline": "MuiTypography-inline-40",
-                    "noWrap": "MuiTypography-noWrap-31",
-                    "overline": "MuiTypography-overline-25",
-                    "paragraph": "MuiTypography-paragraph-33",
-                    "root": "MuiTypography-root-5",
-                    "srOnly": "MuiTypography-srOnly-26",
-                    "subheading": "MuiTypography-subheading-12",
-                    "subtitle1": "MuiTypography-subtitle1-23",
-                    "subtitle2": "MuiTypography-subtitle2-24",
-                    "title": "MuiTypography-title-11",
+                    "alignCenter": "MuiTypography-alignCenter",
+                    "alignJustify": "MuiTypography-alignJustify",
+                    "alignLeft": "MuiTypography-alignLeft",
+                    "alignRight": "MuiTypography-alignRight",
+                    "body1": "MuiTypography-body1",
+                    "body2": "MuiTypography-body2",
+                    "button": "MuiTypography-button",
+                    "caption": "MuiTypography-caption",
+                    "colorError": "MuiTypography-colorError",
+                    "colorInherit": "MuiTypography-colorInherit",
+                    "colorPrimary": "MuiTypography-colorPrimary",
+                    "colorSecondary": "MuiTypography-colorSecondary",
+                    "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                    "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                    "displayBlock": "MuiTypography-displayBlock",
+                    "displayInline": "MuiTypography-displayInline",
+                    "gutterBottom": "MuiTypography-gutterBottom",
+                    "h1": "MuiTypography-h1",
+                    "h2": "MuiTypography-h2",
+                    "h3": "MuiTypography-h3",
+                    "h4": "MuiTypography-h4",
+                    "h5": "MuiTypography-h5",
+                    "h6": "MuiTypography-h6",
+                    "noWrap": "MuiTypography-noWrap",
+                    "overline": "MuiTypography-overline",
+                    "paragraph": "MuiTypography-paragraph",
+                    "root": "MuiTypography-root",
+                    "srOnly": "MuiTypography-srOnly",
+                    "subtitle1": "MuiTypography-subtitle1",
+                    "subtitle2": "MuiTypography-subtitle2",
                   }
                 }
-                color="default"
                 component="label"
-                gutterBottom={false}
-                headlineMapping={
-                  Object {
-                    "body1": "p",
-                    "body2": "p",
-                    "display1": "h1",
-                    "display2": "h1",
-                    "display3": "h1",
-                    "display4": "h1",
-                    "h1": "h1",
-                    "h2": "h2",
-                    "h3": "h3",
-                    "h4": "h4",
-                    "h5": "h5",
-                    "h6": "h6",
-                    "headline": "h1",
-                    "subheading": "h3",
-                    "subtitle1": "h6",
-                    "subtitle2": "h6",
-                    "title": "h2",
-                  }
-                }
-                inline={false}
-                noWrap={false}
-                paragraph={false}
                 theme={
                   Object {
                     "breakpoints": Object {
@@ -272,9 +235,7 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                     "shape": Object {
                       "borderRadius": 4,
                     },
-                    "spacing": Object {
-                      "unit": 8,
-                    },
+                    "spacing": [Function],
                     "transitions": Object {
                       "create": [Function],
                       "duration": Object {
@@ -296,14 +257,6 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                     },
                     "typography": Object {
                       "body1": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
-                        "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                        "fontSize": "0.875rem",
-                        "fontWeight": 400,
-                        "lineHeight": "1.46429em",
-                      },
-                      "body1Next": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
                         "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                         "fontSize": "1rem",
                         "fontWeight": 400,
@@ -311,29 +264,13 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                         "lineHeight": 1.5,
                       },
                       "body2": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
-                        "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                        "fontSize": "0.875rem",
-                        "fontWeight": 500,
-                        "lineHeight": "1.71429em",
-                      },
-                      "body2Next": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
                         "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                         "fontSize": "0.875rem",
                         "fontWeight": 400,
                         "letterSpacing": "0.01071em",
-                        "lineHeight": 1.5,
+                        "lineHeight": 1.43,
                       },
                       "button": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
-                        "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                        "fontSize": "0.875rem",
-                        "fontWeight": 500,
-                        "textTransform": "uppercase",
-                      },
-                      "buttonNext": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
                         "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                         "fontSize": "0.875rem",
                         "fontWeight": 500,
@@ -342,60 +279,19 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                         "textTransform": "uppercase",
                       },
                       "caption": Object {
-                        "color": "rgba(0, 0, 0, 0.54)",
-                        "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                        "fontSize": "0.75rem",
-                        "fontWeight": 400,
-                        "lineHeight": "1.375em",
-                      },
-                      "captionNext": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
                         "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                         "fontSize": "0.75rem",
                         "fontWeight": 400,
                         "letterSpacing": "0.03333em",
                         "lineHeight": 1.66,
                       },
-                      "display1": Object {
-                        "color": "rgba(0, 0, 0, 0.54)",
-                        "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                        "fontSize": "2.125rem",
-                        "fontWeight": 400,
-                        "lineHeight": "1.20588em",
-                      },
-                      "display2": Object {
-                        "color": "rgba(0, 0, 0, 0.54)",
-                        "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                        "fontSize": "2.8125rem",
-                        "fontWeight": 400,
-                        "lineHeight": "1.13333em",
-                        "marginLeft": "-.02em",
-                      },
-                      "display3": Object {
-                        "color": "rgba(0, 0, 0, 0.54)",
-                        "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                        "fontSize": "3.5rem",
-                        "fontWeight": 400,
-                        "letterSpacing": "-.02em",
-                        "lineHeight": "1.30357em",
-                        "marginLeft": "-.02em",
-                      },
-                      "display4": Object {
-                        "color": "rgba(0, 0, 0, 0.54)",
-                        "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                        "fontSize": "7rem",
-                        "fontWeight": 300,
-                        "letterSpacing": "-.04em",
-                        "lineHeight": "1.14286em",
-                        "marginLeft": "-.04em",
-                      },
                       "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                       "fontSize": 14,
+                      "fontWeightBold": 700,
                       "fontWeightLight": 300,
                       "fontWeightMedium": 500,
                       "fontWeightRegular": 400,
                       "h1": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
                         "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                         "fontSize": "6rem",
                         "fontWeight": 300,
@@ -403,7 +299,6 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                         "lineHeight": 1,
                       },
                       "h2": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
                         "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                         "fontSize": "3.75rem",
                         "fontWeight": 300,
@@ -411,7 +306,6 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                         "lineHeight": 1,
                       },
                       "h3": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
                         "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                         "fontSize": "3rem",
                         "fontWeight": 400,
@@ -419,7 +313,6 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                         "lineHeight": 1.04,
                       },
                       "h4": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
                         "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                         "fontSize": "2.125rem",
                         "fontWeight": 400,
@@ -427,7 +320,6 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                         "lineHeight": 1.17,
                       },
                       "h5": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
                         "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                         "fontSize": "1.5rem",
                         "fontWeight": 400,
@@ -435,22 +327,14 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                         "lineHeight": 1.33,
                       },
                       "h6": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
                         "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                         "fontSize": "1.25rem",
                         "fontWeight": 500,
                         "letterSpacing": "0.0075em",
                         "lineHeight": 1.6,
                       },
-                      "headline": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
-                        "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                        "fontSize": "1.5rem",
-                        "fontWeight": 400,
-                        "lineHeight": "1.35417em",
-                      },
+                      "htmlFontSize": 16,
                       "overline": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
                         "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                         "fontSize": "0.75rem",
                         "fontWeight": 400,
@@ -460,15 +344,7 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                       },
                       "pxToRem": [Function],
                       "round": [Function],
-                      "subheading": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
-                        "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                        "fontSize": "1rem",
-                        "fontWeight": 400,
-                        "lineHeight": "1.5em",
-                      },
                       "subtitle1": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
                         "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                         "fontSize": "1rem",
                         "fontWeight": 400,
@@ -476,21 +352,12 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                         "lineHeight": 1.75,
                       },
                       "subtitle2": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
                         "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                         "fontSize": "0.875rem",
                         "fontWeight": 500,
                         "letterSpacing": "0.00714em",
                         "lineHeight": 1.57,
                       },
-                      "title": Object {
-                        "color": "rgba(0, 0, 0, 0.87)",
-                        "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                        "fontSize": "1.3125rem",
-                        "fontWeight": 500,
-                        "lineHeight": "1.16667em",
-                      },
-                      "useNextVariants": false,
                     },
                     "zIndex": Object {
                       "appBar": 1100,
@@ -505,13 +372,13 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                 variant="h3"
               >
                 <label
-                  className="MuiTypography-root-5 MuiTypography-h3-19"
+                  className="MuiTypography-root MuiTypography-h3"
                 >
                   Input label
                 </label>
-              </Typography>
-            </WithStyles(Typography)>
-            <WithStyles(Input)
+              </ForwardRef(Typography)>
+            </WithStyles(ForwardRef(Typography))>
+            <WithStyles(ForwardRef(Input))
               inputProps={
                 Object {
                   "data-hj-whitelist": true,
@@ -523,22 +390,21 @@ exports[`MultiValueInput Should not mutate the original value when values are re
               type="text"
               value=""
             >
-              <Input
+              <ForwardRef(Input)
                 classes={
                   Object {
-                    "disabled": "MuiInput-disabled-44",
-                    "error": "MuiInput-error-46",
-                    "focused": "MuiInput-focused-43",
-                    "formControl": "MuiInput-formControl-42",
-                    "fullWidth": "MuiInput-fullWidth-48",
-                    "input": "MuiInput-input-49",
-                    "inputMarginDense": "MuiInput-inputMarginDense-50",
-                    "inputMultiline": "MuiInput-inputMultiline-51",
-                    "inputType": "MuiInput-inputType-52",
-                    "inputTypeSearch": "MuiInput-inputTypeSearch-53",
-                    "multiline": "MuiInput-multiline-47",
-                    "root": "MuiInput-root-41",
-                    "underline": "MuiInput-underline-45",
+                    "disabled": "Mui-disabled",
+                    "error": "Mui-error",
+                    "focused": "Mui-focused",
+                    "formControl": "MuiInput-formControl",
+                    "fullWidth": "MuiInput-fullWidth",
+                    "input": "MuiInput-input",
+                    "inputMarginDense": "MuiInput-inputMarginDense",
+                    "inputMultiline": "MuiInput-inputMultiline",
+                    "inputTypeSearch": "MuiInput-inputTypeSearch",
+                    "multiline": "MuiInput-multiline",
+                    "root": "MuiInput-root",
+                    "underline": "MuiInput-underline",
                   }
                 }
                 inputProps={
@@ -552,21 +418,20 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                 type="text"
                 value=""
               >
-                <WithStyles(WithFormControlContext(InputBase))
+                <WithStyles(ForwardRef(InputBase))
                   classes={
                     Object {
-                      "disabled": "MuiInput-disabled-44",
-                      "error": "MuiInput-error-46",
-                      "focused": "MuiInput-focused-43",
-                      "formControl": "MuiInput-formControl-42",
-                      "fullWidth": "MuiInput-fullWidth-48",
-                      "input": "MuiInput-input-49",
-                      "inputMarginDense": "MuiInput-inputMarginDense-50",
-                      "inputMultiline": "MuiInput-inputMultiline-51",
-                      "inputType": "MuiInput-inputType-52",
-                      "inputTypeSearch": "MuiInput-inputTypeSearch-53",
-                      "multiline": "MuiInput-multiline-47",
-                      "root": "MuiInput-root-41 MuiInput-underline-45",
+                      "disabled": "Mui-disabled",
+                      "error": "Mui-error",
+                      "focused": "Mui-focused",
+                      "formControl": "MuiInput-formControl",
+                      "fullWidth": "MuiInput-fullWidth",
+                      "input": "MuiInput-input",
+                      "inputMarginDense": "MuiInput-inputMarginDense",
+                      "inputMultiline": "MuiInput-inputMultiline",
+                      "inputTypeSearch": "MuiInput-inputTypeSearch",
+                      "multiline": "MuiInput-multiline",
+                      "root": "MuiInput-root MuiInput-underline",
                       "underline": null,
                     }
                   }
@@ -584,26 +449,26 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                   type="text"
                   value=""
                 >
-                  <WithFormControlContext(InputBase)
+                  <ForwardRef(InputBase)
                     classes={
                       Object {
-                        "adornedEnd": "MuiInputBase-adornedEnd-59",
-                        "adornedStart": "MuiInputBase-adornedStart-58",
-                        "disabled": "MuiInputBase-disabled-57 MuiInput-disabled-44",
-                        "error": "MuiInputBase-error-60 MuiInput-error-46",
-                        "focused": "MuiInputBase-focused-56 MuiInput-focused-43",
-                        "formControl": "MuiInputBase-formControl-55 MuiInput-formControl-42",
-                        "fullWidth": "MuiInputBase-fullWidth-63 MuiInput-fullWidth-48",
-                        "input": "MuiInputBase-input-64 MuiInput-input-49",
-                        "inputAdornedEnd": "MuiInputBase-inputAdornedEnd-70",
-                        "inputAdornedStart": "MuiInputBase-inputAdornedStart-69",
-                        "inputMarginDense": "MuiInputBase-inputMarginDense-65 MuiInput-inputMarginDense-50",
-                        "inputMultiline": "MuiInputBase-inputMultiline-66 MuiInput-inputMultiline-51",
-                        "inputType": "MuiInputBase-inputType-67 MuiInput-inputType-52",
-                        "inputTypeSearch": "MuiInputBase-inputTypeSearch-68 MuiInput-inputTypeSearch-53",
-                        "marginDense": "MuiInputBase-marginDense-61",
-                        "multiline": "MuiInputBase-multiline-62 MuiInput-multiline-47",
-                        "root": "MuiInputBase-root-54 MuiInput-root-41 MuiInput-underline-45",
+                        "adornedEnd": "MuiInputBase-adornedEnd",
+                        "adornedStart": "MuiInputBase-adornedStart",
+                        "disabled": "Mui-disabled Mui-disabled",
+                        "error": "Mui-error Mui-error",
+                        "focused": "Mui-focused Mui-focused",
+                        "formControl": "MuiInputBase-formControl MuiInput-formControl",
+                        "fullWidth": "MuiInputBase-fullWidth MuiInput-fullWidth",
+                        "input": "MuiInputBase-input MuiInput-input",
+                        "inputAdornedEnd": "MuiInputBase-inputAdornedEnd",
+                        "inputAdornedStart": "MuiInputBase-inputAdornedStart",
+                        "inputMarginDense": "MuiInputBase-inputMarginDense MuiInput-inputMarginDense",
+                        "inputMultiline": "MuiInputBase-inputMultiline MuiInput-inputMultiline",
+                        "inputSelect": "MuiInputBase-inputSelect",
+                        "inputTypeSearch": "MuiInputBase-inputTypeSearch MuiInput-inputTypeSearch",
+                        "marginDense": "MuiInputBase-marginDense",
+                        "multiline": "MuiInputBase-multiline MuiInput-multiline",
+                        "root": "MuiInputBase-root MuiInput-root MuiInput-underline",
                       }
                     }
                     fullWidth={false}
@@ -620,85 +485,32 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                     type="text"
                     value=""
                   >
-                    <InputBase
-                      classes={
-                        Object {
-                          "adornedEnd": "MuiInputBase-adornedEnd-59",
-                          "adornedStart": "MuiInputBase-adornedStart-58",
-                          "disabled": "MuiInputBase-disabled-57 MuiInput-disabled-44",
-                          "error": "MuiInputBase-error-60 MuiInput-error-46",
-                          "focused": "MuiInputBase-focused-56 MuiInput-focused-43",
-                          "formControl": "MuiInputBase-formControl-55 MuiInput-formControl-42",
-                          "fullWidth": "MuiInputBase-fullWidth-63 MuiInput-fullWidth-48",
-                          "input": "MuiInputBase-input-64 MuiInput-input-49",
-                          "inputAdornedEnd": "MuiInputBase-inputAdornedEnd-70",
-                          "inputAdornedStart": "MuiInputBase-inputAdornedStart-69",
-                          "inputMarginDense": "MuiInputBase-inputMarginDense-65 MuiInput-inputMarginDense-50",
-                          "inputMultiline": "MuiInputBase-inputMultiline-66 MuiInput-inputMultiline-51",
-                          "inputType": "MuiInputBase-inputType-67 MuiInput-inputType-52",
-                          "inputTypeSearch": "MuiInputBase-inputTypeSearch-68 MuiInput-inputTypeSearch-53",
-                          "marginDense": "MuiInputBase-marginDense-61",
-                          "multiline": "MuiInputBase-multiline-62 MuiInput-multiline-47",
-                          "root": "MuiInputBase-root-54 MuiInput-root-41 MuiInput-underline-45",
-                        }
-                      }
-                      fullWidth={false}
-                      inputComponent="input"
-                      inputProps={
-                        Object {
-                          "data-hj-whitelist": true,
-                          "data-testid": "MultiValueInput__field-input",
-                        }
-                      }
-                      muiFormControl={
-                        Object {
-                          "adornedStart": false,
-                          "disabled": false,
-                          "error": false,
-                          "filled": false,
-                          "focused": false,
-                          "margin": "normal",
-                          "onBlur": [Function],
-                          "onEmpty": [Function],
-                          "onFilled": [Function],
-                          "onFocus": [Function],
-                          "required": false,
-                          "variant": "standard",
-                        }
-                      }
-                      multiline={false}
-                      name="field1"
-                      onChange={[Function]}
-                      type="text"
-                      value=""
+                    <div
+                      className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                      onClick={[Function]}
                     >
-                      <div
-                        className="MuiInputBase-root-54 MuiInput-root-41 MuiInput-underline-45 MuiInputBase-formControl-55 MuiInput-formControl-42"
-                        onClick={[Function]}
-                      >
-                        <input
-                          aria-invalid={false}
-                          className="MuiInputBase-input-64 MuiInput-input-49"
-                          data-hj-whitelist={true}
-                          data-testid="MultiValueInput__field-input"
-                          disabled={false}
-                          name="field1"
-                          onBlur={[Function]}
-                          onChange={[Function]}
-                          onFocus={[Function]}
-                          required={false}
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </InputBase>
-                  </WithFormControlContext(InputBase)>
-                </WithStyles(WithFormControlContext(InputBase))>
-              </Input>
-            </WithStyles(Input)>
+                      <input
+                        aria-invalid={false}
+                        className="MuiInputBase-input MuiInput-input"
+                        data-hj-whitelist={true}
+                        data-testid="MultiValueInput__field-input"
+                        disabled={false}
+                        name="field1"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        required={false}
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </ForwardRef(InputBase)>
+                </WithStyles(ForwardRef(InputBase))>
+              </ForwardRef(Input)>
+            </WithStyles(ForwardRef(Input))>
           </div>
-        </FormControl>
-      </WithStyles(FormControl)>
+        </ForwardRef(FormControl)>
+      </WithStyles(ForwardRef(FormControl))>
     </ForwardRef>
     <MultiValueDisplay
       allowDelete={true}
@@ -715,78 +527,46 @@ exports[`MultiValueInput Should not mutate the original value when values are re
         className="MultiValueDisplay"
         data-testid="MultiValueDisplay"
       >
-        <WithStyles(Typography)
+        <WithStyles(ForwardRef(Typography))
           color="textSecondary"
           variant="caption"
         >
-          <Typography
-            align="inherit"
+          <ForwardRef(Typography)
             classes={
               Object {
-                "alignCenter": "MuiTypography-alignCenter-28",
-                "alignJustify": "MuiTypography-alignJustify-30",
-                "alignLeft": "MuiTypography-alignLeft-27",
-                "alignRight": "MuiTypography-alignRight-29",
-                "body1": "MuiTypography-body1-14",
-                "body2": "MuiTypography-body2-13",
-                "button": "MuiTypography-button-16",
-                "caption": "MuiTypography-caption-15",
-                "colorError": "MuiTypography-colorError-39",
-                "colorInherit": "MuiTypography-colorInherit-34",
-                "colorPrimary": "MuiTypography-colorPrimary-35",
-                "colorSecondary": "MuiTypography-colorSecondary-36",
-                "colorTextPrimary": "MuiTypography-colorTextPrimary-37",
-                "colorTextSecondary": "MuiTypography-colorTextSecondary-38",
-                "display1": "MuiTypography-display1-9",
-                "display2": "MuiTypography-display2-8",
-                "display3": "MuiTypography-display3-7",
-                "display4": "MuiTypography-display4-6",
-                "gutterBottom": "MuiTypography-gutterBottom-32",
-                "h1": "MuiTypography-h1-17",
-                "h2": "MuiTypography-h2-18",
-                "h3": "MuiTypography-h3-19",
-                "h4": "MuiTypography-h4-20",
-                "h5": "MuiTypography-h5-21",
-                "h6": "MuiTypography-h6-22",
-                "headline": "MuiTypography-headline-10",
-                "inline": "MuiTypography-inline-40",
-                "noWrap": "MuiTypography-noWrap-31",
-                "overline": "MuiTypography-overline-25",
-                "paragraph": "MuiTypography-paragraph-33",
-                "root": "MuiTypography-root-5",
-                "srOnly": "MuiTypography-srOnly-26",
-                "subheading": "MuiTypography-subheading-12",
-                "subtitle1": "MuiTypography-subtitle1-23",
-                "subtitle2": "MuiTypography-subtitle2-24",
-                "title": "MuiTypography-title-11",
+                "alignCenter": "MuiTypography-alignCenter",
+                "alignJustify": "MuiTypography-alignJustify",
+                "alignLeft": "MuiTypography-alignLeft",
+                "alignRight": "MuiTypography-alignRight",
+                "body1": "MuiTypography-body1",
+                "body2": "MuiTypography-body2",
+                "button": "MuiTypography-button",
+                "caption": "MuiTypography-caption",
+                "colorError": "MuiTypography-colorError",
+                "colorInherit": "MuiTypography-colorInherit",
+                "colorPrimary": "MuiTypography-colorPrimary",
+                "colorSecondary": "MuiTypography-colorSecondary",
+                "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                "displayBlock": "MuiTypography-displayBlock",
+                "displayInline": "MuiTypography-displayInline",
+                "gutterBottom": "MuiTypography-gutterBottom",
+                "h1": "MuiTypography-h1",
+                "h2": "MuiTypography-h2",
+                "h3": "MuiTypography-h3",
+                "h4": "MuiTypography-h4",
+                "h5": "MuiTypography-h5",
+                "h6": "MuiTypography-h6",
+                "noWrap": "MuiTypography-noWrap",
+                "overline": "MuiTypography-overline",
+                "paragraph": "MuiTypography-paragraph",
+                "root": "MuiTypography-root",
+                "srOnly": "MuiTypography-srOnly",
+                "subtitle1": "MuiTypography-subtitle1",
+                "subtitle2": "MuiTypography-subtitle2",
               }
             }
             color="textSecondary"
-            gutterBottom={false}
-            headlineMapping={
-              Object {
-                "body1": "p",
-                "body2": "p",
-                "display1": "h1",
-                "display2": "h1",
-                "display3": "h1",
-                "display4": "h1",
-                "h1": "h1",
-                "h2": "h2",
-                "h3": "h3",
-                "h4": "h4",
-                "h5": "h5",
-                "h6": "h6",
-                "headline": "h1",
-                "subheading": "h3",
-                "subtitle1": "h6",
-                "subtitle2": "h6",
-                "title": "h2",
-              }
-            }
-            inline={false}
-            noWrap={false}
-            paragraph={false}
             theme={
               Object {
                 "breakpoints": Object {
@@ -919,9 +699,7 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                 "shape": Object {
                   "borderRadius": 4,
                 },
-                "spacing": Object {
-                  "unit": 8,
-                },
+                "spacing": [Function],
                 "transitions": Object {
                   "create": [Function],
                   "duration": Object {
@@ -943,14 +721,6 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                 },
                 "typography": Object {
                   "body1": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
-                    "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                    "fontSize": "0.875rem",
-                    "fontWeight": 400,
-                    "lineHeight": "1.46429em",
-                  },
-                  "body1Next": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
                     "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                     "fontSize": "1rem",
                     "fontWeight": 400,
@@ -958,29 +728,13 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                     "lineHeight": 1.5,
                   },
                   "body2": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
-                    "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                    "fontSize": "0.875rem",
-                    "fontWeight": 500,
-                    "lineHeight": "1.71429em",
-                  },
-                  "body2Next": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
                     "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                     "fontSize": "0.875rem",
                     "fontWeight": 400,
                     "letterSpacing": "0.01071em",
-                    "lineHeight": 1.5,
+                    "lineHeight": 1.43,
                   },
                   "button": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
-                    "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                    "fontSize": "0.875rem",
-                    "fontWeight": 500,
-                    "textTransform": "uppercase",
-                  },
-                  "buttonNext": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
                     "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                     "fontSize": "0.875rem",
                     "fontWeight": 500,
@@ -989,60 +743,19 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                     "textTransform": "uppercase",
                   },
                   "caption": Object {
-                    "color": "rgba(0, 0, 0, 0.54)",
-                    "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                    "fontSize": "0.75rem",
-                    "fontWeight": 400,
-                    "lineHeight": "1.375em",
-                  },
-                  "captionNext": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
                     "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                     "fontSize": "0.75rem",
                     "fontWeight": 400,
                     "letterSpacing": "0.03333em",
                     "lineHeight": 1.66,
                   },
-                  "display1": Object {
-                    "color": "rgba(0, 0, 0, 0.54)",
-                    "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                    "fontSize": "2.125rem",
-                    "fontWeight": 400,
-                    "lineHeight": "1.20588em",
-                  },
-                  "display2": Object {
-                    "color": "rgba(0, 0, 0, 0.54)",
-                    "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                    "fontSize": "2.8125rem",
-                    "fontWeight": 400,
-                    "lineHeight": "1.13333em",
-                    "marginLeft": "-.02em",
-                  },
-                  "display3": Object {
-                    "color": "rgba(0, 0, 0, 0.54)",
-                    "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                    "fontSize": "3.5rem",
-                    "fontWeight": 400,
-                    "letterSpacing": "-.02em",
-                    "lineHeight": "1.30357em",
-                    "marginLeft": "-.02em",
-                  },
-                  "display4": Object {
-                    "color": "rgba(0, 0, 0, 0.54)",
-                    "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                    "fontSize": "7rem",
-                    "fontWeight": 300,
-                    "letterSpacing": "-.04em",
-                    "lineHeight": "1.14286em",
-                    "marginLeft": "-.04em",
-                  },
                   "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                   "fontSize": 14,
+                  "fontWeightBold": 700,
                   "fontWeightLight": 300,
                   "fontWeightMedium": 500,
                   "fontWeightRegular": 400,
                   "h1": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
                     "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                     "fontSize": "6rem",
                     "fontWeight": 300,
@@ -1050,7 +763,6 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                     "lineHeight": 1,
                   },
                   "h2": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
                     "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                     "fontSize": "3.75rem",
                     "fontWeight": 300,
@@ -1058,7 +770,6 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                     "lineHeight": 1,
                   },
                   "h3": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
                     "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                     "fontSize": "3rem",
                     "fontWeight": 400,
@@ -1066,7 +777,6 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                     "lineHeight": 1.04,
                   },
                   "h4": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
                     "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                     "fontSize": "2.125rem",
                     "fontWeight": 400,
@@ -1074,7 +784,6 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                     "lineHeight": 1.17,
                   },
                   "h5": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
                     "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                     "fontSize": "1.5rem",
                     "fontWeight": 400,
@@ -1082,22 +791,14 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                     "lineHeight": 1.33,
                   },
                   "h6": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
                     "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                     "fontSize": "1.25rem",
                     "fontWeight": 500,
                     "letterSpacing": "0.0075em",
                     "lineHeight": 1.6,
                   },
-                  "headline": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
-                    "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                    "fontSize": "1.5rem",
-                    "fontWeight": 400,
-                    "lineHeight": "1.35417em",
-                  },
+                  "htmlFontSize": 16,
                   "overline": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
                     "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                     "fontSize": "0.75rem",
                     "fontWeight": 400,
@@ -1107,15 +808,7 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                   },
                   "pxToRem": [Function],
                   "round": [Function],
-                  "subheading": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
-                    "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                    "fontSize": "1rem",
-                    "fontWeight": 400,
-                    "lineHeight": "1.5em",
-                  },
                   "subtitle1": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
                     "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                     "fontSize": "1rem",
                     "fontWeight": 400,
@@ -1123,21 +816,12 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                     "lineHeight": 1.75,
                   },
                   "subtitle2": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
                     "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
                     "fontSize": "0.875rem",
                     "fontWeight": 500,
                     "letterSpacing": "0.00714em",
                     "lineHeight": 1.57,
                   },
-                  "title": Object {
-                    "color": "rgba(0, 0, 0, 0.87)",
-                    "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-                    "fontSize": "1.3125rem",
-                    "fontWeight": 500,
-                    "lineHeight": "1.16667em",
-                  },
-                  "useNextVariants": false,
                 },
                 "zIndex": Object {
                   "appBar": 1100,
@@ -1152,60 +836,62 @@ exports[`MultiValueInput Should not mutate the original value when values are re
             variant="caption"
           >
             <span
-              className="MuiTypography-root-5 MuiTypography-caption-15 MuiTypography-colorTextSecondary-38"
+              className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextSecondary"
             >
               Selected Items
             </span>
-          </Typography>
-        </WithStyles(Typography)>
+          </ForwardRef(Typography)>
+        </WithStyles(ForwardRef(Typography))>
         <div
           className="MultiValueDisplay__values-list"
         >
-          <WithStyles(Chip)
+          <WithStyles(ForwardRef(Chip))
             data-testid="MultiValueDisplay__chip"
             key="1"
             label="Value 1"
             onDelete={[Function]}
           >
-            <Chip
+            <ForwardRef(Chip)
               classes={
                 Object {
-                  "avatar": "MuiChip-avatar-83",
-                  "avatarChildren": "MuiChip-avatarChildren-86",
-                  "avatarColorPrimary": "MuiChip-avatarColorPrimary-84",
-                  "avatarColorSecondary": "MuiChip-avatarColorSecondary-85",
-                  "clickable": "MuiChip-clickable-74",
-                  "clickableColorPrimary": "MuiChip-clickableColorPrimary-75",
-                  "clickableColorSecondary": "MuiChip-clickableColorSecondary-76",
-                  "colorPrimary": "MuiChip-colorPrimary-72",
-                  "colorSecondary": "MuiChip-colorSecondary-73",
-                  "deletable": "MuiChip-deletable-77",
-                  "deletableColorPrimary": "MuiChip-deletableColorPrimary-78",
-                  "deletableColorSecondary": "MuiChip-deletableColorSecondary-79",
-                  "deleteIcon": "MuiChip-deleteIcon-91",
-                  "deleteIconColorPrimary": "MuiChip-deleteIconColorPrimary-92",
-                  "deleteIconColorSecondary": "MuiChip-deleteIconColorSecondary-93",
-                  "deleteIconOutlinedColorPrimary": "MuiChip-deleteIconOutlinedColorPrimary-94",
-                  "deleteIconOutlinedColorSecondary": "MuiChip-deleteIconOutlinedColorSecondary-95",
-                  "icon": "MuiChip-icon-87",
-                  "iconColorPrimary": "MuiChip-iconColorPrimary-88",
-                  "iconColorSecondary": "MuiChip-iconColorSecondary-89",
-                  "label": "MuiChip-label-90",
-                  "outlined": "MuiChip-outlined-80",
-                  "outlinedPrimary": "MuiChip-outlinedPrimary-81",
-                  "outlinedSecondary": "MuiChip-outlinedSecondary-82",
-                  "root": "MuiChip-root-71",
+                  "avatar": "MuiChip-avatar",
+                  "avatarChildren": "MuiChip-avatarChildren",
+                  "avatarColorPrimary": "MuiChip-avatarColorPrimary",
+                  "avatarColorSecondary": "MuiChip-avatarColorSecondary",
+                  "avatarSmall": "MuiChip-avatarSmall",
+                  "clickable": "MuiChip-clickable",
+                  "clickableColorPrimary": "MuiChip-clickableColorPrimary",
+                  "clickableColorSecondary": "MuiChip-clickableColorSecondary",
+                  "colorPrimary": "MuiChip-colorPrimary",
+                  "colorSecondary": "MuiChip-colorSecondary",
+                  "deletable": "MuiChip-deletable",
+                  "deletableColorPrimary": "MuiChip-deletableColorPrimary",
+                  "deletableColorSecondary": "MuiChip-deletableColorSecondary",
+                  "deleteIcon": "MuiChip-deleteIcon",
+                  "deleteIconColorPrimary": "MuiChip-deleteIconColorPrimary",
+                  "deleteIconColorSecondary": "MuiChip-deleteIconColorSecondary",
+                  "deleteIconOutlinedColorPrimary": "MuiChip-deleteIconOutlinedColorPrimary",
+                  "deleteIconOutlinedColorSecondary": "MuiChip-deleteIconOutlinedColorSecondary",
+                  "deleteIconSmall": "MuiChip-deleteIconSmall",
+                  "icon": "MuiChip-icon",
+                  "iconColorPrimary": "MuiChip-iconColorPrimary",
+                  "iconColorSecondary": "MuiChip-iconColorSecondary",
+                  "iconSmall": "MuiChip-iconSmall",
+                  "label": "MuiChip-label",
+                  "labelSmall": "MuiChip-labelSmall",
+                  "outlined": "MuiChip-outlined",
+                  "outlinedPrimary": "MuiChip-outlinedPrimary",
+                  "outlinedSecondary": "MuiChip-outlinedSecondary",
+                  "root": "MuiChip-root",
+                  "sizeSmall": "MuiChip-sizeSmall",
                 }
               }
-              color="default"
-              component="div"
               data-testid="MultiValueDisplay__chip"
               label="Value 1"
               onDelete={[Function]}
-              variant="default"
             >
               <div
-                className="MuiChip-root-71 MuiChip-deletable-77"
+                className="MuiChip-root MuiChip-deletable"
                 data-testid="MultiValueDisplay__chip"
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
@@ -1213,62 +899,53 @@ exports[`MultiValueInput Should not mutate the original value when values are re
                 tabIndex={0}
               >
                 <span
-                  className="MuiChip-label-90"
+                  className="MuiChip-label"
                 >
                   Value 1
                 </span>
-                <pure(Cancel)
-                  className="MuiChip-deleteIcon-91"
+                <ForwardRef
+                  className="MuiChip-deleteIcon"
                   onClick={[Function]}
                 >
-                  <Cancel
-                    className="MuiChip-deleteIcon-91"
+                  <WithStyles(ForwardRef(SvgIcon))
+                    className="MuiChip-deleteIcon"
                     onClick={[Function]}
                   >
-                    <WithStyles(SvgIcon)
-                      className="MuiChip-deleteIcon-91"
+                    <ForwardRef(SvgIcon)
+                      className="MuiChip-deleteIcon"
+                      classes={
+                        Object {
+                          "colorAction": "MuiSvgIcon-colorAction",
+                          "colorDisabled": "MuiSvgIcon-colorDisabled",
+                          "colorError": "MuiSvgIcon-colorError",
+                          "colorPrimary": "MuiSvgIcon-colorPrimary",
+                          "colorSecondary": "MuiSvgIcon-colorSecondary",
+                          "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                          "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                          "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                          "root": "MuiSvgIcon-root",
+                        }
+                      }
                       onClick={[Function]}
                     >
-                      <SvgIcon
-                        className="MuiChip-deleteIcon-91"
-                        classes={
-                          Object {
-                            "colorAction": "MuiSvgIcon-colorAction-99",
-                            "colorDisabled": "MuiSvgIcon-colorDisabled-101",
-                            "colorError": "MuiSvgIcon-colorError-100",
-                            "colorPrimary": "MuiSvgIcon-colorPrimary-97",
-                            "colorSecondary": "MuiSvgIcon-colorSecondary-98",
-                            "fontSizeInherit": "MuiSvgIcon-fontSizeInherit-102",
-                            "fontSizeLarge": "MuiSvgIcon-fontSizeLarge-104",
-                            "fontSizeSmall": "MuiSvgIcon-fontSizeSmall-103",
-                            "root": "MuiSvgIcon-root-96",
-                          }
-                        }
-                        color="inherit"
-                        component="svg"
-                        fontSize="default"
+                      <svg
+                        aria-hidden="true"
+                        className="MuiSvgIcon-root MuiChip-deleteIcon"
+                        focusable="false"
                         onClick={[Function]}
+                        role="presentation"
                         viewBox="0 0 24 24"
                       >
-                        <svg
-                          aria-hidden="true"
-                          className="MuiSvgIcon-root-96 MuiChip-deleteIcon-91"
-                          focusable="false"
-                          onClick={[Function]}
-                          role="presentation"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
-                          />
-                        </svg>
-                      </SvgIcon>
-                    </WithStyles(SvgIcon)>
-                  </Cancel>
-                </pure(Cancel)>
+                        <path
+                          d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+                        />
+                      </svg>
+                    </ForwardRef(SvgIcon)>
+                  </WithStyles(ForwardRef(SvgIcon))>
+                </ForwardRef>
               </div>
-            </Chip>
-          </WithStyles(Chip)>
+            </ForwardRef(Chip)>
+          </WithStyles(ForwardRef(Chip))>
         </div>
       </div>
     </MultiValueDisplay>
