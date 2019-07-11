@@ -9,7 +9,9 @@
   },
   "Countdown": {
     "results_published_on": "Results will be published on",
+    "reload_page": "Please reload the page",
     "time_remaining": "Time remaining"
+
   },
   "DateTimePicker": {
     "cancel": "Cancel",

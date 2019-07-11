@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import Typography from '@material-ui/core/Typography';
@@ -21,10 +21,25 @@ import STYLES from './PublishedGroupsGeneratorPage.scss';
 const c = classNames.bind(STYLES);
 const analyticsDrawType = 'Groups';
 
+const loadData = async props => {
+  const { drawId } = props.match.params;
+  await props.fetchDraw(drawId);
+};
+
 const PublishedGroupsGeneratorPage = props => {
   const { draw, match, t, hostname } = props;
   const { title, description, participants, numberOfGroups, result, isLoading } = draw;
   const shareUrl = hostname + match.url;
+
+  // eslint-disable-next-line consistent-return
+  useEffect(() => {
+    if (result && !result.value) {
+      // Fetch the results once the countdown is over
+      const missingSeconds = new Date(result.schedule_date).getTime() - new Date().getTime();
+      const timer = setTimeout(() => loadData(props), missingSeconds);
+      return () => clearTimeout(timer);
+    }
+  }, [result]);
 
   if (isLoading) {
     return <LoadingSpinner fullpage />;
@@ -103,16 +118,12 @@ PublishedGroupsGeneratorPage.defaultProps = {};
 const TranslatedPage = withTranslation('GroupsGenerator')(PublishedGroupsGeneratorPage);
 
 const mapsStateToProps = state => ({ draw: state.draws.draw, hostname: state.hostname.hostname });
-const frontload = async props => {
-  const { drawId } = props.match.params;
-  await props.fetchDraw(drawId);
-};
 
 export default connect(
   mapsStateToProps,
   { fetchDraw },
 )(
-  frontloadConnect(frontload, {
+  frontloadConnect(loadData, {
     onMount: true,
     onUpdate: false,
   })(TranslatedPage),
