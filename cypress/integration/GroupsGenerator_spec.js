@@ -174,7 +174,8 @@ describe('Groups Generator Page', () => {
 
         it('Should show the countdown if there are not results', () => {
           const now = new Date();
-          now.setHours(now.getHours() + 1);
+          const missingSeconds = 2;
+          now.setSeconds(now.getSeconds() + missingSeconds);
           const dateInFuture = now.toISOString();
           cy.fixture('GroupsGenerator').then(fixtures => {
             const fixtureGetRaffle = fixtures.find(
@@ -183,12 +184,23 @@ describe('Groups Generator Page', () => {
             fixtureGetRaffle.response.results[0].schedule_date = dateInFuture;
             fixtureGetRaffle.response.results[0].value = null;
             cy.route(fixtureGetRaffle.method, fixtureGetRaffle.path, fixtureGetRaffle.response).as(
-              'LoadData',
+              'LoadDataResultsPending',
             );
           });
           cy.visit('/groups/af52a47d-98fd-4685-8510-26d342e16f9b');
-          cy.wait('@LoadData');
+          cy.fixture('GroupsGenerator').then(fixtures => {
+            const fixtureGetRaffle = fixtures.find(
+              fixture => fixture.path === '/api/groups/af52a47d-98fd-4685-8510-26d342e16f9b',
+            );
+            cy.route(fixtureGetRaffle.method, fixtureGetRaffle.path, fixtureGetRaffle.response).as(
+              'LoadDataResultsPublished',
+            );
+          });
+          cy.wait('@LoadDataResultsPending');
           cy.getComponent('Countdown').should('be.visible');
+
+          // Once the countdown is over, the the api should be called again
+          cy.wait('@LoadDataResultsPublished');
         });
 
         it('Should show results and the groups draw details', () => {
