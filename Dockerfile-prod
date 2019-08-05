@@ -1,5 +1,5 @@
 # build environment
-FROM node:dubnium
+FROM node:dubnium-slim
 
 RUN mkdir /usr/src/app
 RUN mkdir -p /var/log/eas3/
