@@ -5,11 +5,12 @@ import * as fs from 'fs';
 import { NullTransport } from 'winston-null';
 import config from './config/config';
 
-const { LOGS_PATH, MAX_FILES } = process.env;
+const { LOGS_PATH, LOGS_SUFFIX, MAX_FILES } = process.env;
 const DEFAULT_MAX_FILES = 5;
 const MAX_SIZE_MORGAN = '10M'; // 10 MB
 const MAX_SIZE_WINSTON = 10485760;
 const maxFiles = MAX_FILES || DEFAULT_MAX_FILES;
+const logsSuffix = LOGS_SUFFIX ? `_${LOGS_SUFFIX}.log` : '.log';
 
 const setupDefaultLogsPath = () => {
   const logsDirectory = path.join('.', 'logs');
@@ -30,12 +31,12 @@ const getFileTransports = () => {
   };
   return [
     new winston.transports.File({
-      filename: path.join(logsPath, 'error.log'),
+      filename: path.join(logsPath, `error${logsSuffix}`),
       level: 'error',
       ...baseRatationOptions,
     }),
     new winston.transports.File({
-      filename: path.join(logsPath, 'combined.log'),
+      filename: path.join(logsPath, `combined${logsSuffix}`),
       ...baseRatationOptions,
     }),
   ];
@@ -70,7 +71,7 @@ export const initWinstonLogging = ({ isServer }) => {
 };
 
 export const getMorganStream = () =>
-  rfs('access.log', {
+  rfs(`access${logsSuffix}`, {
     maxFiles,
     size: MAX_SIZE_MORGAN,
     path: getLogsPath(),
