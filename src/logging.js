@@ -24,7 +24,7 @@ const getLogsPath = () => LOGS_PATH || setupDefaultLogsPath();
 
 const getFileTransports = () => {
   const logsPath = getLogsPath();
-  const baseRatationOptions = {
+  const baseRotationOptions = {
     maxsize: MAX_SIZE_WINSTON,
     tailable: true,
     maxFiles,
@@ -33,11 +33,11 @@ const getFileTransports = () => {
     new winston.transports.File({
       filename: path.join(logsPath, `error${logsSuffix}`),
       level: 'error',
-      ...baseRatationOptions,
+      ...baseRotationOptions,
     }),
     new winston.transports.File({
       filename: path.join(logsPath, `combined${logsSuffix}`),
-      ...baseRatationOptions,
+      ...baseRotationOptions,
     }),
   ];
 };
