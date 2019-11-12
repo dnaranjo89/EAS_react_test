@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-  - "11.10.1"
+  - '11.10.1'
 services:
-  - "docker"
+  - 'docker'
 cache:
   directories:
     - ~/.npm
@@ -23,9 +23,9 @@ script:
   - docker build --build-arg commit_sha=$TRAVIS_COMMIT -f Dockerfile-prod -t etcaterva/echaloasuerte:$TRAVIS_BRANCH .
 branches:
   only:
-  - development
-  - master
-  - prod
+    - development
+    - master
+    - prod
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "prod" ] || [ "$TRAVIS_BRANCH" == "master" ]; then
