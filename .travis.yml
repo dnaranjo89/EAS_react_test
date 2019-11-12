@@ -16,8 +16,7 @@ addons:
 script:
   - npm run lint
   - npm test
-  - REACT_APP_ENV=test npm run start:dev -- --silent &
-  - $(npm bin)/cypress run -- --record --parallel
+  - npm run test:integration:ci
   - git clean -xdf
   - docker pull etcaterva/echaloasuerte:master
   - docker build --build-arg commit_sha=$TRAVIS_COMMIT -f Dockerfile-prod -t etcaterva/echaloasuerte:$TRAVIS_BRANCH .
