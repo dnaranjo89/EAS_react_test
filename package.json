@@ -75,7 +75,7 @@
   "scripts": {
     "start": "node ./server/index.js",
     "start:dev": "HTTPS=true react-scripts start",
-    "start:test": "REACT_APP_ENV=test npm run start:dev",
+    "start:test": "REACT_APP_ENV=test HTTPS=false react-scripts start",
     "build": "react-scripts build",
     "test": "REACT_APP_ENV=test react-scripts test --env=jsdom --testPathIgnorePatterns src/config/test.js",
     "test:integration": "cypress open & npm run start:test",
