@@ -70,7 +70,8 @@
     "source-map-explorer": "^1.6.0",
     "stylelint": "^9.8.0",
     "stylelint-config-skyscanner": "^1.0.1",
-    "wait-for-expect": "^1.1.0"
+    "wait-for-expect": "^1.1.0",
+    "wait-on": "^3.3.0"
   },
   "scripts": {
     "start": "node ./server/index.js",
@@ -79,7 +80,7 @@
     "build": "react-scripts build",
     "test": "REACT_APP_ENV=test react-scripts test --env=jsdom --testPathIgnorePatterns src/config/test.js",
     "test:integration": "cypress open & npm run start:test",
-    "test:integration:ci": "cypress run & npm run start:test",
+    "test:integration:ci": "npm run start:test & wait-on http://localhost:3000 && cypress run",
     "lint:scss": "stylelint 'src/**/*.scss' --syntax scss",
     "lint:scss:fix": "stylelint  'src/**/*.scss' --syntax scss --fix",
     "lint:js": "eslint . --ignore-path .gitignore --ext .js,.jsx",
