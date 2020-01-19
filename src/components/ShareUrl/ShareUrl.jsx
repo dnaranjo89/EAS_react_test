@@ -10,35 +10,18 @@ import Button from '@material-ui/core/Button';
 import CloseIcon from '@material-ui/icons/Close';
 import Snackbar from '@material-ui/core/Snackbar';
 import Slide from '@material-ui/core/Slide';
+import * as Sentry from '@sentry/browser';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import withTracking from '../withTracking/withTracking.jsx';
 import STYLES from './ShareUrl.module.scss';
 
 const SNACK_CLOSE_DELAY = 2000;
-
-const copyInputContent = input => {
-  input.select();
-
-  try {
-    const successful = document.execCommand('copy');
-    if (!successful) {
-      throw new Error('copy command was unsuccessful');
-    }
-  } catch (err) {
-    console.error('unable to copy using execCommand: ', err);
-    // console.warn('trying IE specific stuff');
-    // try {
-    //   window.clipboardData.setData('text/html' || 'text', text);
-    //   success = true;
-    // } catch (err2) {
-    //   console.error('unable to copy using clipboardData: ', err2);
-    // }
-  }
-};
 
 function SlideTransition(props) {
   return <Slide {...props} direction="down" />;
 }
 
-const ShareUrl = ({ url, t }) => {
+const ShareUrl = ({ url, drawType, track, t }) => {
   const inputEl = useRef(null);
   const [state, setState] = React.useState({
     open: false,
@@ -48,10 +31,18 @@ const ShareUrl = ({ url, t }) => {
   const handleClose = () => {
     setState({ open: false });
   };
-  const onButtonClick = () => {
-    copyInputContent(inputEl.current);
-    setState({ open: true });
-    setTimeout(handleClose, SNACK_CLOSE_DELAY);
+  const handleOnCopy = (text, result) => {
+    const socialType = 'copyUrlToClipboard';
+    if (result) {
+      track({
+        mp: { name: `Social Share Draw - ${drawType}`, properties: { socialType, drawType } },
+        ga: { category: drawType, action: 'Social Share Draw', label: socialType },
+      });
+      setState({ open: true });
+      setTimeout(handleClose, SNACK_CLOSE_DELAY);
+    } else {
+      Sentry.captureMessage('Unable to copy draw url to clipboard');
+    }
   };
   const vertical = 'top';
   const horizontal = 'center';
@@ -59,13 +50,15 @@ const ShareUrl = ({ url, t }) => {
     <Paper className={STYLES.Container}>
       <InputBase
         className={STYLES.Url}
-        inputProps={{ 'aria-label': 'Copy Url', ref: inputEl, className: STYLES.Input }}
+        inputProps={{ 'aria-label': 'Url', ref: inputEl, className: STYLES.Input }}
         value={url}
       />
       <Divider className={STYLES.Divider} orientation="vertical" />
-      <Button onClick={onButtonClick} startIcon={<FileCopyIcon />}>
-        {t('copy')}
-      </Button>
+      <CopyToClipboard text={url} onCopy={handleOnCopy}>
+        <Button startIcon={<FileCopyIcon />} className={STYLES.Button}>
+          {t('copy')}
+        </Button>
+      </CopyToClipboard>
       <Snackbar
         anchorOrigin={{ vertical, horizontal }}
         key={`${vertical},${horizontal}`}
@@ -88,7 +81,9 @@ const ShareUrl = ({ url, t }) => {
 
 ShareUrl.propTypes = {
   url: PropTypes.string.isRequired,
+  drawType: PropTypes.string.isRequired,
   t: PropTypes.func.isRequired,
+  track: PropTypes.func.isRequired,
 };
 
-export default withTranslation('ShareUrl')(ShareUrl);
+export default withTranslation('ShareUrl')(withTracking(ShareUrl));

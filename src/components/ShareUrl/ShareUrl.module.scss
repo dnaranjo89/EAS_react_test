@@ -1,6 +1,6 @@
 @import '../variables';
 
-$url-font-size: .75rem;
+$url-font-size: 0.75rem;
 
 .Container {
   display: flex;
@@ -10,7 +10,10 @@ $url-font-size: .75rem;
 
 .Divider {
   height: 3rem;
-  margin-right: $spacing-xs;
+}
+
+.Button {
+  padding: $spacing-xs $spacing-md;
 }
 
 .Url {
