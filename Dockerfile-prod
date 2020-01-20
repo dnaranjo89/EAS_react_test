@@ -1,6 +1,7 @@
 # build environment
 FROM node:dubnium-slim
 
+RUN apt update && apt install -y curl
 RUN mkdir /usr/src/app
 RUN mkdir -p /var/log/eas3/
 
