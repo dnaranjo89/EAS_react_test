@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import React from 'react';
+import * as Sentry from '@sentry/node';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import { renderToString } from 'react-dom/server';
 import Helmet from 'react-helmet';
@@ -35,6 +36,13 @@ export default (req, res) => {
     return content;
   };
   const hostname = req.headers.host;
+
+  if (!hostname) {
+    Sentry.captureEvent({
+      message: "The request doesn't have the host header2",
+    });
+  }
+
   // Setup the EAS API
   setupApi(hostname);
 
