@@ -99,6 +99,21 @@ describe('MultiValueInput', () => {
     expect(onChangeMock).toHaveBeenCalledWith(expectedEvent);
   });
 
+  it('Should add value on input blur', () => {
+    const onChangeMock = jest.fn();
+    const values = [];
+    const { queryByTestId } = render(
+      <MultiValueInput name="field1" value={values} onChange={onChangeMock} {...translations} />,
+    );
+
+    const event = { target: { name: 'field1', value: 'Value 1' } };
+    const expectedEvent = { target: { name: 'field1', value: ['Value 1'] } };
+    const input = queryByTestId('Input__input-field');
+    fireEvent.change(input, event);
+    fireEvent.blur(input);
+    expect(onChangeMock).toHaveBeenCalledWith(expectedEvent);
+  });
+
   it('Should not mutate the original value when values are added', () => {
     const onChangeMock = jest.fn();
     const values = [];
@@ -111,7 +126,7 @@ describe('MultiValueInput', () => {
     expect(values).toEqual([]);
   });
 
-  it('Show process the input when a comma-separated list of values is pasted', () => {
+  it('Should process the input when a comma-separated list of values is pasted', () => {
     const onChangeMock = jest.fn();
     const { queryByTestId } = render(
       <MultiValueInput name="field1" onChange={onChangeMock} {...translations} />,

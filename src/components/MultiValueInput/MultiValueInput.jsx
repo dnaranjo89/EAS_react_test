@@ -81,6 +81,10 @@ class MultiValueInput extends Component {
     this.inputRef.current.focus();
   };
 
+  onBlur = () => {
+    this.addInputValue();
+  };
+
   render() {
     const {
       id,
@@ -140,6 +144,7 @@ class MultiValueInput extends Component {
               className={c('MultiValueInput__input', className)}
               disableUnderline
               onKeyDown={this.handleKeyPress}
+              onBlur={this.onBlur}
               inputProps={{
                 ...inputProps,
                 autoComplete: 'off',
