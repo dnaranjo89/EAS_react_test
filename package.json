@@ -86,8 +86,7 @@
     "prettier": "^1.17.1",
     "sentry-testkit": "^2.1.0",
     "source-map-explorer": "^1.6.0",
-    "stylelint": "^9.8.0",
-    "stylelint-config-skyscanner": "^1.0.1",
+    "stylelint-config-skyscanner": "^2.0.0",
     "wait-for-expect": "^1.1.0",
     "wait-on": "^3.3.0"
   },
