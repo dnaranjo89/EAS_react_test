@@ -22,7 +22,7 @@
     max-width: 100%;
     height: auto;
     max-height: 50vh;
-    transition: all 3s cubic-bezier(.18, .27, .34, 1);
+    transition: all 3s cubic-bezier(0.18, 0.27, 0.34, 1);
   }
 
   & &__touch-hint {

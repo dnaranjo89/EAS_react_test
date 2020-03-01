@@ -3,16 +3,24 @@
 $coin-size: 12.5rem;
 $color-transparent: rgba(0, 0, 0, 0);
 $animation-duration: 2s;
-$animation-bezier: $animation-duration cubic-bezier(.43, .72, .54, .87) forwards;
+$animation-bezier: $animation-duration cubic-bezier(0.43, 0.72, 0.54, 0.87) forwards;
 
 @keyframes flipHeads {
-  from { transform: rotateY(0); }
-  to { transform: rotateY(1440deg); }  // 4 flips
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(1440deg);
+  } // 4 flips
 }
 
 @keyframes flipTails {
-  from { transform: rotateY(0); }
-  to { transform: rotateY(1620deg); } // 4.5 flips
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(1620deg);
+  } // 4.5 flips
 }
 
 .FlipCoinPage {
@@ -70,7 +78,7 @@ $animation-bezier: $animation-duration cubic-bezier(.43, .72, .54, .87) forwards
     opacity: 0;
 
     &--animated {
-      animation: fade-in $animation-duration + .1 linear;
+      animation: fade-in $animation-duration + 0.1 linear;
       animation-fill-mode: forwards;
     }
   }
