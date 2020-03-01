@@ -39,7 +39,7 @@ export default (req, res) => {
 
   if (!hostname) {
     Sentry.captureEvent({
-      message: "The request doesn't have the host header2",
+      message: "The request doesn't have the host header (server side)",
     });
   }
 

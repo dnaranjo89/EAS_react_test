@@ -15,11 +15,17 @@ import config from './config/config';
 
 setupApi();
 initWinstonLogging({ isServer: false });
+
 // In development, the server won't be running so the userRequestData is not in the preloded state
 const userRequestData = {
   userAgent: window.navigator.userAgent,
   hostname: window.location.hostname,
 };
+if (!userRequestData.hostname) {
+  Sentry.captureEvent({
+    message: "The request doesn't have the host header (client side)",
+  });
+}
 const { store, history } = createStore('/', userRequestData);
 
 // Sentry Browser Sentry
