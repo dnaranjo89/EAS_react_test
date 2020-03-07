@@ -34,6 +34,11 @@ app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Serve ads.txt
+app.get('/ads.txt', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/ads.txt`));
+});
+
 // Set up homepage, static assets, and capture everything else
 app.use(express.Router().get('/', loader));
 app.use(express.static(path.resolve(__dirname, '../build')));
