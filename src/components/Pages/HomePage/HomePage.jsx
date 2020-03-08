@@ -32,7 +32,7 @@ const HomePage = ({ t }) => (
   >
     <div className={c('HomePage__container')}>
       <DrawGroup title={t('section_title_online_raffles')}>
-        <DrawCard icon={raffleIcon} to="/draw/new/raffle">
+        <DrawCard icon={raffleIcon} to="/raffles">
           {t('draw_title_raffle')}
         </DrawCard>
         <DrawCard icon={groupsIcon} to="/groups">

@@ -48,7 +48,7 @@ const AppShell = () => (
       />
 
       {/* Raffles section */}
-      <Route exact path="/draw/new/raffle" component={RafflesPage} />
+      <Route exact path="/raffles" component={RafflesPage} />
 
       {/* Raffle */}
       <Route exact path="/raffle/:isPublic(public)?" component={RafflePageContainer} />
