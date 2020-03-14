@@ -21,11 +21,6 @@ const userRequestData = {
   userAgent: window.navigator.userAgent,
   hostname: window.location.hostname,
 };
-if (!userRequestData.hostname) {
-  Sentry.captureEvent({
-    message: "The request doesn't have the host header (client side)",
-  });
-}
 const { store, history } = createStore('/', userRequestData);
 
 // Sentry Browser Sentry

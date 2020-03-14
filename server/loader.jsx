@@ -1,7 +1,6 @@
 import path from 'path';
 import fs from 'fs';
 import React from 'react';
-import * as Sentry from '@sentry/node';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import { renderToString } from 'react-dom/server';
 import Helmet from 'react-helmet';
@@ -37,12 +36,6 @@ export default (req, res) => {
   };
   const hostname = req.headers.host;
 
-  if (!hostname) {
-    Sentry.captureEvent({
-      message: "The request doesn't have the host header (server side)",
-    });
-  }
-
   // Setup the EAS API
   setupApi(hostname);
 
@@ -51,6 +44,13 @@ export default (req, res) => {
   // Load in our HTML file from our build
   // eslint-disable-next-line consistent-return
   fs.readFile(path.resolve(__dirname, '../build/index.html'), 'utf8', (err, htmlData) => {
+    if (!hostname) {
+      // Don't try to do SSR when we don't have a hostname in the header
+      // We've seen this happening in some requests from bots. Find more details here:
+      // https://github.com/etcaterva/eas-frontend/issues/162
+      res.send(htmlData);
+    }
+
     // If there's an error... serve up something nasty
     if (err) {
       console.error('Read error', err);

@@ -21,7 +21,7 @@ export default (url = '/', userRequestData) => {
   const enhancers = [];
 
   // Add dev tools
-  if (process.env.NODE_ENV === 'development' && !isServer) {
+  if (!isServer) {
     // eslint-disable-next-line prefer-destructuring
     const devToolsExtension = window.devToolsExtension;
 
