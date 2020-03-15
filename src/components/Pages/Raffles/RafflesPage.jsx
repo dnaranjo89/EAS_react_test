@@ -7,6 +7,7 @@ import DrawCard from '../../DrawCard/DrawCard.jsx';
 import Page from '../../Page/Page.jsx';
 import facebookIcon from './facebook.png';
 import raffleIcon from './raffle.svg';
+import rafflesOgImage from './raffles_og_image.png';
 
 import STYLES from './RafflesPage.scss';
 
@@ -18,6 +19,7 @@ const RafflesPage = ({ t }) => (
     htmlDescription={t('html_description')}
     contentClassName={c('RafflesPage')}
     pageType="Raffles"
+    ogImage={rafflesOgImage}
   >
     <div className={c('RafflesPage__container')}>
       <Typography variant="h1" align="center" className={c('RafflesPage__title')}>

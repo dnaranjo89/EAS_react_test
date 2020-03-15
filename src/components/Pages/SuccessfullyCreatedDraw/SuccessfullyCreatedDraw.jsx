@@ -26,7 +26,7 @@ const analyticsDrawTypeMap = {
 };
 
 const SuccessfullyCreatedDraw = ({ t, match }) => {
-  const shareUrl = useCurrentUrl();
+  const shareUrl = useCurrentUrl().replace('/success', '');
   const { drawType, drawId } = match.params;
   const isOwnedByUser = RecentDraws.exists(drawId);
   if (!isOwnedByUser) {
