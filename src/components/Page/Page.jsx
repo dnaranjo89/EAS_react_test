@@ -36,26 +36,26 @@ class Page extends Component {
     }
   }
 
+  getAbsoluteUrl() {
+    const { location, hostname } = this.props;
+    return `https://${hostname}${location.pathname}`;
+  }
+
   getMetaTags() {
-    const {
-      htmlTitle,
-      htmlDescription,
-      htmlKeywords,
-      noIndex,
-      ogImage,
-      location,
-      hostname,
-    } = this.props;
+    const { htmlTitle, htmlDescription, htmlKeywords, noIndex, ogImage } = this.props;
     const shouldIndexPage = config.indexPages && !noIndex;
     const pageTitle = htmlTitle.substring(0, 60);
     const pageDescription = htmlDescription.substring(0, 155);
+    const absoluteUrl = this.getAbsoluteUrl();
     const metaTags = [
       { name: 'description', content: pageDescription },
       { name: 'keywords', content: htmlKeywords },
       { property: 'og:title', content: pageTitle },
       { property: 'og:image', content: config.OGImagesFullDomain + ogImage },
       { property: 'og:description', content: pageDescription },
-      { property: 'og:url', content: hostname + location.pathname },
+      { property: 'og:url', content: absoluteUrl },
+      { property: 'og:type', content: 'website' },
+      { property: 'fb:app_id', content: config.facebookAppId },
     ];
 
     if (!shouldIndexPage) {
@@ -66,19 +66,12 @@ class Page extends Component {
   }
 
   render() {
-    const {
-      htmlTitle,
-      contentClassName,
-      location,
-      children,
-      showAdvert,
-      sidePanel,
-      hostname,
-    } = this.props;
+    const { htmlTitle, contentClassName, children, showAdvert, sidePanel } = this.props;
+    const absoluteUrl = this.getAbsoluteUrl();
     const canonicalLinks = [
       {
         rel: 'canonical',
-        href: hostname + location.pathname,
+        href: absoluteUrl,
       },
     ];
     return (

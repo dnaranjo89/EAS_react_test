@@ -10,7 +10,7 @@ const config = {
   mixpanelEnabled: false,
   sentryEnabled: false,
   APIBasePath: 'http://unexisting-domain.com/api',
-  facebookApiId: '00000000000',
+  facebookAppId: '00000000000',
 };
 
 export default config;

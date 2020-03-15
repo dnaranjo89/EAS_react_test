@@ -14,7 +14,7 @@ export const fbAsyncInit = async onStatusChange => {
   window.fbAsyncInit = () => {
     log('init FB');
     window.FB.init({
-      appId: config.facebookApiId,
+      appId: config.facebookAppId,
       autoLogAppEvents: true,
       xfbml: true,
       status: true,

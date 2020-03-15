@@ -8,7 +8,7 @@ const config = {
   mixpanelEnabled: true,
   sentryEnabled: false,
   APIBasePath: 'http://127.0.0.1:8000/api',
-  facebookApiId: '258744194669921',
+  facebookAppId: '258744194669921',
 };
 
 export default config;
