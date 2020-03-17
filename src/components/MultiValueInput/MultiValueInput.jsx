@@ -149,6 +149,7 @@ class MultiValueInput extends Component {
                 ...inputProps,
                 autoComplete: 'off',
                 ref: this.inputRef,
+                'data-hj-whitelist': true,
               }}
               {...InputProps}
               {...extra}

@@ -80,6 +80,7 @@ const FacebookRafflePage = props => {
       htmlKeywords={t('html_keywords')}
       pageType="Facebook Raffle"
       showAdvert={!isMobile}
+      enableHotjar
     >
       <DrawHeading title={t('page_title')} subtitle={t('draw_subheading')} />
       <WizardForm

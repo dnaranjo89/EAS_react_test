@@ -7,5 +7,5 @@ export default function(hostname) {
 
   // hostname is only set server side. In client side the path will be relative
   defaultClient.basePath = `${hostname || ''}${APIBasePath}`;
-  defaultClient.timeout = 5000;
+  defaultClient.timeout = 10000;
 }
