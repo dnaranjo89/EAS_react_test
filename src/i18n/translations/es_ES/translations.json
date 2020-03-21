@@ -220,8 +220,8 @@
     "delete_all_recent_draws_modal_title": "¿Quieres borrar tu historial de sorteos?",
     "delete_recent_draw_modal_confirm": "Eliminar sorteo",
     "delete_recent_draw_modal_content": "El sorteo sólamente será eliminado de tu historial de sorteos recientes, los participantes que tengan el link podrán seguir accediendo si.",
-    "delete_recent_draw_modal_title": "Eliminar sorteo de tus historial",
-    "delete_recent_raffles_button_label": "Eliminar sorteos recientes",
+    "delete_recent_draw_modal_title": "Eliminar sorteo de tu historial",
+    "delete_recent_raffles_button_label": "Eliminar todos tus sorteos recientes",
     "empty_list": "No has realizado ningún sorteo público",
     "html_title": "Sorteos recientes",
     "page_title": "Sorteos recientes"

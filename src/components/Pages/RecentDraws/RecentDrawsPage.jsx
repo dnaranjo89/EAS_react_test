@@ -21,6 +21,7 @@ import withTracking from '../../withTracking/withTracking.jsx';
 import STYLES from './RecentDrawsPage.scss';
 import Page from '../../Page/Page.jsx';
 import RecentDraws from '../../../services/recentDraws';
+import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 
 const c = classnames.bind(STYLES);
 
@@ -33,7 +34,7 @@ class RecentDrawsPage extends Component {
     };
   }
 
-  handleClickOpen = draw => {
+  handleClickRemove = draw => {
     this.setState({ modalOpen: true, selectedDraw: draw });
   };
 
@@ -63,7 +64,7 @@ class RecentDrawsPage extends Component {
         pageType="Recent draws"
         contentClassName={c('RecentDrawsPage')}
       >
-        <Typography variant="h1">{t('page_title')}</Typography>
+        <DrawHeading title={t('page_title')} />
         {listEmpty ? (
           <Typography variant="body2" data-testid="RecentDraws__list-empty">
             {t('empty_list')}
@@ -93,7 +94,8 @@ class RecentDrawsPage extends Component {
                   <ListItemSecondaryAction>
                     <IconButton
                       aria-label="Delete"
-                      onClick={() => this.handleClickOpen(draw)}
+                      edge="end"
+                      onClick={() => this.handleClickRemove(draw)}
                       data-testid="RecentDraws__remove-draw"
                     >
                       <DeleteIcon />
@@ -104,7 +106,7 @@ class RecentDrawsPage extends Component {
             </List>
             <Button
               variant="contained"
-              onClick={this.handleClickOpen}
+              onClick={() => this.handleClickRemove()}
               data-testid="RecentDraws__clear-history"
             >
               {t('delete_recent_raffles_button_label')}
