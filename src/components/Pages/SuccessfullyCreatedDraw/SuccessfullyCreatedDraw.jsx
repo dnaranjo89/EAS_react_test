@@ -14,6 +14,7 @@ import ShareButtons from '../../ShareButtons/ShareButtons.jsx';
 // import ShareUrl from '../../ShareUrl/ShareUrl.jsx';
 import STYLES from './SuccessfullyCreatedDraw.module.scss';
 import useCurrentUrl from '../../../hooks/useCurrentUrl';
+import SectionPanel from '../../SectionPanel/SectionPanel.jsx';
 
 // import STYLES from './SuccessfullyCreatedDraw.scss';
 // import headsIcon from './heads.png';
@@ -45,24 +46,26 @@ const SuccessfullyCreatedDraw = ({ t, match }) => {
         {t('congratulations')} <br />
         {t('draw_created')}
       </Typography>
-      <Typography align="center" variant="body1">
-        {t('share_link')}
-      </Typography>
-      <br />
-      <ShareButtons
-        drawType={analyticsDrawTypeMap[drawType]}
-        url={shareUrl}
-        types={['facebook', 'twitter', 'telegram', 'whatsapp', 'url']}
-      />
-      <RouterButton
-        variant="contained"
-        color="primary"
-        to={pathUrl}
-        className={STYLES.Cta}
-        data-testid="SuccessfullyCreatedDraw_GoToRaffleButton"
-      >
-        {t('go_to_the_raffle')}
-      </RouterButton>
+      <SectionPanel>
+        <Typography align="center" variant="body1">
+          {t('share_link')}
+        </Typography>
+        <br />
+        <ShareButtons
+          drawType={analyticsDrawTypeMap[drawType]}
+          url={shareUrl}
+          types={['facebook', 'twitter', 'telegram', 'whatsapp', 'url']}
+        />
+        <RouterButton
+          variant="contained"
+          color="primary"
+          to={pathUrl}
+          className={STYLES.Cta}
+          data-testid="SuccessfullyCreatedDraw_GoToRaffleButton"
+        >
+          {t('go_to_the_raffle')}
+        </RouterButton>
+      </SectionPanel>
     </Page>
   );
 };
