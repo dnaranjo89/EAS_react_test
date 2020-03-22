@@ -11,7 +11,7 @@ import withTracking from '../../withTracking/withTracking.jsx';
 import recentDraws from '../../../services/recentDraws';
 
 const randomNumberApi = new RandomNumberApi();
-const analyticsDrawType = 'Numbers';
+const analyticsDrawType = 'Number';
 class RandomNumberPageContainer extends React.Component {
   constructor(props) {
     super(props);

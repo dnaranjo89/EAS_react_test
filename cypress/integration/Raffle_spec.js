@@ -35,6 +35,7 @@ describe('Raffle Page', () => {
         });
 
         it('Create', () => {
+          // TODO remove this
           cy.mockGA();
           cy.visit('/raffle/public');
 
@@ -143,6 +144,18 @@ describe('Raffle Page', () => {
             .and('be.calledWith', 'send', { hitType: 'pageview', page: '/raffle' });
         });
 
+        it('Should contain a working link to the public draw', () => {
+          cy.visit('/raffle');
+          cy.getComponent('MakeCertifiedDrawPanel__button').click();
+          cy.get('@ga').should('be.calledWith', 'send', {
+            hitType: 'event',
+            eventCategory: 'Raffle',
+            eventAction: 'Start Public',
+            eventLabel: 'From Scratch',
+          });
+          cy.location('pathname').should('eq', '/raffle/public');
+        });
+
         it('Should have a share button that takes the user to the public draw', () => {
           cy.visit('/raffle');
           cy.clock();
@@ -156,18 +169,6 @@ describe('Raffle Page', () => {
             eventCategory: 'Raffle',
             eventAction: 'Start Public',
             eventLabel: 'From Quick Result',
-          });
-          cy.location('pathname').should('eq', '/raffle/public');
-        });
-
-        it('Should contain a working link to the public draw', () => {
-          cy.visit('/raffle');
-          cy.getComponent('MakeCertifiedDrawPanel__button').click();
-          cy.get('@ga').should('be.calledWith', 'send', {
-            hitType: 'event',
-            eventCategory: 'Raffle',
-            eventAction: 'Start Public',
-            eventLabel: 'From Scratch',
           });
           cy.location('pathname').should('eq', '/raffle/public');
         });
@@ -265,6 +266,7 @@ describe('Raffle Page', () => {
             cy.mockedRequestWait('POST', '/api/raffle')
               .its('requestBody.participants')
               .should('deep.eq', [{ name: 'you' }, { name: 'I' }]);
+            // TODO remove this
             cy.tick(4000); // Fast forward the loading animation
             cy.mockedRequestWait('POST', '/api/raffle/29080f6b-b3e4-412c-8008-7e26081ea17c/toss');
             cy.getComponent('WinnersList__result').should('be.visible');

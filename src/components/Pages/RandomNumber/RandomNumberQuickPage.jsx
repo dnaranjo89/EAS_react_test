@@ -15,7 +15,7 @@ import LoadingCoin from '../../LoadingCoin/LoadingCoin.jsx';
 import randomNumberOgImage from './random_number_og_image.png';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 
-const analyticsDrawType = 'Numbers';
+const analyticsDrawType = 'Number';
 
 const RandomNumberQuickPage = props => {
   const {
