@@ -92,14 +92,16 @@
     "published_draw_details": "Detalles del sorteo",
     "result_label_group": "Grupo {{groupNumber}}",
     "share_draw": "Comparte este sorteo",
-    "share_result": "Comparte este resultado",
-    "share_result_dialog_body": "Si quieres asegurar a tus participantes que el sorteo ha sido aleatorio y justo tendrás que crear un sorteo público.\nPodrás especificar una fecha en la que el resultado se hará público y compartir un link para que los participantes puedan ver el resultado en directo.",
-    "share_result_dialog_cancel": "Cancelar",
-    "share_result_dialog_ok": "Generar grupos públicamente",
-    "share_result_dialog_title": "Genera los grupos públicamente",
     "step_label_configure": "Añade los participantes",
     "step_label_general_details": "Detalles generales",
     "step_label_when_to_toss": "Fecha del sorteo"
+  },
+  "ShareDrawModal": {
+    "share_result": "Comparte este resultado",
+    "share_result_dialog_body": "Éste es un resultado de una tirada privada, si quieres compartir los resultados tendrás que crear un sorteo público.<br/>Podrás especificar una fecha en la que el resultado se hará público y compartir un link para que los participantes puedan ver el resultado en directo.",
+    "share_result_dialog_cancel": "Cancelar",
+    "share_result_dialog_ok": "Crear sorteo público",
+    "share_result_dialog_title": "Crea un sorteo públicamente para compartirlo"
   },
   "Header": {
     "brand_name": "ÉchaloASuerte",
@@ -167,11 +169,6 @@
     "publish_draw": "Publicar sorteo",
     "published_draw_details": "Detalles del sorteo",
     "share_draw": "Compartir sorteo",
-    "share_result": "Compartir resultados",
-    "share_result_dialog_body": "La mejor manera de asegurar a los participantes que el sorteo es justo es crearlo públicamente.\nPodrás programar el sorteo para que se realize a la hora que quieras y compartir un link con los participantes para que puedan ver los resultados en directo.",
-    "share_result_dialog_cancel": "Cancelar",
-    "share_result_dialog_ok": "Crear sorteo publico",
-    "share_result_dialog_title": "Crea el sorteo públicamente para compartirlo",
     "step_label_configure": "Configura el sorteo",
     "step_label_general_details": "Detalles generales",
     "step_label_when_to_toss": "Fecha del sorteo",

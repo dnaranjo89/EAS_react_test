@@ -8,6 +8,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import classnames from 'classnames/bind';
+import { withTranslation, Trans } from 'react-i18next';
 import PublicModeButton from '../PublicModeButton/PublicModeButton.jsx';
 import STYLES from './ShareDrawModal.scss';
 
@@ -45,7 +46,10 @@ class ShareDrawModal extends Component {
         >
           <DialogTitle>{t('share_result_dialog_title')}</DialogTitle>
           <DialogContent>
-            <DialogContentText>{t('share_result_dialog_body')}</DialogContentText>
+            <DialogContentText>
+              <Trans ns="ShareDrawModal" i18nKey="share_result_dialog_body" />
+              {/* {t('share_result_dialog_body')} */}
+            </DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button
@@ -86,4 +90,4 @@ ShareDrawModal.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withMobileDialog()(ShareDrawModal);
+export default withMobileDialog()(withTranslation('ShareDrawModal')(ShareDrawModal));

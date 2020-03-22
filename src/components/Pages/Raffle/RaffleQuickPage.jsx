@@ -71,11 +71,7 @@ const RafflePage = ({
         {!loading && quickResult && (
           <>
             <WinnersList winners={quickResult.value} />
-            <ShareDrawModal
-              publicDrawUrl={publicDrawUrl}
-              analyticsDrawType={analyticsDrawType}
-              t={t}
-            />
+            <ShareDrawModal publicDrawUrl={publicDrawUrl} analyticsDrawType={analyticsDrawType} />
           </>
         )}
       </div>

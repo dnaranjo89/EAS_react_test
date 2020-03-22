@@ -67,11 +67,7 @@ const RandomNumberQuickPage = props => {
         {!loadingRequest && quickResult && (
           <>
             <RandomNumberResult result={quickResult} />
-            <ShareDrawModal
-              publicDrawUrl={publicDrawUrl}
-              analyticsDrawType={analyticsDrawType}
-              t={t}
-            />
+            <ShareDrawModal publicDrawUrl={publicDrawUrl} analyticsDrawType={analyticsDrawType} />
           </>
         )}
       </div>
