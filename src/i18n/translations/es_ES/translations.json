@@ -82,8 +82,8 @@
     "field_label_when_to_toss": "¿Cuándo quieres que se generen los resultados?",
     "generate_groups": "Generar grupos",
     "generated_groups": "Grupos generados",
-    "html_description": "Crea equipos online. Divide un grupo de personas en grupos mas pequeños. Crea parejas o tríos.",
-    "html_keywords": "grupos al azar, equipos aleatorios, dividir grupos, sorteo equipos, parejas, tríos, emparejar personas",
+    "html_description": "Crea equipos online. Divide aleatoriamente un cojunto de personas en grupos mas pequeños.",
+    "html_keywords": "grupos al azar, equipos aleatorios, dividir grupos, sorteo equipos, parejas, emparejar personas",
     "html_title": "Grupos Aleatorios | Echalo A Suerte",
     "label_number_of_groups": "Número de grupos:",
     "label_participants": "Participantes:",
@@ -148,13 +148,6 @@
     "title_label": "Título del sorteo",
     "title_placeholder": "Sorteo de Navidad"
   },
-  "SuccessfullyCreatedDraw": {
-    "congratulations": "Enhorabuena!",
-    "draw_created": "Has creado tu sorteo",
-    "go_to_the_raffle": "Ir al sorteo",
-    "html_title": "Sorteo creado correctamente",
-    "share_link": "Comparte este link con quién quieras y podrán ver el resultado en directo"
-  },
   "Raffle": {
     "certified_draw_description": "Si quieres hacer un sorteo público para asegurar a los participantes una elección imparcial del resultado, te recomendamos que hagas un sorteo público.",
     "create_certificated_draw": "Crear un sorteo publicamente",
@@ -192,11 +185,13 @@
     "section_title_raffles": "Sorteos"
   },
   "RandomNumber": {
+    "certified_draw_description": "Si quieres hacer un sorteo público para asegurar a los participantes una elección imparcial del resultado, te recomendamos que hagas un sorteo público.",
     "create_certificated_draw": "Crea una tirada certificada",
     "draw_subheading": "Simple generador de números aleatorios. Sólo elige el rango y la cantidad de números a generar.",
     "error_field_message_min_results": "Debes generar al menos 1 resultado",
     "error_form_invalid_ranges": "El rango elegido (números entre {{min}} y {{max}}) no es válido",
     "error_form_range_not_big_enough": "El rango no es suficientemente grande",
+    "field_default_title": "Sorteo público",
     "field_label_allow_repeated": "Permitir números repetidos",
     "field_label_from": "Desde",
     "field_label_number_of_results": "Número de resultados",
@@ -204,6 +199,7 @@
     "generate_numbers": "Generar números",
     "generated_numbers": "Números generados",
     "html_description": "Genera números aleatorios desde un número hasta otro, con o sin repeticiones. El generador de números aleatorios de ÉchaloASuerte es simple y rápido.",
+    "html_keywords": "número aleatorio, sorteo, lotería, bombo",
     "html_title": "Generar números aleatorios",
     "page_title_public": "Crear sorteo público con números aleatorios",
     "page_title_quick": "Generar números aleatorios",
@@ -239,6 +235,13 @@
     "learn_more_title": "¿Para qué puedes usar esta flecha?",
     "page_title": "Girar una flecha online",
     "touch_to_toss": "Toca la flecha para hacerla girar"
+  },
+  "SuccessfullyCreatedDraw": {
+    "congratulations": "Enhorabuena!",
+    "draw_created": "Has creado tu sorteo",
+    "go_to_the_raffle": "Ir al sorteo",
+    "html_title": "Sorteo creado correctamente",
+    "share_link": "Comparte este link con quién quieras y podrán ver el resultado en directo"
   },
   "TranslationsSwitch": {
     "change_language": "Cambiar idioma"

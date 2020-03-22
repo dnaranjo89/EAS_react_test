@@ -25,7 +25,7 @@ const GroupsGeneratorQuickPage = props => {
     handleToss,
     onFieldChange,
     handleCheckErrorsInConfiguration,
-    loadingResult,
+    loadingRequest,
     t,
   } = props;
   const publicDrawUrl = '/groups/public';
@@ -59,11 +59,11 @@ const GroupsGeneratorQuickPage = props => {
       >
         <GroupsGeneratorConfigurationSection values={values} onFieldChange={onFieldChange} t={t} />
         {apiError && <ErrorFeedback error={t('ApiError:api_error')} />}
-        <SubmitFormButton label={t('generate_groups')} disabled={loadingResult} />
+        <SubmitFormButton label={t('generate_groups')} disabled={loadingRequest} />
       </ValidationProvider>
       <div ref={resultsRef}>
-        {loadingResult && <LoadingCoin />}
-        {!loadingResult && quickResult && (
+        {loadingRequest && <LoadingCoin />}
+        {!loadingRequest && quickResult && (
           <>
             <GroupsGeneratorResult result={quickResult} />
             <ShareDrawModal
@@ -86,7 +86,7 @@ GroupsGeneratorQuickPage.propTypes = {
     participants: PropTypes.arrayOf(PropTypes.string),
     numberOfGroups: PropTypes.string,
   }).isRequired,
-  loadingResult: PropTypes.bool,
+  loadingRequest: PropTypes.bool,
   onFieldChange: PropTypes.func.isRequired,
   handleToss: PropTypes.func.isRequired,
   handleCheckErrorsInConfiguration: PropTypes.func.isRequired,
@@ -96,7 +96,7 @@ GroupsGeneratorQuickPage.propTypes = {
 
 GroupsGeneratorQuickPage.defaultProps = {
   quickResult: null,
-  loadingResult: false,
+  loadingRequest: false,
   apiError: false,
 };
 

@@ -21,6 +21,7 @@ const RandomNumberPage = props => {
   const {
     values,
     apiError,
+    loadingRequest,
     handleCheckErrorsInConfiguration,
     onFieldChange,
     handlePublish,
@@ -74,6 +75,7 @@ const RandomNumberPage = props => {
         onSubmit={handlePublish}
         submitButtonLabel={t('publish_draw')}
         apiError={apiError}
+        loadingRequest={loadingRequest}
       />
     </Page>
   );
@@ -90,6 +92,7 @@ RandomNumberPage.propTypes = {
     dateScheduled: PropTypes.instanceOf(Date),
   }).isRequired,
   apiError: PropTypes.bool,
+  loadingRequest: PropTypes.bool.isRequired,
   onFieldChange: PropTypes.func.isRequired,
   handlePublish: PropTypes.func.isRequired,
   handleCheckErrorsInConfiguration: PropTypes.func.isRequired,

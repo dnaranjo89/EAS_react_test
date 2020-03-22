@@ -2,6 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import esES from './translations/es_ES/translations.json';
 import enGB from './translations/en_GB/translations.json';
+import config from '../config/config';
 
 const getLanguageBasedOnHostname = hostname => {
   const hostnameRegex = /(chooserandom|echaloasuerte)\.com/;
@@ -29,7 +30,7 @@ const init = hostname => {
       },
       fallbackLng: 'es-ES',
       lng: getLanguageBasedOnHostname(hostname),
-      debug: false,
+      debug: config !== 'production',
       ns: ['translations'], // have a common namespace used around the full app
       defaultNS: 'translations',
       keySeparator: false,

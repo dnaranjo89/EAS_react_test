@@ -1,25 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import ReactGA from 'react-ga';
 import { RandomNumberApi, RandomNumber, DrawTossPayload } from 'echaloasuerte-js-sdk';
-
+import { withTranslation } from 'react-i18next';
+import moment from 'moment';
 import RandomNumberPage from './RandomNumberPage.jsx';
 import RandomNumberQuickPage from './RandomNumberQuickPage.jsx';
+import throttle from '../../../services/throttle';
+import withTracking from '../../withTracking/withTracking.jsx';
+import recentDraws from '../../../services/recentDraws';
 
 const randomNumberApi = new RandomNumberApi();
+const analyticsDrawType = 'Numbers';
 class RandomNumberPageContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    const now = new Date();
-    now.setHours(now.getHours() + 1);
-    const dateScheduled = now;
+    const dateScheduled = new Date();
+    dateScheduled.setHours(dateScheduled.getHours() + 1);
 
     this.state = {
       privateId: null,
+      quickResult: null,
+      APIError: false,
+      loadingRequest: false,
       values: {
-        title: '',
+        title: '', // Default title is set in CDM
         description: '',
         rangeMin: '1',
         rangeMax: '10',
@@ -27,9 +33,18 @@ class RandomNumberPageContainer extends React.Component {
         allowRepeated: false,
         dateScheduled,
       },
-      quickResult: null,
-      APIError: false,
     };
+  }
+
+  componentDidMount() {
+    const { t } = this.props;
+    const defaultTitle = t('field_default_title');
+    this.setState(previousState => ({
+      values: {
+        ...previousState.values,
+        title: defaultTitle,
+      },
+    }));
   }
 
   onFieldChange = (fieldName, value) => {
@@ -45,59 +60,84 @@ class RandomNumberPageContainer extends React.Component {
     }));
   };
 
-  createDraw = async () => {
-    const { isPublic } = this.props;
+  createDraw = () => {
+    const { match } = this.props;
     const { values } = this.state;
+    const { isPublic } = match.params;
     const { title, description, rangeMin, rangeMax, numberOfResults, allowRepeated } = values;
 
-    const publicDetails = {
-      title,
-      description,
-    };
-    let drawData = {
+    const drawData = {
       range_min: rangeMin,
       range_max: rangeMax,
       number_of_results: numberOfResults,
       allow_repeated_results: allowRepeated,
+      title: isPublic && title ? title : null,
+      description: isPublic && description ? description : null,
     };
-
-    if (isPublic) {
-      drawData = {
-        ...drawData,
-        ...publicDetails,
-      };
-    }
     const randomNumberDraw = RandomNumber.constructFromObject(drawData);
     return randomNumberApi.randomNumberCreate(randomNumberDraw);
   };
 
   handleToss = async () => {
+    const tsStart = new Date().getTime();
+    this.setState({
+      loadingRequest: true,
+    });
+
     let { privateId } = this.state;
     try {
+      // Create the draw only if it wasn't created in a previous toss
       if (!privateId) {
         const draw = await this.createDraw();
         privateId = draw.private_id;
         this.setState({ privateId });
       }
       const tossResponse = await randomNumberApi.randomNumberToss(privateId, {});
-      ReactGA.event({ category: 'Toss', action: 'Random Number', label: 'Local' });
-      this.setState({ quickResult: tossResponse, APIError: false });
+      const { track } = this.props;
+      track({
+        mp: { name: `Toss - ${analyticsDrawType}`, properties: { drawType: analyticsDrawType } },
+        ga: { action: 'Toss', category: analyticsDrawType },
+      });
+      throttle(() => {
+        this.setState({
+          quickResult: tossResponse,
+          APIError: false,
+          loadingRequest: false,
+        });
+      }, tsStart);
     } catch (err) {
-      this.setState({ APIError: true });
+      this.setState({
+        APIError: true,
+        loadingRequest: false,
+      });
     }
   };
 
   handlePublish = async () => {
-    const { match, history } = this.props;
+    this.setState({ loadingRequest: true });
+
+    const { history } = this.props;
     const { values } = this.state;
     try {
       const draw = await this.createDraw();
+
       const { dateScheduled } = values;
       const drawTossPayload = DrawTossPayload.constructFromObject({ schedule_date: dateScheduled });
-      await randomNumberApi.randomNumberToss(draw.private_id, drawTossPayload);
-      ReactGA.event({ category: 'Publish', action: 'Random Number', label: draw.id });
-      const drawPathname = match.path.replace('public', draw.private_id);
-      history.push(drawPathname);
+      const tossResponse = await randomNumberApi.randomNumberToss(draw.private_id, drawTossPayload);
+      const scheduleDate = moment(tossResponse.schedule_date).unix();
+
+      const { track } = this.props;
+      track({
+        mp: {
+          name: `Publish - ${analyticsDrawType}`,
+          properties: { drawType: analyticsDrawType, drawId: draw.id },
+        },
+        ga: { action: 'Publish', category: analyticsDrawType, label: draw.id },
+      });
+
+      const drawPath = `/number/${draw.id}/success`;
+      recentDraws.add(draw, drawPath, scheduleDate);
+      history.push(drawPath);
     } catch (err) {
       this.setState({ APIError: true });
     }
@@ -121,37 +161,40 @@ class RandomNumberPageContainer extends React.Component {
   };
 
   render() {
-    const { APIError, values, quickResult } = this.state;
-    const { isPublic } = this.props;
+    const { APIError, values, quickResult, loadingRequest } = this.state;
+    const { match } = this.props;
+    const { isPublic } = match.params;
+
     return isPublic ? (
       <RandomNumberPage
         apiError={APIError}
+        loadingRequest={loadingRequest}
         values={values}
         onFieldChange={this.onFieldChange}
-        handleCheckErrorsInConfiguration={this.handleCheckErrorsInConfiguration}
         handlePublish={this.handlePublish}
+        handleCheckErrorsInConfiguration={this.handleCheckErrorsInConfiguration}
       />
     ) : (
       <RandomNumberQuickPage
         apiError={APIError}
+        loadingRequest={loadingRequest}
         values={values}
-        onFieldChange={this.onFieldChange}
-        handleCheckErrorsInConfiguration={this.handleCheckErrorsInConfiguration}
         quickResult={quickResult}
+        onFieldChange={this.onFieldChange}
         handleToss={this.handleToss}
+        handleCheckErrorsInConfiguration={this.handleCheckErrorsInConfiguration}
       />
     );
   }
 }
 
 RandomNumberPageContainer.propTypes = {
-  isPublic: PropTypes.bool,
-  history: ReactRouterPropTypes.history.isRequired,
+  track: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
   match: ReactRouterPropTypes.match.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
 };
 
-RandomNumberPageContainer.defaultProps = {
-  isPublic: false,
-};
+RandomNumberPageContainer.defaultProps = {};
 
-export default RandomNumberPageContainer;
+export default withTracking(withTranslation('RandomNumber')(RandomNumberPageContainer));

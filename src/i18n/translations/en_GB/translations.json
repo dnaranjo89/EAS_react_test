@@ -140,13 +140,6 @@
     "title_label": "Title of the raffle",
     "title_placeholder": "Christmas raffle"
   },
-  "SuccessfullyCreatedDraw": {
-    "congratulations": "Congratulations!",
-    "draw_created": "You have created you raffle",
-    "go_to_the_raffle": "Go to the raffle",
-    "html_title": "Raffle successfully created",
-    "share_link": "Share this link with everyone and they will be able to see the results live"
-  },
   "Raffle": {
     "certified_draw_description": "If you want to make a public raffle to ensure an impartial result you should create a public raffle.",
     "create_certificated_draw": "Create a raffle publicly",
@@ -184,11 +177,13 @@
     "section_title_raffles": "Raffles"
   },
   "RandomNumber": {
+    "certified_draw_description": "If you want to make a public raffle to ensure an impartial result you should create a public raffle.",
     "create_certificated_draw": "Create a public draw",
-    "draw_subheading": "Simple random number generator. Simply choose the range and the amount of numbers to generate.",
+    "draw_subheading": "Simple random number generator. Choose the range and the amount of numbers to generate.",
     "error_field_message_min_results": "You must generate at least one number",
     "error_form_invalid_ranges": "The chosen range (numbers between {{min}} and {{max}}) is not valid",
     "error_form_range_not_big_enough": "The range is not big enough",
+    "field_default_title": "Public raffle",
     "field_label_allow_repeated": "Allow repeated numbers",
     "field_label_from": "From",
     "field_label_number_of_results": "Number of results",
@@ -196,6 +191,7 @@
     "generate_numbers": "Generate numbers",
     "generated_numbers": "Generated numbers",
     "html_description": "Generate random numbers between two numbers, with or without repetitions. ChooseRandom's random number generator is quick and simple.",
+    "html_keywords": "random number, raffle, lottery",
     "html_title": "Generate random numbers",
     "page_title_public": "Create public raffle with numbers",
     "page_title_quick": "Generate random numbers",
@@ -231,6 +227,13 @@
     "learn_more_title": "What can an arrow be used for?",
     "page_title": "Spin an arrow",
     "touch_to_toss": "Hit the arrow to make it spin"
+  },
+  "SuccessfullyCreatedDraw": {
+    "congratulations": "Congratulations!",
+    "draw_created": "You have created you raffle",
+    "go_to_the_raffle": "Go to the raffle",
+    "html_title": "Raffle successfully created",
+    "share_link": "Share this link with everyone and they will be able to see the results live"
   },
   "TranslationsSwitch": {
     "change_language": "Change language"

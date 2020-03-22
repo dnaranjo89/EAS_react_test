@@ -156,7 +156,7 @@ class GroupsGeneratorPageContainer extends React.Component {
     return isPublic ? (
       <GroupsGeneratorPage
         apiError={APIError}
-        loading={loadingRequest}
+        loadingRequest={loadingRequest}
         values={values}
         onFieldChange={this.onFieldChange}
         handlePublish={this.handlePublish}
@@ -165,12 +165,12 @@ class GroupsGeneratorPageContainer extends React.Component {
     ) : (
       <GroupsGeneratorQuickPage
         apiError={APIError}
-        loadingResult={loadingRequest}
+        loadingRequest={loadingRequest}
         values={values}
-        onFieldChange={this.onFieldChange}
-        handleCheckErrorsInConfiguration={this.handleCheckErrorsInConfiguration}
         quickResult={quickResult}
+        onFieldChange={this.onFieldChange}
         handleToss={this.handleToss}
+        handleCheckErrorsInConfiguration={this.handleCheckErrorsInConfiguration}
       />
     );
   }

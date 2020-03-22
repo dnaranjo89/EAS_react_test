@@ -1,18 +1,21 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useRef } from 'react';
 import { withTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
 import { RandomNumberResult as RandomNumberResultClass } from 'echaloasuerte-js-sdk';
 import SubmitFormButton from '../../SubmitFormButton/SubmitFormButton.jsx';
-import withValidationProvider from '../../FormValidation/withValidationProvider.jsx';
+import ValidationProvider from '../../FormValidation/ValidationProvider.jsx';
 import Page from '../../Page/Page.jsx';
 import RandomNumberConfigurationSection from './RandomNumberConfigurationSection.jsx';
 import RandomNumberResult from './RandomNumberResult.jsx';
 import ErrorFeedback from '../../ErrorFeedback/ErrorFeedback.jsx';
+import useScrollToResults from '../../../hooks/useScrollToResults';
 import MakeCertifiedDrawPanel from '../../MakeCertifiedDrawPanel/MakeCertifiedDrawPanel.jsx';
 import ShareDrawModal from '../../ShareDrawModal/ShareDrawModal.jsx';
+import LoadingCoin from '../../LoadingCoin/LoadingCoin.jsx';
+import randomNumberOgImage from './random_number_og_image.png';
+import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 
-const ValidatedForm = withValidationProvider(props => <form {...props} />);
+const analyticsDrawType = 'Numbers';
 
 const RandomNumberQuickPage = props => {
   const {
@@ -22,29 +25,32 @@ const RandomNumberQuickPage = props => {
     handleToss,
     onFieldChange,
     handleCheckErrorsInConfiguration,
+    loadingRequest,
     t,
   } = props;
+  const publicDrawUrl = '/groups/public';
+  const resultsRef = useRef(null);
+  useScrollToResults(quickResult, resultsRef);
+
   return (
     <Page
       htmlTitle={t('html_title')}
       htmlDescription={t('html_description')}
+      htmlKeywords={t('html_keywords')}
+      ogImage={randomNumberOgImage}
+      pageType="Random Number Quick Draw"
       sidePanel={
         <MakeCertifiedDrawPanel
           buttonLabel={t('create_certificated_draw')}
-          // analyticsDrawType={analyticsDrawType} add this
+          publicDrawUrl={publicDrawUrl}
+          analyticsDrawType={analyticsDrawType}
         >
-          Si quieres hacer un sorteo público para asegurar a los participantes una eleccion
-          imparcial del resultado, te recomendamos que hagas un sorteo certificado
+          {t('certified_draw_description')}
         </MakeCertifiedDrawPanel>
       }
     >
-      <Typography variant="h1" align="center">
-        {t('page_title_quick')}
-      </Typography>
-      <Typography variant="subtitle1" align="center">
-        {t('draw_subheading')}
-      </Typography>
-      <ValidatedForm
+      <DrawHeading title={t('page_title_quick')} subtitle={t('draw_subheading')} />
+      <ValidationProvider
         onSubmit={e => {
           e.preventDefault();
           handleToss();
@@ -53,23 +59,29 @@ const RandomNumberQuickPage = props => {
       >
         <RandomNumberConfigurationSection values={values} onFieldChange={onFieldChange} t={t} />
         {apiError && <ErrorFeedback error={t('ApiError:api_error')} />}
-        <SubmitFormButton label={t('generate_numbers')} />
-      </ValidatedForm>
+        <SubmitFormButton label={t('generate_numbers')} disabled={loadingRequest} />
+      </ValidationProvider>
 
-      {quickResult && (
-        <Fragment>
-          <RandomNumberResult result={quickResult} />
-          <ShareDrawModal
-          // analyticsDrawType={analyticsDrawType} add this
-          />
-        </Fragment>
-      )}
+      <div ref={resultsRef}>
+        {loadingRequest && <LoadingCoin />}
+        {!loadingRequest && quickResult && (
+          <>
+            <RandomNumberResult result={quickResult} />
+            <ShareDrawModal
+              publicDrawUrl={publicDrawUrl}
+              analyticsDrawType={analyticsDrawType}
+              t={t}
+            />
+          </>
+        )}
+      </div>
     </Page>
   );
 };
 
 RandomNumberQuickPage.propTypes = {
   apiError: PropTypes.bool,
+  loadingRequest: PropTypes.bool.isRequired,
   values: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

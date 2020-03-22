@@ -18,7 +18,7 @@ const WhenToTossForm = withValidationProvider(WhenToTossSection);
 const GroupsGeneratorPage = props => {
   const {
     values,
-    loading,
+    loadingRequest,
     apiError,
     handleCheckErrorsInConfiguration,
     onFieldChange,
@@ -80,7 +80,7 @@ const GroupsGeneratorPage = props => {
         submitButtonLabel={t('publish_draw')}
         apiError={apiError}
         isMobile={isMobile}
-        loading={loading}
+        loadingRequest={loadingRequest}
       />
     </Page>
   );
@@ -95,7 +95,7 @@ GroupsGeneratorPage.propTypes = {
     dateScheduled: PropTypes.instanceOf(Date),
   }).isRequired,
   apiError: PropTypes.bool,
-  loading: PropTypes.bool.isRequired,
+  loadingRequest: PropTypes.bool.isRequired,
   onFieldChange: PropTypes.func.isRequired,
   handlePublish: PropTypes.func.isRequired,
   handleCheckErrorsInConfiguration: PropTypes.func.isRequired,

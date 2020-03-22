@@ -12,9 +12,9 @@ import STYLES from './AppShell.scss';
 
 import PrivacyPolicyPage from '../Pages/PrivacyPolicyPage/PrivacyPolicyPage.jsx';
 import RecentDraws from '../Pages/RecentDraws/RecentDrawsPage.jsx';
-// import PublishedRandomNumberPageContainer from '../Pages/RandomNumber/PublishedRandomNumberPageContainer.jsx';
+import PublishedRandomNumberPageContainer from '../Pages/RandomNumber/PublishedRandomNumberPageContainer.jsx';
 import PublishedGroupsGeneratorPage from '../Pages/GroupsGenerator/PublishedGroupsGeneratorPage.jsx';
-// import RandomNumberPageContainer from '../Pages/RandomNumber/RandomNumberPageContainer.jsx';
+import RandomNumberPageContainer from '../Pages/RandomNumber/RandomNumberPageContainer.jsx';
 import GroupsGeneratorPageContainer from '../Pages/GroupsGenerator/GroupsGeneratorPageContainer.jsx';
 import FacebookRafflePageContainer from '../Pages/FacebookRaffle/FacebookRafflePageContainer.jsx';
 import PublishedFacebookRafflePage from '../Pages/FacebookRaffle/PublishedFacebookRafflePage.jsx';
@@ -62,6 +62,10 @@ const AppShell = () => (
         component={PublishedFacebookRafflePage}
       />
 
+      {/* Random Numbers */}
+      <Route exact path="/number/:isPublic(public)?" component={RandomNumberPageContainer} />
+      <Route exact path="/number/:drawId" component={PublishedRandomNumberPageContainer} />
+
       <Route exact path="/coin" component={FlipCoinPageContainer} />
       <Route exact path="/spinner" component={SpinArrowPageContainer} />
       <Route exact path="/privacy-policy" component={PrivacyPolicyPage} />
@@ -71,13 +75,6 @@ const AppShell = () => (
         path={`/:drawType(groups|raffle|facebook)/:drawId(${guidRegex})/success`}
         component={SuccessfullyCreatedDraw}
       />
-      {/* <Route exact path="/number" component={RandomNumberPageContainer} />
-      <Route
-        exact
-        path="/number/public"
-        component={props => <RandomNumberPageContainer isPublic {...props} />}
-      />
-      <Route exact path="/number/:drawId" component={PublishedRandomNumberPageContainer} />
 
       {/* <Route exact path="/facebook_photo" component={FacebookPhotoRafflePageContainer} />
       <Route path="/facebook_photo/:drawId" component={PublishedFacebookPhotoRafflePageContainer} />
