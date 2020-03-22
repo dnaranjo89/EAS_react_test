@@ -72,7 +72,7 @@ const AppShell = () => (
       <Route exact path="/recent" component={RecentDraws} />
       <Route
         exact
-        path={`/:drawType(groups|raffle|facebook)/:drawId(${guidRegex})/success`}
+        path={`/:drawType(groups|raffle|facebook|number)/:drawId(${guidRegex})/success`}
         component={SuccessfullyCreatedDraw}
       />
 

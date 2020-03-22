@@ -18,8 +18,8 @@ const WhenToTossForm = withValidationProvider(WhenToTossSection);
 const GroupsGeneratorPage = props => {
   const {
     values,
-    loadingRequest,
     apiError,
+    loadingRequest,
     handleCheckErrorsInConfiguration,
     onFieldChange,
     handlePublish,

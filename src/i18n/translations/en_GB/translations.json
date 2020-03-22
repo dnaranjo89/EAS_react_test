@@ -190,7 +190,7 @@
     "html_description": "Generate random numbers between two numbers, with or without repetitions. ChooseRandom's random number generator is quick and simple.",
     "html_keywords": "random number, raffle, lottery",
     "html_title": "Generate random numbers",
-    "page_title_public": "Create public raffle with numbers",
+    "page_title_public": "Public raffle with numbers",
     "page_title_quick": "Generate random numbers",
     "publish_draw": "Publish raffle",
     "published_draw_details": "Draw details",

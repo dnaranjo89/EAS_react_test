@@ -1,23 +1,23 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { withTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import classNames from 'classnames/bind';
-import Typography from '@material-ui/core/Typography';
 import withValidationProvider from '../../FormValidation/withValidationProvider.jsx';
 import GeneralDetailsSection from '../../CommonSections/GeneralDetailsSection.jsx';
 import WhenToTossSection from '../../CommonSections/WhenToTossSection.jsx';
 import WizardForm from '../../WizardForm/WizardForm.jsx';
 import Page from '../../Page/Page.jsx';
 import RandomNumberConfigurationSection from './RandomNumberConfigurationSection.jsx';
-import STYLES from './RandomNumberPage.scss';
-
-const c = classNames.bind(STYLES);
+import randomNumberOgImage from './random_number_og_image.png';
+import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
+import getIsMobile from '../../../selectors/getIsMobile';
 
 const GeneralDetailsForm = withValidationProvider(GeneralDetailsSection);
 const ConfigurationForm = withValidationProvider(RandomNumberConfigurationSection);
 const WhenToTossForm = withValidationProvider(WhenToTossSection);
 
 const RandomNumberPage = props => {
+  const isMobile = useSelector(getIsMobile);
   const {
     values,
     apiError,
@@ -29,17 +29,6 @@ const RandomNumberPage = props => {
   } = props;
   const steps = [
     {
-      label: t('step_label_general_details'),
-      render: wizardProps => (
-        <GeneralDetailsForm
-          title={values.title}
-          description={values.description}
-          onFieldChange={onFieldChange}
-          {...wizardProps}
-        />
-      ),
-    },
-    {
       label: t('step_label_configuration'),
       render: wizardProps => (
         <ConfigurationForm
@@ -47,6 +36,17 @@ const RandomNumberPage = props => {
           onFieldChange={onFieldChange}
           t={t}
           onFormErrorsCheck={() => handleCheckErrorsInConfiguration(t)}
+          {...wizardProps}
+        />
+      ),
+    },
+    {
+      label: t('step_label_general_details'),
+      render: wizardProps => (
+        <GeneralDetailsForm
+          title={values.title}
+          description={values.description}
+          onFieldChange={onFieldChange}
           {...wizardProps}
         />
       ),
@@ -67,14 +67,18 @@ const RandomNumberPage = props => {
     <Page
       htmlTitle={t('html_title')}
       htmlDescription={t('html_description')}
-      contentClassName={c('RandomNumberPage')}
+      htmlKeywords={t('html_keywords')}
+      pageType="Numbers Draw"
+      ogImage={randomNumberOgImage}
+      showAdvert={!isMobile}
     >
-      <Typography variant="h1">{t('page_title_public')}</Typography>
+      <DrawHeading title={t('page_title_public')} subtitle={t('draw_subheading')} />
       <WizardForm
         steps={steps}
         onSubmit={handlePublish}
         submitButtonLabel={t('publish_draw')}
         apiError={apiError}
+        isMobile={isMobile}
         loadingRequest={loadingRequest}
       />
     </Page>
