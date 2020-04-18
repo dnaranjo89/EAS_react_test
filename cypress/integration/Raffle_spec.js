@@ -116,7 +116,6 @@ describe('Raffle Page', () => {
               eventAction: 'Toss',
             });
 
-            cy.tick(4000); // Fast forward the loading animation
             cy.mockedRequestWait('POST', '/api/raffle')
               .its('requestBody')
               .should('deep.eq', {
@@ -130,7 +129,7 @@ describe('Raffle Page', () => {
             cy.getComponent('WinnersList__result').should('be.visible');
           });
 
-          it.only('Changing data after toss should create a new draw', () => {
+          it('Changing data after toss should create a new draw', () => {
             cy.visit('/raffle');
             cy.clock();
             cy.getComponent('PrizesInput__inputField').type('prize1,');

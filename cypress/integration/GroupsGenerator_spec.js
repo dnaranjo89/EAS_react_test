@@ -130,7 +130,6 @@ describe('Groups Generator Page', () => {
           cy.clock();
           cy.getComponent('ParticipantsInput__inputField').type('you, me, him, her,');
           cy.getComponent('SubmitFormButton').click();
-          cy.tick(4000); // Fast forward the loading animation
           cy.getComponent('ShareDrawButton').click();
           cy.getComponent('ShareDrawButton__confirm').click();
           cy.get('@ga').should('be.calledWith', 'send', {
@@ -228,7 +227,6 @@ describe('Groups Generator Page', () => {
               eventAction: 'Toss',
             });
 
-            cy.tick(4000); // Fast forward the loading animation
             cy.mockedRequestWait('POST', '/api/groups')
               .its('requestBody')
               .should('deep.eq', {
@@ -250,7 +248,6 @@ describe('Groups Generator Page', () => {
             cy.mockedRequestWait('POST', '/api/groups')
               .its('requestBody.participants')
               .should('deep.eq', [{ name: 'one' }, { name: 'two' }]);
-            cy.tick(4000); // Fast forward the loading animation
             cy.mockedRequestWait('POST', '/api/groups/43c357b7-91ec-448a-a4bf-ac059cc3a374/toss');
             cy.getComponent('GroupsGeneratorResult__result').should('be.visible');
             cy.getComponent('ParticipantsInput__inputField').type('three,');
