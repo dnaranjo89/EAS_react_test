@@ -1,6 +1,5 @@
 /* eslint-disable func-names, prefer-arrow-callback */
-// TODO remove this skip
-describe.skip('Random Number Page', () => {
+describe('Random Number Page', () => {
   ['macbook-13' /* , 'iphone-5' */].forEach(device => {
     context(`Device ${device}`, () => {
       beforeEach(() => {
@@ -143,6 +142,8 @@ describe.skip('Random Number Page', () => {
                 number_of_results: 2,
                 range_max: 100,
                 range_min: 3,
+                title: null,
+                description: null,
               });
           });
 
@@ -215,7 +216,7 @@ describe.skip('Random Number Page', () => {
             hitType: 'event',
             eventCategory: 'Number',
             eventAction: 'Publish',
-            eventLabel: 'b29f44c2-1022-408a-925f-63e5f77a12ad',
+            eventLabel: 'ebdb2628-9fef-438d-9395-de1a4d7bc789',
           });
         });
 
@@ -253,19 +254,19 @@ describe.skip('Random Number Page', () => {
           );
           cy.location('pathname').should(
             'eq',
-            '/number/6ce5042f-f931-4a79-a716-dfadccc978d0/success',
+            '/number/ebdb2628-9fef-438d-9395-de1a4d7bc789/success',
           );
         });
       });
 
-      describe('Published page', () => {
+      describe.skip('Published page', () => {
         it('Google Analytics pageview event is sent', () => {
-          cy.visit('/number/6ce5042f-f931-4a79-a716-dfadccc978d0');
+          cy.visit('/number/ebdb2628-9fef-438d-9395-de1a4d7bc789');
           cy.get('@ga')
             .should('be.calledWith', 'create', 'UA-XXXXX-Y')
             .and('be.calledWith', 'send', {
               hitType: 'pageview',
-              page: '/number/6ce5042f-f931-4a79-a716-dfadccc978d0',
+              page: '/number/ebdb2628-9fef-438d-9395-de1a4d7bc789',
             });
         });
         it('Should show the countdown if there are not results', () => {
@@ -274,7 +275,7 @@ describe.skip('Random Number Page', () => {
           const dateInFuture = now.toISOString();
           cy.route({
             method: 'GET',
-            url: '/api/random_number/6ce5042f-f931-4a79-a716-dfadccc978d0',
+            url: '/api/random_number/ebdb2628-9fef-438d-9395-de1a4d7bc789',
             status: 200,
             response: {
               id: 'ee870985-eeef-4457-a914-7e96372a3c69',
@@ -297,20 +298,20 @@ describe.skip('Random Number Page', () => {
               allow_repeated_results: false,
             },
           }).as('request');
-          cy.visit('/number/6ce5042f-f931-4a79-a716-dfadccc978d0');
+          cy.visit('/number/ebdb2628-9fef-438d-9395-de1a4d7bc789');
           cy.wait('@request');
           cy.getComponent('Countdown').should('be.visible');
         });
         it('Should show results and the raffle details', () => {
-          cy.visit('/number/6ce5042f-f931-4a79-a716-dfadccc978d0');
-          cy.mockedRequestWait('GET', '/api/random_number/6ce5042f-f931-4a79-a716-dfadccc978d0');
+          cy.visit('/number/ebdb2628-9fef-438d-9395-de1a4d7bc789');
+          cy.mockedRequestWait('GET', '/api/random_number/ebdb2628-9fef-438d-9395-de1a4d7bc789');
           cy.getComponent('PublishedRandomNumberPage__Title').contains('The title');
           cy.getComponent('RandomNumberResult__result').should('be.visible');
         });
 
         it('Should show share buttons', () => {
           cy.mockWindowOpen();
-          cy.visit('/number/6ce5042f-f931-4a79-a716-dfadccc978d0');
+          cy.visit('/number/ebdb2628-9fef-438d-9395-de1a4d7bc789');
           cy.getComponent('SocialButton__whatsapp').click();
           cy.get('@ga').and('be.calledWith', 'send', {
             hitType: 'event',

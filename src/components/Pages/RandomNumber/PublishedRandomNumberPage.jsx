@@ -14,6 +14,8 @@ import STYLES from './PublishedRandomNumberPage.scss';
 
 const c = classNames.bind(STYLES);
 
+// It's pending to align this published page with the others
+// As it not using hooks etc
 const PublishedRandomNumberPage = props => {
   const {
     title,
