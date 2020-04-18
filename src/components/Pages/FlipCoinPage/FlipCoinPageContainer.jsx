@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FlipCoinPage from './FlipCoinPage.jsx';
 import withTracking from '../../withTracking/withTracking.jsx';
-
-const analyticsDrawType = 'Coin';
+import { ANALYTICS_TYPE_COIN } from '../../../constants/analyticsTypes';
 
 class FlipCoinPageContainer extends Component {
   constructor(props) {
@@ -18,8 +17,8 @@ class FlipCoinPageContainer extends Component {
     const { track } = this.props;
     const coinSide = Math.floor(Math.random() * 2) ? 'heads' : 'tails';
     track({
-      mp: { name: `Toss - ${analyticsDrawType}`, properties: { drawType: analyticsDrawType } },
-      ga: { action: 'Toss', category: analyticsDrawType },
+      mp: { name: `Toss - ${ANALYTICS_TYPE_COIN}`, properties: { drawType: ANALYTICS_TYPE_COIN } },
+      ga: { action: 'Toss', category: ANALYTICS_TYPE_COIN },
     });
     this.setState({
       coinSide,

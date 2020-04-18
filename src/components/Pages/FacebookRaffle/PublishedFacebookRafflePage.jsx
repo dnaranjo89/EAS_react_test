@@ -25,10 +25,10 @@ import PublishedDrawDetails from '../../PublishedDrawDetails/PublishedDrawDetail
 import withFacebookSDK from '../../withFacebookSDK/withFacebookSDK.jsx';
 import facebookRaffleOgImage from './facebook_raffle_og_image.png';
 import useCurrentUrl from '../../../hooks/useCurrentUrl';
+import { ANALYTICS_TYPE_FACEBOOK } from '../../../constants/analyticsTypes';
 
 const c = classNames.bind(STYLES);
 const raffleApi = new RaffleApi();
-const analyticsDrawType = 'FacebookRaffle';
 
 const loadData = async props => {
   const { drawId } = props.match.params;
@@ -92,10 +92,10 @@ const PublishedFacebookRafflePage = props => {
       await raffleApi.raffleParticipantsAdd(drawId, participant);
       track({
         mp: {
-          name: `Participate - ${analyticsDrawType}`,
-          properties: { drawType: analyticsDrawType },
+          name: `Participate - ${ANALYTICS_TYPE_FACEBOOK}`,
+          properties: { drawType: ANALYTICS_TYPE_FACEBOOK },
         },
-        ga: { action: 'Participate', category: analyticsDrawType },
+        ga: { action: 'Participate', category: ANALYTICS_TYPE_FACEBOOK },
       });
     } catch (error) {
       setRegisterFailedErrorMessage(t('unable_to_register_in_raffle'));
@@ -129,7 +129,7 @@ const PublishedFacebookRafflePage = props => {
             <WinnersList winners={result.value} />
             <br />
             <ShareButtons
-              drawType={analyticsDrawType}
+              drawType={ANALYTICS_TYPE_FACEBOOK}
               sectionTitle={t('share_result')}
               url={shareUrl}
             />
@@ -164,7 +164,7 @@ const PublishedFacebookRafflePage = props => {
           </Typography>
           <Countdown date={result.schedule_date} />
           <ShareButtons
-            drawType={analyticsDrawType}
+            drawType={ANALYTICS_TYPE_FACEBOOK}
             sectionTitle={t('share_draw')}
             url={shareUrl}
           />

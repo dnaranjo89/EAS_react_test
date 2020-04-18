@@ -8,133 +8,6 @@ describe('Raffle Page', () => {
         cy.viewport(device);
       });
 
-      describe('Public Draw', () => {
-        describe('Analytics', () => {
-          it('Events sent on pageview', () => {
-            cy.visit('/raffle/public');
-
-            cy.get('@ga')
-              .should('be.calledWith', 'create', 'UA-XXXXX-Y')
-              .and('be.calledWith', 'send', { hitType: 'pageview', page: '/raffle/public' });
-          });
-
-          it('Events sent on publish', () => {
-            cy.visit('/raffle/public');
-            cy.getComponent('PrizesInput__inputField').type('prize1,');
-            cy.getComponent('ParticipantsInput__inputField').type('one, two,');
-            cy.getComponent('WizardForm__next-button').click();
-            cy.getComponent('WizardForm__next-button').click();
-            cy.getComponent('WizardForm__next-button').click();
-            cy.get('@ga').should('be.calledWith', 'send', {
-              hitType: 'event',
-              eventCategory: 'Raffle',
-              eventAction: 'Publish',
-              eventLabel: 'b29f44c2-1022-408a-925f-63e5f77a12ad',
-            });
-          });
-        });
-
-        it('Create', () => {
-          // TODO remove this
-          cy.mockGA();
-          cy.visit('/raffle/public');
-
-          cy.get('@ga')
-            .should('be.calledWith', 'create', 'UA-XXXXX-Y')
-            .and('be.calledWith', 'send', { hitType: 'pageview', page: '/raffle/public' });
-
-          // Make required errors show up
-          cy.getComponent('WizardForm__next-button').click();
-
-          // It should error if participants is empty
-          cy.getComponent('PrizesInput').shouldHaveError();
-          cy.getComponent('PrizesInput__inputField').type('prize1, prize2,');
-          cy.getComponent('PrizesInput').shouldNotHaveError();
-
-          // It should error if prizes is empty
-          cy.getComponent('ParticipantsInput').shouldHaveError();
-          cy.getComponent('ParticipantsInput__inputField').type('one,');
-          cy.getComponent('ParticipantsInput').shouldNotHaveError();
-
-          // It should error if there are less participants than prizes
-          cy.getComponent('WizardForm__next-button').click();
-          cy.getComponent('ErrorFeedback').should('be.visible');
-          cy.getComponent('ParticipantsInput__inputField').type('two,');
-          cy.getComponent('ErrorFeedback').should('not.exist');
-
-          // Go to second step
-          cy.getComponent('WizardForm__next-button').click();
-
-          // The title field should have a default value
-          cy.getComponent('PublicDetails__title-field-input').should('not.have.value', '');
-
-          // Attempt to submit step without filling the title
-          cy.getComponent('PublicDetails__title-field-input').clear();
-          cy.getComponent('WizardForm__next-button').click();
-
-          // Title field should error as they are required
-          cy.getComponent('PublicDetails__title-field').shouldHaveError();
-
-          // Fill the title and its error should recover
-          cy.getComponent('PublicDetails__title-field-input').type('The title');
-          cy.getComponent('PublicDetails__title-field').shouldNotHaveError();
-
-          // Fill the description
-          cy.getComponent('PublicDetails__description-field-input').type('A cool description');
-
-          // Go to third step
-          cy.getComponent('WizardForm__next-button').click();
-
-          // Submit the draw
-          cy.getComponent('WizardForm__next-button').click();
-
-          cy.mockedRequestWait('POST', '/api/raffle')
-            .its('requestBody')
-            .should('deep.eq', {
-              description: 'A cool description',
-              prizes: [{ name: 'prize1' }, { name: 'prize2' }],
-              participants: [{ name: 'one' }, { name: 'two' }],
-              title: 'The title',
-            });
-
-          cy.mockedRequestWait('POST', '/api/raffle/29080f6b-b3e4-412c-8008-7e26081ea17c/toss');
-          cy.get('@ga').should('be.calledWith', 'send', {
-            hitType: 'event',
-            eventCategory: 'Raffle',
-            eventAction: 'Publish',
-            eventLabel: 'b29f44c2-1022-408a-925f-63e5f77a12ad',
-          });
-
-          // Redirect to draw with the public id
-          cy.location('pathname').should(
-            'eq',
-            '/raffle/b29f44c2-1022-408a-925f-63e5f77a12ad/success',
-          );
-        });
-
-        it('Should show feedback if there are server errors', () => {
-          cy.visit('/raffle/public');
-          cy.route({
-            method: 'POST',
-            url: '/api/raffle/',
-            status: 503,
-            response: {},
-          }).as('failedRequest');
-          cy.getComponent('PrizesInput__inputField').type('prize1, prize2,');
-          cy.getComponent('ParticipantsInput__inputField').type('one, two,');
-          cy.getComponent('WizardForm__next-button').click();
-          cy.getComponent('WizardForm__next-button').click();
-          cy.getComponent('WizardForm__next-button').click();
-          cy.wait('@failedRequest');
-          cy.getComponent('ErrorFeedback').should('be.visible');
-
-          // It should recover form the error
-          cy.mockFixture('Raffle'); // Reset the mock with the 200 response
-          cy.getComponent('WizardForm__next-button').click();
-          cy.getComponent('ErrorFeedback').should('not.exist');
-        });
-      });
-
       describe('Quick Raffle', () => {
         it('Should send pageview events', () => {
           cy.visit('/raffle');
@@ -257,7 +130,7 @@ describe('Raffle Page', () => {
             cy.getComponent('WinnersList__result').should('be.visible');
           });
 
-          it('Changing data after toss should create a new draw', () => {
+          it.only('Changing data after toss should create a new draw', () => {
             cy.visit('/raffle');
             cy.clock();
             cy.getComponent('PrizesInput__inputField').type('prize1,');
@@ -266,8 +139,6 @@ describe('Raffle Page', () => {
             cy.mockedRequestWait('POST', '/api/raffle')
               .its('requestBody.participants')
               .should('deep.eq', [{ name: 'you' }, { name: 'I' }]);
-            // TODO remove this
-            cy.tick(4000); // Fast forward the loading animation
             cy.mockedRequestWait('POST', '/api/raffle/29080f6b-b3e4-412c-8008-7e26081ea17c/toss');
             cy.getComponent('WinnersList__result').should('be.visible');
             cy.getComponent('ParticipantsInput__inputField').type('she,');
@@ -279,6 +150,131 @@ describe('Raffle Page', () => {
               .should('deep.eq', [{ name: 'you' }, { name: 'I' }, { name: 'she' }]);
             cy.mockedRequestWait('POST', '/api/raffle/29080f6b-b3e4-412c-8008-7e26081ea17c/toss');
           });
+        });
+      });
+
+      describe('Public Draw', () => {
+        describe('Analytics', () => {
+          it('Events sent on pageview', () => {
+            cy.visit('/raffle/public');
+
+            cy.get('@ga')
+              .should('be.calledWith', 'create', 'UA-XXXXX-Y')
+              .and('be.calledWith', 'send', { hitType: 'pageview', page: '/raffle/public' });
+          });
+
+          it('Events sent on publish', () => {
+            cy.visit('/raffle/public');
+            cy.getComponent('PrizesInput__inputField').type('prize1,');
+            cy.getComponent('ParticipantsInput__inputField').type('one, two,');
+            cy.getComponent('WizardForm__next-button').click();
+            cy.getComponent('WizardForm__next-button').click();
+            cy.getComponent('WizardForm__next-button').click();
+            cy.get('@ga').should('be.calledWith', 'send', {
+              hitType: 'event',
+              eventCategory: 'Raffle',
+              eventAction: 'Publish',
+              eventLabel: 'b29f44c2-1022-408a-925f-63e5f77a12ad',
+            });
+          });
+        });
+
+        it('Create', () => {
+          cy.visit('/raffle/public');
+
+          cy.get('@ga')
+            .should('be.calledWith', 'create', 'UA-XXXXX-Y')
+            .and('be.calledWith', 'send', { hitType: 'pageview', page: '/raffle/public' });
+
+          // Make required errors show up
+          cy.getComponent('WizardForm__next-button').click();
+
+          // It should error if participants is empty
+          cy.getComponent('PrizesInput').shouldHaveError();
+          cy.getComponent('PrizesInput__inputField').type('prize1, prize2,');
+          cy.getComponent('PrizesInput').shouldNotHaveError();
+
+          // It should error if prizes is empty
+          cy.getComponent('ParticipantsInput').shouldHaveError();
+          cy.getComponent('ParticipantsInput__inputField').type('one,');
+          cy.getComponent('ParticipantsInput').shouldNotHaveError();
+
+          // It should error if there are less participants than prizes
+          cy.getComponent('WizardForm__next-button').click();
+          cy.getComponent('ErrorFeedback').should('be.visible');
+          cy.getComponent('ParticipantsInput__inputField').type('two,');
+          cy.getComponent('ErrorFeedback').should('not.exist');
+
+          // Go to second step
+          cy.getComponent('WizardForm__next-button').click();
+
+          // The title field should have a default value
+          cy.getComponent('PublicDetails__title-field-input').should('not.have.value', '');
+
+          // Attempt to submit step without filling the title
+          cy.getComponent('PublicDetails__title-field-input').clear();
+          cy.getComponent('WizardForm__next-button').click();
+
+          // Title field should error as they are required
+          cy.getComponent('PublicDetails__title-field').shouldHaveError();
+
+          // Fill the title and its error should recover
+          cy.getComponent('PublicDetails__title-field-input').type('The title');
+          cy.getComponent('PublicDetails__title-field').shouldNotHaveError();
+
+          // Fill the description
+          cy.getComponent('PublicDetails__description-field-input').type('A cool description');
+
+          // Go to third step
+          cy.getComponent('WizardForm__next-button').click();
+
+          // Submit the draw
+          cy.getComponent('WizardForm__next-button').click();
+
+          cy.mockedRequestWait('POST', '/api/raffle')
+            .its('requestBody')
+            .should('deep.eq', {
+              description: 'A cool description',
+              prizes: [{ name: 'prize1' }, { name: 'prize2' }],
+              participants: [{ name: 'one' }, { name: 'two' }],
+              title: 'The title',
+            });
+
+          cy.mockedRequestWait('POST', '/api/raffle/29080f6b-b3e4-412c-8008-7e26081ea17c/toss');
+          cy.get('@ga').should('be.calledWith', 'send', {
+            hitType: 'event',
+            eventCategory: 'Raffle',
+            eventAction: 'Publish',
+            eventLabel: 'b29f44c2-1022-408a-925f-63e5f77a12ad',
+          });
+
+          // Redirect to draw with the public id
+          cy.location('pathname').should(
+            'eq',
+            '/raffle/b29f44c2-1022-408a-925f-63e5f77a12ad/success',
+          );
+        });
+
+        it('Should show feedback if there are server errors', () => {
+          cy.visit('/raffle/public');
+          cy.route({
+            method: 'POST',
+            url: '/api/raffle/',
+            status: 503,
+            response: {},
+          }).as('failedRequest');
+          cy.getComponent('PrizesInput__inputField').type('prize1, prize2,');
+          cy.getComponent('ParticipantsInput__inputField').type('one, two,');
+          cy.getComponent('WizardForm__next-button').click();
+          cy.getComponent('WizardForm__next-button').click();
+          cy.getComponent('WizardForm__next-button').click();
+          cy.wait('@failedRequest');
+          cy.getComponent('ErrorFeedback').should('be.visible');
+
+          // It should recover form the error
+          cy.mockFixture('Raffle'); // Reset the mock with the 200 response
+          cy.getComponent('WizardForm__next-button').click();
+          cy.getComponent('ErrorFeedback').should('not.exist');
         });
       });
 

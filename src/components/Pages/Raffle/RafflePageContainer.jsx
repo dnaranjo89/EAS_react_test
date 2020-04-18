@@ -9,9 +9,9 @@ import recentDraws from '../../../services/recentDraws';
 import throttle from '../../../services/throttle';
 import RafflePage from './RafflePage.jsx';
 import RaffleQuickPage from './RaffleQuickPage.jsx';
+import { ANALYTICS_TYPE_RAFFLE } from '../../../constants/analyticsTypes';
 
 const raffleApi = new RaffleApi();
-const analyticsDrawType = 'Raffle';
 
 class RafflePageContainer extends Component {
   constructor(props) {
@@ -92,8 +92,11 @@ class RafflePageContainer extends Component {
       const tossResponse = await raffleApi.raffleToss(privateId, {});
       const { track } = this.props;
       track({
-        mp: { name: `Toss - ${analyticsDrawType}`, properties: { drawType: analyticsDrawType } },
-        ga: { action: 'Toss', category: analyticsDrawType },
+        mp: {
+          name: `Toss - ${ANALYTICS_TYPE_RAFFLE}`,
+          properties: { drawType: ANALYTICS_TYPE_RAFFLE },
+        },
+        ga: { action: 'Toss', category: ANALYTICS_TYPE_RAFFLE },
       });
       throttle(() => {
         this.setState({
@@ -122,10 +125,10 @@ class RafflePageContainer extends Component {
       const { track } = this.props;
       track({
         mp: {
-          name: `Publish - ${analyticsDrawType}`,
-          properties: { drawType: analyticsDrawType, drawId: draw.id },
+          name: `Publish - ${ANALYTICS_TYPE_RAFFLE}`,
+          properties: { drawType: ANALYTICS_TYPE_RAFFLE, drawId: draw.id },
         },
-        ga: { action: 'Publish', category: analyticsDrawType, label: draw.id },
+        ga: { action: 'Publish', category: ANALYTICS_TYPE_RAFFLE, label: draw.id },
       });
       const drawPath = `/raffle/${draw.id}/success`;
       recentDraws.add(draw, drawPath, scheduleDate);

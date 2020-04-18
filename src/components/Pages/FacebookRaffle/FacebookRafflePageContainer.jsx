@@ -8,10 +8,9 @@ import { RaffleApi, Raffle, Prize, DrawTossPayload } from 'echaloasuerte-js-sdk'
 import FacebookRafflePage from './FacebookRafflePage.jsx';
 import recentDraws from '../../../services/recentDraws';
 import withTracking from '../../withTracking/withTracking.jsx';
+import { ANALYTICS_TYPE_FACEBOOK } from '../../../constants/analyticsTypes';
 
 const raffleApi = new RaffleApi();
-const analyticsDrawType = 'FacebookRaffle';
-
 class FacebookRafflePageContainer extends Component {
   constructor(props) {
     super(props);
@@ -83,10 +82,10 @@ class FacebookRafflePageContainer extends Component {
       const { track } = this.props;
       track({
         mp: {
-          name: `Publish - ${analyticsDrawType}`,
-          properties: { drawType: analyticsDrawType, drawId: draw.id },
+          name: `Publish - ${ANALYTICS_TYPE_FACEBOOK}`,
+          properties: { drawType: ANALYTICS_TYPE_FACEBOOK, drawId: draw.id },
         },
-        ga: { action: 'Publish', category: analyticsDrawType, label: draw.id },
+        ga: { action: 'Publish', category: ANALYTICS_TYPE_FACEBOOK, label: draw.id },
       });
 
       const drawPath = `/facebook/${draw.id}/success`;

@@ -15,7 +15,7 @@ import MakeCertifiedDrawPanel from '../../MakeCertifiedDrawPanel/MakeCertifiedDr
 import LoadingCoin from '../../LoadingCoin/LoadingCoin.jsx';
 import groupsOgImage from './groups_og_image.png';
 
-const analyticsDrawType = 'Groups';
+import { ANALYTICS_TYPE_GROUPS } from '../../../constants/analyticsTypes';
 
 const GroupsGeneratorQuickPage = props => {
   const {
@@ -43,7 +43,7 @@ const GroupsGeneratorQuickPage = props => {
         <MakeCertifiedDrawPanel
           buttonLabel={t('create_certificated_draw')}
           publicDrawUrl={publicDrawUrl}
-          analyticsDrawType={analyticsDrawType}
+          analyticsDrawType={ANALYTICS_TYPE_GROUPS}
         >
           {t('certified_draw_description')}
         </MakeCertifiedDrawPanel>
@@ -68,7 +68,7 @@ const GroupsGeneratorQuickPage = props => {
             <GroupsGeneratorResult result={quickResult} />
             <ShareDrawModal
               publicDrawUrl={publicDrawUrl}
-              analyticsDrawType={analyticsDrawType}
+              analyticsDrawType={ANALYTICS_TYPE_GROUPS}
               t={t}
             />
           </>

@@ -15,16 +15,12 @@ import ShareButtons from '../../ShareButtons/ShareButtons.jsx';
 import STYLES from './SuccessfullyCreatedDraw.module.scss';
 import useCurrentUrl from '../../../hooks/useCurrentUrl';
 import SectionPanel from '../../SectionPanel/SectionPanel.jsx';
+import { analyticsTypesBySlug } from '../../../constants/analyticsTypes';
 
 // import STYLES from './SuccessfullyCreatedDraw.scss';
 // import headsIcon from './heads.png';
 // import tailsIcon from './tails.png';
 // import coinOgImage from './coin_og_image.png';
-
-const analyticsDrawTypeMap = {
-  groups: 'Groups',
-  facebook: 'FacebookRaffle', // complete this list
-};
 
 const SuccessfullyCreatedDraw = ({ t, match }) => {
   const shareUrl = useCurrentUrl().replace('/success', '');
@@ -52,7 +48,7 @@ const SuccessfullyCreatedDraw = ({ t, match }) => {
         </Typography>
         <br />
         <ShareButtons
-          drawType={analyticsDrawTypeMap[drawType]}
+          drawType={analyticsTypesBySlug[drawType]}
           url={shareUrl}
           types={['facebook', 'twitter', 'telegram', 'whatsapp', 'url']}
         />

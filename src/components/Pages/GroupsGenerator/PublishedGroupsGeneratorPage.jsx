@@ -17,8 +17,7 @@ import PublishedDrawDetails from '../../PublishedDrawDetails/PublishedDrawDetail
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import groupsOgImage from './groups_og_image.png';
 import useCurrentUrl from '../../../hooks/useCurrentUrl';
-
-const analyticsDrawType = 'Groups';
+import { ANALYTICS_TYPE_GROUPS } from '../../../constants/analyticsTypes';
 
 const loadData = async props => {
   const { drawId } = props.match.params;
@@ -54,7 +53,7 @@ const PublishedGroupsGeneratorPage = props => {
         <Countdown date={result.schedule_date} />
       )}
       <ShareButtons
-        drawType={analyticsDrawType}
+        drawType={ANALYTICS_TYPE_GROUPS}
         sectionTitle={result.value ? t('share_result') : t('share_draw')}
         url={shareUrl}
       />

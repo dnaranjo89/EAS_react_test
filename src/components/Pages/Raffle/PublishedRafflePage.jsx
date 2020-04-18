@@ -17,8 +17,7 @@ import ShareButtons from '../../ShareButtons/ShareButtons.jsx';
 import PublishedDrawDetails from '../../PublishedDrawDetails/PublishedDrawDetails.jsx';
 import raffleOgImage from './raffle_og_image.png';
 import useCurrentUrl from '../../../hooks/useCurrentUrl';
-
-const analyticsDrawType = 'Raffle';
+import { ANALYTICS_TYPE_RAFFLE } from '../../../constants/analyticsTypes';
 
 const loadData = async props => {
   const { drawId } = props.match.params;
@@ -36,7 +35,11 @@ const PublishedRafflePage = props => {
   }
 
   const ShareButtonsList = () => (
-    <ShareButtons drawType={analyticsDrawType} sectionTitle={t('share_result')} url={shareUrl} />
+    <ShareButtons
+      drawType={ANALYTICS_TYPE_RAFFLE}
+      sectionTitle={t('share_result')}
+      url={shareUrl}
+    />
   );
   return (
     <Page

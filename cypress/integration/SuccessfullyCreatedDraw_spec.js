@@ -8,6 +8,63 @@ describe('Successfully created draw', () => {
         cy.viewport(device);
       });
 
+      describe.only('Should send the correct analytics event for', () => {
+        beforeEach(() => {
+          const mockRecentDraws = [
+            {
+              id: 'b29f44c2-1022-408a-925f-63e5f77a12ad',
+              title: 'Sorteo',
+              url: '/not-important',
+            },
+          ];
+          window.localStorage.setItem('recentDraws', JSON.stringify(mockRecentDraws));
+          cy.mockWindowOpen();
+        });
+        it('Groups draw', () => {
+          cy.visit('/groups/b29f44c2-1022-408a-925f-63e5f77a12ad/success');
+          cy.getComponent('SocialButton__whatsapp').click();
+          cy.get('@ga').and('be.calledWith', 'send', {
+            hitType: 'event',
+            eventCategory: 'Groups',
+            eventAction: 'Social Share Draw',
+            eventLabel: 'whatsapp',
+          });
+        });
+
+        it('Number draw', () => {
+          cy.visit('/number/b29f44c2-1022-408a-925f-63e5f77a12ad/success');
+          cy.getComponent('SocialButton__whatsapp').click();
+          cy.get('@ga').and('be.calledWith', 'send', {
+            hitType: 'event',
+            eventCategory: 'Number',
+            eventAction: 'Social Share Draw',
+            eventLabel: 'whatsapp',
+          });
+        });
+
+        it('Raffle draw', () => {
+          cy.visit('/raffle/b29f44c2-1022-408a-925f-63e5f77a12ad/success');
+          cy.getComponent('SocialButton__whatsapp').click();
+          cy.get('@ga').and('be.calledWith', 'send', {
+            hitType: 'event',
+            eventCategory: 'Raffle',
+            eventAction: 'Social Share Draw',
+            eventLabel: 'whatsapp',
+          });
+        });
+
+        it('Facebook draw', () => {
+          cy.visit('/facebook/b29f44c2-1022-408a-925f-63e5f77a12ad/success');
+          cy.getComponent('SocialButton__whatsapp').click();
+          cy.get('@ga').and('be.calledWith', 'send', {
+            hitType: 'event',
+            eventCategory: 'FacebookRaffle',
+            eventAction: 'Social Share Draw',
+            eventLabel: 'whatsapp',
+          });
+        });
+      });
+
       describe('When the user is the owner', () => {
         beforeEach(() => {
           const mockRecentDraws = [
@@ -34,12 +91,6 @@ describe('Successfully created draw', () => {
           cy.mockWindowOpen();
           cy.visit('/groups/b29f44c2-1022-408a-925f-63e5f77a12ad/success');
           cy.getComponent('SocialButton__whatsapp').click();
-          cy.get('@ga').and('be.calledWith', 'send', {
-            hitType: 'event',
-            eventCategory: 'Groups',
-            eventAction: 'Social Share Draw',
-            eventLabel: 'whatsapp',
-          });
           cy.get('@winOpen').and('be.calledOnce');
         });
 

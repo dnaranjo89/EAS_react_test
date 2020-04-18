@@ -17,10 +17,9 @@ import ShareDrawModal from '../../ShareDrawModal/ShareDrawModal.jsx';
 import ValidationProvider from '../../FormValidation/ValidationProvider.jsx';
 import raffleOgImage from './raffle_og_image.png';
 import STYLES from './RaffleQuickPage.scss';
+import { ANALYTICS_TYPE_RAFFLE } from '../../../constants/analyticsTypes';
 
 const c = classnames.bind(STYLES);
-
-const analyticsDrawType = 'Raffle';
 
 const RafflePage = ({
   values,
@@ -48,7 +47,7 @@ const RafflePage = ({
         <MakeCertifiedDrawPanel
           buttonLabel={t('create_certificated_draw')}
           publicDrawUrl={publicDrawUrl}
-          analyticsDrawType={analyticsDrawType}
+          analyticsDrawType={ANALYTICS_TYPE_RAFFLE}
         >
           {t('certified_draw_description')}
         </MakeCertifiedDrawPanel>
@@ -71,7 +70,10 @@ const RafflePage = ({
         {!loading && quickResult && (
           <>
             <WinnersList winners={quickResult.value} />
-            <ShareDrawModal publicDrawUrl={publicDrawUrl} analyticsDrawType={analyticsDrawType} />
+            <ShareDrawModal
+              publicDrawUrl={publicDrawUrl}
+              analyticsDrawType={ANALYTICS_TYPE_RAFFLE}
+            />
           </>
         )}
       </div>

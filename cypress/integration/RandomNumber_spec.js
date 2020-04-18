@@ -1,6 +1,6 @@
 /* eslint-disable func-names, prefer-arrow-callback */
-
-describe('Random Number Page', () => {
+// TODO remove this skip
+describe.skip('Random Number Page', () => {
   ['macbook-13' /* , 'iphone-5' */].forEach(device => {
     context(`Device ${device}`, () => {
       beforeEach(() => {
@@ -168,7 +168,7 @@ describe('Random Number Page', () => {
           });
         });
 
-        it.only('Changing data after toss should create a new draw', function() {
+        it('Changing data after toss should create a new draw', function() {
           cy.visit('/number');
           cy.getComponent('SubmitFormButton').click();
           cy.mockedRequestWait('POST', '/api/random_number')
@@ -219,7 +219,7 @@ describe('Random Number Page', () => {
           });
         });
 
-        it.only('It should be possible to create a public draw', () => {
+        it('It should be possible to create a public draw', () => {
           cy.visit('/number/public');
 
           // Go to second step
@@ -255,56 +255,9 @@ describe('Random Number Page', () => {
             'eq',
             '/number/6ce5042f-f931-4a79-a716-dfadccc978d0/success',
           );
-
-          // // Attempt to submit step without filling the fields
-          // cy.getComponent('WizardForm__next-button').click();
-
-          // // Both fields should error as they are required
-          // cy.getComponent('PublicDetails__title-field').within(() => {
-          //   cy.getError().should('be.visible');
-          // });
-          // cy.getComponent('PublicDetails__description-field').within(() => {
-          //   cy.getError().should('be.visible');
-          // });
-
-          // // Fill the title and its error should recover
-          // cy.getComponent('PublicDetails__title-field-input').type('The title');
-          // cy.getComponent('PublicDetails__title-field').within(() => {
-          //   cy.getError().should('not.exist');
-          // });
-
-          // // Fill the description and its error should recover
-          // cy.getComponent('PublicDetails__description-field-input').type('A cool description');
-          // cy.getComponent('PublicDetails__description-field').within(() => {
-          //   cy.getError().should('not.exist');
-          // });
-
-          // // Go to second step
-          // cy.getComponent('WizardForm__next-button').click();
-
-          // // Go to third step
-          // cy.getComponent('WizardForm__next-button').click();
-
-          // // Submit the draw
-          // cy.getComponent('WizardForm__next-button').click();
-
-          // cy.mockedRequestWait('POST', '/api/random_number')
-          //   .its('requestBody')
-          //   .should('deep.eq', {
-          //     allow_repeated_results: false,
-          //     description: 'A cool description',
-          //     number_of_results: 1,
-          //     range_max: 10,
-          //     range_min: 1,
-          //     title: 'The title',
-          //   });
-          // cy.mockedRequestWait(
-          //   'POST',
-          //   '/api/random_number/6ce5042f-f931-4a79-a716-dfadccc978d0/toss',
-          // );
-          // cy.location('pathname').should('eq', '/number/6ce5042f-f931-4a79-a716-dfadccc978d0');
         });
       });
+
       describe('Published page', () => {
         it('Google Analytics pageview event is sent', () => {
           cy.visit('/number/6ce5042f-f931-4a79-a716-dfadccc978d0');
@@ -353,6 +306,19 @@ describe('Random Number Page', () => {
           cy.mockedRequestWait('GET', '/api/random_number/6ce5042f-f931-4a79-a716-dfadccc978d0');
           cy.getComponent('PublishedRandomNumberPage__Title').contains('The title');
           cy.getComponent('RandomNumberResult__result').should('be.visible');
+        });
+
+        it('Should show share buttons', () => {
+          cy.mockWindowOpen();
+          cy.visit('/number/6ce5042f-f931-4a79-a716-dfadccc978d0');
+          cy.getComponent('SocialButton__whatsapp').click();
+          cy.get('@ga').and('be.calledWith', 'send', {
+            hitType: 'event',
+            eventCategory: 'Number',
+            eventAction: 'Social Share Draw',
+            eventLabel: 'whatsapp',
+          });
+          cy.get('@winOpen').and('be.calledOnce');
         });
       });
     });

@@ -9,9 +9,9 @@ import RandomNumberQuickPage from './RandomNumberQuickPage.jsx';
 import throttle from '../../../services/throttle';
 import withTracking from '../../withTracking/withTracking.jsx';
 import recentDraws from '../../../services/recentDraws';
+import { ANALYTICS_TYPE_NUMBER } from '../../../constants/analyticsTypes';
 
 const randomNumberApi = new RandomNumberApi();
-const analyticsDrawType = 'Number';
 class RandomNumberPageContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -95,8 +95,11 @@ class RandomNumberPageContainer extends React.Component {
       const tossResponse = await randomNumberApi.randomNumberToss(privateId, {});
       const { track } = this.props;
       track({
-        mp: { name: `Toss - ${analyticsDrawType}`, properties: { drawType: analyticsDrawType } },
-        ga: { action: 'Toss', category: analyticsDrawType },
+        mp: {
+          name: `Toss - ${ANALYTICS_TYPE_NUMBER}`,
+          properties: { drawType: ANALYTICS_TYPE_NUMBER },
+        },
+        ga: { action: 'Toss', category: ANALYTICS_TYPE_NUMBER },
       });
       throttle(() => {
         this.setState({
@@ -129,10 +132,10 @@ class RandomNumberPageContainer extends React.Component {
       const { track } = this.props;
       track({
         mp: {
-          name: `Publish - ${analyticsDrawType}`,
-          properties: { drawType: analyticsDrawType, drawId: draw.id },
+          name: `Publish - ${ANALYTICS_TYPE_NUMBER}`,
+          properties: { drawType: ANALYTICS_TYPE_NUMBER, drawId: draw.id },
         },
-        ga: { action: 'Publish', category: analyticsDrawType, label: draw.id },
+        ga: { action: 'Publish', category: ANALYTICS_TYPE_NUMBER, label: draw.id },
       });
 
       const drawPath = `/number/${draw.id}/success`;

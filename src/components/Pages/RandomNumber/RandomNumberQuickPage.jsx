@@ -14,8 +14,7 @@ import ShareDrawModal from '../../ShareDrawModal/ShareDrawModal.jsx';
 import LoadingCoin from '../../LoadingCoin/LoadingCoin.jsx';
 import randomNumberOgImage from './random_number_og_image.png';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
-
-const analyticsDrawType = 'Number';
+import { ANALYTICS_TYPE_NUMBER } from '../../../constants/analyticsTypes';
 
 const RandomNumberQuickPage = props => {
   const {
@@ -43,7 +42,7 @@ const RandomNumberQuickPage = props => {
         <MakeCertifiedDrawPanel
           buttonLabel={t('create_certificated_draw')}
           publicDrawUrl={publicDrawUrl}
-          analyticsDrawType={analyticsDrawType}
+          analyticsDrawType={ANALYTICS_TYPE_NUMBER}
         >
           {t('certified_draw_description')}
         </MakeCertifiedDrawPanel>
@@ -67,7 +66,10 @@ const RandomNumberQuickPage = props => {
         {!loadingRequest && quickResult && (
           <>
             <RandomNumberResult result={quickResult} />
-            <ShareDrawModal publicDrawUrl={publicDrawUrl} analyticsDrawType={analyticsDrawType} />
+            <ShareDrawModal
+              publicDrawUrl={publicDrawUrl}
+              analyticsDrawType={ANALYTICS_TYPE_NUMBER}
+            />
           </>
         )}
       </div>

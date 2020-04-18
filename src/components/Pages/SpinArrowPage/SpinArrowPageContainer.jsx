@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SpinArrowPage from './SpinArrowPage.jsx';
 import withTracking from '../../withTracking/withTracking.jsx';
-
-const analyticsDrawType = 'Spin Arrow';
+import { ANALYTICS_TYPE_ARROW } from '../../../constants/analyticsTypes';
 
 class ArrowPageContainer extends Component {
   constructor(props) {
@@ -17,8 +16,11 @@ class ArrowPageContainer extends Component {
   handleToss = () => {
     const { track } = this.props;
     track({
-      mp: { name: `Toss - ${analyticsDrawType}`, properties: { drawType: analyticsDrawType } },
-      ga: { action: 'Toss', category: analyticsDrawType },
+      mp: {
+        name: `Toss - ${ANALYTICS_TYPE_ARROW}`,
+        properties: { drawType: ANALYTICS_TYPE_ARROW },
+      },
+      ga: { action: 'Toss', category: ANALYTICS_TYPE_ARROW },
     });
     const angle = Math.floor(Math.random() * 360);
     const randomInitialSpin = Math.floor(Math.random() * 5 + 8) * 360;
