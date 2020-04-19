@@ -7,6 +7,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import withReduxStore from '../lib/with-redux-store';
 import theme from '../EasTheme.jsx';
+import NextI18NextInstance from '../i18n';
 
 import config from '../config/config';
 
@@ -41,4 +42,4 @@ class MyApp extends App {
   }
 }
 
-export default withReduxStore(MyApp);
+export default withReduxStore(NextI18NextInstance.appWithTranslation(MyApp));

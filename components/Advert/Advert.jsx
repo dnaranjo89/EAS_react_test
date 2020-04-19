@@ -10,7 +10,6 @@ const Advert = () => {
     if (window) (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, []);
   const isMobile = useSelector(state => state.userRequest.isMobile);
-  console.log('isMobile', isMobile);
 
   const style = { display: 'inline-block', width: '728px', height: '90px' };
 

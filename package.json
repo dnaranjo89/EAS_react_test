@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ./server/index.js",
-    "dev": "next",
+    "dev": "node server.js",
+    "start": "NODE_ENV=production node start.js",
     "start:dev": "HTTPS=false react-scripts start",
     "start:test": "PORT=3005 REACT_APP_ENV=test HTTPS=false react-scripts start",
     "build": "react-scripts build",

@@ -396,6 +396,24 @@ const config = {
 
 /***/ }),
 
+/***/ "./i18n.js":
+/*!*****************!*\
+  !*** ./i18n.js ***!
+  \*****************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const NextI18Next = __webpack_require__(/*! next-i18next */ "next-i18next").default;
+
+const NextI18NextInstance = new NextI18Next({
+  defaultLanguage: 'es_ES',
+  otherLanguages: ['en_GB'] // ignoreRoutes: ['/_next/', '/static/', 'robots.txt'],
+
+});
+module.exports = NextI18NextInstance;
+
+/***/ }),
+
 /***/ "./lib/with-redux-store.js":
 /*!*********************************!*\
   !*** ./lib/with-redux-store.js ***!
@@ -412,7 +430,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store */ "./store.js");
 /* harmony import */ var _config_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config/config */ "./config/config.js");
 /* harmony import */ var _config_config__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_config_config__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "/Users/davidnaranjo/eas/eas-frontend/lib/with-redux-store.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -446,8 +463,6 @@ function getOrCreateStore(initialState) {
 function getInitialState(appContext) {
   const userAgent = _config_config__WEBPACK_IMPORTED_MODULE_3___default.a.isServer ? appContext.ctx.req.headers['user-agent'] : window.navigator.userAgent;
   const deviceType = ua_parser_js__WEBPACK_IMPORTED_MODULE_1___default()(userAgent).device.type;
-  console.log('userAgent', userAgent);
-  console.log('deviceType', deviceType);
   const isMobile = deviceType === 'mobile';
   return {
     userRequest: {
@@ -475,12 +490,7 @@ function getInitialState(appContext) {
       initialReduxState
     } = this.props;
     return __jsx(App, _extends({}, this.props, {
-      store: getOrCreateStore(initialReduxState),
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 56
-      },
-      __self: this
+      store: getOrCreateStore(initialReduxState)
     }));
   }
 
@@ -678,12 +688,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _lib_with_redux_store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../lib/with-redux-store */ "./lib/with-redux-store.js");
 /* harmony import */ var _EasTheme_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../EasTheme.jsx */ "./EasTheme.jsx");
-/* harmony import */ var _config_config__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../config/config */ "./config/config.js");
-/* harmony import */ var _config_config__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_config_config__WEBPACK_IMPORTED_MODULE_9__);
-var _jsxFileName = "/Users/davidnaranjo/eas/eas-frontend/pages/_app.jsx";
+/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../i18n */ "./i18n.js");
+/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_i18n__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _config_config__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../config/config */ "./config/config.js");
+/* harmony import */ var _config_config__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_config_config__WEBPACK_IMPORTED_MODULE_10__);
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
 
@@ -702,9 +711,9 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_2___default.a {
     //   ReactGA.initialize(config.googleAnalyticsID, { titleCase: false });
     // }
 
-    if (_config_config__WEBPACK_IMPORTED_MODULE_9___default.a.mixpanelEnabled) {
-      mixpanel_browser__WEBPACK_IMPORTED_MODULE_4___default.a.init(_config_config__WEBPACK_IMPORTED_MODULE_9___default.a.mixpanelID, {
-        debug: _config_config__WEBPACK_IMPORTED_MODULE_9___default.a.mixpanelDebug,
+    if (_config_config__WEBPACK_IMPORTED_MODULE_10___default.a.mixpanelEnabled) {
+      mixpanel_browser__WEBPACK_IMPORTED_MODULE_4___default.a.init(_config_config__WEBPACK_IMPORTED_MODULE_10___default.a.mixpanelID, {
+        debug: _config_config__WEBPACK_IMPORTED_MODULE_10___default.a.mixpanelDebug,
         track_pageview: false
       });
     } // initI18n(props.hostname);
@@ -718,50 +727,17 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_2___default.a {
       store
     } = this.props;
     return __jsx(react_redux__WEBPACK_IMPORTED_MODULE_1__["Provider"], {
-      store: store,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 28
-      },
-      __self: this
+      store: store
     }, __jsx(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__["ThemeProvider"], {
-      theme: _EasTheme_jsx__WEBPACK_IMPORTED_MODULE_8__["default"],
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 29
-      },
-      __self: this
-    }, __jsx(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_6___default.a, {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 30
-      },
-      __self: this
-    }), _config_config__WEBPACK_IMPORTED_MODULE_9___default.a.mixpanelEnabled ? __jsx(react_mixpanel__WEBPACK_IMPORTED_MODULE_3__["MixpanelProvider"], {
-      mixpanel: mixpanel_browser__WEBPACK_IMPORTED_MODULE_4___default.a,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 32
-      },
-      __self: this
-    }, __jsx(Component, _extends({}, pageProps, {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 33
-      },
-      __self: this
-    }))) : __jsx(Component, _extends({}, pageProps, {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 36
-      },
-      __self: this
-    }))));
+      theme: _EasTheme_jsx__WEBPACK_IMPORTED_MODULE_8__["default"]
+    }, __jsx(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_6___default.a, null), _config_config__WEBPACK_IMPORTED_MODULE_10___default.a.mixpanelEnabled ? __jsx(react_mixpanel__WEBPACK_IMPORTED_MODULE_3__["MixpanelProvider"], {
+      mixpanel: mixpanel_browser__WEBPACK_IMPORTED_MODULE_4___default.a
+    }, __jsx(Component, pageProps)) : __jsx(Component, pageProps)));
   }
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_lib_with_redux_store__WEBPACK_IMPORTED_MODULE_7__["default"])(MyApp));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_lib_with_redux_store__WEBPACK_IMPORTED_MODULE_7__["default"])(_i18n__WEBPACK_IMPORTED_MODULE_9___default.a.appWithTranslation(MyApp)));
 
 /***/ }),
 
@@ -967,6 +943,17 @@ module.exports = require("@material-ui/core/styles");
 /***/ (function(module, exports) {
 
 module.exports = require("mixpanel-browser");
+
+/***/ }),
+
+/***/ "next-i18next":
+/*!*******************************!*\
+  !*** external "next-i18next" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next-i18next");
 
 /***/ }),
 

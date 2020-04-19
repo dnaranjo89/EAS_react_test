@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FlipCoinPage from './FlipCoinPage.jsx';
 import withTracking from '../../hocs/withTracking.jsx';
+import withLoadedTranslations from '../../hocs/withLoadedTranslations.jsx';
 import { ANALYTICS_TYPE_COIN } from '../../constants/analyticsTypes.js';
 
 class FlipCoinPageContainer extends Component {
@@ -38,4 +39,4 @@ FlipCoinPageContainer.propTypes = {
   track: PropTypes.func.isRequired,
 };
 
-export default withTracking(FlipCoinPageContainer);
+export default withLoadedTranslations(['coin'])(withTracking(FlipCoinPageContainer));

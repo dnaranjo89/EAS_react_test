@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
+import { withTranslation } from '../../i18n';
 import DrawCard from './DrawCard.jsx';
 import DrawGroup from './DrawGroup.jsx';
 import Page from '../../components/Page/Page.jsx';
@@ -49,9 +49,9 @@ const HomePage = ({ t }) => (
         <DrawCard icon={randomLetter} href="/letter">
           {t('draw_title_random_letter')}
         </DrawCard>
-        <DrawCard icon={tournamentIcon} href="https://echaloasuerte.com/draw/new/tournament/">
+        {/* <DrawCard icon={tournamentIcon} href="https://echaloasuerte.com/draw/new/tournament/">
           {t('draw_title_tournament')}
-        </DrawCard>
+        </DrawCard> */}
       </DrawGroup>
       <DrawGroup title={t('simple_draws')}>
         <DrawCard icon={coinIcon} href="coin/">
@@ -60,7 +60,7 @@ const HomePage = ({ t }) => (
         <DrawCard icon={arrowIcon} href="/spinner">
           {t('draw_title_spin_arrow')}
         </DrawCard>
-        <DrawCard icon={cardsIcon} href="https://echaloasuerte.com/draw/new/cards/">
+        {/* <DrawCard icon={cardsIcon} href="https://echaloasuerte.com/draw/new/cards/">
           {t('draw_title_pick_card')}
         </DrawCard>
         <DrawCard icon={diceIcon} href="https://echaloasuerte.com/draw/new/dice/">
@@ -74,7 +74,7 @@ const HomePage = ({ t }) => (
         </DrawCard>
         <DrawCard icon={randomItemIcon} href="https://echaloasuerte.com/draw/new/item/">
           {t('draw_title_associate_items')}
-        </DrawCard>
+        </DrawCard> */}
       </DrawGroup>
       {/* <DrawCard icon={likeIcon} href="/facebook_photo">
         {t('draw_title_facebook_photo')}
@@ -83,8 +83,12 @@ const HomePage = ({ t }) => (
   </Page>
 );
 
+HomePage.getInitialProps = async () => ({
+  namespacesRequired: ['homepage'],
+});
+
 HomePage.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('HomePage')(HomePage);
+export default withTranslation('homepage')(HomePage);

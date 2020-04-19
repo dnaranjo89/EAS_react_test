@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames/bind';
-import { withTranslation } from 'react-i18next';
 import Typography from '@material-ui/core/Typography';
+import { withTranslation } from '../../i18n';
 import DrawHeading from '../../components/DrawHeading/DrawHeading.jsx';
 import Page from '../../components/Page/Page.jsx';
 import LearnMoreSection from '../../components/LearnMoreSection/LearnMoreSection.jsx';
@@ -91,4 +91,4 @@ FlipCoinPage.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('FlipCoinPage')(FlipCoinPage);
+export default withTranslation('coin')(FlipCoinPage);
