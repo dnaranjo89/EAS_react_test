@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import App from 'next/app';
 import { MixpanelProvider } from 'react-mixpanel';
@@ -11,35 +11,38 @@ import NextI18NextInstance from '../i18n';
 
 import config from '../config/config';
 
-class MyApp extends App {
-  constructor(props) {
-    super(props);
+if (config.mixpanelEnabled) {
+  mixpanel.init(config.mixpanelID, { debug: config.mixpanelDebug, track_pageview: false });
+}
+
+const EasApp = props => {
+  useEffect(() => {
     // if (config.googleAnalyticsEnabled) {
     //   ReactGA.initialize(config.googleAnalyticsID, { titleCase: false });
     // }
-    if (config.mixpanelEnabled) {
-      mixpanel.init(config.mixpanelID, { debug: config.mixpanelDebug, track_pageview: false });
+
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
     }
-    // initI18n(props.hostname);
-  }
+  }, []);
 
-  render() {
-    const { Component, pageProps, store } = this.props;
-    return (
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {config.mixpanelEnabled ? (
-            <MixpanelProvider mixpanel={mixpanel}>
-              <Component {...pageProps} />
-            </MixpanelProvider>
-          ) : (
+  const { Component, pageProps, store } = props;
+  return (
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {config.mixpanelEnabled ? (
+          <MixpanelProvider mixpanel={mixpanel}>
             <Component {...pageProps} />
-          )}
-        </ThemeProvider>
-      </Provider>
-    );
-  }
-}
+          </MixpanelProvider>
+        ) : (
+          <Component {...pageProps} />
+        )}
+      </ThemeProvider>
+    </Provider>
+  );
+};
 
-export default withReduxStore(NextI18NextInstance.appWithTranslation(MyApp));
+export default withReduxStore(NextI18NextInstance.appWithTranslation(EasApp));
