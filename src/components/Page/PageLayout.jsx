@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import STYLES from './PageLayout.scss';
+import STYLES from './PageLayout.module.scss';
 
 const c = classNames.bind(STYLES);
 const PageLayout = ({ sidePanel, children, contentClassName, isMobile }) =>

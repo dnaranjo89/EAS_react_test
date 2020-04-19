@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import Typography from '@material-ui/core/Typography';
+import { withTranslation } from '../../i18n';
 import DrawCard from '../../DrawCard/DrawCard.jsx';
 import Page from '../../Page/Page.jsx';
 import facebookIcon from './facebook.png';
 import raffleIcon from './raffle.svg';
 import rafflesOgImage from './raffles_og_image.png';
 
-import STYLES from './RafflesPage.scss';
+import STYLES from './RafflesPage.module.scss';
 
 const c = classNames.bind(STYLES);
 

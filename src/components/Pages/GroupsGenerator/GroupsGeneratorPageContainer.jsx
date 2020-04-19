@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { GroupsApi, Groups, DrawTossPayload } from 'echaloasuerte-js-sdk';
-import { withTranslation } from 'react-i18next';
+import { withTranslation } from '../../i18n';
 import moment from 'moment';
 import GroupsGeneratorPage from './GroupsGeneratorPage.jsx';
 import GroupsGeneratorQuickPage from './GroupsGeneratorQuickPage.jsx';

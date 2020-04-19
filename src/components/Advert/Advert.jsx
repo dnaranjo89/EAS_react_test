@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classnames from 'classnames/bind';
-import STYLES from './Advert.scss';
+import STYLES from './Advert.module.scss';
 
 const c = classnames.bind(STYLES);
 

@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import { withTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import Button from '@material-ui/core/Button';
 import { RandomNumberResult as RandomNumberResultClass } from 'echaloasuerte-js-sdk';
+import { withTranslation } from '../../i18n';
 import Page from '../../Page/Page.jsx';
 import RandomNumberResult from './RandomNumberResult.jsx';
 import ResultsBox from '../../ResultsBox/ResultsBox.jsx';
 import Countdown from '../../Countdown/Countdown.jsx';
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner.jsx';
-import STYLES from './PublishedRandomNumberPage.scss';
+import STYLES from './PublishedRandomNumberPage.module.scss';
 
 const c = classNames.bind(STYLES);
 

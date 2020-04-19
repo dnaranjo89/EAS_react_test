@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { withTranslation } from 'react-i18next';
+import { withTranslation } from '../../i18n';
 import PropTypes from 'prop-types';
 import { GroupsResult } from 'echaloasuerte-js-sdk';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';

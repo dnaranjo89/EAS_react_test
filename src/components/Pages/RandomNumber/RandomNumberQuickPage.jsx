@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { withTranslation } from 'react-i18next';
+import { withTranslation } from '../../i18n';
 import PropTypes from 'prop-types';
 import { RandomNumberResult as RandomNumberResultClass } from 'echaloasuerte-js-sdk';
 import SubmitFormButton from '../../SubmitFormButton/SubmitFormButton.jsx';

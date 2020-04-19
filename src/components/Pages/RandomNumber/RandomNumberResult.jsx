@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { RandomNumberResult as RandomNumberResultClass } from 'echaloasuerte-js-sdk';
 import classnames from 'classnames/bind';
-import STYLES from './RandomNumberResult.scss';
+import STYLES from './RandomNumberResult.module.scss';
 
 const c = classnames.bind(STYLES);
 

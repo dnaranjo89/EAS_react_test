@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from 'react-i18next';
 import i18n from 'i18next';
 import classnames from 'classnames/bind';
+import { withTranslation } from '../../i18n';
 import Page from '../../Page/Page.jsx';
-import STYLES from './PrivacyPolicyPage.scss';
+import STYLES from './PrivacyPolicyPage.module.scss';
 
 const c = classnames.bind(STYLES);
 

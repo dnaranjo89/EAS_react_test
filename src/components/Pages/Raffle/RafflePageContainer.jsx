@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import { withTranslation } from 'react-i18next';
+import { withTranslation } from '../../i18n';
 import { RaffleApi, Raffle, DrawTossPayload } from 'echaloasuerte-js-sdk';
 import moment from 'moment';
 import withTracking from '../../withTracking/withTracking.jsx';

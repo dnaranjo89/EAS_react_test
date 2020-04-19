@@ -1,5 +1,5 @@
 import React from 'react';
-import { withTranslation } from 'react-i18next';
+import { withTranslation } from '../../i18n';
 import PropTypes from 'prop-types';
 import SectionPanel from '../../SectionPanel/SectionPanel.jsx';
 import withFieldValidation from '../../FormValidation/withFieldValidation.jsx';

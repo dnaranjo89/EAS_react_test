@@ -16,6 +16,8 @@ import { getExperimentsAllocation } from '../../services/abtest';
 import config from '../../config/config';
 import defaultOgImage from './logo_og.png';
 import STYLES from './Page.module.scss';
+import Header from '../Header/Header.jsx';
+import Footer from '../Footer/Footer.jsx';
 
 const c = classNames.bind(STYLES);
 
@@ -86,12 +88,14 @@ class Page extends Component {
           link={canonicalLinks}
           meta={this.getMetaTags()}
         />
+        <Header />
         <div className={c('Page')}>
           <PageLayout sidePanel={sidePanel} contentClassName={contentClassName}>
             {children}
           </PageLayout>
           {showAdvert && <Advert />}
         </div>
+        <Footer />
       </Fragment>
     );
   }

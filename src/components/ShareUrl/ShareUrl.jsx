@@ -5,13 +5,13 @@ import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
-import { withTranslation } from 'react-i18next';
 import Button from '@material-ui/core/Button';
 import CloseIcon from '@material-ui/icons/Close';
 import Snackbar from '@material-ui/core/Snackbar';
 import Slide from '@material-ui/core/Slide';
 import * as Sentry from '@sentry/browser';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { withTranslation } from '../../i18n';
 import withTracking from '../withTracking/withTracking.jsx';
 import STYLES from './ShareUrl.module.scss';
 

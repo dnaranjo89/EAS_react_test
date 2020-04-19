@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from 'react-i18next';
 import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
@@ -17,8 +16,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { withTranslation } from '../../i18n';
 import withTracking from '../../withTracking/withTracking.jsx';
-import STYLES from './RecentDrawsPage.scss';
+import STYLES from './RecentDrawsPage.module.scss';
 import Page from '../../Page/Page.jsx';
 import RecentDraws from '../../../services/recentDraws';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';

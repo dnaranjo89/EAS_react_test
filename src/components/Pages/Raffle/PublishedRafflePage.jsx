@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import { withTranslation } from 'react-i18next';
+import { withTranslation } from '../../i18n';
 import { RaffleResult, Participant, Prize } from 'echaloasuerte-js-sdk';
 import { frontloadConnect } from 'react-frontload';
 import { connect } from 'react-redux';

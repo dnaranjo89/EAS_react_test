@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
-import { withTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import classnames from 'classnames/bind';
 import Typography from '@material-ui/core/Typography';
+import { withTranslation } from '../../i18n';
 import TextField from '../../TextField/TextField.jsx';
 import SectionPanel from '../../SectionPanel/SectionPanel.jsx';
 // import MultiValueDisplay from '../../MultiValueDisplay/MultiValueDisplay.jsx';
@@ -12,7 +12,7 @@ import WizardForm from '../../WizardForm/WizardForm.jsx';
 import FormValidationFeedback from '../../FormValidation/FormValidationFeedback.jsx';
 import Page from '../../Page/Page.jsx';
 import FacebookLoginButton from '../../FacebookLoginButton/FacebookLoginButton.jsx';
-import STYLES from './FacebookPhotoRafflePage.scss';
+import STYLES from './FacebookPhotoRafflePage.module.scss';
 
 const c = classnames.bind(STYLES);
 

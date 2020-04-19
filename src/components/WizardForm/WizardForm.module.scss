@@ -1,0 +1,22 @@
+@import '../variables.module';
+
+.WizardForm {
+  & &__stepper {
+    background-color: $color-primary-super-light;
+  }
+
+  &__buttons-row {
+    text-align: center;
+  }
+
+  &__buttons-row &__step-button {
+    margin: $spacing-md;
+  }
+
+  &__content {
+    @media (min-width: $media-desktop) {
+      width: 35rem;
+      margin: auto;
+    }
+  }
+}

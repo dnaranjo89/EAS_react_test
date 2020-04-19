@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 // import classnames from 'classnames/bind';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import { withTranslation } from 'react-i18next';
 import Typography from '@material-ui/core/Typography';
+import { withTranslation } from '../../i18n';
 import RouterButton from '../../RouterButton/RouterButton.jsx';
 import RecentDraws from '../../../services/recentDraws';
 // import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
@@ -17,7 +17,7 @@ import useCurrentUrl from '../../../hooks/useCurrentUrl';
 import SectionPanel from '../../SectionPanel/SectionPanel.jsx';
 import { analyticsTypesBySlug } from '../../../constants/analyticsTypes';
 
-// import STYLES from './SuccessfullyCreatedDraw.scss';
+// import STYLES from './SuccessfullyCreatedDraw.module.scss';
 // import headsIcon from './heads.png';
 // import tailsIcon from './tails.png';
 // import coinOgImage from './coin_og_image.png';

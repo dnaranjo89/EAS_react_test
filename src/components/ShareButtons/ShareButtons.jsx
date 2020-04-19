@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import classnames from 'classnames/bind';
 import SocialShareButton from './SocialShareButton.jsx';
 import ShareUrl from '../ShareUrl/ShareUrl.jsx';
-import STYLES from './ShareButtons.scss';
+import STYLES from './ShareButtons.module.scss';
 
 const c = classnames.bind(STYLES);
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from 'react-i18next';
 import classnames from 'classnames/bind';
 import CountdownHandler from 'react-countdown-now';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 import moment from 'moment';
-import STYLES from './Countdown.scss';
+import { withTranslation } from '../../i18n';
+import STYLES from './Countdown.module.scss';
 
 const c = classnames.bind(STYLES);
 

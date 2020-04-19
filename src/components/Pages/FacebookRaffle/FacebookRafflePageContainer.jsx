@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from 'react-i18next';
+import { withTranslation } from '../../i18n';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import moment from 'moment';
 import { RaffleApi, Raffle, Prize, DrawTossPayload } from 'echaloasuerte-js-sdk';

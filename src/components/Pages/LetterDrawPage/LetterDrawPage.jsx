@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from 'react-i18next';
 import classnames from 'classnames/bind';
-import STYLES from './LetterDrawPage.scss';
+import { withTranslation } from '../../i18n';
+import STYLES from './LetterDrawPage.module.scss';
 
 const c = classnames.bind(STYLES);
 class LetterDrawPage extends React.Component {

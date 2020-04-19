@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 import Typography from '@material-ui/core/Typography';
 
 import trumpetIcon from './trumpet.png';
-import STYLES from './ResultsBox.scss';
+import STYLES from './ResultsBox.module.scss';
 
 const c = classNames.bind(STYLES);
 

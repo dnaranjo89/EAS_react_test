@@ -1,5 +1,5 @@
 import React from 'react';
-import { withTranslation } from 'react-i18next';
+import { withTranslation } from '../../i18n';
 import PropTypes from 'prop-types';
 import { RaffleResult } from 'echaloasuerte-js-sdk';
 import classnames from 'classnames/bind';
@@ -16,7 +16,7 @@ import ShareDrawModal from '../../ShareDrawModal/ShareDrawModal.jsx';
 // import LearnMoreSection from '../../LearnMoreSection/LearnMoreSection.jsx';
 import ValidationProvider from '../../FormValidation/ValidationProvider.jsx';
 import raffleOgImage from './raffle_og_image.png';
-import STYLES from './RaffleQuickPage.scss';
+import STYLES from './RaffleQuickPage.module.scss';
 import { ANALYTICS_TYPE_RAFFLE } from '../../../constants/analyticsTypes';
 
 const c = classnames.bind(STYLES);

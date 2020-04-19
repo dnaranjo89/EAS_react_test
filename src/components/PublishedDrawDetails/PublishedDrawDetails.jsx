@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import classnames from 'classnames/bind';
-import STYLES from './PublishedDrawDetails.scss';
+import STYLES from './PublishedDrawDetails.module.scss';
 
 const c = classnames.bind(STYLES);
 

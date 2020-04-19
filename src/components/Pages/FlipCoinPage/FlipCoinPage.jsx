@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames/bind';
-import { withTranslation } from 'react-i18next';
 import Typography from '@material-ui/core/Typography';
+import { withTranslation } from '../../i18n';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import Page from '../../Page/Page.jsx';
 import LearnMoreSection from '../../LearnMoreSection/LearnMoreSection.jsx';
-import STYLES from './FlipCoinPage.scss';
+import STYLES from './FlipCoinPage.module.scss';
 import headsIcon from './heads.png';
 import tailsIcon from './tails.png';
 import coinOgImage from './coin_og_image.png';

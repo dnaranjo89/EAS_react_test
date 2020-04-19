@@ -2,12 +2,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import { withTranslation } from 'react-i18next';
 import Chip from '@material-ui/core/Chip';
 import classNames from 'classnames/bind';
 import { Prize } from 'echaloasuerte-js-sdk';
+import { withTranslation } from '../../i18n';
 
-import STYLES from './PrizesOverview.scss';
+import STYLES from './PrizesOverview.module.scss';
 
 const c = classNames.bind(STYLES);
 

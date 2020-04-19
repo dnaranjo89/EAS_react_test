@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from 'react-i18next';
 import * as Sentry from '@sentry/browser';
 import i18n from 'i18next';
+import { withTranslation } from '../../i18n';
 import {
   apiCall,
   fbAsyncInit,

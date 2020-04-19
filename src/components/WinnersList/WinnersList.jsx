@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
 import Typography from '@material-ui/core/Typography';
+import { withTranslation } from '../../i18n';
 import getOrdinal from '../../i18n/ordinals';
 
-import STYLES from './WinnersList.scss';
+import STYLES from './WinnersList.module.scss';
 
 const c = classNames.bind(STYLES);
 const WinnersList = ({ winners, t }) => (
