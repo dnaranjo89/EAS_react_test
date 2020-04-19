@@ -1,0 +1,66 @@
+@import '../variables.module.scss';
+
+$result-font-size: 10rem;
+$side-panel-width: 19rem;
+$side-panel-width-small: 15rem;
+$side-panel-padding: $spacing-lg;
+$side-panel-padding-small: $spacing-md;
+$side-panel-total-width: $side-panel-width + 2 * $side-panel-padding;
+$side-panel-total-width-small: $side-panel-width-small + 2 * $side-panel-padding-small;
+
+.PageLayout {
+  &__mobileContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+  }
+
+  &__extraContent {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+
+    @media (min-width: $media-desktop) {
+      flex-direction: row;
+    }
+
+    @media (min-width: $media-widescreen) {
+      width: 81rem;
+      margin: 0 auto;
+    }
+  }
+
+  &__contentOnly {
+    @media (min-width: $media-widescreen) {
+      width: 63rem;
+      margin: 0 auto;
+    }
+  }
+
+  &__centralColumn {
+    @media (min-width: $media-desktop) {
+      margin-left: $side-panel-total-width-small;
+      flex: 1 0 0;
+    }
+
+    @media (min-width: $media-widescreen) {
+      margin-left: $side-panel-total-width;
+    }
+  }
+
+  &__rightColumn {
+    padding: 0 $side-panel-padding-small;
+
+    @media (min-width: $media-desktop) {
+      width: $side-panel-width-small;
+      padding-right: $side-panel-padding-small;
+      padding-left: $side-panel-padding-small;
+    }
+
+    @media (min-width: $media-widescreen) {
+      width: $side-panel-width;
+      padding-right: $side-panel-padding;
+      padding-left: $side-panel-padding;
+    }
+  }
+}

@@ -46,7 +46,7 @@ class App extends Component {
         <FacebookProvider>
           <StylesProvider injectFirst>
             <ThemeProvider theme={theme}>
-              {config.mixpanelEnabled ? (
+              {false ? (
                 <MixpanelProvider mixpanel={mixpanel}>
                   <AppShell />
                 </MixpanelProvider>

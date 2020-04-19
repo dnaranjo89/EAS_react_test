@@ -1,0 +1,99 @@
+@import '../../components/variables.module.scss';
+
+$coin-size: 12.5rem;
+$color-transparent: rgba(0, 0, 0, 0);
+$animation-duration: 2s;
+$animation-bezier: $animation-duration cubic-bezier(0.43, 0.72, 0.54, 0.87) forwards;
+
+@keyframes flipHeads {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(1440deg);
+  } // 4 flips
+}
+
+@keyframes flipTails {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(1620deg);
+  } // 4.5 flips
+}
+
+.FlipCoinPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__container {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    flex: 1;
+
+    @media (min-width: $media-desktop) {
+      padding-top: 10vh;
+    }
+  }
+
+  &__coin {
+    position: relative;
+    width: $coin-size;
+    height: $coin-size;
+    margin: 0 auto;
+    margin-bottom: $spacing-sm;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    transform-style: preserve-3d;
+
+    &--heads {
+      animation: flipHeads $animation-bezier;
+    }
+
+    &--tails {
+      animation: flipTails $animation-bezier;
+    }
+  }
+
+  &__coin-side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+
+    &--tails {
+      transform: rotateY(-180deg);
+      background-color: $web-background-color;
+    }
+  }
+
+  & &__result {
+    opacity: 0;
+
+    &--animated {
+      animation: fade-in $animation-duration + 0.1 linear;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  95% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

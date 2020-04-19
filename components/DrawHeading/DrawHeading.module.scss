@@ -1,0 +1,13 @@
+@import '../variables.module.scss';
+
+.DrawHeading {
+  margin: $spacing-md $spacing-xs;
+
+  & &__subtitle {
+    margin-top: $spacing-xs;
+
+    @media (max-width: $media-tablet) {
+      display: none;
+    }
+  }
+}
