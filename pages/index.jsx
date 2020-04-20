@@ -4,7 +4,8 @@ import classNames from 'classnames/bind';
 import { withTranslation } from '../i18n';
 import Page from '../components/Page/Page.jsx';
 import Homepage from '../components/Pages/Homepage/Homepage.jsx';
-import STYLES from '../components/Pages/Homepage/HomePage.module.scss';
+import STYLES from '../components/Pages/Homepage/Homepage.module.scss';
+import withLoadedTranslations from '../hocs/withLoadedTranslations.jsx';
 
 const c = classNames.bind(STYLES);
 
@@ -19,12 +20,13 @@ const HomePage = ({ t }) => (
   </Page>
 );
 
-HomePage.getInitialProps = async () => ({
-  namespacesRequired: ['homepage'],
-});
-
 HomePage.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
+HomePage.getInitialProps = async () => ({
+  namespacesRequired: ['homepage'],
+});
+
+// TODO I'm tryeing to import translations for homeapge & header
 export default withTranslation('homepage')(HomePage);

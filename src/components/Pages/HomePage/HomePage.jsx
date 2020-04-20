@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 import classNames from 'classnames/bind';
-import { withTranslation } from '../../i18n';
 import DrawCard from '../../DrawCard/DrawCard.jsx';
 import DrawGroup from './DrawGroup.jsx';
 import Page from '../../Page/Page.jsx';
@@ -19,7 +19,7 @@ import associateItemsIcon from './associate_items.png';
 // import likeIcon from './like.jpg';
 import raffleIcon from './raffle.svg';
 
-import STYLES from './HomePage.module.scss';
+import STYLES from './HomePage.scss';
 
 const c = classNames.bind(STYLES);
 

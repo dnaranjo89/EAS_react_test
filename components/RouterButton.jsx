@@ -24,7 +24,7 @@ NextComposed.propTypes = {
 
 NextComposed.defaultProps = {
   as: undefined,
-  prefetch: false,
+  prefetch: undefined,
 };
 
 // A styled version of the Next.js Link component:
@@ -72,7 +72,7 @@ Link.defaultProps = {
   innerRef: undefined,
   naked: false,
   onClick: undefined,
-  prefetch: false,
+  prefetch: undefined,
 };
 
 export default React.forwardRef((props, ref) => <Link {...props} innerRef={ref} />);

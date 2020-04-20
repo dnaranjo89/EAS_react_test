@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import App from 'next/app';
+import ReactGA from 'react-ga';
+
 import { MixpanelProvider } from 'react-mixpanel';
 import mixpanel from 'mixpanel-browser';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -17,9 +19,9 @@ if (config.mixpanelEnabled) {
 
 const EasApp = props => {
   useEffect(() => {
-    // if (config.googleAnalyticsEnabled) {
-    //   ReactGA.initialize(config.googleAnalyticsID, { titleCase: false });
-    // }
+    if (config.googleAnalyticsEnabled) {
+      ReactGA.initialize(config.googleAnalyticsID, { titleCase: false });
+    }
 
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');

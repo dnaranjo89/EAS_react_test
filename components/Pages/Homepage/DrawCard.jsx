@@ -9,9 +9,9 @@ import STYLES from './DrawCard.module.scss';
 const c = classNames.bind(STYLES);
 
 const DrawCard = ({ href, icon, children }) => (
-  <Link className={c('DrawCard__link')} href={href}>
+  <Link href={href}>
     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-    <a>
+    <a className={c('DrawCard__link')}>
       <div className={c('DrawCard')}>
         <img className={c('DrawCard__icon')} src={icon} alt={children} />
         <Typography className={c('DrawCard__title')}>{children}</Typography>
