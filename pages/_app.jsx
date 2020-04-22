@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
 import App from 'next/app';
 import ReactGA from 'react-ga';
@@ -17,8 +17,8 @@ if (config.mixpanelEnabled) {
   mixpanel.init(config.mixpanelID, { debug: config.mixpanelDebug, track_pageview: false });
 }
 
-const EasApp = props => {
-  useEffect(() => {
+class EasApp extends App {
+  componentDidMount() {
     if (config.googleAnalyticsEnabled) {
       ReactGA.initialize(config.googleAnalyticsID, { titleCase: false });
     }
@@ -28,23 +28,25 @@ const EasApp = props => {
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
-  }, []);
+  }
 
-  const { Component, pageProps, store } = props;
-  return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        {config.mixpanelEnabled ? (
-          <MixpanelProvider mixpanel={mixpanel}>
+  render() {
+    const { Component, pageProps, store } = this.props;
+    return (
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {config.mixpanelEnabled ? (
+            <MixpanelProvider mixpanel={mixpanel}>
+              <Component {...pageProps} />
+            </MixpanelProvider>
+          ) : (
             <Component {...pageProps} />
-          </MixpanelProvider>
-        ) : (
-          <Component {...pageProps} />
-        )}
-      </ThemeProvider>
-    </Provider>
-  );
-};
+          )}
+        </ThemeProvider>
+      </Provider>
+    );
+  }
+}
 
 export default withReduxStore(NextI18NextInstance.appWithTranslation(EasApp));
