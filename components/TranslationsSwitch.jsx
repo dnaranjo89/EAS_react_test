@@ -69,4 +69,4 @@ TranslationsSwitch.propTypes = {
   i18n: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export default withTranslation('TranslationsSwitch')(TranslationsSwitch);
+export default withTranslation('common')(TranslationsSwitch);

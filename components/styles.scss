@@ -1,0 +1,7 @@
+@import './variables.module';
+
+body {
+  /* stylelint-disable-line selector-max-type */
+  margin: 0;
+  background-color: $web-background-color;
+}

@@ -58,4 +58,4 @@ Footer.propTypes = {
   i18n: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export default withTranslation('Footer')(Footer);
+export default withTranslation('common')(Footer);

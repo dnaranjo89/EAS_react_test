@@ -24,9 +24,6 @@ HomePage.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-HomePage.getInitialProps = async () => ({
-  namespacesRequired: ['homepage'],
-});
-
-// TODO I'm tryeing to import translations for homeapge & header
-export default withTranslation('homepage')(HomePage);
+export default withLoadedTranslations(['homepage', 'common'])(
+  withTranslation('homepage')(HomePage),
+);

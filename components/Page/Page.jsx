@@ -88,14 +88,14 @@ class Page extends Component {
           link={canonicalLinks}
           meta={this.getMetaTags()}
         />
-        {/* <Header /> */}
+        <Header />
         <div className={c('Page')}>
           <PageLayout sidePanel={sidePanel} contentClassName={contentClassName}>
             {children}
           </PageLayout>
           {showAdvert && <Advert />}
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </Fragment>
     );
   }

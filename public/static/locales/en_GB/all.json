@@ -1,0 +1,249 @@
+{
+  "ApiError": {
+    "api_error": "We are having some trouble in our servers."
+  },
+  "CookieBanner": {
+    "basic_info": "We use cookies to ensure the best experience in our site.",
+    "got_it": "Got it",
+    "learn_more": "Learn more"
+  },
+  "Countdown": {
+    "reload_page": "Please reload the page",
+    "results_published_on": "Results will be published on",
+    "time_remaining": "Time remaining"
+  },
+  "DateTimePicker": {
+    "cancel": "Cancel",
+    "date": "Date",
+    "ok": "Ok",
+    "only_future_date_valid": "You have to choose a date in the future",
+    "today": "Now"
+  },
+  "FacebookProvider": {
+    "error_message_impossible_to_log_in": "There was an error when trying to log with Facebook.",
+    "error_message_possibly_blocked": "There was an error when trying to log with Facebook, You may have some extenion in your browser that is blocking the connexion."
+  },
+  "FacebookRaffle": {
+    "draw_subheading": "People will be able to participate by logging in with the Facebook accounts",
+    "field_default_title": "Facebook raffle",
+    "field_label_when_to_toss": "Choose when results will be published",
+    "html_description": "Create a public raffle where participants will be able to join by login with the Facebook accounts.",
+    "html_keywords": "raffle in facebook, assign prizes, countdown, join raffle, public results",
+    "html_title": "Facebook Raffle",
+    "label_number_of_participants": "Number of participants:",
+    "label_prizes": "Prizes:",
+    "login_with_facebook_to_participate": "Login with Facebook to participate",
+    "or_access_as_someone_else": "Or access as someone else",
+    "page_title": "Raffle among Facebook users",
+    "participate_as": "Participate as {{username}}",
+    "people_registered_already": "There is {{count}} person registered",
+    "people_registered_already_plural": "There are {{count}} people registered",
+    "publish_draw": "Publish raffle",
+    "published_raffle_details": "Details of the raffle",
+    "share_draw": "Share this raffle",
+    "share_result": "Share these results",
+    "step_label_general_details": "General details",
+    "step_label_prizes": "Add the prizes",
+    "step_label_when_to_toss": "Date of the raffle",
+    "unable_to_register_in_raffle": "There was an error when trying to register in the raffle. Please try again later",
+    "winners": "Winners of the raffle",
+    "you_are_registered_as_username": "You are registered in the raffle as {{username}}"
+  },
+  "FlipCoinPage": {
+    "draw_subheading": "Flip a coin",
+    "html_description": "Do you need to make a decision? Flip a coin online. Head or tails, let the luck decide.",
+    "html_keywords": "flip a coin, heads or tails, luck, decide, yes, no 50 percent, virtual coin, flip online",
+    "html_title": "Heads or Tails",
+    "learn_more_content": "Coin flipping, coin tossing, or heads or tails is the practice of throwing a coin in the air and checking which side is showing when it lands, in order to choose between two alternatives. It is a form of sortition which inherently has two possible outcomes. The party who calls the side wins.",
+    "learn_more_title": "What is \"Heads or Tails\"?",
+    "page_title": "Head or tails",
+    "result_heads": "Heads",
+    "result_tails": "Tails",
+    "touch_to_toss": "Touch the coin to make it spin"
+  },
+  "Footer": {
+    "privacy_policy": "Privacy Policy"
+  },
+  "GroupsGenerator": {
+    "certified_draw_description": "If you want to make a public raffle to ensure an impartial result you should create a public raffle.",
+    "create_certificated_draw": "Generate groups publicly",
+    "draw_subheading": "Create groups online",
+    "error_form_not_enough_participants": "There are not enough participants to make {{numberOfGroups}} groups",
+    "field_default_title": "Random groups generator",
+    "field_label_number_of_groups": "How many groups do you want to make?",
+    "field_label_when_to_toss": "When do you want to publish the results?",
+    "generate_groups": "Generate groups",
+    "generated_groups": "Generated groups",
+    "html_description": "Create teams online. Split a group of people into smaller groups. Pair people from a group.",
+    "html_keywords": "random groups, random teams, make teams, raffle, match, pairs, couples, trios, match people",
+    "html_title": "Generate groups online",
+    "label_number_of_groups": "Number of groups:",
+    "label_participants": "Participants:",
+    "page_title": "Generate groups",
+    "publish_draw": "Publish draw",
+    "published_draw_details": "Raffle details",
+    "result_label_group": "Group {{groupNumber}}",
+    "share_draw": "Share this raffle",
+    "step_label_configure": "Add the participants",
+    "step_label_general_details": "General details",
+    "step_label_when_to_toss": "Date of the raffle"
+  },
+  "Header": {
+    "brand_name": "ChooseRandom",
+    "recent_draws": "Recent Raffles"
+  },
+  "ShareDrawModal": {
+    "share_result": "Share this result",
+    "share_result_dialog_body": "This a the result of a private draw, if you want to share the results of a draw you should create it publicly.<br/>You will be able to schedule when the results will be made public and share a link with the participants so they can see the results live.",
+    "share_result_dialog_cancel": "Cancel",
+    "share_result_dialog_ok": "Create raffle publicly",
+    "share_result_dialog_title": "Create raffle publicly to share the results"
+  },
+  "HomePage": {
+    "draw_title_facebook_photo": "Raffle among 'likes' in Facebook",
+    "draw_title_facebook_raffle": "Raffle among Facebook users",
+    "draw_title_flip_coin": "Flip a coin",
+    "draw_title_groups_generator": "Generate groups randomly",
+    "draw_title_pick_card": "Pick a card",
+    "draw_title_raffle": "Organize raffles",
+    "draw_title_random_letter": "Generate random letters",
+    "draw_title_random_number": "Generate random numbers",
+    "draw_title_roll_dice": "Roll a dice",
+    "draw_title_spin_arrow": "Spin an arrow",
+    "draw_title_tournament": "Organize a tournament",
+    "html_description": "Create online raffles, flip a coin, make teams... Take any decision randomly",
+    "html_title": "Take decisions randomly online - ChooseRandom",
+    "section_title_online_raffles": "Online raffles",
+    "section_title_simple_draws": "Simple choices"
+  },
+  "ParticipantsInput": {
+    "box_label_list_of_items": "List of participants",
+    "field_help_separate_participants_commas": "Separate participants by commas",
+    "field_label": "Participants",
+    "field_placeholder": "Add participants",
+    "message_no_participants_added": "You haven't added any participants"
+  },
+  "PrivacyPolicy": {
+    "html_title": "Privacy Policy"
+  },
+  "PrizesInput": {
+    "box_label_list_of_items": "List of prizes",
+    "field_help_separate_values_commas": "Separate prizes by commas or press Enter",
+    "field_label": "What are the prizes you are giving away?",
+    "field_placeholder": "Cruise to Bali, ...",
+    "message_no_values_added": "You haven't added any prizes"
+  },
+  "PrizesOverview": {
+    "prizes": "Prizes"
+  },
+  "PublicDetails": {
+    "description_label": "Description",
+    "description_placeholder": "Raffle description, rules, etc.",
+    "title_label": "Title of the raffle",
+    "title_placeholder": "Christmas raffle"
+  },
+  "Raffle": {
+    "certified_draw_description": "If you want to make a public raffle to ensure an impartial result you should create a public raffle.",
+    "create_certificated_draw": "Create a raffle publicly",
+    "draw_subheading": "Create an online raffle with prizes and share the results.",
+    "error_form_not_enough_participants": "There are {{numberOfPrizes}} prizes but only {{count}} participant. Add more participants",
+    "field_default_title": "Public raffle",
+    "field_label_when_to_toss": "Choose when to publish the winners",
+    "generate_results": "Raffle prizes",
+    "html_description": "Create online raffles. Let the luck decide who will be the winner of a prize.",
+    "html_keywords": "raffle, lottery, pool, choose winner, prizes",
+    "html_title": "Organize raffle",
+    "label_number_of_participants": "Number of participants:",
+    "label_prizes": "Prizes:",
+    "learn_more_content": "With this raffle you will be able to choose a list of participants and decide when the results will be published",
+    "learn_more_title": "What are the advantages of this raffle?",
+    "page_title": "Raffle with a closed list of participants",
+    "publish_draw": "Publish raffle",
+    "published_draw_details": "Raffle details",
+    "share_draw": "Share this raffle",
+    "step_label_configure": "Configure the raffle",
+    "step_label_general_details": "General details",
+    "step_label_when_to_toss": "Date of the raffle",
+    "winners": "Winners of the raffle"
+  },
+  "RafflesPage": {
+    "draw_title_facebook_raffle": "Raffle among Facebook users",
+    "draw_title_raffle": "Raffle with a list of participants",
+    "html_description": "Create online raffles, flip a coin, make teams... Take any decision randomly",
+    "html_title": "Take decisions randomly online - ChooseRandom",
+    "section_title_raffles": "Raffles"
+  },
+  "RandomNumber": {
+    "certified_draw_description": "If you want to make a public raffle to ensure an impartial result you should create a public raffle.",
+    "create_certificated_draw": "Create a public draw",
+    "draw_subheading": "Simple random number generator. Choose the range and the amount of numbers to generate.",
+    "error_field_message_min_results": "You must generate at least one number",
+    "error_form_invalid_ranges": "The chosen range (numbers between {{min}} and {{max}}) is not valid",
+    "error_form_range_not_big_enough": "The range is not big enough",
+    "field_default_title": "Public raffle",
+    "field_label_allow_repeated": "Allow repeated numbers",
+    "field_label_from": "From",
+    "field_label_number_of_results": "Number of results",
+    "field_label_to": "To",
+    "generate_numbers": "Generate numbers",
+    "generated_numbers": "Generated numbers",
+    "html_description": "Generate random numbers between two numbers, with or without repetitions. ChooseRandom's random number generator is quick and simple.",
+    "html_keywords": "random number, raffle, lottery",
+    "html_title": "Generate random numbers",
+    "page_title_public": "Public raffle with numbers",
+    "page_title_quick": "Generate random numbers",
+    "publish_draw": "Publish raffle",
+    "published_draw_details": "Draw details",
+    "step_label_configuration": "Configure the draw",
+    "step_label_general_details": "General details",
+    "step_label_when_to_toss": "Date of the raffle"
+  },
+  "RecentDrawsPage": {
+    "delete_all_recent_draws_modal_cancel": "Cancel",
+    "delete_all_recent_draws_modal_confirm": "Clear history",
+    "delete_all_recent_draws_modal_content": "Raffles are only removed from your history, participants will still be able to access them if they have the link.",
+    "delete_all_recent_draws_modal_title": "Do you want to clear your history of raffles?",
+    "delete_recent_draw_modal_confirm": "Remove raffle",
+    "delete_recent_draw_modal_content": "This raffle will only be removed from your history of recent raffles, participants who have the link will still be able to access it.",
+    "delete_recent_draw_modal_title": "Remove raffle from you history",
+    "delete_recent_raffles_button_label": "Remove all your recent raffles",
+    "empty_list": "You haven't published any raffle",
+    "html_title": "Recent Raffles",
+    "page_title": "Recent Raffles"
+  },
+  "ShareUrl": {
+    "copy": "Copy",
+    "url_copied": "Link copied to clipboard"
+  },
+  "SpinArrow": {
+    "draw_subheading": "Point to a random direction",
+    "html_description": "Do you need to decide who wil be the chosen one? Spin an arrow online",
+    "html_keywords": "spin arrow online, spinner, game, choose randomly",
+    "html_title": "Spin an arrow online",
+    "learn_more_content": "This arrow works best in mobile devices. Place it in the middle of a group, touch it to make it spin and the pointed person will be the winner. You can also use it as a random compass when you need to know where to go",
+    "learn_more_title": "What can an arrow be used for?",
+    "page_title": "Spin an arrow",
+    "touch_to_toss": "Hit the arrow to make it spin"
+  },
+  "SuccessfullyCreatedDraw": {
+    "congratulations": "Congratulations!",
+    "draw_created": "You have created you raffle",
+    "go_to_the_raffle": "Go to the raffle",
+    "html_title": "Raffle successfully created",
+    "share_link": "Share this link with everyone and they will be able to see the results live"
+  },
+  "TranslationsSwitch": {
+    "change_language": "Change language"
+  },
+  "WinnersList": {
+    "prize": "prize"
+  },
+  "WithFieldValidation": {
+    "default_message_min": "It must be at least {{min}}",
+    "default_message_required_field": "This field is required"
+  },
+  "WizardForm": {
+    "back": "Back",
+    "next": "Next"
+  }
+}
