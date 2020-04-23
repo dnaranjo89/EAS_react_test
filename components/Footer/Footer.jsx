@@ -43,7 +43,7 @@ const Footer = ({ t, i18n }) => {
 
   return (
     <footer className={c('Footer')}>
-      <Button href="/privacy-policy" color="textPrimary">
+      <Button href="/privacy-policy">
         <Typography className={c('Footer__link')} variant="body2" component="span">
           {t('privacy_policy')}
         </Typography>

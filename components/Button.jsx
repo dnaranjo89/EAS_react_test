@@ -3,19 +3,20 @@ import PropTypes from 'prop-types';
 import NextLink from 'next/link';
 import MuiButton from '@material-ui/core/Button';
 
-const ButtonLink = ({ className, href, hrefAs, children, prefetch }) => (
-  <NextLink href={href} as={hrefAs} prefetch>
+const ButtonLink = React.forwardRef(({ className, href, hrefAs, children, prefetch }, ref) => (
+  <NextLink ref={ref} href={href} as={hrefAs} prefetch>
+    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
     <a className={className}>{children}</a>
   </NextLink>
-);
+));
 
-const RouterButton = ({ children, ...rest }) => (
+const Button = ({ children, ...rest }) => (
   <MuiButton component={ButtonLink} {...rest}>
     {children}
   </MuiButton>
 );
-RouterButton.propTypes = {
+Button.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default RouterButton;
+export default Button;
