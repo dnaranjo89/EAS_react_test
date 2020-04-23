@@ -124,13 +124,6 @@
     "section_title_online_raffles": "Sorteos online",
     "section_title_simple_draws": "Sorteos simples"
   },
-  "ParticipantsInput": {
-    "box_label_list_of_items": "Lista de participantes",
-    "field_help_separate_participants_commas": "Separa los participantes por comas",
-    "field_label": "Participantes",
-    "field_placeholder": "Añade participantes",
-    "message_no_participants_added": "No has añadido ningún participante"
-  },
   "PrivacyPolicy": {
     "html_title": "Politica de privacidad"
   },

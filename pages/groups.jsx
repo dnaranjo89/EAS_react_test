@@ -189,6 +189,6 @@ GroupsGeneratorPageContainer.propTypes = {
 };
 GroupsGeneratorPageContainer.defaultProps = {};
 
-export default withLoadedTranslations(['groups'])(
-  withRouter(withTracking(withTranslation('GroupsGenerator')(GroupsGeneratorPageContainer))),
+export default withLoadedTranslations(['GroupsDraw', 'common', 'ParticipantsInput'])(
+  withRouter(withTracking(withTranslation('GroupsDraw')(GroupsGeneratorPageContainer))),
 );

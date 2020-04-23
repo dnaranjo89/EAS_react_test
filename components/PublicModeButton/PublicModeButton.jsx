@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RouterButton from '../RouterButton.jsx';
+import Button from '../Button.jsx';
 import withTracking from '../../hocs/withTracking.jsx';
 
 const PublicModeButton = ({ children, trackingData, track, ...rest }) => (
-  <RouterButton variant="contained" onClick={() => track(trackingData)} {...rest}>
+  <Button variant="contained" onClick={() => track(trackingData)} {...rest}>
     {children}
-  </RouterButton>
+  </Button>
 );
 
 PublicModeButton.propTypes = {

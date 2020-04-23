@@ -45,4 +45,4 @@ GroupsGeneratorConfigurationSection.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('GroupsGenerator')(GroupsGeneratorConfigurationSection);
+export default withTranslation('GroupsDraw')(GroupsGeneratorConfigurationSection);

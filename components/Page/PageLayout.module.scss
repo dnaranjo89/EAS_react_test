@@ -1,12 +1,12 @@
 @import '../variables.module';
 
-$result-font-size: 10rem;
-$side-panel-width: 19rem;
-$side-panel-width-small: 15rem;
+$result-font-size: 1rem;
+$side-panel-width: 23rem;
+$side-panel-width-small: 19rem;
 $side-panel-padding: $spacing-lg;
 $side-panel-padding-small: $spacing-md;
-$side-panel-total-width: $side-panel-width + 2 * $side-panel-padding;
-$side-panel-total-width-small: $side-panel-width-small + 2 * $side-panel-padding-small;
+$side-panel-total-width: $side-panel-width;
+$side-panel-total-width-small: $side-panel-width-small;
 
 .PageLayout {
   &__mobileContent {

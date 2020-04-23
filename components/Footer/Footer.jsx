@@ -6,7 +6,7 @@ import { withTranslation } from '../../i18n';
 import TranslationsSwitch from '../TranslationsSwitch.jsx';
 import STYLES from './Footer.module.scss';
 import config from '../../config/config';
-import RouterButton from '../RouterButton.jsx';
+import Button from '../Button.jsx';
 
 const c = classnames.bind(STYLES);
 
@@ -43,11 +43,11 @@ const Footer = ({ t, i18n }) => {
 
   return (
     <footer className={c('Footer')}>
-      <RouterButton href="/privacy-policy" color="textPrimary">
+      <Button href="/privacy-policy" color="textPrimary">
         <Typography className={c('Footer__link')} variant="body2" component="span">
           {t('privacy_policy')}
         </Typography>
-      </RouterButton>
+      </Button>
       <TranslationsSwitch onChange={handleChangeLanguage} available={availableLocales} />
     </footer>
   );

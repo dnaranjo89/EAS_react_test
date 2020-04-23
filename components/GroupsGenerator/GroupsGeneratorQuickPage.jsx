@@ -100,4 +100,4 @@ GroupsGeneratorQuickPage.defaultProps = {
   apiError: false,
 };
 
-export default withTranslation('GroupsGenerator')(GroupsGeneratorQuickPage);
+export default withTranslation('GroupsDraw')(GroupsGeneratorQuickPage);
