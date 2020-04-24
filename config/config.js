@@ -1,8 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
 
-const isServer = !(typeof window !== 'undefined' && window.document);
-
 let config = {};
 /** ****************
  * Possible environments:
@@ -35,17 +33,17 @@ if (environment) {
     const baseConfig = {
       OGImagesFullDomain: 'https://echaloasuerte.com',
       environment,
-      isServer,
       sentryDsn: 'https://bebd8f08ca1e44b0bd2b2d5f352332f4@o170509.ingest.sentry.io/1247679',
     };
 
     const environmentConfig = require(`./${environment}`).default; // eslint-disable-line
     config = Object.assign({}, baseConfig, environmentConfig);
 
+    // TODO
     // Disable logs and events when rendering in server
-    config.googleAnalyticsEnabled = !isServer && config.googleAnalyticsEnabled;
-    config.mixpanelEnabled = !isServer && config.mixpanelEnabled;
-    config.sentryEnabled = !isServer && config.sentryEnabled;
+    config.googleAnalyticsEnabled = config.googleAnalyticsEnabled;
+    config.mixpanelEnabled = config.mixpanelEnabled;
+    config.sentryEnabled = config.sentryEnabled;
   } catch (e) {
     console.error('No application config could be found.', e);
   }

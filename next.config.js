@@ -5,16 +5,27 @@ const withSourceMaps = require('@zeit/next-source-maps')();
 // Use the SentryWebpack plugin to upload the source maps during build step
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 
-const { SENTRY_DSN, SENTRY_ORG, SENTRY_PROJECT, REACT_APP_ENV } = process.env;
-console.debug(
-  `Building Next with NODE_ENV="${process.env.NODE_ENV}" APP_STAGE="${process.env.APP_STAGE}" for CUSTOMER_REF="${process.env.CUSTOMER_REF}"`,
-);
+const { SENTRY_DSN, SENTRY_ORG, SENTRY_PROJECT, REACT_APP_ENV, NODE_ENV } = process.env;
+
+const isDevelopmentServer = NODE_ENV !== 'production';
+
+if (!isDevelopmentServer && !REACT_APP_ENV) {
+  /** ****************
+   * Possible environments:
+   * - production (deployed app, both in the prod and dev server)
+   * - local (running locally)
+   * - test (running battery tests)
+   **************** */
+  throw Error(
+    'you need to specify an environment in REACT_APP_ENV. Possible values [production, local, test]',
+  );
+}
 
 module.exports = withImages(
   withTM(
     withSourceMaps({
       env: {
-        REACT_APP_ENV,
+        APP_ENV: REACT_APP_ENV || 'local',
       },
       webpack: (config, options) => {
         // In `pages/_app.js`, Sentry is imported from @sentry/node. While
@@ -34,7 +45,6 @@ module.exports = withImages(
         if (!options.isServer) {
           config.resolve.alias['@sentry/node'] = '@sentry/browser'; // eslint-disable-line no-param-reassign
         }
-
         // When all the Sentry configuration env variables are available/configured
         // The Sentry webpack plugin gets pushed to the webpack plugins to build
         // and upload the source maps to sentry.

@@ -1,6 +1,5 @@
-import config from '../config/config';
+import { isServer } from '../utils';
 
-const { isServer } = config;
 const recentDrawsKey = 'recentDraws';
 const maxLength = 20;
 const buildData = (draw, url, scheduleDate) => ({

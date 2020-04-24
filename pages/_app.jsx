@@ -28,7 +28,6 @@ Sentry.init({
   dsn: config.sentryDsn,
   environment: config.environment,
 });
-// initWinstonLogging({ isServer: config.isServer });
 
 class EasApp extends App {
   componentDidMount() {
