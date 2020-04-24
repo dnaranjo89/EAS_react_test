@@ -1,5 +1,5 @@
 import * as EASApi from 'echaloasuerte-js-sdk';
-import config from '../config/config';
+import config from '../config';
 
 export default function(hostname) {
   const { APIBasePath } = config;

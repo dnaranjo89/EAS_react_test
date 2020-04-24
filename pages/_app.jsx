@@ -13,18 +13,18 @@ import theme from '../EasTheme.jsx';
 import NextI18NextInstance from '../i18n';
 import '../components/styles.scss';
 import setupApi from '../utils/setupApi';
-// import initWinstonLogging from '../utils/logging/winston';
+import { isServer } from '../utils';
 
-import config from '../config/config';
+import config from '../config';
 
-if (config.mixpanelEnabled) {
+if (!isServer && config.mixpanelEnabled) {
   mixpanel.init(config.mixpanelID, { debug: config.mixpanelDebug, track_pageview: false });
 }
 
 setupApi();
 
 Sentry.init({
-  // enabled: config.environment === 'production',
+  enabled: config.environment === 'production',
   dsn: config.sentryDsn,
   environment: config.environment,
 });
@@ -39,15 +39,6 @@ class EasApp extends App {
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
-    }
-    try {
-      throw new Error('baammmm');
-    } catch (error) {
-      Sentry.withScope(scope => {
-        scope.setExtra('message', 'now yes');
-        scope.setExtra('Action', 'raffleRead');
-        Sentry.captureException(error);
-      });
     }
   }
 

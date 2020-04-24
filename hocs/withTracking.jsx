@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactGA from 'react-ga';
 import withMixpanel from './withMixpanel.jsx';
-import config from '../config/config';
+import config from '../config';
 import { getExperimentsAllocation } from '../services/abtest';
 
 const withTracking = WrappedComponent => {

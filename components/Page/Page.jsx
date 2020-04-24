@@ -13,7 +13,7 @@ import Advert from '../Advert/Advert.jsx';
 import PageLayout from './PageLayout.jsx';
 import { hotjar } from '../../services/hotjar';
 import { getExperimentsAllocation } from '../../services/abtest';
-import config from '../../config/config';
+import config from '../../config';
 import defaultOgImage from './logo_og.png';
 import STYLES from './Page.module.scss';
 import Header from '../Header/Header.jsx';

@@ -13,4 +13,4 @@ const config = {
   facebookAppId: '00000000000',
 };
 
-export default config;
+module.exports = config;

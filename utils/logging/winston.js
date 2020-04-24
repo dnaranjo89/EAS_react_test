@@ -2,7 +2,7 @@ import winston, { format } from 'winston';
 // import path from 'path';
 
 import { NullTransport } from 'winston-null';
-import config from '../../config/config';
+import config from '../../config';
 // import { getLogsPath, maxFiles, logsSuffix } from './common';
 
 // const MAX_SIZE_WINSTON = 10485760;

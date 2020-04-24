@@ -37,6 +37,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-plugin-file-loader": "^1.1.1",
     "body-parser": "^1.18.3",
+    "chalk": "^4.0.0",
     "classnames": "^2.2.5",
     "connected-react-router": "^6.3.1",
     "echaloasuerte-js-sdk": "0.0.12",

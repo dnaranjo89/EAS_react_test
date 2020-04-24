@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { withTranslation } from '../../i18n';
 import TranslationsSwitch from '../TranslationsSwitch.jsx';
 import STYLES from './Footer.module.scss';
-import config from '../../config/config';
+import config from '../../config';
 import Button from '../Button.jsx';
 
 const c = classnames.bind(STYLES);

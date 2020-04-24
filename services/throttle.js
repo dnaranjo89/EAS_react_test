@@ -1,4 +1,4 @@
-import config from '../config/config';
+import config from '../config';
 
 const MINIMUM_TIME = 1500;
 const VARIABLE_TIME = 1000;

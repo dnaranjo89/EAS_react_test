@@ -1,6 +1,6 @@
 import React from 'react';
 import { MixpanelConsumer } from 'react-mixpanel';
-import config from '../config/config';
+import config from '../config';
 
 const withMixpanel = WrappedComponent => {
   const WithMixpanel = props =>

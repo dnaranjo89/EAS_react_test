@@ -4,21 +4,26 @@ const withTM = require('next-transpile-modules')(['echaloasuerte-js-sdk']);
 const withSourceMaps = require('@zeit/next-source-maps')();
 // Use the SentryWebpack plugin to upload the source maps during build step
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
+const chalk = require('chalk');
 
 const { SENTRY_DSN, SENTRY_ORG, SENTRY_PROJECT, REACT_APP_ENV, NODE_ENV } = process.env;
 
 const isDevelopmentServer = NODE_ENV !== 'production';
 
 if (!isDevelopmentServer && !REACT_APP_ENV) {
+  // TODO we could take a look at using a custom config file for preprod
   /** ****************
    * Possible environments:
    * - production (deployed app, both in the prod and dev server)
    * - local (running locally)
    * - test (running battery tests)
    **************** */
-  throw Error(
-    'you need to specify an environment in REACT_APP_ENV. Possible values [production, local, test]',
+  console.log(
+    chalk.bold.red(
+      'If you are running `npm run build` or `npm run start` you need to specify an environment in REACT_APP_ENV. Possible values [production, local, test]',
+    ),
   );
+  throw Error('No environment specified');
 }
 
 module.exports = withImages(
@@ -42,6 +47,7 @@ module.exports = withImages(
         //
         // So ask Webpack to replace @sentry/node imports with @sentry/browser when
         // building the browser's bundle
+
         if (!options.isServer) {
           config.resolve.alias['@sentry/node'] = '@sentry/browser'; // eslint-disable-line no-param-reassign
         }
@@ -51,7 +57,7 @@ module.exports = withImages(
         // This is an alternative to manually uploading the source maps
         // I would still like to uncomment the code below to send the sourcemaps to Sentry
         // https://github.com/zeit/next.js/tree/c60511c76d8dc07a4738da5b1677f32dfa1dc52b/examples/with-sentry-simple
-        if (SENTRY_DSN && SENTRY_ORG && SENTRY_PROJECT) {
+        if (!isDevelopmentServer && SENTRY_DSN && SENTRY_ORG && SENTRY_PROJECT) {
           config.plugins.push(
             new SentryWebpackPlugin({
               include: '.next',

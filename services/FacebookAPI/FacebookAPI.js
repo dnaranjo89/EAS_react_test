@@ -1,5 +1,5 @@
 // eslint-disable-line no-console
-import config from '../../config/config';
+import config from '../../config';
 
 const DEBUG = false;
 const log = message => DEBUG && console.log(message);
