@@ -109,4 +109,4 @@ GroupsGeneratorPage.defaultProps = {
 
 const mapStateToProps = state => ({ isMobile: state.userRequest.isMobile });
 
-export default withTranslation('GroupsGenerator')(connect(mapStateToProps)(GroupsGeneratorPage));
+export default withTranslation('GroupsDraw')(connect(mapStateToProps)(GroupsGeneratorPage));

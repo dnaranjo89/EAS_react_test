@@ -1,5 +1,10 @@
 {
   "default_message_min": "Tiene que ser mayor o igual que {{min}}",
   "default_message_required_field": "Este campo es obligatorio",
-  "api_error": "Estamos teniendo problemas en nuestro servidor."
+  "api_error": "Estamos teniendo problemas en nuestro servidor.",
+  "share_result": "Comparte este resultado",
+  "share_result_dialog_body": "Éste es un resultado de una tirada privada, si quieres compartir los resultados tendrás que crear un sorteo público.<br/>Podrás especificar una fecha en la que el resultado se hará público y compartir un link para que los participantes puedan ver el resultado en directo.",
+  "share_result_dialog_cancel": "Cancelar",
+  "share_result_dialog_ok": "Crear sorteo público",
+  "share_result_dialog_title": "Crea un sorteo públicamente para compartirlo"
 }

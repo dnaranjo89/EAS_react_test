@@ -84,7 +84,7 @@ PublishedGroupsGeneratorPage.propTypes = {
 
 PublishedGroupsGeneratorPage.defaultProps = {};
 
-const TranslatedPage = withTranslation('GroupsGenerator')(PublishedGroupsGeneratorPage);
+const TranslatedPage = withTranslation('GroupsDraw')(PublishedGroupsGeneratorPage);
 
 const mapsStateToProps = state => ({
   draw: state.draws.draw,

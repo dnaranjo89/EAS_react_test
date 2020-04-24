@@ -1,5 +1,10 @@
 {
   "default_message_min": "It must be at least {{min}}",
   "default_message_required_field": "This field is required",
-  "api_error": "We are having some trouble in our servers."
+  "api_error": "We are having some trouble in our servers.",
+  "share_result": "Share this result",
+  "share_result_dialog_body": "This a the result of a private draw, if you want to share the results of a draw you should create it publicly.<br/>You will be able to schedule when the results will be made public and share a link with the participants so they can see the results live.",
+  "share_result_dialog_cancel": "Cancel",
+  "share_result_dialog_ok": "Create raffle publicly",
+  "share_result_dialog_title": "Create raffle publicly to share the results"
 }

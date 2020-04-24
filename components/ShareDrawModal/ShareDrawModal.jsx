@@ -90,4 +90,4 @@ ShareDrawModal.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withMobileDialog()(withTranslation('ShareDrawModal')(ShareDrawModal));
+export default withMobileDialog()(withTranslation('DrawCreationCommon')(ShareDrawModal));
