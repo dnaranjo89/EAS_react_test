@@ -1,0 +1,5 @@
+{
+  "default_message_min": "It must be at least {{min}}",
+  "default_message_required_field": "This field is required",
+  "api_error": "We are having some trouble in our servers."
+}

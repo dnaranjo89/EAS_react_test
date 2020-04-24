@@ -1,5 +1,5 @@
 import { GroupsApi, RaffleApi } from 'echaloasuerte-js-sdk';
-import * as Sentry from '@sentry/browser';
+// import * as Sentry from '@sentry/browser';
 import winston from 'winston';
 import { FETCH_DRAW } from './types';
 
@@ -28,12 +28,12 @@ export const fetchRaffleDraw = drawId => dispatch =>
         resolve();
       })
       .catch(error => {
-        Sentry.withScope(scope => {
-          scope.setExtra('message', 'API Error');
-          scope.setExtra('Action', 'raffleRead');
-          scope.setExtra('drawId', drawId);
-          Sentry.captureException(error);
-        });
+        // Sentry.withScope(scope => {
+        //   scope.setExtra('message', 'API Error');
+        //   scope.setExtra('Action', 'raffleRead');
+        //   scope.setExtra('drawId', drawId);
+        //   Sentry.captureException(error);
+        // });
         winston.error('API Error: raffleRead', { drawId, error });
         reject(error);
         throw error;
@@ -69,12 +69,12 @@ export const fetchDraw = drawId => dispatch =>
         resolve();
       })
       .catch(error => {
-        Sentry.withScope(scope => {
-          scope.setExtra('message', 'API Error');
-          scope.setExtra('Action', 'groupsRead');
-          scope.setExtra('drawId', drawId);
-          Sentry.captureException(error);
-        });
+        // Sentry.withScope(scope => {
+        //   scope.setExtra('message', 'API Error');
+        //   scope.setExtra('Action', 'groupsRead');
+        //   scope.setExtra('drawId', drawId);
+        //   Sentry.captureException(error);
+        // });
         winston.error('API Error: groupsRead', { drawId, error });
         reject(error);
         throw error;

@@ -124,7 +124,7 @@ const withFieldValidation = WrappedComponent => {
 
   WithFieldValidation.contextType = ValidationContext;
 
-  return withTranslation('WithFieldValidation')(WithFieldValidation);
+  return withTranslation('DrawCreationCommon')(WithFieldValidation);
 };
 
 export default withFieldValidation;

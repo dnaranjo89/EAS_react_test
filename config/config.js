@@ -12,6 +12,7 @@ let config = {};
  **************** */
 let environment;
 
+console.log('process.env.REACT_APP_ENV', process.env.REACT_APP_ENV);
 if (process.env.REACT_APP_ENV) {
   environment = process.env.REACT_APP_ENV;
 } else if (process.env.NODE_ENV === 'development') {
@@ -35,10 +36,10 @@ if (environment) {
       OGImagesFullDomain: 'https://echaloasuerte.com',
       environment,
       isServer,
-      sentryDsn: 'https://bebd8f08ca1e44b0bd2b2d5f352332f4@sentry.io/1247679',
+      sentryDsn: 'https://bebd8f08ca1e44b0bd2b2d5f352332f4@o170509.ingest.sentry.io/1247679',
     };
 
-    const environmentConfig = require(`./${environment}`).default; // eslint-disable-line 
+    const environmentConfig = require(`./${environment}`).default; // eslint-disable-line
     config = Object.assign({}, baseConfig, environmentConfig);
 
     // Disable logs and events when rendering in server

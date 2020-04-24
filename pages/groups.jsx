@@ -28,7 +28,7 @@ class GroupsGeneratorPageContainer extends React.Component {
       values: {
         title: '', // Default title is set in CDM
         description: '',
-        participants: [],
+        participants: ['asdasd', 'qqqq'],
         numberOfGroups: '2',
         dateScheduled,
       },
@@ -66,7 +66,7 @@ class GroupsGeneratorPageContainer extends React.Component {
 
   createDraw = () => {
     // const { match } = this.props;
-    const { public: isPublic } = props;
+    const { public: isPublic } = this.props;
     const { values } = this.state;
     const { title, description, participants, numberOfGroups } = values;
     const drawData = {
@@ -84,6 +84,7 @@ class GroupsGeneratorPageContainer extends React.Component {
     this.setState({
       loadingRequest: true,
     });
+    console.log('this.state', this.state);
 
     let { privateId } = this.state;
     try {
@@ -111,6 +112,7 @@ class GroupsGeneratorPageContainer extends React.Component {
         });
       }, tsStart);
     } catch (err) {
+      console.log('err', err);
       this.setState({
         APIError: true,
         loadingRequest: false,
@@ -189,6 +191,9 @@ GroupsGeneratorPageContainer.propTypes = {
 };
 GroupsGeneratorPageContainer.defaultProps = {};
 
-export default withLoadedTranslations(['GroupsDraw', 'common', 'ParticipantsInput'])(
-  withRouter(withTracking(withTranslation('GroupsDraw')(GroupsGeneratorPageContainer))),
-);
+export default withLoadedTranslations([
+  'GroupsDraw',
+  'common',
+  'ParticipantsInput',
+  'DrawCreationCommon',
+])(withRouter(withTracking(withTranslation('GroupsDraw')(GroupsGeneratorPageContainer))));
