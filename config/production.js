@@ -7,7 +7,7 @@ const config = {
   googleAnalyticsEnabled: true,
   mixpanelEnabled: true,
   sentryEnabled: true,
-  APIBasePath: '/api',
+  apiBasePath: 'https://echaloasuerte.com/api',
   facebookAppId: '239321593490183',
 };
 

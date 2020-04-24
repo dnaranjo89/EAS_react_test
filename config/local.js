@@ -7,7 +7,7 @@ const config = {
   googleAnalyticsEnabled: true,
   mixpanelEnabled: true,
   sentryEnabled: false,
-  APIBasePath: 'http://127.0.0.1:8000/api',
+  apiBasePath: 'http://127.0.0.1:8000/api',
   facebookAppId: '258744194669921',
 };
 

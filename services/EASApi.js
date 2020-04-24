@@ -1,9 +1,15 @@
 import * as EASApi from 'echaloasuerte-js-sdk';
 import config from '../config';
 
-const { APIBasePath } = config;
+const init = () => {
+  const { apiBasePath } = config;
+  const defaultClient = EASApi.ApiClient.instance;
 
-const defaultClient = EASApi.ApiClient.instance;
-defaultClient.basePath = APIBasePath;
+  // hostname is only set server side. In client side the path will be relative
+  defaultClient.basePath = apiBasePath;
+  defaultClient.timeout = 10000;
+};
 
-export default EASApi;
+export default {
+  init,
+};

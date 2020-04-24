@@ -9,7 +9,7 @@ const config = {
   // More details on https://github.com/etcaterva/eas-frontend/issues/122
   mixpanelEnabled: false,
   sentryEnabled: false,
-  APIBasePath: 'http://unexisting-domain.com/api',
+  apiBasePath: 'http://unexisting-domain.com/api',
   facebookAppId: '00000000000',
 };
 

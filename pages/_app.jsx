@@ -12,7 +12,7 @@ import withReduxStore from '../redux/with-redux-store';
 import theme from '../EasTheme.jsx';
 import NextI18NextInstance from '../i18n';
 import '../components/styles.scss';
-import setupApi from '../utils/setupApi';
+import EasApi from '../services/EasApi';
 import { isServer } from '../utils';
 
 import config from '../config';
@@ -21,7 +21,7 @@ if (!isServer && config.mixpanelEnabled) {
   mixpanel.init(config.mixpanelID, { debug: config.mixpanelDebug, track_pageview: false });
 }
 
-setupApi();
+EasApi.init();
 
 Sentry.init({
   enabled: config.environment === 'production',
