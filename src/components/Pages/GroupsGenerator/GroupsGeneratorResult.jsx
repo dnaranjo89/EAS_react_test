@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { GroupsResult } from 'echaloasuerte-js-sdk';
 import classnames from 'classnames/bind';
 import { withTranslation } from '../../i18n';
-import STYLES from './GroupsGeneratorResult.scss';
+import STYLES from './GroupsGeneratorResult.module.scss';
 
 const c = classnames.bind(STYLES);
 

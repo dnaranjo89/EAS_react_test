@@ -6,7 +6,7 @@ import { withTranslation } from '../../i18n';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import Page from '../../Page/Page.jsx';
 import LearnMoreSection from '../../LearnMoreSection/LearnMoreSection.jsx';
-import STYLES from './FlipCoinPage.scss';
+import STYLES from './FlipCoinPage.module.scss';
 import headsIcon from './heads.png';
 import tailsIcon from './tails.png';
 import coinOgImage from './coin_og_image.png';

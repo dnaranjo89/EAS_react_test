@@ -14,7 +14,7 @@ import { hotjar } from '../../services/hotjar';
 import { getExperimentsAllocation } from '../../services/abtest';
 import config from '../../config/config';
 import defaultOgImage from './logo_og.png';
-import STYLES from './Page.scss';
+import STYLES from './Page.module.scss';
 
 const c = classNames.bind(STYLES);
 

@@ -18,7 +18,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { withTranslation } from '../../i18n';
 import withTracking from '../../withTracking/withTracking.jsx';
-import STYLES from './RecentDrawsPage.scss';
+import STYLES from './RecentDrawsPage.module.scss';
 import Page from '../../Page/Page.jsx';
 import RecentDraws from '../../../services/recentDraws';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';

@@ -8,7 +8,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import classnames from 'classnames/bind';
-import STYLES from './MultiValueInput.scss';
+import STYLES from './MultiValueInput.module.scss';
 
 const c = classnames.bind(STYLES);
 

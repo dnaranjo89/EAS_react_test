@@ -1,10 +1,9 @@
-import { useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
+
 import { useSelector } from 'react-redux';
-import getHostname from '../selectors/getHostname';
+import getHostname from '../redux/selectors/getHostname';
 
 export default function useCurrentUrl() {
-  const location = useLocation();
-  const { pathname } = location;
-  const hostname = useSelector(getHostname);
-  return `https://${hostname}${pathname}`;
+  const { host, pathname } = window.location;
+  return `https://${host}${pathname}`;
 }

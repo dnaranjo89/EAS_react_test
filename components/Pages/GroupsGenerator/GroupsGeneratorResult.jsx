@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { GroupsResult } from 'echaloasuerte-js-sdk';
 import classnames from 'classnames/bind';
-import { withTranslation } from '../../i18n';
+import { withTranslation } from '../../../i18n';
 import STYLES from './GroupsGeneratorResult.module.scss';
 
 const c = classnames.bind(STYLES);

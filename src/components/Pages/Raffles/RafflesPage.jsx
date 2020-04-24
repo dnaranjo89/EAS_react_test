@@ -9,7 +9,7 @@ import facebookIcon from './facebook.png';
 import raffleIcon from './raffle.svg';
 import rafflesOgImage from './raffles_og_image.png';
 
-import STYLES from './RafflesPage.scss';
+import STYLES from './RafflesPage.module.scss';
 
 const c = classNames.bind(STYLES);
 

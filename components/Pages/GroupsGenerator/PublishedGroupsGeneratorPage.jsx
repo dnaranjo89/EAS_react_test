@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import { GroupsResult, Participant } from 'echaloasuerte-js-sdk';
-import { frontloadConnect } from 'react-frontload';
-import { connect } from 'react-redux';
-import { withTranslation } from '../../i18n';
+import { GroupsResult, Participant, GroupsApi } from 'echaloasuerte-js-sdk';
+import * as Sentry from '@sentry/node';
+
+import { withTranslation } from '../../../i18n';
 import useLoadDataAfterCountdown from '../../../hooks/useLoadDataAfterCountdown';
-import { fetchDraw } from '../../../actions/drawActions';
 import Page from '../../Page/Page.jsx';
 import GroupsGeneratorResult from './GroupsGeneratorResult.jsx';
 import ResultsBox from '../../ResultsBox/ResultsBox.jsx';
@@ -16,20 +15,52 @@ import ShareButtons from '../../ShareButtons/ShareButtons.jsx';
 import PublishedDrawDetails from '../../PublishedDrawDetails/PublishedDrawDetails.jsx';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import groupsOgImage from './groups_og_image.png';
-import useCurrentUrl from '../../../hooks/useCurrentUrl';
+import { getCurrentUrlFromWindow } from '../../../utils';
 import { ANALYTICS_TYPE_GROUPS } from '../../../constants/analyticsTypes';
 
-const loadData = async props => {
-  const { drawId } = props.match.params;
-  await props.fetchDraw(drawId);
+const groupsApi = new GroupsApi();
+
+const loadData = async drawId => {
+  try {
+    const draw = await groupsApi.groupsRead(drawId);
+    const {
+      id,
+      private_id: privateId,
+      title,
+      description,
+      participants,
+      number_of_groups: numberOfGroups,
+    } = draw;
+    const lastToss = draw.results[0];
+    const scheduleDate = lastToss.schedule_date;
+    return {
+      id,
+      title,
+      description,
+      participants,
+      numberOfGroups,
+      scheduleDate,
+      result: lastToss,
+      isOwner: Boolean(privateId),
+      isLoading: false,
+    };
+  } catch (error) {
+    Sentry.withScope(scope => {
+      scope.setExtra('message', 'API Error');
+      scope.setExtra('Action', 'groupsRead');
+      scope.setExtra('drawId', drawId);
+      Sentry.captureException(error);
+    });
+    throw error;
+  }
 };
 
 const PublishedGroupsGeneratorPage = props => {
   const { draw, t } = props;
   const { title, description, participants, numberOfGroups, result, isLoading } = draw;
-  const shareUrl = useCurrentUrl();
+  const shareUrl = getCurrentUrlFromWindow();
 
-  useLoadDataAfterCountdown(result, () => loadData(props));
+  useLoadDataAfterCountdown(result, () => loadData(draw.id));
 
   if (isLoading) {
     return <LoadingSpinner fullpage />;
@@ -71,6 +102,7 @@ const PublishedGroupsGeneratorPage = props => {
 
 PublishedGroupsGeneratorPage.propTypes = {
   draw: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string,
     participants: PropTypes.arrayOf(PropTypes.instanceOf(Participant)).isRequired,
     numberOfGroups: PropTypes.number,
@@ -84,15 +116,13 @@ PublishedGroupsGeneratorPage.propTypes = {
 
 PublishedGroupsGeneratorPage.defaultProps = {};
 
-const TranslatedPage = withTranslation('GroupsDraw')(PublishedGroupsGeneratorPage);
+PublishedGroupsGeneratorPage.getInitialProps = async ctx => {
+  const { id: drawId } = ctx.query;
+  const draw = await loadData(drawId);
+  return {
+    draw,
+    namespacesRequired: ['GroupsDraw'],
+  };
+};
 
-const mapsStateToProps = state => ({
-  draw: state.draws.draw,
-});
-
-export default connect(mapsStateToProps, { fetchDraw })(
-  frontloadConnect(loadData, {
-    onMount: true,
-    onUpdate: false,
-  })(TranslatedPage),
-);
+export default withTranslation('GroupsDraw')(PublishedGroupsGeneratorPage);

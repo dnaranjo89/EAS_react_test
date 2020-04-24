@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import classnames from 'classnames/bind';
 import PublicModeButton from '../PublicModeButton/PublicModeButton.jsx';
 
-import STYLES from './MakeCertifiedDrawPanel.scss';
+import STYLES from './MakeCertifiedDrawPanel.module.scss';
 
 const c = classnames.bind(STYLES);
 

@@ -10,7 +10,7 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 import classnames from 'classnames/bind';
 import { withTranslation, Trans } from '../../i18n';
 import PublicModeButton from '../PublicModeButton/PublicModeButton.jsx';
-import STYLES from './ShareDrawModal.scss';
+import STYLES from './ShareDrawModal.module.scss';
 
 const c = classnames.bind(STYLES);
 

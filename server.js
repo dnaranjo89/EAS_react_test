@@ -1,15 +1,20 @@
+/**
+ * We are only using a custom server because next-i18next requires it.
+ * Hopefully at some point in time this is not necessary anymore, as
+ * it's stopping us from using Nextjs' Automatic Static Optimization
+ * https://github.com/isaachinman/next-i18next/issues/586
+ */
 const express = require('express');
 const next = require('next');
 const nextI18NextMiddleware = require('next-i18next/middleware').default;
 
-const Router = require('./routes');
 const nextI18next = require('./i18n');
 
 const port = process.env.PORT || 3000;
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
 
 // Use our custom router
-const handle = Router.getRequestHandler(app);
+const handle = app.getRequestHandler();
 
 (async () => {
   await app.prepare();

@@ -7,7 +7,7 @@ import classNames from 'classnames/bind';
 import { Prize } from 'echaloasuerte-js-sdk';
 import { withTranslation } from '../../i18n';
 
-import STYLES from './PrizesOverview.scss';
+import STYLES from './PrizesOverview.module.scss';
 
 const c = classNames.bind(STYLES);
 

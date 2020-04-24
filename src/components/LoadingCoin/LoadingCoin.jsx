@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames/bind';
-import STYLES from './LoadingCoin.scss';
+import STYLES from './LoadingCoin.module.scss';
 
 const c = classnames.bind(STYLES);
 

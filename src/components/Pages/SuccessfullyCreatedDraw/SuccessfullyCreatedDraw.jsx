@@ -17,7 +17,7 @@ import useCurrentUrl from '../../../hooks/useCurrentUrl';
 import SectionPanel from '../../SectionPanel/SectionPanel.jsx';
 import { analyticsTypesBySlug } from '../../../constants/analyticsTypes';
 
-// import STYLES from './SuccessfullyCreatedDraw.scss';
+// import STYLES from './SuccessfullyCreatedDraw.module.scss';
 // import headsIcon from './heads.png';
 // import tailsIcon from './tails.png';
 // import coinOgImage from './coin_og_image.png';

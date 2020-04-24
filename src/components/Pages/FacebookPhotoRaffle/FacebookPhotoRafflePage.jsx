@@ -12,7 +12,7 @@ import WizardForm from '../../WizardForm/WizardForm.jsx';
 import FormValidationFeedback from '../../FormValidation/FormValidationFeedback.jsx';
 import Page from '../../Page/Page.jsx';
 import FacebookLoginButton from '../../FacebookLoginButton/FacebookLoginButton.jsx';
-import STYLES from './FacebookPhotoRafflePage.scss';
+import STYLES from './FacebookPhotoRafflePage.module.scss';
 
 const c = classnames.bind(STYLES);
 

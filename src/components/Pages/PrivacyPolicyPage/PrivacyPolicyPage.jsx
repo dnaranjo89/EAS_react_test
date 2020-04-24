@@ -5,7 +5,7 @@ import i18n from 'i18next';
 import classnames from 'classnames/bind';
 import { withTranslation } from '../../i18n';
 import Page from '../../Page/Page.jsx';
-import STYLES from './PrivacyPolicyPage.scss';
+import STYLES from './PrivacyPolicyPage.module.scss';
 
 const c = classnames.bind(STYLES);
 

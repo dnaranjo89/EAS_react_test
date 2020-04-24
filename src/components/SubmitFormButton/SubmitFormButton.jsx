@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import classNames from 'classnames/bind';
-import STYLES from './SubmitFormButton.scss';
+import STYLES from './SubmitFormButton.module.scss';
 import { ValidationContext } from '../FormValidation/ValidationProvider.jsx';
 
 const c = classNames.bind(STYLES);

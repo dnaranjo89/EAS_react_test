@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from '../../i18n';
-import SectionPanel from '../SectionPanel/SectionPanel.jsx';
-import withFieldValidation from '../FormValidation/withFieldValidation.jsx';
-import ParticipantsInput from '../ParticipantsInput.jsx';
-import TextField from '../TextField.jsx';
-import FormValidationFeedback from '../FormValidation/FormValidationFeedback.jsx';
+import { withTranslation } from '../../../i18n';
+import SectionPanel from '../../SectionPanel/SectionPanel.jsx';
+import withFieldValidation from '../../FormValidation/withFieldValidation.jsx';
+import ParticipantsInput from '../../ParticipantsInput.jsx';
+import TextField from '../../TextField.jsx';
+import FormValidationFeedback from '../../FormValidation/FormValidationFeedback.jsx';
 
 const ValidatedTextField = withFieldValidation(TextField);
 const ValidatedParticipantsInput = withFieldValidation(ParticipantsInput);

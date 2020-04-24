@@ -7,7 +7,7 @@ import HomePage from '../Pages/HomePage/HomePage.jsx';
 import Header from '../Header/Header.jsx';
 import Footer from '../Footer/Footer.jsx';
 import Typographies from '../Pages/Typographies/Typographies.jsx';
-import STYLES from './AppShell.scss';
+import STYLES from './AppShell.module.scss';
 // import config from '../../config/config';
 
 import PrivacyPolicyPage from '../Pages/PrivacyPolicyPage/PrivacyPolicyPage.jsx';

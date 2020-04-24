@@ -12,7 +12,6 @@ if (process.env.REACT_APP_COMMIT) {
   const deployedCommit = process.env.REACT_APP_COMMIT;
   console.log(deployedCommit);
 }
-console.log('environment', environment);
 
 try {
   if (['production', 'test'].indexOf(environment) < 0) {

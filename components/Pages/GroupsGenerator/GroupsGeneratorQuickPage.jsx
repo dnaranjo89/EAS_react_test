@@ -1,21 +1,21 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { GroupsResult } from 'echaloasuerte-js-sdk';
-import { withTranslation } from '../../i18n';
-import DrawHeading from '../DrawHeading/DrawHeading.jsx';
-import SubmitFormButton from '../SubmitFormButton/SubmitFormButton.jsx';
-import ErrorFeedback from '../ErrorFeedback/ErrorFeedback.jsx';
-import ValidationProvider from '../FormValidation/ValidationProvider.jsx';
-import ShareDrawModal from '../ShareDrawModal/ShareDrawModal.jsx';
-import useScrollToResults from '../../hooks/useScrollToResults';
-import Page from '../Page/Page.jsx';
+import { withTranslation } from '../../../i18n';
+import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
+import SubmitFormButton from '../../SubmitFormButton/SubmitFormButton.jsx';
+import ErrorFeedback from '../../ErrorFeedback/ErrorFeedback.jsx';
+import ValidationProvider from '../../FormValidation/ValidationProvider.jsx';
+import ShareDrawModal from '../../ShareDrawModal/ShareDrawModal.jsx';
+import useScrollToResults from '../../../hooks/useScrollToResults';
+import Page from '../../Page/Page.jsx';
 import GroupsGeneratorConfigurationSection from './GroupsGeneratorConfigurationSection.jsx';
 import GroupsGeneratorResult from './GroupsGeneratorResult.jsx';
-import MakeCertifiedDrawPanel from '../MakeCertifiedDrawPanel/MakeCertifiedDrawPanel.jsx';
-import LoadingCoin from '../LoadingCoin/LoadingCoin.jsx';
+import MakeCertifiedDrawPanel from '../../MakeCertifiedDrawPanel/MakeCertifiedDrawPanel.jsx';
+import LoadingCoin from '../../LoadingCoin/LoadingCoin.jsx';
 import groupsOgImage from './groups_og_image.png';
 
-import { ANALYTICS_TYPE_GROUPS } from '../../constants/analyticsTypes';
+import { ANALYTICS_TYPE_GROUPS } from '../../../constants/analyticsTypes';
 
 const GroupsGeneratorQuickPage = props => {
   const {

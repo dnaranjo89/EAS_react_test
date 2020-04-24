@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames/bind';
 
-import STYLES from './DrawCard.scss';
+import STYLES from './DrawCard.module.scss';
 
 const c = classNames.bind(STYLES);
 

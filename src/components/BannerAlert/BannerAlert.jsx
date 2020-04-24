@@ -6,7 +6,7 @@ import CheckCircle from '@material-ui/icons/CheckCircle';
 import Warning from '@material-ui/icons/Warning';
 import Typography from '@material-ui/core/Typography';
 
-import STYLES from './BannerAlert.scss';
+import STYLES from './BannerAlert.module.scss';
 
 const c = classNames.bind(STYLES);
 

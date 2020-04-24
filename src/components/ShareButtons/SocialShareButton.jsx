@@ -15,7 +15,7 @@ import {
 import classnames from 'classnames/bind';
 import withTracking from '../withTracking/withTracking.jsx';
 
-import STYLES from './SocialShareButton.scss';
+import STYLES from './SocialShareButton.module.scss';
 
 const c = classnames.bind(STYLES);
 

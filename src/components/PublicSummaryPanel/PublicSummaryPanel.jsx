@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 
-import STYLES from './PublicSummaryPanel.scss';
+import STYLES from './PublicSummaryPanel.module.scss';
 
 const c = classNames.bind(STYLES);
 

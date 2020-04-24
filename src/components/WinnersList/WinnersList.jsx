@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { withTranslation } from '../../i18n';
 import getOrdinal from '../../i18n/ordinals';
 
-import STYLES from './WinnersList.scss';
+import STYLES from './WinnersList.module.scss';
 
 const c = classNames.bind(STYLES);
 const WinnersList = ({ winners, t }) => (

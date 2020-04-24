@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 // import Link from '@material-ui/core/Link';
 import { withTranslation } from '../../i18n';
 
-import STYLES from './Header.scss';
+import STYLES from './Header.module.scss';
 import logo from './logo_vector.svg';
 
 const c = classNames.bind(STYLES);

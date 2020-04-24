@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { GroupsApi, Groups, DrawTossPayload } from 'echaloasuerte-js-sdk';
 import moment from 'moment';
 import Router, { withRouter } from 'next/router';
-import { withTranslation } from '../i18n';
-import GroupsGeneratorPage from '../components/GroupsGenerator/GroupsGeneratorPage.jsx';
-import GroupsGeneratorQuickPage from '../components/GroupsGenerator/GroupsGeneratorQuickPage.jsx';
-import withTracking from '../hocs/withTracking.jsx';
-import withLoadedTranslations from '../hocs/withLoadedTranslations.jsx';
-import recentDraws from '../services/recentDraws';
-import throttle from '../services/throttle';
-import { ANALYTICS_TYPE_GROUPS } from '../constants/analyticsTypes';
+import { withTranslation } from '../../../i18n';
+import GroupsGeneratorPage from './GroupsGeneratorPage.jsx';
+import GroupsGeneratorQuickPage from './GroupsGeneratorQuickPage.jsx';
+import withTracking from '../../../hocs/withTracking.jsx';
+import withLoadedTranslations from '../../../hocs/withLoadedTranslations.jsx';
+import recentDraws from '../../../services/recentDraws';
+import throttle from '../../../services/throttle';
+import { ANALYTICS_TYPE_GROUPS } from '../../../constants/analyticsTypes';
 
 const groupsApi = new GroupsApi();
 class GroupsGeneratorPageContainer extends React.Component {

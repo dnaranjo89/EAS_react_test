@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { withTranslation } from '../../i18n';
 
 import PublicSummaryPanel from '../../PublicSummaryPanel/PublicSummaryPanel.jsx';
-import STYLES from './PublishedFacebookPhotoRafflePage.scss';
+import STYLES from './PublishedFacebookPhotoRafflePage.module.scss';
 
 const c = className => STYLES[className];
 

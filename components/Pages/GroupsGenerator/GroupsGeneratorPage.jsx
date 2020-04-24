@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withTranslation } from '../../i18n';
-import withValidationProvider from '../FormValidation/withValidationProvider.jsx';
-import GeneralDetailsSection from '../CommonSections/GeneralDetailsSection.jsx';
-import WhenToTossSection from '../CommonSections/WhenToTossSection.jsx';
-import WizardForm from '../WizardForm/WizardForm.jsx';
-import Page from '../Page/Page.jsx';
-import DrawHeading from '../DrawHeading/DrawHeading.jsx';
+import { withTranslation } from '../../../i18n';
+import withValidationProvider from '../../FormValidation/withValidationProvider.jsx';
+import GeneralDetailsSection from '../../CommonSections/GeneralDetailsSection.jsx';
+import WhenToTossSection from '../../CommonSections/WhenToTossSection.jsx';
+import WizardForm from '../../WizardForm/WizardForm.jsx';
+import Page from '../../Page/Page.jsx';
+import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import GroupsGeneratorConfigurationSection from './GroupsGeneratorConfigurationSection.jsx';
 import groupsOgImage from './groups_og_image.png';
 

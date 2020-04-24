@@ -19,7 +19,7 @@ import associateItemsIcon from './associate_items.png';
 // import likeIcon from './like.jpg';
 import raffleIcon from './raffle.svg';
 
-import STYLES from './HomePage.scss';
+import STYLES from './HomePage.module.scss';
 
 const c = classNames.bind(STYLES);
 

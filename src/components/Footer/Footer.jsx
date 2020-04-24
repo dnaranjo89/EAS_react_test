@@ -6,7 +6,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import { withTranslation } from '../../i18n';
 import TranslationsSwitch from '../TranslationsSwitch/TranslationsSwitch.jsx';
-import STYLES from './Footer.scss';
+import STYLES from './Footer.module.scss';
 import config from '../../config/config';
 
 const c = classnames.bind(STYLES);

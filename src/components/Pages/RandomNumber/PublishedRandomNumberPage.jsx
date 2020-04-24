@@ -10,7 +10,7 @@ import RandomNumberResult from './RandomNumberResult.jsx';
 import ResultsBox from '../../ResultsBox/ResultsBox.jsx';
 import Countdown from '../../Countdown/Countdown.jsx';
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner.jsx';
-import STYLES from './PublishedRandomNumberPage.scss';
+import STYLES from './PublishedRandomNumberPage.module.scss';
 
 const c = classNames.bind(STYLES);
 

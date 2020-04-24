@@ -16,7 +16,7 @@ import ResultsBox from '../../ResultsBox/ResultsBox.jsx';
 import Countdown from '../../Countdown/Countdown.jsx';
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner.jsx';
 import ShareButtons from '../../ShareButtons/ShareButtons.jsx';
-import STYLES from './PublishedFacebookRafflePage.scss';
+import STYLES from './PublishedFacebookRafflePage.module.scss';
 import ParticipateWithFbPanel from './ParticipateWithFbPanel.jsx';
 import WinnersList from '../../WinnersList/WinnersList.jsx';
 import withTracking from '../../withTracking/withTracking.jsx';

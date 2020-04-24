@@ -6,7 +6,7 @@ import { withTranslation } from '../../i18n';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import LearnMoreSection from '../../LearnMoreSection/LearnMoreSection.jsx';
 import Page from '../../Page/Page.jsx';
-import STYLES from './SpinArrowPage.scss';
+import STYLES from './SpinArrowPage.module.scss';
 import ArrowImage from './arrow.svg';
 import arrowOgImage from './arrow_og_image.png';
 
