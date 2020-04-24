@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { GroupsApi, Groups, DrawTossPayload } from 'echaloasuerte-js-sdk';
 import moment from 'moment';
-import { withRouter } from 'next/router';
+import Router, { withRouter } from 'next/router';
 import { withTranslation } from '../i18n';
 import GroupsGeneratorPage from '../components/GroupsGenerator/GroupsGeneratorPage.jsx';
 import GroupsGeneratorQuickPage from '../components/GroupsGenerator/GroupsGeneratorQuickPage.jsx';
@@ -66,7 +66,7 @@ class GroupsGeneratorPageContainer extends React.Component {
 
   createDraw = () => {
     // const { match } = this.props;
-    const { public: isPublic } = this.props;
+    const isPublic = this.isPublic();
     const { values } = this.state;
     const { title, description, participants, numberOfGroups } = values;
     const drawData = {
@@ -113,6 +113,7 @@ class GroupsGeneratorPageContainer extends React.Component {
       }, tsStart);
     } catch (err) {
       console.log('err', err);
+      debugger; // eslint-disable-line no-debugger
       this.setState({
         APIError: true,
         loadingRequest: false,
@@ -123,7 +124,6 @@ class GroupsGeneratorPageContainer extends React.Component {
   handlePublish = async () => {
     this.setState({ loadingRequest: true });
 
-    const { history } = this.props;
     const { values } = this.state;
 
     try {
@@ -144,8 +144,9 @@ class GroupsGeneratorPageContainer extends React.Component {
 
       const drawPath = `/groups/${draw.id}/success`;
       recentDraws.add(draw, drawPath, scheduleDate);
-      history.push(drawPath);
+      Router.push(drawPath);
     } catch (err) {
+      console.log('err', err);
       this.setState({ APIError: true, loadingRequest: false });
     }
   };

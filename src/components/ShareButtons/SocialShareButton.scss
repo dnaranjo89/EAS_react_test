@@ -1,0 +1,9 @@
+@import '../variables';
+
+.SocialShareButton {
+  display: inline-block;
+  margin: $spacing-xs;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  overflow: hidden;
+}

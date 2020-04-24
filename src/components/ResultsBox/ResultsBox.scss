@@ -1,0 +1,25 @@
+@import '../variables';
+
+.ResultsBox {
+  &__results-panel {
+    min-width: 50%;
+    margin: 0 auto;
+    margin-top: $spacing-md;
+    margin-bottom: $spacing-md;
+    padding: $spacing-lg;
+    text-align: center;
+  }
+
+  &__trumpet-icon {
+    height: 2rem;
+
+    &--flipped {
+      transform: scaleX(-1);
+      filter: fliph;
+    }
+  }
+
+  &__title {
+    margin-bottom: $spacing-md;
+  }
+}

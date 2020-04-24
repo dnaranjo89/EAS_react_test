@@ -5,6 +5,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import Button from '@material-ui/core/Button';
 import classnames from 'classnames/bind';
+import { withTranslation } from '../../i18n';
 import ErrorFeedback from '../ErrorFeedback/ErrorFeedback.jsx';
 import LoadingButton from '../LoadingButton/LoadingButton.jsx';
 import STYLES from './MobileWizardForm.module.scss';
@@ -24,7 +25,7 @@ const MobileWizardForm = ({
 }) => (
   <>
     <div className={c('MobileWizardForm__content')}>{children}</div>
-    {apiError && <ErrorFeedback error={t('ApiError:api_error')} />}
+    {apiError && <ErrorFeedback error={t('DrawCreationCommon:api_error')} />}
     <MobileStepper
       steps={numSteps}
       position="static"
@@ -32,14 +33,14 @@ const MobileWizardForm = ({
       className={c('MobileWizardForm__stepper')}
       nextButton={
         <LoadingButton size="small" onClick={handleNext} loading={loading}>
-          {activeStep === numSteps - 1 ? submitButtonLabel : t('next')}
+          {activeStep === numSteps - 1 ? submitButtonLabel : t('wizard_next')}
           <KeyboardArrowRight />
         </LoadingButton>
       }
       backButton={
         <Button size="small" onClick={handleBack} disabled={loading || activeStep === 0}>
           <KeyboardArrowLeft />
-          {t('back')}
+          {t('wizard_back')}
         </Button>
       }
     />
@@ -63,4 +64,4 @@ MobileWizardForm.defaultProps = {
   loading: false,
 };
 
-export default MobileWizardForm;
+export default withTranslation('DrawCreationCommon')(MobileWizardForm);

@@ -1,0 +1,15 @@
+@import '../variables';
+
+.MakeCertifiedDrawPanel {
+  margin-bottom: $spacing-md;
+
+  @media (min-width: $media-phone) {
+    margin-top: $spacing-lg;
+  }
+
+  &__actions {
+    margin-top: $spacing-xs;
+    margin-bottom: $spacing-md;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,14 @@
+@import '../variables';
+
+$countdown-fontsize: 2rem;
+$countdown-lineheight: 2.5rem;
+
+.Countdown {
+  margin: 5rem 0 $spacing-lg 0;
+  text-align: center;
+
+  & &__message {
+    font-size: $countdown-fontsize;
+    line-height: $countdown-lineheight;
+  }
+}

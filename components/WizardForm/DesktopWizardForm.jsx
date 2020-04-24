@@ -5,6 +5,7 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import classnames from 'classnames/bind';
+import { withTranslation } from '../../i18n';
 import LoadingButton from '../LoadingButton/LoadingButton.jsx';
 import ErrorFeedback from '../ErrorFeedback/ErrorFeedback.jsx';
 import STYLES from './WizardForm.module.scss';
@@ -40,14 +41,14 @@ const DesktopWizard = ({
       })}
     </Stepper>
     <div className={c('WizardForm__content')}>{children}</div>
-    {apiError && <ErrorFeedback error={t('ApiError:api_error')} />}
+    {apiError && <ErrorFeedback error={t('DrawCreationCommon:api_error')} />}
     <div className={c('WizardForm__buttons-row')}>
       <Button
         className={c('WizardForm__step-button')}
         disabled={loading || activeStep === 0}
         onClick={handleBack}
       >
-        {t('back')}
+        {t('wizard_back')}
       </Button>
       <LoadingButton
         variant="contained"
@@ -57,7 +58,7 @@ const DesktopWizard = ({
         onClick={handleNext}
         loading={loading}
       >
-        {activeStep === stepLabels.length - 1 ? submitButtonLabel : t('next')}
+        {activeStep === stepLabels.length - 1 ? submitButtonLabel : t('wizard_next')}
       </LoadingButton>
     </div>
   </div>
@@ -82,4 +83,4 @@ DesktopWizard.defaultProps = {
   loading: false,
 };
 
-export default DesktopWizard;
+export default withTranslation('DrawCreationCommon')(DesktopWizard);

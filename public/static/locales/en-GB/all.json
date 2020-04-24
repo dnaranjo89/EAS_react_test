@@ -12,13 +12,6 @@
     "results_published_on": "Results will be published on",
     "time_remaining": "Time remaining"
   },
-  "DateTimePicker": {
-    "cancel": "Cancel",
-    "date": "Date",
-    "ok": "Ok",
-    "only_future_date_valid": "You have to choose a date in the future",
-    "today": "Now"
-  },
   "FacebookProvider": {
     "error_message_impossible_to_log_in": "There was an error when trying to log with Facebook.",
     "error_message_possibly_blocked": "There was an error when trying to log with Facebook, You may have some extenion in your browser that is blocking the connexion."
@@ -135,12 +128,6 @@
   },
   "PrizesOverview": {
     "prizes": "Prizes"
-  },
-  "PublicDetails": {
-    "description_label": "Description",
-    "description_placeholder": "Raffle description, rules, etc.",
-    "title_label": "Title of the raffle",
-    "title_placeholder": "Christmas raffle"
   },
   "Raffle": {
     "certified_draw_description": "If you want to make a public raffle to ensure an impartial result you should create a public raffle.",

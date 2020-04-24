@@ -25,10 +25,10 @@ const DateTimePicker = ({ id, label, t, i18n, ...props }) => {
       <MuiDateTimePicker
         hideTabs
         id={id}
-        minDateMessage={t('only_future_date_valid')}
-        cancelLabel={t('cancel')}
-        okLabel={t('ok')}
-        todayLabel={t('today')}
+        minDateMessage={t('datepicker_only_future_date_valid')}
+        cancelLabel={t('datepicker_cancel')}
+        okLabel={t('datepicker_ok')}
+        todayLabel={t('datepicker_today')}
         ampm={false}
         format="LLL"
         margin="normal"
@@ -48,4 +48,4 @@ DateTimePicker.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('DateTimePicker')(DateTimePicker);
+export default withTranslation('DrawCreationCommon')(DateTimePicker);

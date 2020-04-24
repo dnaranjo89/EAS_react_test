@@ -1,0 +1,9 @@
+@import '../variables';
+
+.ShareDrawModal {
+  &__button-row {
+    margin-top: $spacing-lg;
+    margin-bottom: $spacing-md;
+    text-align: center;
+  }
+}

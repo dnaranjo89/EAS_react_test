@@ -12,13 +12,6 @@
     "results_published_on": "El resultado será publicado el",
     "time_remaining": "Tiempo restante"
   },
-  "DateTimePicker": {
-    "cancel": "Cancelar",
-    "date": "Fecha",
-    "ok": "Ok",
-    "only_future_date_valid": "Tienes que elegir una fecha en el futuro",
-    "today": "Ahora"
-  },
   "FacebookPhotoRafflePage": {
     "draw_subheading": "Some description",
     "error_form_need_to_login_facebook": "Tienes que hacer login con facebook para continuar",
@@ -136,12 +129,6 @@
   },
   "PrizesOverview": {
     "prizes": "Premios"
-  },
-  "PublicDetails": {
-    "description_label": "Descripción",
-    "description_placeholder": "Descripción del sorteo, bases del concurso, etc.",
-    "title_label": "Título del sorteo",
-    "title_placeholder": "Sorteo de Navidad"
   },
   "Raffle": {
     "certified_draw_description": "Si quieres hacer un sorteo público para asegurar a los participantes una elección imparcial del resultado, te recomendamos que hagas un sorteo público.",

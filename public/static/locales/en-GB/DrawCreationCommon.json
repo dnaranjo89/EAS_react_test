@@ -6,5 +6,15 @@
   "share_result_dialog_body": "This a the result of a private draw, if you want to share the results of a draw you should create it publicly.<br/>You will be able to schedule when the results will be made public and share a link with the participants so they can see the results live.",
   "share_result_dialog_cancel": "Cancel",
   "share_result_dialog_ok": "Create raffle publicly",
-  "share_result_dialog_title": "Create raffle publicly to share the results"
+  "share_result_dialog_title": "Create raffle publicly to share the results",
+  "public_details_description_label": "Description",
+  "public_details_description_placeholder": "Raffle description, rules, etc.",
+  "public_details_title_label": "Title of the raffle",
+  "public_details_title_placeholder": "Christmas raffle",
+  "datepicker_cancel": "Cancel",
+  "datepicker_ok": "Ok",
+  "datepicker_only_future_date_valid": "You have to choose a date in the future",
+  "datepicker_today": "Now",
+  "wizard_back": "Back",
+  "wizard_next": "Next"
 }

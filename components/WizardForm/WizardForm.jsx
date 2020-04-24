@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from '../../i18n';
 import DesktopWizardForm from './DesktopWizardForm.jsx';
 import MobileWizardForm from './MobileWizardForm.jsx';
+import { withTranslation } from '../../i18n';
 
 class WizardForm extends Component {
   constructor(props) {
@@ -82,7 +82,7 @@ class WizardForm extends Component {
   }
 
   render() {
-    const { steps, apiError, loading, submitButtonLabel, isMobile, t } = this.props;
+    const { steps, apiError, loading, submitButtonLabel, isMobile } = this.props;
     const stepLabels = steps.map(step => step.label);
     const { activeStep, stepValidations, submittedSteps } = this.state;
 
@@ -99,7 +99,6 @@ class WizardForm extends Component {
       loading,
       handleNext: this.handleNext,
       handleBack: this.handleBack,
-      t,
     };
     return isMobile ? (
       <MobileWizardForm numSteps={stepLabels.length} {...commonWizardProps}>
@@ -131,7 +130,6 @@ WizardForm.propTypes = {
   initialStep: PropTypes.number,
   submitButtonLabel: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
   isMobile: PropTypes.bool.isRequired,
 };
 
@@ -141,4 +139,4 @@ WizardForm.defaultProps = {
   apiError: false,
 };
 
-export default withTranslation('WizardForm')(WizardForm);
+export default WizardForm;

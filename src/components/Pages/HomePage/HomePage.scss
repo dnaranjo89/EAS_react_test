@@ -1,0 +1,17 @@
+@import '../../variables';
+
+.HomePage {
+  display: flex;
+  padding-right: $spacing-sm;
+  padding-left: $spacing-sm;
+  flex-direction: column;
+  align-items: center;
+
+  &__draw-chips-group {
+    margin-bottom: 3rem;
+  }
+
+  &__container {
+    padding-bottom: $spacing-lg;
+  }
+}

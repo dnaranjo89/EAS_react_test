@@ -1,0 +1,14 @@
+@import '../variables';
+
+.AppShell {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  // There must be an element between the Header and the Footer with 'flex: 1;' (e.g. a Page)
+}
+
+body {
+  /* stylelint-disable-line selector-max-type */
+  margin: 0;
+  background-color: $web-background-color;
+}

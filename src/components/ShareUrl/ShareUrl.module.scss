@@ -1,0 +1,33 @@
+@import '../variables';
+
+$url-font-size: 0.75rem;
+
+.Container {
+  display: flex;
+  max-width: 34rem;
+  margin: auto;
+}
+
+.Divider {
+  height: 3rem;
+}
+
+.Button {
+  padding: $spacing-xs $spacing-md;
+}
+
+.Url {
+  display: flex;
+  padding: $spacing-sm;
+  flex: 1;
+  font-size: $url-font-size;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.Input {
+  padding: 0;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

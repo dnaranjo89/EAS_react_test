@@ -58,7 +58,7 @@ const GroupsGeneratorQuickPage = props => {
         onFormErrorsCheck={() => handleCheckErrorsInConfiguration(t)}
       >
         <GroupsGeneratorConfigurationSection values={values} onFieldChange={onFieldChange} t={t} />
-        {apiError && <ErrorFeedback error={t('ApiError:api_error')} />}
+        {apiError && <ErrorFeedback error={t('DrawCreationCommon:api_error')} />}
         <SubmitFormButton label={t('generate_groups')} disabled={loadingRequest} />
       </ValidationProvider>
       <div ref={resultsRef}>

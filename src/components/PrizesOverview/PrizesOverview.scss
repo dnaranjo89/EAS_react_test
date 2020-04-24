@@ -1,0 +1,15 @@
+$prize-overview-background-color: white;
+$border-radius: 0.2rem;
+$spacing-md: 1.125rem;
+$spacing-lg: 1.875rem;
+
+.PrizesOverview {
+  margin-top: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  text-align: center;
+
+  &__prizes-list {
+    padding: 0;
+    list-style-type: none;
+  }
+}

@@ -1,0 +1,17 @@
+@import '../variables';
+
+// The spinner's margin is based on its size (24/2 = 12)
+$spinner-margin: -12 * $one-pixel-rem;
+
+.Container {
+  position: relative;
+}
+
+.Progress {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: $spinner-margin;
+  margin-left: $spinner-margin;
+  color: $color-primary;
+}

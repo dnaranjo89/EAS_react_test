@@ -8,7 +8,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import classnames from 'classnames/bind';
-import { withTranslation, Trans } from 'react-i18next';
+import { withTranslation, Trans } from '../../i18n';
 import PublicModeButton from '../PublicModeButton/PublicModeButton.jsx';
 import STYLES from './ShareDrawModal.module.scss';
 
@@ -47,7 +47,7 @@ class ShareDrawModal extends Component {
           <DialogTitle>{t('share_result_dialog_title')}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              <Trans ns="ShareDrawModal" i18nKey="share_result_dialog_body" />
+              <Trans ns="DrawCreationCommon" i18nKey="share_result_dialog_body" />
               {/* {t('share_result_dialog_body')} */}
             </DialogContentText>
           </DialogContent>
@@ -60,7 +60,7 @@ class ShareDrawModal extends Component {
               {t('share_result_dialog_cancel')}
             </Button>
             <PublicModeButton
-              to={publicDrawUrl}
+              href={publicDrawUrl}
               trackingData={{
                 mp: {
                   name: `Start Public Draw - ${analyticsDrawType}`,

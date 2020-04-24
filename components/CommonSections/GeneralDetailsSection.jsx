@@ -11,8 +11,8 @@ const GeneralDetailsSection = ({ title, titleRequired, description, onFieldChang
   <SectionPanel>
     <ValidatedTextField
       name="title"
-      label={t('title_label')}
-      placeholder={t('title_placeholder')}
+      label={t('public_details_title_label')}
+      placeholder={t('public_details_title_placeholder')}
       value={title}
       margin="normal"
       fullWidth
@@ -25,8 +25,8 @@ const GeneralDetailsSection = ({ title, titleRequired, description, onFieldChang
 
     <ValidatedTextField
       name="description"
-      label={t('description_label')}
-      placeholder={t('description_placeholder')}
+      label={t('public_details_description_label')}
+      placeholder={t('public_details_description_placeholder')}
       value={description}
       fullWidth
       multiline
@@ -52,4 +52,4 @@ GeneralDetailsSection.defaultProps = {
   titleRequired: false,
 };
 
-export default withTranslation('PublicDetails')(GeneralDetailsSection);
+export default withTranslation('DrawCreationCommon')(GeneralDetailsSection);
