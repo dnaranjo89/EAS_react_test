@@ -1,6 +1,6 @@
 import { GroupsApi, RaffleApi } from 'echaloasuerte-js-sdk';
 import * as Sentry from '@sentry/browser';
-// import winston from 'winston';
+import winston from 'winston';
 import { FETCH_DRAW } from './types';
 
 const groupsApi = new GroupsApi();
@@ -34,7 +34,7 @@ export const fetchRaffleDraw = drawId => dispatch =>
           scope.setExtra('drawId', drawId);
           Sentry.captureException(error);
         });
-        // winston.error('API Error: raffleRead', { drawId, error });
+        winston.error('API Error: raffleRead', { drawId, error });
         reject(error);
         throw error;
       });
@@ -75,7 +75,7 @@ export const fetchDraw = drawId => dispatch =>
           scope.setExtra('drawId', drawId);
           Sentry.captureException(error);
         });
-        // winston.error('API Error: groupsRead', { drawId, error });
+        winston.error('API Error: groupsRead', { drawId, error });
         reject(error);
         throw error;
       });

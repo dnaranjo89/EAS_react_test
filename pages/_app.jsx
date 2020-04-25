@@ -8,6 +8,7 @@ import mixpanel from 'mixpanel-browser';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import * as Sentry from '@sentry/node';
+import NoSSR from 'react-no-ssr';
 import withReduxStore from '../redux/with-redux-store';
 import theme from '../EasTheme.jsx';
 import NextI18NextInstance from '../i18n';
@@ -51,18 +52,20 @@ class EasApp extends App {
     const modifiedPageProps = { ...pageProps, err };
 
     return (
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {config.mixpanelEnabled ? (
-            <MixpanelProvider mixpanel={mixpanel}>
+      <NoSSR>
+        <Provider store={store}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            {!isServer && config.mixpanelEnabled ? (
+              <MixpanelProvider mixpanel={mixpanel}>
+                <Component {...modifiedPageProps} />
+              </MixpanelProvider>
+            ) : (
               <Component {...modifiedPageProps} />
-            </MixpanelProvider>
-          ) : (
-            <Component {...modifiedPageProps} />
-          )}
-        </ThemeProvider>
-      </Provider>
+            )}
+          </ThemeProvider>
+        </Provider>
+      </NoSSR>
     );
   }
 }

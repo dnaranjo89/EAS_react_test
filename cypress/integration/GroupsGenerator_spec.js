@@ -1,5 +1,8 @@
+const superagent = require('superagent');
+const mockServer = require('mockttp').getLocal();
+
 describe('Groups Generator Page', () => {
-  ['macbook-13', 'iphone-5'].forEach(device => {
+  ['macbook-13' /* , 'iphone-5' */].forEach(device => {
     context(`Device ${device}`, () => {
       beforeEach(() => {
         cy.server();
@@ -33,7 +36,6 @@ describe('Groups Generator Page', () => {
         });
 
         it('Create', () => {
-          cy.mockGA();
           cy.visit('/groups/public');
 
           cy.get('@ga')
@@ -43,7 +45,7 @@ describe('Groups Generator Page', () => {
           // Make required errors show up
           cy.getComponent('WizardForm__next-button').click();
 
-          // It should error if prizes is empty
+          // It should error if participants is empty
           cy.getComponent('ParticipantsInput').shouldHaveError();
           cy.getComponent('ParticipantsInput__inputField').type('you,');
           cy.getComponent('ParticipantsInput').shouldNotHaveError();
@@ -263,9 +265,16 @@ describe('Groups Generator Page', () => {
       });
 
       describe('Published page', () => {
-        it('Analytics events sent on pageview', () => {
+        it.only('Analytics events sent on pageview', () => {
+          beforeEach(() => mockServer.start(5007));
+          mockServer
+            .get('/api/groups/af52a47d-98fd-4685-8510-26d342e16f9b')
+            .thenReply(200, 'A mocked response');
           cy.visit('/groups/af52a47d-98fd-4685-8510-26d342e16f9b');
 
+          cy.wait(50000);
+
+          afterEach(() => mockServer.stop());
           cy.get('@ga')
             .should('be.calledWith', 'create', 'UA-XXXXX-Y')
             .and('be.calledWith', 'send', {

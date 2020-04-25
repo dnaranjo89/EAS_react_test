@@ -28,7 +28,7 @@ class GroupsGeneratorPageContainer extends React.Component {
       values: {
         title: '', // Default title is set in CDM
         description: '',
-        participants: ['asdasd', 'qqqq'],
+        participants: [],
         numberOfGroups: '2',
         dateScheduled,
       },
@@ -84,7 +84,6 @@ class GroupsGeneratorPageContainer extends React.Component {
     this.setState({
       loadingRequest: true,
     });
-    console.log('this.state', this.state);
 
     let { privateId } = this.state;
     try {
@@ -112,8 +111,6 @@ class GroupsGeneratorPageContainer extends React.Component {
         });
       }, tsStart);
     } catch (err) {
-      console.log('err', err);
-      debugger; // eslint-disable-line no-debugger
       this.setState({
         APIError: true,
         loadingRequest: false,
@@ -146,7 +143,6 @@ class GroupsGeneratorPageContainer extends React.Component {
       recentDraws.add(draw, drawPath, scheduleDate);
       Router.push(drawPath);
     } catch (err) {
-      console.log('err', err);
       this.setState({ APIError: true, loadingRequest: false });
     }
   };

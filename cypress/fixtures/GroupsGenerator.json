@@ -1,6 +1,6 @@
 [
   {
-    "path": "/api/groups",
+    "path": "https://echaloasuerte.com/api/groups",
     "method": "POST",
     "response": {
       "id": "af52a47d-98fd-4685-8510-26d342e16f9b",
@@ -41,7 +41,7 @@
     }
   },
   {
-    "path": "/api/groups/43c357b7-91ec-448a-a4bf-ac059cc3a374/toss",
+    "path": "https://echaloasuerte.com/api/groups/43c357b7-91ec-448a-a4bf-ac059cc3a374/toss",
     "method": "POST",
     "response": {
       "created_at": "2018-09-19T17:02:53.411812Z",
@@ -75,7 +75,7 @@
     }
   },
   {
-    "path": "/api/groups/af52a47d-98fd-4685-8510-26d342e16f9b",
+    "path": "https://echaloasuerte.com/api/groups/af52a47d-98fd-4685-8510-26d342e16f9b",
     "method": "GET",
     "response": {
       "id": "f7c698fd-d939-4cff-af72-ff5f78781623",

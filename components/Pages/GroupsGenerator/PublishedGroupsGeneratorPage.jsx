@@ -30,16 +30,15 @@ const loadData = async drawId => {
       description,
       participants,
       number_of_groups: numberOfGroups,
+      results,
     } = draw;
-    const lastToss = draw.results[0];
-    const scheduleDate = lastToss.schedule_date;
+    const lastToss = results[0];
     return {
       id,
       title,
       description,
       participants,
       numberOfGroups,
-      scheduleDate,
       result: lastToss,
       isOwner: Boolean(privateId),
       isLoading: false,
@@ -65,6 +64,8 @@ const PublishedGroupsGeneratorPage = props => {
   if (isLoading) {
     return <LoadingSpinner fullpage />;
   }
+
+  console.log('result', result);
 
   return (
     <Page
@@ -104,10 +105,21 @@ PublishedGroupsGeneratorPage.propTypes = {
   draw: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string,
-    participants: PropTypes.arrayOf(PropTypes.instanceOf(Participant)).isRequired,
+    participants: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        created_at: PropTypes.string.isRequired,
+        facebook_id: PropTypes.string,
+      }),
+    ).isRequired,
     numberOfGroups: PropTypes.number,
     description: PropTypes.string,
-    result: PropTypes.instanceOf(GroupsResult),
+    result: PropTypes.shape({
+      created_at: PropTypes.string.isRequired,
+      schedule_date: PropTypes.string,
+      value: PropTypes.arrayOf(PropTypes.shape({})),
+    }),
     isOwner: PropTypes.bool,
     isLoading: PropTypes.bool,
   }).isRequired,

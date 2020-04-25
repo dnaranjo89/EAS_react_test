@@ -1,11 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import classNames from 'classnames/bind';
 import Helmet from 'react-helmet';
 import ReactGA from 'react-ga';
-import { connect } from 'react-redux';
-// import { withRouter } from 'react-router';
 import i18n from 'i18next';
 import { withRouter } from 'next/router';
 import withMixpanel from '../../hocs/withMixpanel.jsx';
@@ -25,7 +22,7 @@ class Page extends Component {
   componentDidMount() {
     const { mixpanel, pageType, router, enableHotjar } = this.props;
     if (config.googleAnalyticsEnabled) {
-      const page = router.pathname;
+      const page = router.asPath;
       ReactGA.pageview(page);
     }
     if (config.mixpanelEnabled) {
@@ -41,7 +38,7 @@ class Page extends Component {
 
   getAbsoluteUrl() {
     const { router, hostname } = this.props;
-    return `https://${hostname}${router.pathname}`;
+    return `https://${hostname}${router.asPath}`;
   }
 
   getMetaTags() {
@@ -111,7 +108,9 @@ Page.propTypes = {
   mixpanel: PropTypes.shape({ track: PropTypes.func.isRequired }),
   children: PropTypes.node.isRequired,
   noIndex: PropTypes.bool,
-  // router: ReactRouterPropTypes.router.isRequired,
+  router: PropTypes.shape({
+    asPath: PropTypes.string.isRequired,
+  }).isRequired,
   ogImage: PropTypes.node,
   hostname: PropTypes.string,
   showAdvert: PropTypes.bool,
