@@ -118,7 +118,7 @@ PublishedGroupsGeneratorPage.propTypes = {
     result: PropTypes.shape({
       created_at: PropTypes.string.isRequired,
       schedule_date: PropTypes.string,
-      value: PropTypes.arrayOf(PropTypes.shape({})),
+      value: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape())),
     }),
     isOwner: PropTypes.bool,
     isLoading: PropTypes.bool,
