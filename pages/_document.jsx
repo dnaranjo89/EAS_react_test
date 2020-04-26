@@ -2,6 +2,8 @@ import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import theme from '../EasTheme.jsx';
+import '../cypress/serverMock';
+// TODO only do this on tests
 
 export default class MyDocument extends Document {
   render() {

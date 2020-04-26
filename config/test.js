@@ -9,7 +9,7 @@ const config = {
   // More details on https://github.com/etcaterva/eas-frontend/issues/122
   mixpanelEnabled: false,
   sentryEnabled: false,
-  apiBasePath: 'http://unexisting-domain.com/api',
+  apiBasePath: 'http://127.0.0.1:8000/api', // We are mocking this server in the integration tests (see cypress/serverMock.js)
   facebookAppId: '00000000000',
 };
 

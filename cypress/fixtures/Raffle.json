@@ -91,7 +91,7 @@
     "path": "/api/raffle/b29f44c2-1022-408a-925f-63e5f77a12ad",
     "method": "GET",
     "response": {
-      "id": "493666b5-6a32-479b-8df6-96735cc54939",
+      "id": "b29f44c2-1022-408a-925f-63e5f77a12ad",
       "created_at": "2018-10-28T12:36:12.499046Z",
       "updated_at": "2018-10-28T12:36:12.499087Z",
       "title": "This is the title",

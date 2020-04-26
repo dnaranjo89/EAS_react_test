@@ -1,5 +1,4 @@
-const superagent = require('superagent');
-const mockServer = require('mockttp').getLocal();
+import moment from 'moment';
 
 describe('Groups Generator Page', () => {
   ['macbook-13' /* , 'iphone-5' */].forEach(device => {
@@ -72,7 +71,7 @@ describe('Groups Generator Page', () => {
           // Submit the draw
           cy.getComponent('WizardForm__next-button').click();
 
-          cy.mockedRequestWait('POST', '/api/groups')
+          cy.mockedRequestWait('POST', '/api/groups/')
             .its('requestBody')
             .should('deep.eq', {
               description: 'A cool description',
@@ -81,7 +80,7 @@ describe('Groups Generator Page', () => {
               title: 'The title',
             });
 
-          cy.mockedRequestWait('POST', '/api/groups/43c357b7-91ec-448a-a4bf-ac059cc3a374/toss');
+          cy.mockedRequestWait('POST', '/api/groups/43c357b7-91ec-448a-a4bf-ac059cc3a374/toss/');
           cy.get('@ga').should('be.calledWith', 'send', {
             hitType: 'event',
             eventCategory: 'Groups',
@@ -129,7 +128,7 @@ describe('Groups Generator Page', () => {
 
         it('Should have a share button that takes the user to the public draw', () => {
           cy.visit('/groups');
-          cy.clock();
+          // cy.clock();
           cy.getComponent('ParticipantsInput__inputField').type('you, me, him, her,');
           cy.getComponent('SubmitFormButton').click();
           cy.getComponent('ShareDrawButton').click();
@@ -216,7 +215,7 @@ describe('Groups Generator Page', () => {
 
           it('Request contains the data, results are shown and analytics events sent', () => {
             cy.visit('/groups');
-            cy.clock();
+            // cy.clock();
             cy.getComponent('ParticipantsInput__inputField').type('you, me, him, her,');
             cy.getComponent('GroupsGenerator__number-of-groups-field-input')
               .clear()
@@ -229,7 +228,7 @@ describe('Groups Generator Page', () => {
               eventAction: 'Toss',
             });
 
-            cy.mockedRequestWait('POST', '/api/groups')
+            cy.mockedRequestWait('POST', '/api/groups/')
               .its('requestBody')
               .should('deep.eq', {
                 participants: [{ name: 'you' }, { name: 'me' }, { name: 'him' }, { name: 'her' }],
@@ -238,43 +237,36 @@ describe('Groups Generator Page', () => {
                 description: null,
               });
 
-            cy.mockedRequestWait('POST', '/api/groups/43c357b7-91ec-448a-a4bf-ac059cc3a374/toss');
+            cy.mockedRequestWait('POST', '/api/groups/43c357b7-91ec-448a-a4bf-ac059cc3a374/toss/');
             cy.getComponent('GroupsGeneratorResult__result').should('be.visible');
           });
 
           it('Changing data after toss should create a new draw', () => {
             cy.visit('/groups');
-            cy.clock();
+            // cy.clock();
             cy.getComponent('ParticipantsInput__inputField').type('one, two,');
             cy.getComponent('SubmitFormButton').click();
-            cy.mockedRequestWait('POST', '/api/groups')
+            cy.mockedRequestWait('POST', '/api/groups/')
               .its('requestBody.participants')
               .should('deep.eq', [{ name: 'one' }, { name: 'two' }]);
-            cy.mockedRequestWait('POST', '/api/groups/43c357b7-91ec-448a-a4bf-ac059cc3a374/toss');
+            cy.mockedRequestWait('POST', '/api/groups/43c357b7-91ec-448a-a4bf-ac059cc3a374/toss/');
             cy.getComponent('GroupsGeneratorResult__result').should('be.visible');
             cy.getComponent('ParticipantsInput__inputField').type('three,');
             cy.getComponent('SubmitFormButton').click();
 
             // A new draw should be created and tossed
-            cy.mockedRequestWait('POST', '/api/groups')
+            cy.mockedRequestWait('POST', '/api/groups/')
               .its('requestBody.participants')
               .should('deep.eq', [{ name: 'one' }, { name: 'two' }, { name: 'three' }]);
-            cy.mockedRequestWait('POST', '/api/groups/43c357b7-91ec-448a-a4bf-ac059cc3a374/toss');
+            cy.mockedRequestWait('POST', '/api/groups/43c357b7-91ec-448a-a4bf-ac059cc3a374/toss/');
           });
         });
       });
 
       describe('Published page', () => {
-        it.only('Analytics events sent on pageview', () => {
-          beforeEach(() => mockServer.start(5007));
-          mockServer
-            .get('/api/groups/af52a47d-98fd-4685-8510-26d342e16f9b')
-            .thenReply(200, 'A mocked response');
+        it('Analytics events sent on pageview', () => {
           cy.visit('/groups/af52a47d-98fd-4685-8510-26d342e16f9b');
 
-          cy.wait(50000);
-
-          afterEach(() => mockServer.stop());
           cy.get('@ga')
             .should('be.calledWith', 'create', 'UA-XXXXX-Y')
             .and('be.calledWith', 'send', {
@@ -284,36 +276,31 @@ describe('Groups Generator Page', () => {
         });
 
         it('Should show the countdown if there are not results', () => {
-          cy.clock(new Date().getTime());
-          const missingSeconds = 2;
+          const missingSeconds = 10;
 
+          // Set the current time to some seconds before the result should be published
           cy.fixture('GroupsGenerator').then(fixtures => {
-            const now = new Date();
-            now.setSeconds(now.getSeconds() + missingSeconds);
-            const dateInFuture = now.toISOString();
             const fixtureGetDraw = fixtures.find(
-              fixture => fixture.path === '/api/groups/af52a47d-98fd-4685-8510-26d342e16f9b',
+              fixture => fixture.path === '/api/groups/af52a47d-98fd-4685-8510-aaaaaaaaaaaa/',
             );
-            fixtureGetDraw.response.results[0].schedule_date = dateInFuture;
-            fixtureGetDraw.response.results[0].value = null;
-            cy.route(fixtureGetDraw.method, fixtureGetDraw.path, fixtureGetDraw.response).as(
-              'LoadData',
-            );
+            const { schedule_date: scheduleDateString } = fixtureGetDraw.response.results[0];
+            const past = moment(scheduleDateString);
+            past.subtract(missingSeconds, 'seconds');
+            cy.clock(past.valueOf(), ['Date', 'setTimeout', 'clearTimeout']);
           });
-          cy.visit('/groups/af52a47d-98fd-4685-8510-26d342e16f9b');
-          cy.wait('@LoadData');
+
+          cy.visit('/groups/af52a47d-98fd-4685-8510-aaaaaaaaaaaa/');
           cy.getComponent('Countdown').should('be.visible');
 
           // Fast forward the countdown
           cy.tick((missingSeconds + 1) * 1000);
 
           // Once the countdown is over, the the api should be called again
-          cy.wait('@LoadData');
+          cy.mockedRequestWait('GET', '/api/groups/af52a47d-98fd-4685-8510-aaaaaaaaaaaa/');
         });
 
         it('Should show results and the groups draw details', () => {
           cy.visit('/groups/af52a47d-98fd-4685-8510-26d342e16f9b');
-          cy.mockedRequestWait('GET', '/api/groups/af52a47d-98fd-4685-8510-26d342e16f9b');
           cy.getComponent('DrawHeading__title').contains('Sorteo de grupos aleatorios');
           cy.getComponent('GroupsGeneratorResult__group').should('have.length', 2);
           cy.getComponent('GroupsGeneratorResult__group')
