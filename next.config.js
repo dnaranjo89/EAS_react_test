@@ -1,13 +1,19 @@
 // next.config.js
+
 const withImages = require('next-images');
 const withTM = require('next-transpile-modules')(['echaloasuerte-js-sdk']);
 const withSourceMaps = require('@zeit/next-source-maps')();
 // Use the SentryWebpack plugin to upload the source maps during build step
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const chalk = require('chalk');
+const setupServerMock = require('./cypress/serverMock');
 
 const { SENTRY_DSN, SENTRY_ORG, SENTRY_PROJECT, REACT_APP_ENV, NODE_ENV } = process.env;
 
+// We need to mock the server side requests when running the integration tests with Cypress
+if (REACT_APP_ENV === 'test') {
+  setupServerMock();
+}
 const isDevelopmentServer = NODE_ENV !== 'production';
 
 if (!isDevelopmentServer && !REACT_APP_ENV) {
@@ -47,7 +53,7 @@ module.exports = withImages(
         //
         // So ask Webpack to replace @sentry/node imports with @sentry/browser when
         // building the browser's bundle
-
+        console.log('------------webpack');
         if (!options.isServer) {
           config.resolve.alias['@sentry/node'] = '@sentry/browser'; // eslint-disable-line no-param-reassign
         }
