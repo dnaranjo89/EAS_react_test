@@ -53,7 +53,6 @@ module.exports = withImages(
         //
         // So ask Webpack to replace @sentry/node imports with @sentry/browser when
         // building the browser's bundle
-        console.log('------------webpack');
         if (!options.isServer) {
           config.resolve.alias['@sentry/node'] = '@sentry/browser'; // eslint-disable-line no-param-reassign
         }

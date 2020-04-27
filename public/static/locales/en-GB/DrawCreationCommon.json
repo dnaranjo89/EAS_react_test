@@ -16,5 +16,10 @@
   "datepicker_only_future_date_valid": "You have to choose a date in the future",
   "datepicker_today": "Now",
   "wizard_back": "Back",
-  "wizard_next": "Next"
+  "wizard_next": "Next",
+  "congratulations": "Congratulations!",
+  "draw_created": "You have created you raffle",
+  "go_to_the_raffle": "Go to the raffle",
+  "html_title": "Raffle successfully created",
+  "share_link": "Share this link with everyone and they will be able to see the results live"
 }

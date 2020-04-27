@@ -16,5 +16,10 @@
   "datepicker_only_future_date_valid": "Tienes que elegir una fecha en el futuro",
   "datepicker_today": "Ahora",
   "wizard_back": "Atrás",
-  "wizard_next": "Siguiente"
+  "wizard_next": "Siguiente",
+  "congratulations": "Enhorabuena!",
+  "draw_created": "Has creado tu sorteo",
+  "go_to_the_raffle": "Ir al sorteo",
+  "html_title": "Sorteo creado correctamente",
+  "share_link": "Comparte este link con quién quieras y podrán ver el resultado en directo"
 }

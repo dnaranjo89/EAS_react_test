@@ -5,7 +5,7 @@ import ReactGA from 'react-ga';
 
 import { MixpanelProvider } from 'react-mixpanel';
 import mixpanel from 'mixpanel-browser';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider, StylesProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import * as Sentry from '@sentry/node';
 import withReduxStore from '../redux/with-redux-store';
@@ -52,16 +52,18 @@ class EasApp extends App {
 
     return (
       <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {!isServer && config.mixpanelEnabled ? (
-            <MixpanelProvider mixpanel={mixpanel}>
+        <StylesProvider injectFirst>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            {!isServer && config.mixpanelEnabled ? (
+              <MixpanelProvider mixpanel={mixpanel}>
+                <Component {...modifiedPageProps} />
+              </MixpanelProvider>
+            ) : (
               <Component {...modifiedPageProps} />
-            </MixpanelProvider>
-          ) : (
-            <Component {...modifiedPageProps} />
-          )}
-        </ThemeProvider>
+            )}
+          </ThemeProvider>
+        </StylesProvider>
       </Provider>
     );
   }

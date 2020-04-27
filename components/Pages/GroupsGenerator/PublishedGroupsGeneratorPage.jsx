@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import { GroupsResult, Participant, GroupsApi } from 'echaloasuerte-js-sdk';
+import { GroupsApi } from 'echaloasuerte-js-sdk';
 import * as Sentry from '@sentry/node';
 
 import { withTranslation } from '../../../i18n';
@@ -21,7 +21,6 @@ import { ANALYTICS_TYPE_GROUPS } from '../../../constants/analyticsTypes';
 const groupsApi = new GroupsApi();
 
 const loadData = async drawId => {
-  // console.log('loadData---------', drawId);
   try {
     const draw = await groupsApi.groupsRead(drawId);
     const {
@@ -34,7 +33,6 @@ const loadData = async drawId => {
       results,
     } = draw;
     const lastToss = results[0];
-    // console.log('result', lastToss);
     return {
       id,
       title,
@@ -130,7 +128,6 @@ PublishedGroupsGeneratorPage.defaultProps = {};
 
 PublishedGroupsGeneratorPage.getInitialProps = async ctx => {
   const { id: drawId } = ctx.query;
-  console.log(' Requesting drawId', drawId);
   const draw = await loadData(drawId);
   return {
     draw,
