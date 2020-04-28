@@ -20,7 +20,7 @@ const RafflePage = ({
   values,
   apiError,
   isMobile,
-  loading,
+  loadingRequest,
   onFieldChange,
   handlePublish,
   handleCheckErrorsInConfiguration,
@@ -79,7 +79,7 @@ const RafflePage = ({
         onSubmit={handlePublish}
         submitButtonLabel={t('publish_draw')}
         apiError={apiError}
-        loading={loading}
+        loading={loadingRequest}
         isMobile={isMobile}
       />
       <LearnMoreSection title={t('learn_more_title')} content={t('learn_more_content')} />
@@ -96,7 +96,7 @@ RafflePage.propTypes = {
   }).isRequired,
   apiError: PropTypes.bool,
   isMobile: PropTypes.bool.isRequired,
-  loading: PropTypes.bool.isRequired,
+  loadingRequest: PropTypes.bool.isRequired,
   onFieldChange: PropTypes.func.isRequired,
   handlePublish: PropTypes.func.isRequired,
   handleCheckErrorsInConfiguration: PropTypes.func.isRequired,
@@ -109,4 +109,4 @@ RafflePage.defaultProps = {
 
 const mapStateToProps = state => ({ isMobile: state.userRequest.isMobile });
 
-export default withTranslation('Raffle')(connect(mapStateToProps)(RafflePage));
+export default withTranslation('RaffleDraw')(connect(mapStateToProps)(RafflePage));

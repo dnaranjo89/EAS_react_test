@@ -24,7 +24,7 @@ const c = classnames.bind(STYLES);
 const RafflePage = ({
   values,
   apiError,
-  loading,
+  loadingRequest,
   onFieldChange,
   quickResult,
   handleToss,
@@ -63,11 +63,11 @@ const RafflePage = ({
       >
         <RaffleConfigurationSection values={values} onFieldChange={onFieldChange} t={t} />
         {apiError && <ErrorFeedback error={t('DrawCreationCommon:api_error')} />}
-        <SubmitFormButton label={t('generate_results')} />
+        <SubmitFormButton label={t('generate_results')} disabled={loadingRequest} />
       </ValidationProvider>
       <div ref={resultsRef} className={c('RaffleQuickPage__quickResults')}>
-        {loading && <LoadingCoin />}
-        {!loading && quickResult && (
+        {loadingRequest && <LoadingCoin />}
+        {!loadingRequest && quickResult && (
           <>
             <WinnersList winners={quickResult.value} />
             <ShareDrawModal
@@ -90,7 +90,7 @@ RafflePage.propTypes = {
   }).isRequired,
   quickResult: PropTypes.instanceOf(RaffleResult),
   apiError: PropTypes.bool,
-  loading: PropTypes.bool,
+  loadingRequest: PropTypes.bool,
   onFieldChange: PropTypes.func.isRequired,
   handleToss: PropTypes.func.isRequired,
   handleCheckErrorsInConfiguration: PropTypes.func.isRequired,
@@ -99,7 +99,7 @@ RafflePage.propTypes = {
 
 RafflePage.defaultProps = {
   quickResult: null,
-  loading: false,
+  loadingRequest: false,
   apiError: false,
 };
 

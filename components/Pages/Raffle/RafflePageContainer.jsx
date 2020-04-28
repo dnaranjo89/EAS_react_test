@@ -160,7 +160,7 @@ class RafflePageContainer extends React.Component {
     return this.isPublic() ? (
       <RafflePage
         apiError={APIError}
-        loading={loadingRequest}
+        loadingRequest={loadingRequest}
         values={values}
         onFieldChange={this.onFieldChange}
         handlePublish={this.handlePublish}
@@ -171,7 +171,7 @@ class RafflePageContainer extends React.Component {
         apiError={APIError}
         values={values}
         quickResult={quickResult}
-        loading={loadingRequest}
+        loadingRequest={loadingRequest}
         handleToss={this.handleToss}
         onFieldChange={this.onFieldChange}
         handleCheckErrorsInConfiguration={this.handleCheckErrorsInConfiguration}
