@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { withTranslation } from '../../../i18n';
-import DrawCard from './DrawCard.jsx';
+import DrawCard from '../../DrawCard/DrawCard.jsx';
 import DrawGroup from './DrawGroup.jsx';
 import Page from '../../Page/Page.jsx';
 import randomNumberIcon from './random_number.png';

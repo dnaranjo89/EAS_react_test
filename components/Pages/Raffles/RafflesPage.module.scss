@@ -1,0 +1,16 @@
+@import '../../variables.module';
+
+.RafflesPage {
+  &__container {
+    max-width: 30rem;
+    margin: $spacing-lg auto;
+  }
+
+  & &__title {
+    margin-bottom: $spacing-lg;
+  }
+
+  &__draw-chips-group {
+    margin-bottom: 3rem;
+  }
+}

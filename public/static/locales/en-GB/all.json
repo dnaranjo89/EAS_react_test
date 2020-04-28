@@ -7,11 +7,6 @@
     "got_it": "Got it",
     "learn_more": "Learn more"
   },
-  "Countdown": {
-    "reload_page": "Please reload the page",
-    "results_published_on": "Results will be published on",
-    "time_remaining": "Time remaining"
-  },
   "FacebookProvider": {
     "error_message_impossible_to_log_in": "There was an error when trying to log with Facebook.",
     "error_message_possibly_blocked": "There was an error when trying to log with Facebook, You may have some extenion in your browser that is blocking the connexion."
