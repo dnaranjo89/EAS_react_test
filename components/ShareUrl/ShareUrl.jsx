@@ -86,4 +86,4 @@ ShareUrl.propTypes = {
   track: PropTypes.func.isRequired,
 };
 
-export default withTranslation('ShareUrl')(withTracking(ShareUrl));
+export default withTranslation('DrawCreationCommon')(withTracking(ShareUrl));

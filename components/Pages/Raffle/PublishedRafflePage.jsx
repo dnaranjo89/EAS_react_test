@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import { RaffleResult, Participant, Prize } from 'echaloasuerte-js-sdk';
-import { frontloadConnect } from 'react-frontload';
-import { connect } from 'react-redux';
-import { withTranslation } from '../../i18n';
-import { fetchRaffleDraw } from '../../../actions/drawActions';
+import { RaffleApi } from 'echaloasuerte-js-sdk';
+import * as Sentry from '@sentry/node';
+import { withTranslation } from '../../../i18n';
 import useLoadDataAfterCountdown from '../../../hooks/useLoadDataAfterCountdown';
 import Page from '../../Page/Page.jsx';
 import WinnersList from '../../WinnersList/WinnersList.jsx';
@@ -16,19 +14,42 @@ import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner.jsx';
 import ShareButtons from '../../ShareButtons/ShareButtons.jsx';
 import PublishedDrawDetails from '../../PublishedDrawDetails/PublishedDrawDetails.jsx';
 import raffleOgImage from './raffle_og_image.png';
-import useCurrentUrl from '../../../hooks/useCurrentUrl';
+import { getCurrentUrlFromWindow } from '../../../utils';
 import { ANALYTICS_TYPE_RAFFLE } from '../../../constants/analyticsTypes';
 
-const loadData = async props => {
-  const { drawId } = props.match.params;
-  await props.fetchRaffleDraw(drawId);
+const raffleApi = new RaffleApi();
+
+const loadData = async drawId => {
+  try {
+    const draw = await raffleApi.raffleRead(drawId);
+    const { id, private_id: privateId, title, description, participants, prizes, results } = draw;
+    const lastToss = results[0];
+    return {
+      id,
+      title,
+      description,
+      participants,
+      prizes,
+      result: lastToss,
+      isOwner: Boolean(privateId),
+      isLoading: false,
+    };
+  } catch (error) {
+    Sentry.withScope(scope => {
+      scope.setExtra('message', 'API Error');
+      scope.setExtra('Action', 'raffleRead');
+      scope.setExtra('drawId', drawId);
+      Sentry.captureException(error);
+    });
+    throw error;
+  }
 };
 
 const PublishedRafflePage = props => {
   const { draw, t } = props;
   const { title, description, participants, prizes, result, isLoading } = draw;
-  const shareUrl = useCurrentUrl();
-  useLoadDataAfterCountdown(result, () => loadData(props));
+  const shareUrl = getCurrentUrlFromWindow();
+  useLoadDataAfterCountdown(result);
 
   if (isLoading) {
     return <LoadingSpinner fullpage />;
@@ -79,10 +100,28 @@ const PublishedRafflePage = props => {
 PublishedRafflePage.propTypes = {
   draw: PropTypes.shape({
     title: PropTypes.string,
-    participants: PropTypes.arrayOf(PropTypes.instanceOf(Participant)).isRequired,
-    prizes: PropTypes.arrayOf(PropTypes.instanceOf(Prize)).isRequired,
+    participants: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        created_at: PropTypes.string.isRequired,
+        facebook_id: PropTypes.string,
+      }),
+    ).isRequired,
+    prizes: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        created_at: PropTypes.string.isRequired,
+        facebook_id: PropTypes.string,
+      }),
+    ).isRequired, // TODO that's rong
     description: PropTypes.string,
-    result: PropTypes.instanceOf(RaffleResult),
+    result: PropTypes.shape({
+      created_at: PropTypes.string.isRequired,
+      schedule_date: PropTypes.string,
+      value: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape())),
+    }),
     isOwner: PropTypes.bool,
     isLoading: PropTypes.bool,
   }).isRequired,
@@ -91,15 +130,13 @@ PublishedRafflePage.propTypes = {
 
 PublishedRafflePage.defaultProps = {};
 
-const TranslatedPage = withTranslation('Raffle')(PublishedRafflePage);
+PublishedRafflePage.getInitialProps = async ctx => {
+  const { id: drawId } = ctx.query;
+  const draw = await loadData(drawId);
+  return {
+    draw,
+    namespacesRequired: ['RaffleDraw', 'CommonPublished'],
+  };
+};
 
-const mapsStateToProps = state => ({
-  draw: state.draws.draw,
-});
-
-export default connect(mapsStateToProps, { fetchRaffleDraw })(
-  frontloadConnect(loadData, {
-    onMount: true,
-    onUpdate: false,
-  })(TranslatedPage),
-);
+export default withTranslation('RaffleDraw')(PublishedRafflePage);
