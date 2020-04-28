@@ -21,5 +21,7 @@
   "draw_created": "Has creado tu sorteo",
   "go_to_the_raffle": "Ir al sorteo",
   "html_title": "Sorteo creado correctamente",
-  "share_link": "Comparte este link con quién quieras y podrán ver el resultado en directo"
+  "share_link": "Comparte este link con quién quieras y podrán ver el resultado en directo",
+  "ShareUrl_copy": "Copiar",
+  "ShareUrl_url_copied": "El enlace se ha copiado al portapapeles"
 }

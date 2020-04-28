@@ -25,11 +25,12 @@ const SuccessfullyCreatedDraw = ({ t }) => {
   const routerPath = router.pathname.replace('/success', '');
 
   // TODO I would like to reconsider how this is done
-  // E.g we could move all of this page to be part of the actual PublishedGrourpsPage
+  // E.g we could move all of this page to be part of the actual PublishedGroupsPage
   // so that it's shown when the user is owner, this page is show
   useEffect(() => {
     if (!isOwnedByUser) {
-      router.push(routerPath, drawUrl);
+      console.log('pishing', routerPath, drawUrl);
+      router.push(`${routerPath}/`, `${drawUrl}/`);
     }
   });
 

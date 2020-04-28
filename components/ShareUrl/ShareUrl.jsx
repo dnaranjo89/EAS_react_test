@@ -56,7 +56,7 @@ const ShareUrl = ({ url, drawType, track, t }) => {
       <Divider className={STYLES.Divider} orientation="vertical" />
       <CopyToClipboard text={url} onCopy={handleOnCopy}>
         <Button startIcon={<FileCopyIcon />} className={STYLES.Button}>
-          {t('copy')}
+          {t('ShareUrl_copy')}
         </Button>
       </CopyToClipboard>
       <Snackbar
@@ -68,7 +68,7 @@ const ShareUrl = ({ url, drawType, track, t }) => {
         ContentProps={{
           'aria-describedby': 'message-id',
         }}
-        message={<span id="message-id">{t('url_copied')}</span>}
+        message={<span id="message-id">{t('ShareUrl_url_copied')}</span>}
         action={[
           <IconButton key="close" aria-label="close" color="inherit" onClick={handleClose}>
             <CloseIcon />

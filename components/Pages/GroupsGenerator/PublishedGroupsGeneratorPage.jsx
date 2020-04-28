@@ -131,7 +131,7 @@ PublishedGroupsGeneratorPage.getInitialProps = async ctx => {
   const draw = await loadData(drawId);
   return {
     draw,
-    namespacesRequired: ['GroupsDraw'],
+    namespacesRequired: ['GroupsDraw', 'CommonPublished'],
   };
 };
 

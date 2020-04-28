@@ -8,7 +8,7 @@ describe('Successfully created draw', () => {
         cy.viewport(device);
       });
 
-      describe.only('Should send the correct analytics event for', () => {
+      describe('Should send the correct analytics event for', () => {
         beforeEach(() => {
           const mockRecentDraws = [
             {
@@ -31,7 +31,7 @@ describe('Successfully created draw', () => {
           });
         });
 
-        it('Number draw', () => {
+        it.skip('Number draw', () => {
           cy.visit('/number/b29f44c2-1022-408a-925f-63e5f77a12ad/success');
           cy.getComponent('SocialButton__whatsapp').click();
           cy.get('@ga').and('be.calledWith', 'send', {
@@ -42,7 +42,7 @@ describe('Successfully created draw', () => {
           });
         });
 
-        it('Raffle draw', () => {
+        it.skip('Raffle draw', () => {
           cy.visit('/raffle/b29f44c2-1022-408a-925f-63e5f77a12ad/success');
           cy.getComponent('SocialButton__whatsapp').click();
           cy.get('@ga').and('be.calledWith', 'send', {
@@ -53,7 +53,7 @@ describe('Successfully created draw', () => {
           });
         });
 
-        it('Facebook draw', () => {
+        it.skip('Facebook draw', () => {
           cy.visit('/facebook/b29f44c2-1022-408a-925f-63e5f77a12ad/success');
           cy.getComponent('SocialButton__whatsapp').click();
           cy.get('@ga').and('be.calledWith', 'send', {
@@ -102,9 +102,9 @@ describe('Successfully created draw', () => {
         });
       });
 
-      it('When the user is not the owner should automatically redirect to the draw', () => {
+      it.only('When the user is not the owner should automatically redirect to the draw', () => {
         cy.visit('/groups/b29f44c2-1022-408a-925f-63e5f77a12ad/success');
-        cy.location('pathname').should('eq', '/groups/b29f44c2-1022-408a-925f-63e5f77a12ad');
+        cy.location('pathname').should('eq', '/groups/b29f44c2-1022-408a-925f-63e5f77a12ad/');
       });
     });
   });

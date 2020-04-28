@@ -15,7 +15,7 @@ const Countdown = ({ date, t, i18n }) => {
   return (
     <div className={c('Countdown')} data-testid="Countdown">
       <Typography variant="subtitle2">
-        {t('results_published_on')}{' '}
+        {t('Countdown_results_published_on')}{' '}
         <Tooltip placement="top" title={moment(date).format()}>
           <span>{moment(date).format('LLL')}</span>
         </Tooltip>
@@ -25,7 +25,7 @@ const Countdown = ({ date, t, i18n }) => {
         zeroPadLength={0}
         renderer={({ days, hours, minutes, seconds, completed }) => {
           if (completed) {
-            return <Typography variant="subtitle2">{t('reload_page')}</Typography>;
+            return <Typography variant="subtitle2">{t('Countdown_reload_page')}</Typography>;
           }
 
           let countdownMessage = '';
@@ -43,7 +43,7 @@ const Countdown = ({ date, t, i18n }) => {
           }
           return (
             <div>
-              <Typography variant="subtitle2">{t('time_remaining')}</Typography>
+              <Typography variant="subtitle2">{t('Countdown_time_remaining')}</Typography>
               <Typography className={c('Countdown__message')}>{countdownMessage}</Typography>
             </div>
           );
@@ -59,4 +59,4 @@ Countdown.propTypes = {
   i18n: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export default withTranslation('Countdown')(Countdown);
+export default withTranslation('CommonPublished')(Countdown);

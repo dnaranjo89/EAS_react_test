@@ -21,5 +21,7 @@
   "draw_created": "You have created you raffle",
   "go_to_the_raffle": "Go to the raffle",
   "html_title": "Raffle successfully created",
-  "share_link": "Share this link with everyone and they will be able to see the results live"
+  "share_link": "Share this link with everyone and they will be able to see the results live",
+  "ShareUrl_copy": "Copy",
+  "ShareUrl_url_copied": "Link copied to clipboard"
 }

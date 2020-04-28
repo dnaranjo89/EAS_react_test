@@ -7,11 +7,6 @@
     "got_it": "Entendido",
     "learn_more": "Más información"
   },
-  "Countdown": {
-    "reload_page": "Los resultados ya se han publicado. Por favor, recarga la página",
-    "results_published_on": "El resultado será publicado el",
-    "time_remaining": "Tiempo restante"
-  },
   "FacebookPhotoRafflePage": {
     "draw_subheading": "Some description",
     "error_form_need_to_login_facebook": "Tienes que hacer login con facebook para continuar",
