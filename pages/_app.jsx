@@ -21,8 +21,11 @@ if (!isServer && config.mixpanelEnabled) {
   mixpanel.init(config.mixpanelID, { debug: config.mixpanelDebug, track_pageview: false });
 }
 
-EasApi.init();
+if (config.googleAnalyticsEnabled) {
+  ReactGA.initialize(config.googleAnalyticsID, { titleCase: false });
+}
 
+EasApi.init();
 Sentry.init({
   enabled: config.environment === 'production',
   dsn: config.sentryDsn,
@@ -31,10 +34,6 @@ Sentry.init({
 
 class EasApp extends App {
   componentDidMount() {
-    if (config.googleAnalyticsEnabled) {
-      ReactGA.initialize(config.googleAnalyticsID, { titleCase: false });
-    }
-
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {

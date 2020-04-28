@@ -20,6 +20,7 @@ const Countdown = ({ date, t, i18n }) => {
           <span>{moment(date).format('LLL')}</span>
         </Tooltip>
       </Typography>
+      {/* TODO this package has been deprecated, need to migrate it to 'react-countdown' */}
       <CountdownHandler
         date={date}
         zeroPadLength={0}

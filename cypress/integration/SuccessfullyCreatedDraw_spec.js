@@ -42,7 +42,7 @@ describe('Successfully created draw', () => {
           });
         });
 
-        it.skip('Raffle draw', () => {
+        it('Raffle draw', () => {
           cy.visit('/raffle/b29f44c2-1022-408a-925f-63e5f77a12ad/success');
           cy.getComponent('SocialButton__whatsapp').click();
           cy.get('@ga').and('be.calledWith', 'send', {
@@ -102,9 +102,10 @@ describe('Successfully created draw', () => {
         });
       });
 
-      it.only('When the user is not the owner should automatically redirect to the draw', () => {
+      it('When the user is not the owner should automatically redirect to the draw', () => {
+        cy.route('/api/groups/b29f44c2-1022-408a-925f-63e5f77a12ad/').as('redirect');
         cy.visit('/groups/b29f44c2-1022-408a-925f-63e5f77a12ad/success');
-        cy.location('pathname').should('eq', '/groups/b29f44c2-1022-408a-925f-63e5f77a12ad/');
+        cy.wait('@redirect');
       });
     });
   });
