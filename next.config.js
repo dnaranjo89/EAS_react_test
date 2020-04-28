@@ -36,7 +36,7 @@ module.exports = withImages(
   withTM(
     withSourceMaps({
       env: {
-        APP_ENV: REACT_APP_ENV || 'local',
+        APP_ENV: isDevelopmentServer ? 'local' : REACT_APP_ENV,
       },
       webpack: (config, options) => {
         // In `pages/_app.js`, Sentry is imported from @sentry/node. While

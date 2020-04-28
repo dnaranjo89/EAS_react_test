@@ -13,6 +13,7 @@ import throttle from '../../../services/throttle';
 import { ANALYTICS_TYPE_GROUPS } from '../../../constants/analyticsTypes';
 
 const groupsApi = new GroupsApi();
+
 class GroupsGeneratorPageContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -122,10 +123,8 @@ class GroupsGeneratorPageContainer extends React.Component {
     this.setState({ loadingRequest: true });
 
     const { values } = this.state;
-
     try {
       const draw = await this.createDraw();
-
       const { dateScheduled } = values;
       const drawTossPayload = DrawTossPayload.constructFromObject({ schedule_date: dateScheduled });
       const tossResponse = await groupsApi.groupsToss(draw.private_id, drawTossPayload);

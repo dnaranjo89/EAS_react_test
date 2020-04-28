@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { RaffleResult } from 'echaloasuerte-js-sdk';
 import classnames from 'classnames/bind';
-import { withTranslation } from '../../i18n';
+import { withTranslation } from '../../../i18n';
 import ErrorFeedback from '../../ErrorFeedback/ErrorFeedback.jsx';
 import SubmitFormButton from '../../SubmitFormButton/SubmitFormButton.jsx';
 import useScrollToResults from '../../../hooks/useScrollToResults';
@@ -103,4 +103,4 @@ RafflePage.defaultProps = {
   apiError: false,
 };
 
-export default withTranslation('Raffle')(RafflePage);
+export default withTranslation('RaffleDraw')(RafflePage);

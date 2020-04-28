@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import { RaffleApi, Raffle, DrawTossPayload } from 'echaloasuerte-js-sdk';
 import moment from 'moment';
-import { withTranslation } from '../../i18n';
-import withTracking from '../../withTracking/withTracking.jsx';
+import Router, { withRouter } from 'next/router';
+import { withTranslation } from '../../../i18n';
+import withTracking from '../../../hocs/withTracking.jsx';
 import recentDraws from '../../../services/recentDraws';
 import throttle from '../../../services/throttle';
 import RafflePage from './RafflePage.jsx';
@@ -13,7 +13,7 @@ import { ANALYTICS_TYPE_RAFFLE } from '../../../constants/analyticsTypes';
 
 const raffleApi = new RaffleApi();
 
-class RafflePageContainer extends Component {
+class RafflePageContainer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -21,10 +21,10 @@ class RafflePageContainer extends Component {
     dateScheduled.setHours(dateScheduled.getHours() + 1);
 
     this.state = {
+      privateId: null,
+      quickResult: null,
       APIError: false,
       loadingRequest: false,
-      quickResult: null,
-      privateId: null,
       values: {
         title: '', // Default title is set in CDM
         description: '',
@@ -59,10 +59,14 @@ class RafflePageContainer extends Component {
     }));
   };
 
+  isPublic = () => {
+    const { router } = this.props;
+    return router.asPath.indexOf('public') >= 0;
+  };
+
   createDraw = () => {
     const { values } = this.state;
-    const { match } = this.props;
-    const { isPublic } = match.params;
+    const isPublic = this.isPublic();
     const { title, description, participants, prizes } = values;
     const drawData = {
       prizes: prizes.map(prize => ({ name: prize })),
@@ -114,7 +118,8 @@ class RafflePageContainer extends Component {
   };
 
   handlePublish = async () => {
-    const { history } = this.props;
+    this.setState({ loadingRequest: true });
+
     const { values } = this.state;
     try {
       const draw = await this.createDraw();
@@ -132,9 +137,9 @@ class RafflePageContainer extends Component {
       });
       const drawPath = `/raffle/${draw.id}/success`;
       recentDraws.add(draw, drawPath, scheduleDate);
-      history.push(drawPath);
+      Router.push(drawPath);
     } catch (err) {
-      this.setState({ APIError: true });
+      this.setState({ APIError: true, loadingRequest: false });
     }
   };
 
@@ -152,9 +157,7 @@ class RafflePageContainer extends Component {
 
   render() {
     const { APIError, values, quickResult, loadingRequest } = this.state;
-    const { match } = this.props;
-    const { isPublic } = match.params;
-    return isPublic ? (
+    return this.isPublic() ? (
       <RafflePage
         apiError={APIError}
         loading={loadingRequest}
@@ -177,11 +180,19 @@ class RafflePageContainer extends Component {
   }
 }
 
+RafflePageContainer.getInitialProps = async () => ({
+  namespacesRequired: [
+    'RaffleDraw',
+    'common',
+    'ParticipantsInput',
+    'PrizesInput',
+    'DrawCreationCommon',
+  ],
+});
+
 RafflePageContainer.propTypes = {
   t: PropTypes.func.isRequired,
   track: PropTypes.func.isRequired,
-  history: ReactRouterPropTypes.history.isRequired,
-  match: ReactRouterPropTypes.match.isRequired,
 };
 
-export default withTracking(withTranslation('Raffle')(RafflePageContainer));
+export default withRouter(withTracking(withTranslation('RaffleDraw')(RafflePageContainer)));

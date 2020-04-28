@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SectionPanel from '../../SectionPanel/SectionPanel.jsx';
 import withFieldValidation from '../../FormValidation/withFieldValidation.jsx';
-import ParticipantsInput from '../../ParticipantsInput/ParticipantsInput.jsx';
-import PrizesInput from '../../PrizesInput/PrizesInput.jsx';
+import ParticipantsInput from '../../ParticipantsInput.jsx';
+import PrizesInput from '../../PrizesInput.jsx';
 import FormValidationFeedback from '../../FormValidation/FormValidationFeedback.jsx';
 
 const ValidatedParticipantsInput = withFieldValidation(ParticipantsInput);
