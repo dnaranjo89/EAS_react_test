@@ -23,11 +23,12 @@ script:
 branches:
   only:
     - development
+    - try-next
     - master
     - prod
 
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "prod" ] || [ "$TRAVIS_BRANCH" == "master" ]; then
+  - if [ "$TRAVIS_BRANCH" == "prod" ] || [ "$TRAVIS_BRANCH" == "master" ] || [ "$TRAVIS_BRANCH" == "try-next" ]; then
     docker login -u $DOCKER_USER -p $DOCKER_PASS ;
     docker push etcaterva/echaloasuerte:$TRAVIS_BRANCH ;
     fi
@@ -50,9 +51,15 @@ before_deploy:
 
 deploy:
   - provider: script
+    script: cd eas-deployment &&  ansible-playbook -i hosts_dev config-eas3.yml --vault-password-file=vault-pass --tags "cd-frontend" --extra-vars "ansible_user=automation echaloasuerte_3_git_branch=try-next echaloasuerte_3_npm_config=''"
+    on:
+      branch: try-next
+
+  - provider: script
     script: cd eas-deployment &&  ansible-playbook -i hosts_dev config-eas3.yml --vault-password-file=vault-pass --tags "cd-frontend" --extra-vars "ansible_user=automation"
     on:
       branch: master
+
   - provider: script
     script: cd eas-deployment && git checkout prod && ansible-playbook -i hosts_prod config-eas3.yml --vault-password-file=vault-pass --tags "cd-frontend" --extra-vars "ansible_user=automation echaloasuerte_3_git_branch=prod echaloasuerte_3_npm_config=''"
     on:
