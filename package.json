@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "node server.js",
-    "start": "NODE_ENV=production node server.js",
-    "start:dev": "REACT_APP_ENV=local HTTPS=false react-scripts start",
-    "start:test": "REACT_APP_ENV=test HTTPS=false PORT=3005 npm run dev",
+    "start": "node server.js",
+    "start:test": "REACT_APP_ENV=test HTTPS=false PORT=3005 npm run start",
     "build": "next build",
     "export": "next export",
     "test": "jest --watch --testPathIgnorePatterns config/test.js",
