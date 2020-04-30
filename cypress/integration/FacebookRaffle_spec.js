@@ -1,4 +1,4 @@
-describe('FacebookRaffle', () => {
+describe.skip('FacebookRaffle', () => {
   ['macbook-13', 'iphone-5'].forEach(device => {
     context(`Device ${device}`, () => {
       beforeEach(() => {

@@ -1,5 +1,5 @@
 /* eslint-disable func-names, prefer-arrow-callback */
-describe('Random Number Page', () => {
+describe.skip('Random Number Page', () => {
   ['macbook-13' /* , 'iphone-5' */].forEach(device => {
     context(`Device ${device}`, () => {
       beforeEach(() => {

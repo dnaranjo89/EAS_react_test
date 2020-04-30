@@ -1,6 +1,6 @@
 /* eslint-disable func-names, prefer-arrow-callback */
 
-describe('Spin Arrow Page', () => {
+describe.skip('Spin Arrow Page', () => {
   ['macbook-13', 'iphone-5'].forEach(device => {
     context(`Device ${device}`, () => {
       beforeEach(() => {
