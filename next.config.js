@@ -6,12 +6,13 @@ const withSourceMaps = require('@zeit/next-source-maps')();
 // Use the SentryWebpack plugin to upload the source maps during build step
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const chalk = require('chalk');
-const setupServerMock = require('./cypress/serverMock');
 
 const { SENTRY_DSN, SENTRY_ORG, SENTRY_PROJECT, REACT_APP_ENV, NODE_ENV } = process.env;
 
 // We need to mock the server side requests when running the integration tests with Cypress
 if (REACT_APP_ENV === 'test') {
+  // eslint-disable-next-line global-require
+  const setupServerMock = require('./cypress/serverMock');
   setupServerMock();
 }
 const isDevelopmentServer = NODE_ENV !== 'production';
