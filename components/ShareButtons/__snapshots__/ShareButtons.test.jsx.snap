@@ -10,25 +10,25 @@ exports[`ShareButtons renders the title if given 1`] = `
   >
     The title
   </WithStyles(ForwardRef(Typography))>
-  <WithMixpanel
+  <Component
     drawType="groups"
     key="facebook"
     socialType="facebook"
     url="the_cool_url"
   />
-  <WithMixpanel
+  <Component
     drawType="groups"
     key="twitter"
     socialType="twitter"
     url="the_cool_url"
   />
-  <WithMixpanel
+  <Component
     drawType="groups"
     key="telegram"
     socialType="telegram"
     url="the_cool_url"
   />
-  <WithMixpanel
+  <Component
     drawType="groups"
     key="whatsapp"
     socialType="whatsapp"
@@ -41,7 +41,7 @@ exports[`ShareButtons should only render the specified types 1`] = `
 <div
   className="ShareButtons"
 >
-  <WithMixpanel
+  <Component
     drawType="groups"
     key="facebook"
     socialType="facebook"
@@ -54,25 +54,25 @@ exports[`ShareButtons should render all buttons by default 1`] = `
 <div
   className="ShareButtons"
 >
-  <WithMixpanel
+  <Component
     drawType="groups"
     key="facebook"
     socialType="facebook"
     url="the_cool_url"
   />
-  <WithMixpanel
+  <Component
     drawType="groups"
     key="twitter"
     socialType="twitter"
     url="the_cool_url"
   />
-  <WithMixpanel
+  <Component
     drawType="groups"
     key="telegram"
     socialType="telegram"
     url="the_cool_url"
   />
-  <WithMixpanel
+  <Component
     drawType="groups"
     key="whatsapp"
     socialType="whatsapp"

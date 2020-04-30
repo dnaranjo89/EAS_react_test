@@ -193,6 +193,9 @@ RafflePageContainer.getInitialProps = async () => ({
 RafflePageContainer.propTypes = {
   t: PropTypes.func.isRequired,
   track: PropTypes.func.isRequired,
+  router: PropTypes.shape({
+    asPath: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default withRouter(withTracking(withTranslation('RaffleDraw')(RafflePageContainer)));

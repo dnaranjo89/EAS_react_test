@@ -1,24 +1,30 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { MemoryRouter } from 'react-router';
+import Router from 'next/router';
+import { render, fireEvent } from '@testing-library/react';
 import PublicModeButton from './PublicModeButton.jsx';
 
+const mockedRouter = {
+  push: jest.fn().mockResolvedValue(),
+  prefetch: () => {},
+};
+Router.router = mockedRouter;
+
 const mockTracking = jest.fn(() => {});
-jest.mock('../withTracking/withTracking.jsx', () => Component => props => (
+jest.mock('../../hocs/withTracking.jsx', () => Component => props => (
   <Component {...props} track={mockTracking} />
 ));
 
 describe('PublicModeButton', () => {
   it('should render all buttons by default', () => {
     const trackingData = { something: 'yes' };
-    const wrapper = mount(
-      <MemoryRouter>
-        <PublicModeButton to="/somewhere" trackingData={trackingData}>
-          click here
-        </PublicModeButton>
-      </MemoryRouter>,
+    const { getByText } = render(
+      <PublicModeButton href="/somewhere" trackingData={trackingData}>
+        click here
+      </PublicModeButton>,
     );
-    wrapper.find('a').simulate('click');
+    // component.find('a').simulate('click');
+    fireEvent.click(getByText('click here'));
+    // component.find('a').prop('onClick')();
     expect(mockTracking.mock.calls.length).toEqual(1);
     expect(mockTracking).toBeCalledWith(trackingData);
   });

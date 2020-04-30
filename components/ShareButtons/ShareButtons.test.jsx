@@ -3,6 +3,8 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import ShareButtons from './ShareButtons.jsx';
 
+jest.mock('../../hocs/withTracking.jsx', () => Component => props => <Component {...props} />);
+
 describe('ShareButtons', () => {
   it('should render all buttons by default', () => {
     const wrapper = shallow(<ShareButtons url="the_cool_url" drawType="groups" />);

@@ -14,6 +14,7 @@ export default initialState => {
   // IF REDUCERS WERE CHANGED, RELOAD WITH INITIAL STATE
   if (module.hot) {
     module.hot.accept('./reducers', () => {
+      // eslint-disable-next-line global-require
       const createNextReducer = require('./reducers').default;
 
       store.replaceReducer(createNextReducer(initialState));

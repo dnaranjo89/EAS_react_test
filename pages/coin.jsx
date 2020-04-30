@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import FlipCoinPage from '../components/FlipCoin/FlipCoinPage.jsx';
 import withTracking from '../hocs/withTracking.jsx';
 import withLoadedTranslations from '../hocs/withLoadedTranslations.jsx';
-import { ANALYTICS_TYPE_COIN } from '../constants/analyticsTypes.js';
+import { ANALYTICS_TYPE_COIN } from '../constants/analyticsTypes';
 
 class FlipCoinPageContainer extends Component {
   constructor(props) {

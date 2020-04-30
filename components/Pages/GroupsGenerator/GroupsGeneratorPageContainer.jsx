@@ -184,6 +184,9 @@ class GroupsGeneratorPageContainer extends React.Component {
 GroupsGeneratorPageContainer.propTypes = {
   track: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
+  router: PropTypes.shape({
+    asPath: PropTypes.string.isRequired,
+  }).isRequired,
 };
 GroupsGeneratorPageContainer.defaultProps = {};
 

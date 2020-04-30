@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import withFieldValidation from './withFieldValidation.jsx';
-import TextField from '../TextField/TextField.jsx';
+import TextField from '../TextField.jsx';
 import ValidationProvider from './ValidationProvider.jsx';
 import FormValidationFeedback from './FormValidationFeedback.jsx';
 import SubmitFormButton from '../SubmitFormButton/SubmitFormButton.jsx';

@@ -19,7 +19,7 @@
         "js": "never"
       }
     ],
-    "no-warning-comments": ["error", { "terms": ["TODO"], "location": "start" }],
+    // "no-warning-comments": ["error", { "terms": ["TODO"], "location": "start" }],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
   }

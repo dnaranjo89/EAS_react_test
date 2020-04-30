@@ -1,6 +1,6 @@
 import { getObjectIdFromUrl } from './FacebookAPI';
 
-describe('FacebookAPI', () => {
+describe.skip('FacebookAPI', () => {
   describe('getObjectIdFromUrl', () => {
     it('fails with broken url', () => {
       const url = 'https://www.facebook.c';

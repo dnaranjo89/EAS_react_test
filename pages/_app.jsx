@@ -8,7 +8,7 @@ import mixpanel from 'mixpanel-browser';
 import { ThemeProvider, StylesProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import * as Sentry from '@sentry/node';
-import withReduxStore from '../redux/with-redux-store';
+import withReduxStore from '../redux/with-redux-store.jsx';
 import theme from '../EasTheme.jsx';
 import NextI18NextInstance from '../i18n';
 import '../components/styles.scss';

@@ -4,7 +4,7 @@ import toJson from 'enzyme-to-json';
 import SocialShareButton from './SocialShareButton.jsx';
 
 const mockTracking = jest.fn(() => {});
-jest.mock('../withTracking/withTracking.jsx', () => Component => props => (
+jest.mock('../../hocs/withTracking.jsx', () => Component => props => (
   <Component {...props} track={mockTracking} />
 ));
 

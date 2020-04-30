@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import parserUA from 'ua-parser-js';
 import initializeStore from './store';
@@ -41,6 +42,7 @@ export default App =>
       const store = getOrCreateStore(initialState);
 
       // Provide the store to getInitialProps of pages
+      // eslint-disable-next-line no-param-reassign
       appContext.ctx.store = store;
 
       return {
@@ -50,6 +52,7 @@ export default App =>
     }
 
     render() {
+      // eslint-disable-next-line react/prop-types
       const { initialReduxState } = this.props;
       return <App {...this.props} store={getOrCreateStore(initialReduxState)} />;
     }
