@@ -1,5 +1,6 @@
 {
   "blacklistHosts": "www.google-analytics.com",
   "video": false,
-  "baseUrl": "http://localhost:3005"
+  "baseUrl": "http://localhost:3005",
+  "defaultCommandTimeout": 7000
 }

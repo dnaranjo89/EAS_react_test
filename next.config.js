@@ -20,6 +20,17 @@ const isDevelopmentServer = NODE_ENV !== 'production';
 if (!isDevelopmentServer && !REACT_APP_ENV) {
   // TODO we could take a look at using a custom config file for preprod
   /** ****************
+   * We have two environmental variables that are used to specify how should the server be running
+   *
+   * 1) NODE_ENV
+   * It specifies whether a production-like server or a development server (with hot reloading, etc) should be used.
+   * Possible values:
+   * - production:  A production-like server will be used
+   * - anything else: Otherwise, a development server will be used (with hot reloading, etc)
+   *
+   * 2) REACT_APP_ENV
+   * It specify which environment should be used. This decides whether analytics and logs are sent
+   * and to which accounts, if pages should be indexed, etc.
    * Possible environments:
    * - production (deployed app, both in the prod and dev server)
    * - local (running locally)
@@ -32,6 +43,7 @@ if (!isDevelopmentServer && !REACT_APP_ENV) {
   );
   throw Error('No environment specified');
 }
+console.log('REACT_APP_ENV', REACT_APP_ENV);
 
 module.exports = withImages(
   withTM(
