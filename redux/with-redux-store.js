@@ -1,6 +1,6 @@
 import React from 'react';
 import parserUA from 'ua-parser-js';
-import initializeStore from '../redux/store';
+import initializeStore from './store';
 import { isServer } from '../utils';
 
 const __NEXT_REDUX_STORE__ = '__NEXT_REDUX_STORE__';
