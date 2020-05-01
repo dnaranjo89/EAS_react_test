@@ -20,18 +20,18 @@ const c = classNames.bind(STYLES);
 
 class Page extends Component {
   componentDidMount() {
-    const { mixpanel, pageType, router, enableHotjar } = this.props;
-    if (config.googleAnalyticsEnabled) {
+    const { mixpanel, pageType, router, enableHotjar, enableTracking } = this.props;
+    if (enableTracking && config.googleAnalyticsEnabled) {
       const page = router.asPath;
       ReactGA.pageview(page);
     }
-    if (config.mixpanelEnabled) {
+    if (enableTracking && config.mixpanelEnabled) {
       mixpanel.track(`Page Loaded - ${pageType}`, {
         ...getExperimentsAllocation(),
         pageType,
       });
     }
-    if (config.hotjarEnabled && enableHotjar) {
+    if (enableHotjar && config.hotjarEnabled) {
       hotjar.initialize(1051921, 6);
     }
   }
@@ -104,6 +104,7 @@ Page.propTypes = {
   htmlKeywords: PropTypes.string,
   pageType: PropTypes.string.isRequired,
   enableHotjar: PropTypes.bool,
+  enableTracking: PropTypes.bool,
   contentClassName: PropTypes.string,
   mixpanel: PropTypes.shape({ track: PropTypes.func.isRequired }),
   children: PropTypes.node.isRequired,
@@ -124,6 +125,7 @@ Page.defaultProps = {
   htmlKeywords: '',
   htmlDescription: '',
   enableHotjar: false,
+  enableTracking: true,
   showAdvert: true,
   mixpanel: null,
   sidePanel: null,

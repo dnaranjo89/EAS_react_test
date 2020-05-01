@@ -27,7 +27,7 @@ if (config.googleAnalyticsEnabled) {
 
 EasApi.init();
 Sentry.init({
-  enabled: config.environment === 'production',
+  enabled: config.sentryEnabled,
   dsn: config.sentryDsn,
   environment: config.environment,
 });

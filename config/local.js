@@ -6,7 +6,7 @@ const config = {
   hotjarEnabled: true,
   googleAnalyticsEnabled: true,
   mixpanelEnabled: true,
-  sentryEnabled: false,
+  sentryEnabled: true,
   apiBasePath: 'http://127.0.0.1:8000/api',
   facebookAppId: '258744194669921',
 };

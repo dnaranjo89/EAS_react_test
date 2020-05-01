@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
+    "dev": "REACT_APP_ENV=local node server.js",
     "start": "NODE_ENV=production node server.js",
     "start:test": "REACT_APP_ENV=test PORT=3005 HTTPS=false npm run dev",
     "build": "next build",
