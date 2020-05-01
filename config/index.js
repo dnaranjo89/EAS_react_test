@@ -1,12 +1,7 @@
 /* eslint-disable no-console */
-/* eslint-disable no-underscore-dangle */
 
 let config = {};
 const environment = process.env.APP_ENV;
-
-if (!environment) {
-  console.error('No environment specified. Please set the REACT_APP_ENV environment variable');
-}
 
 if (process.env.REACT_APP_COMMIT) {
   const deployedCommit = process.env.REACT_APP_COMMIT;
@@ -14,10 +9,6 @@ if (process.env.REACT_APP_COMMIT) {
 }
 
 try {
-  if (['production', 'test'].indexOf(environment) < 0) {
-    console.log(`Loading application config for environment: ${environment}`);
-  }
-
   const baseConfig = {
     OGImagesFullDomain: 'https://echaloasuerte.com',
     environment,
