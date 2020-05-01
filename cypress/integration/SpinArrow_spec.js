@@ -1,6 +1,4 @@
-/* eslint-disable func-names, prefer-arrow-callback */
-
-describe.skip('Spin Arrow Page', () => {
+describe('Spin Arrow Page', () => {
   ['macbook-13', 'iphone-5'].forEach(device => {
     context(`Device ${device}`, () => {
       beforeEach(() => {
@@ -8,7 +6,7 @@ describe.skip('Spin Arrow Page', () => {
         cy.viewport(device);
       });
 
-      it('Analytics pageview and event on toss', function() {
+      it('Analytics pageview and event on toss', () => {
         cy.mockGA();
         cy.visit('/spinner');
 
@@ -24,7 +22,7 @@ describe.skip('Spin Arrow Page', () => {
         });
       });
 
-      it('Clicking the arrow should make it spin', function() {
+      it('Clicking the arrow should make it spin', () => {
         cy.visit('/spinner');
         cy.getComponent('SpinArrow__arrow').click();
         cy.getComponent('SpinArrow__arrow')
