@@ -2,6 +2,7 @@
 
 let config = {};
 const environment = process.env.APP_ENV;
+console.log('Using settings:', environment);
 
 if (process.env.REACT_APP_COMMIT) {
   const deployedCommit = process.env.REACT_APP_COMMIT;

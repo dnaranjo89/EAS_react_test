@@ -50,9 +50,7 @@ if (!isDevelopmentServer && !REACT_APP_ENV) {
 // eslint-disable-next-line no-console
 console.log(
   chalk.yellow(
-    'Running a',
-    chalk.underline.bold(isDevelopmentServer ? 'development' : 'production-like'),
-    'server with',
+    'Using',
     chalk.underline.bold(environment),
     `settings ('REACT_APP_ENV=${REACT_APP_ENV}')`,
   ),
