@@ -52,8 +52,10 @@ MyError.getInitialProps = async ({ res, err, asPath }) => {
 
     if (res.statusCode === 404) {
       // Opinionated: do not record an exception in Sentry for 404
+      console.log('sending log', asPath);
       Sentry.withScope(scope => {
         scope.setExtra('page', asPath);
+        scope.setTag('pageNotFound', asPath);
         Sentry.captureMessage('Page not found');
       });
       return { ...initialProps, statusCode: 404 };
