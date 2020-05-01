@@ -33,7 +33,6 @@ describe('Flip a Coin Page', () => {
         cy.visit('/coin');
         cy.get('[class*="FlipCoinPage__coin--"]').should('not.exist');
         cy.get('[class*="FlipCoinPage__result--animated"]').should('not.exist');
-        cy.get('[class*="FlipCoinPage__coin--"]').should('not.exist');
         cy.getComponent('FlipCoinPage__coin').click();
         cy.get('[class*="FlipCoinPage__coin--"]').should('exist');
         cy.get('[class*="FlipCoinPage__result--animated"]').should('exist');

@@ -10,7 +10,7 @@ class FlipCoinPageContainer extends Component {
     super(props);
     this.state = {
       coinSide: 'heads',
-      showTossHelp: true,
+      waitingForInteraction: true,
     };
   }
 
@@ -23,14 +23,18 @@ class FlipCoinPageContainer extends Component {
     });
     this.setState({
       coinSide,
-      showTossHelp: false,
+      waitingForInteraction: false,
     });
   };
 
   render() {
-    const { coinSide, showTossHelp } = this.state;
+    const { coinSide, waitingForInteraction } = this.state;
     return (
-      <FlipCoinPage coinSide={coinSide} onFlip={this.handleFlipCoin} showTossHelp={showTossHelp} />
+      <FlipCoinPage
+        coinSide={coinSide}
+        onFlip={this.handleFlipCoin}
+        waitingForInteraction={waitingForInteraction}
+      />
     );
   }
 }

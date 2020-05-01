@@ -15,24 +15,27 @@ const c = classnames.bind(STYLES);
 
 class FlipCoinPage extends Component {
   componentDidUpdate(prevProps) {
-    const { coinSide } = this.props;
-    const className = c({
-      'FlipCoinPage__coin--heads': coinSide === 'heads',
-      'FlipCoinPage__coin--tails': coinSide === 'tails',
-    });
-    document
-      .getElementById('coinImage')
-      .classList.remove(c(`FlipCoinPage__coin--${prevProps.coinSide}`));
-    document.getElementById('resultLabel').classList.remove(c(`FlipCoinPage__result--animated`));
+    const { waitingForInteraction } = this.props;
+    if (!waitingForInteraction) {
+      const { coinSide } = this.props;
+      const className = c({
+        'FlipCoinPage__coin--heads': coinSide === 'heads',
+        'FlipCoinPage__coin--tails': coinSide === 'tails',
+      });
+      document
+        .getElementById('coinImage')
+        .classList.remove(c(`FlipCoinPage__coin--${prevProps.coinSide}`));
+      document.getElementById('resultLabel').classList.remove(c(`FlipCoinPage__result--animated`));
 
-    setTimeout(() => {
-      document.getElementById('coinImage').classList.add(className);
-      document.getElementById('resultLabel').classList.add(c(`FlipCoinPage__result--animated`));
-    }, 50);
+      setTimeout(() => {
+        document.getElementById('coinImage').classList.add(className);
+        document.getElementById('resultLabel').classList.add(c(`FlipCoinPage__result--animated`));
+      }, 50);
+    }
   }
 
   render() {
-    const { coinSide, showTossHelp, onFlip, t } = this.props;
+    const { coinSide, waitingForInteraction, onFlip, t } = this.props;
     return (
       <Page
         htmlTitle={t('html_title')}
@@ -63,7 +66,7 @@ class FlipCoinPage extends Component {
               alt="tails"
             />
           </button>
-          {showTossHelp && (
+          {waitingForInteraction && (
             <Typography variant="subtitle1" align="center">
               {t('touch_to_toss')}
             </Typography>
@@ -86,7 +89,7 @@ class FlipCoinPage extends Component {
 
 FlipCoinPage.propTypes = {
   coinSide: PropTypes.string.isRequired,
-  showTossHelp: PropTypes.bool.isRequired,
+  waitingForInteraction: PropTypes.bool.isRequired,
   onFlip: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
 };
