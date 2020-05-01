@@ -107,15 +107,15 @@ PublishedGroupsGeneratorPage.propTypes = {
       PropTypes.shape({
         name: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
-        created_at: PropTypes.string.isRequired,
+        created_at: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
         facebook_id: PropTypes.string,
       }),
     ).isRequired,
     numberOfGroups: PropTypes.number,
     description: PropTypes.string,
     result: PropTypes.shape({
-      created_at: PropTypes.string.isRequired,
-      schedule_date: PropTypes.string,
+      created_at: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
+      schedule_date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
       value: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape())),
     }),
     isOwner: PropTypes.bool,

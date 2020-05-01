@@ -55,7 +55,7 @@ const Countdown = ({ date, t, i18n }) => {
 };
 
 Countdown.propTypes = {
-  date: PropTypes.string.isRequired,
+  date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
   t: PropTypes.func.isRequired,
   i18n: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
