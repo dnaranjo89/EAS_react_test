@@ -10,6 +10,7 @@ import throttle from '../../../services/throttle';
 import RafflePage from './RafflePage.jsx';
 import RaffleQuickPage from './RaffleQuickPage.jsx';
 import { ANALYTICS_TYPE_RAFFLE } from '../../../constants/analyticsTypes';
+import withLoadedTranslations from '../../../hocs/withLoadedTranslations.jsx';
 
 const raffleApi = new RaffleApi();
 
@@ -180,16 +181,6 @@ class RafflePageContainer extends React.Component {
   }
 }
 
-RafflePageContainer.getInitialProps = async () => ({
-  namespacesRequired: [
-    'RaffleDraw',
-    'common',
-    'ParticipantsInput',
-    'PrizesInput',
-    'DrawCreationCommon',
-  ],
-});
-
 RafflePageContainer.propTypes = {
   t: PropTypes.func.isRequired,
   track: PropTypes.func.isRequired,
@@ -198,4 +189,10 @@ RafflePageContainer.propTypes = {
   }).isRequired,
 };
 
-export default withRouter(withTracking(withTranslation('RaffleDraw')(RafflePageContainer)));
+export default withLoadedTranslations([
+  'RaffleDraw',
+  'common',
+  'ParticipantsInput',
+  'PrizesInput',
+  'DrawCreationCommon',
+])(withRouter(withTracking(withTranslation('RaffleDraw')(RafflePageContainer))));
