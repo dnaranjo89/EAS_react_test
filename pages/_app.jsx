@@ -13,7 +13,7 @@ import theme from '../EasTheme.jsx';
 import NextI18NextInstance from '../i18n';
 import '../components/styles.scss';
 import EasApi from '../services/EasApi';
-import { isServer } from '../utils';
+import { environment, isServer } from '../utils';
 
 import config from '../config';
 
@@ -29,7 +29,7 @@ EasApi.init();
 Sentry.init({
   enabled: config.sentryEnabled,
   dsn: config.sentryDsn,
-  environment: config.environment,
+  environment,
 });
 
 class EasApp extends App {

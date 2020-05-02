@@ -7,7 +7,8 @@ const config = {
   googleAnalyticsEnabled: true,
   mixpanelEnabled: true,
   sentryEnabled: true,
-  apiBasePath: 'http://127.0.0.1:8000/api',
+  // apiDomain is only used when making calls server side, on the client the calls are relative to the hostname
+  apiDomain: 'http://127.0.0.1:8000',
   facebookAppId: '258744194669921',
 };
 

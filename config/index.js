@@ -11,7 +11,6 @@ if (process.env.REACT_APP_COMMIT) {
 try {
   const baseConfig = {
     OGImagesFullDomain: 'https://echaloasuerte.com',
-    environment,
     sentryDsn: 'https://bebd8f08ca1e44b0bd2b2d5f352332f4@o170509.ingest.sentry.io/1247679',
   };
 
