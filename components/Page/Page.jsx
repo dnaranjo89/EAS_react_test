@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import ReactGA from 'react-ga';
+import { connect } from 'react-redux';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
 import withMixpanel from '../../hocs/withMixpanel.jsx';
@@ -35,9 +36,15 @@ class Page extends Component {
     }
   }
 
+  getDomain() {
+    const { hostname } = this.props;
+    return `https://${hostname}`;
+  }
+
   getAbsoluteUrl() {
-    const { router, hostname } = this.props;
-    return `https://${hostname}${router.asPath}`;
+    const { router } = this.props;
+    const domain = this.getDomain();
+    return `${domain}${router.asPath}`;
   }
 
   render() {
@@ -56,7 +63,7 @@ class Page extends Component {
     const shouldIndexPage = config.indexPages && !noIndex;
     const pageTitle = htmlTitle.substring(0, 60);
     const pageDescription = htmlDescription.substring(0, 155);
-    const ogImageUrl = config.OGImagesFullDomain + ogImage;
+    const ogImageUrl = this.getDomain() + ogImage;
     return (
       <Fragment>
         <Head>
@@ -99,7 +106,7 @@ Page.propTypes = {
     asPath: PropTypes.string.isRequired,
   }).isRequired,
   ogImage: PropTypes.node,
-  hostname: PropTypes.string,
+  hostname: PropTypes.string.isRequired,
   showAdvert: PropTypes.bool,
   sidePanel: PropTypes.node,
 };
@@ -114,11 +121,10 @@ Page.defaultProps = {
   showAdvert: true,
   mixpanel: null,
   sidePanel: null,
-  hostname: 'www.asdasd.com', // hostname should be window.location?
 };
 
-// const mapsStateToProps = state => ({
-//   hostname: state.userRequest.hostname,
-// });
+const mapsStateToProps = state => ({
+  hostname: state.userRequest.hostname,
+});
 
-export default withMixpanel(withRouter(Page));
+export default withMixpanel(withRouter(connect(mapsStateToProps)(Page)));
