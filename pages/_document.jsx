@@ -5,21 +5,23 @@ import theme from '../EasTheme.jsx';
 
 export default class MyDocument extends Document {
   render() {
+    const { language } = this.props;
+
     return (
-      <Html lang="en">
+      <Html lang={language}>
         <Head>
           <link
             rel="preload"
             as="font"
             type="font/woff2"
-            href="/fonts/fredoka-one-v7-latin-regular.woff2"
+            href="/static/fonts/fredoka-one-v7-latin-regular.woff2"
             crossOrigin
           />
           <link
             rel="preload"
             as="font"
             type="font/woff2"
-            href="/fonts/montserrat-v14-latin-regular.woff2"
+            href="/static/fonts/montserrat-v14-latin-regular.woff2"
             crossOrigin
           />
 
@@ -69,8 +71,15 @@ MyDocument.getInitialProps = async ctx => {
 
   const initialProps = await Document.getInitialProps(ctx);
 
+  const { res } = ctx;
+  const { locals } = res;
+  const additionalProps = {
+    language: locals.language,
+  };
+
   return {
     ...initialProps,
+    ...additionalProps,
     // Styles fragment is rendered after the app and page rendering finish.
     styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
   };

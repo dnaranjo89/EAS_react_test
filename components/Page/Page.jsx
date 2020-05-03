@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import Helmet from 'react-helmet';
 import ReactGA from 'react-ga';
-import i18n from 'i18next';
+import Head from 'next/head';
 import { withRouter } from 'next/router';
 import withMixpanel from '../../hocs/withMixpanel.jsx';
 import Advert from '../Advert/Advert.jsx';
@@ -20,18 +19,18 @@ const c = classNames.bind(STYLES);
 
 class Page extends Component {
   componentDidMount() {
-    const { mixpanel, pageType, router, enableHotjar, enableTracking } = this.props;
-    if (enableTracking && config.googleAnalyticsEnabled) {
+    const { mixpanel, pageType, router, enableHotjar } = this.props;
+    if (config.googleAnalyticsEnabled) {
       const page = router.asPath;
       ReactGA.pageview(page);
     }
-    if (enableTracking && config.mixpanelEnabled) {
+    if (config.mixpanelEnabled) {
       mixpanel.track(`Page Loaded - ${pageType}`, {
         ...getExperimentsAllocation(),
         pageType,
       });
     }
-    if (enableHotjar && config.hotjarEnabled) {
+    if (config.hotjarEnabled && enableHotjar) {
       hotjar.initialize(1051921, 6);
     }
   }
@@ -41,50 +40,38 @@ class Page extends Component {
     return `https://${hostname}${router.asPath}`;
   }
 
-  getMetaTags() {
-    const { htmlTitle, htmlDescription, htmlKeywords, noIndex, ogImage } = this.props;
+  render() {
+    const {
+      htmlTitle,
+      contentClassName,
+      children,
+      showAdvert,
+      sidePanel,
+      htmlDescription,
+      htmlKeywords,
+      noIndex,
+      ogImage,
+    } = this.props;
+    const absoluteUrl = this.getAbsoluteUrl();
     const shouldIndexPage = config.indexPages && !noIndex;
     const pageTitle = htmlTitle.substring(0, 60);
     const pageDescription = htmlDescription.substring(0, 155);
-    const absoluteUrl = this.getAbsoluteUrl();
-    const metaTags = [
-      { name: 'description', content: pageDescription },
-      { name: 'keywords', content: htmlKeywords },
-      { property: 'og:title', content: pageTitle },
-      { property: 'og:image', content: config.OGImagesFullDomain + ogImage },
-      { property: 'og:description', content: pageDescription },
-      { property: 'og:url', content: absoluteUrl },
-      { property: 'og:type', content: 'website' },
-      { property: 'fb:app_id', content: config.facebookAppId },
-    ];
-
-    if (!shouldIndexPage) {
-      metaTags.push({ name: 'robots', content: 'noindex' });
-    }
-
-    return metaTags;
-  }
-
-  render() {
-    const { htmlTitle, contentClassName, children, showAdvert, sidePanel } = this.props;
-    const absoluteUrl = this.getAbsoluteUrl();
-    const canonicalLinks = [
-      {
-        rel: 'canonical',
-        href: absoluteUrl,
-      },
-    ];
+    const ogImageUrl = config.OGImagesFullDomain + ogImage;
     return (
       <Fragment>
-        <Helmet
-          title={htmlTitle}
-          htmlAttributes={{
-            lang: i18n.language,
-            itemtype: 'http://schema.org/WebPage',
-          }}
-          link={canonicalLinks}
-          meta={this.getMetaTags()}
-        />
+        <Head>
+          <title>{htmlTitle}</title>
+          <link rel="canonical" href={absoluteUrl} />
+          {!shouldIndexPage && <meta name="robots" content="noindex" />}
+          <meta name="description" content={pageDescription} />
+          <meta name="keywords" content={htmlKeywords} />
+          <meta property="og:title" content={pageTitle} />
+          <meta property="og:image" content={ogImageUrl} />
+          <meta property="og:description" content={pageDescription} />
+          <meta property="og:url" content={absoluteUrl} />
+          <meta property="og:type" content="website" />
+          <meta property="fb:app_id" content={config.facebookAppId} />
+        </Head>
         <Header />
         <div className={c('Page')}>
           <PageLayout sidePanel={sidePanel} contentClassName={contentClassName}>
@@ -104,7 +91,6 @@ Page.propTypes = {
   htmlKeywords: PropTypes.string,
   pageType: PropTypes.string.isRequired,
   enableHotjar: PropTypes.bool,
-  enableTracking: PropTypes.bool,
   contentClassName: PropTypes.string,
   mixpanel: PropTypes.shape({ track: PropTypes.func.isRequired }),
   children: PropTypes.node.isRequired,
@@ -125,7 +111,6 @@ Page.defaultProps = {
   htmlKeywords: '',
   htmlDescription: '',
   enableHotjar: false,
-  enableTracking: true,
   showAdvert: true,
   mixpanel: null,
   sidePanel: null,
