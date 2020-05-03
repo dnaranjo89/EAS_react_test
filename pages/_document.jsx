@@ -9,12 +9,18 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link
-            href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap"
-            rel="stylesheet"
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            href="/fonts/fredoka-one-v7-latin-regular.woff2"
+            crossOrigin
           />
           <link
-            href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
-            rel="stylesheet"
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            href="/fonts/montserrat-v14-latin-regular.woff2"
+            crossOrigin
           />
 
           {/* PWA primary color */}
