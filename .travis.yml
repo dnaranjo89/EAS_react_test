@@ -19,7 +19,16 @@ script:
   - npm run test:integration:ci
   - git clean -xdf
   - docker pull etcaterva/echaloasuerte:master
-  - docker build --build-arg commit_sha=$TRAVIS_COMMIT -f Dockerfile-prod -t etcaterva/echaloasuerte:$TRAVIS_BRANCH .
+  - if [ "$TRAVIS_BRANCH" == "prod" ]; then
+        export app_env=production
+    else
+        export app_env=staging
+    fi
+  - docker build \
+        --build-arg commit_sha=$TRAVIS_COMMIT \
+        --build-arg app_env=$app_env \
+        -f Dockerfile-prod \
+        -t etcaterva/echaloasuerte:$TRAVIS_BRANCH .
 branches:
   only:
     - development
