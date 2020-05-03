@@ -1,5 +1,9 @@
-describe.skip('FacebookRaffle', () => {
-  ['macbook-13', 'iphone-5'].forEach(device => {
+import moment from 'moment';
+
+let missingSeconds;
+
+describe('FacebookRaffle', () => {
+  ['macbook-13' /* , 'iphone-5' */].forEach(device => {
     context(`Device ${device}`, () => {
       beforeEach(() => {
         cy.server();
@@ -28,7 +32,7 @@ describe.skip('FacebookRaffle', () => {
               hitType: 'event',
               eventCategory: 'FacebookRaffle',
               eventAction: 'Publish',
-              eventLabel: 'b29f44c2-1022-408a-925f-63e5f77a12ad',
+              eventLabel: '11111111-1022-408a-925f-63e5f77a12ad',
             });
           });
         });
@@ -75,10 +79,10 @@ describe.skip('FacebookRaffle', () => {
               hitType: 'event',
               eventCategory: 'FacebookRaffle',
               eventAction: 'Publish',
-              eventLabel: 'b29f44c2-1022-408a-925f-63e5f77a12ad',
+              eventLabel: '11111111-1022-408a-925f-63e5f77a12ad',
             });
 
-            cy.mockedRequestWait('POST', '/api/raffle')
+            cy.mockedRequestWait('POST', '/api/raffle/')
               .its('requestBody')
               .should('deep.eq', {
                 title: 'The title',
@@ -86,18 +90,18 @@ describe.skip('FacebookRaffle', () => {
                 participants: [],
                 prizes: [{ name: 'Prize 1' }],
               });
-            cy.mockedRequestWait('POST', '/api/raffle/29080f6b-b3e4-412c-8008-7e26081ea17c/toss');
+            cy.mockedRequestWait('POST', '/api/raffle/29080f6b-b3e4-412c-8008-7e26081ea17c/toss/');
             cy.get('@ga').should('be.calledWith', 'send', {
               hitType: 'event',
               eventCategory: 'FacebookRaffle',
               eventAction: 'Publish',
-              eventLabel: 'b29f44c2-1022-408a-925f-63e5f77a12ad',
+              eventLabel: '11111111-1022-408a-925f-63e5f77a12ad',
             });
 
             // Redirect to draw with the public id
             cy.location('pathname').should(
               'eq',
-              '/facebook/b29f44c2-1022-408a-925f-63e5f77a12ad/success',
+              '/facebook/11111111-1022-408a-925f-63e5f77a12ad/success',
             );
           });
         });
@@ -126,41 +130,33 @@ describe.skip('FacebookRaffle', () => {
 
       describe('Published page', () => {
         it('Analytics events sent on pageview', () => {
-          cy.visit('/facebook/b29f44c2-1022-408a-925f-63e5f77a12ad');
+          cy.visit('/facebook/11111111-1022-408a-925f-63e5f77a12ad');
 
           cy.get('@ga')
             .should('be.calledWith', 'create', 'UA-XXXXX-Y')
             .and('be.calledWith', 'send', {
               hitType: 'pageview',
-              page: '/facebook/b29f44c2-1022-408a-925f-63e5f77a12ad',
+              page: '/facebook/11111111-1022-408a-925f-63e5f77a12ad',
             });
         });
 
         describe('Before results published', () => {
           beforeEach(() => {
-            cy.clock(new Date().getTime());
+            missingSeconds = 10;
 
-            // Mocking a draw in the future
-            const missingSeconds = 2;
-            const now = new Date();
-            now.setSeconds(now.getSeconds() + missingSeconds);
-            const dateInFuture = now.toISOString();
             cy.fixture('FacebookRaffle').then(fixtures => {
               const fixtureGetRaffle = fixtures.find(
-                fixture => fixture.path === '/api/raffle/b29f44c2-1022-408a-925f-63e5f77a12ad',
+                fixture => fixture.path === '/api/raffle/11111111-1022-408a-925f-aaaaaaaaaaaa/',
               );
-              fixtureGetRaffle.response.results[0].schedule_date = dateInFuture;
-              fixtureGetRaffle.response.results[0].value = null;
-              cy.route(
-                fixtureGetRaffle.method,
-                fixtureGetRaffle.path,
-                fixtureGetRaffle.response,
-              ).as('LoadData');
+              const { schedule_date: scheduleDateString } = fixtureGetRaffle.response.results[0];
+              const past = moment(scheduleDateString);
+              past.subtract(missingSeconds, 'seconds');
+              cy.clock(past.valueOf(), ['Date', 'setTimeout', 'clearTimeout']);
             });
           });
 
           it('should have Facebook login button if the user is not logged in Facebook yet', () => {
-            cy.visit('/facebook/b29f44c2-1022-408a-925f-63e5f77a12ad');
+            cy.visit('/facebook/11111111-1022-408a-925f-aaaaaaaaaaaa/');
             cy.window().then(win => {
               // eslint-disable-next-line no-param-reassign
               win.FB.api = cy
@@ -170,18 +166,13 @@ describe.skip('FacebookRaffle', () => {
                 .as('FbApi');
             });
 
-            // Status is automatically changed by FBProvider when initialized
-            // We are triggering the statusChange manually for the tests
-            cy.wait('@LoadData').then(() =>
-              cy.window().then(win => {
-                win.cypressEas.statusChange({ status: 'unknown' });
-              }),
-            );
+            cy.simulateFbStatusChange({ status: 'unknown' });
+
             cy.getComponent('FacebookLoginButton').should('exist');
           });
 
           it('should have button to participate if the user is already logged in Facebook', () => {
-            cy.visit('/facebook/b29f44c2-1022-408a-925f-63e5f77a12ad');
+            cy.visit('/facebook/11111111-1022-408a-925f-aaaaaaaaaaaa/');
             cy.window().then(win => {
               // eslint-disable-next-line no-param-reassign
               win.FB.api = cy
@@ -191,12 +182,8 @@ describe.skip('FacebookRaffle', () => {
                 .as('FbApi');
             });
 
-            // Status is automatically changed by FBProvider when initialized
-            cy.wait('@LoadData').then(() =>
-              cy.window().then(win => {
-                win.cypressEas.statusChange({ status: 'connected', authResponse: true });
-              }),
-            );
+            cy.simulateFbStatusChange({ status: 'connected', authResponse: true });
+
             cy.get('@FbApi').should('be.calledWith', '/me', {});
             cy.getComponent('FacebookRaffle__participant-button')
               .should('contain', 'Mr Nobody')
@@ -204,7 +191,7 @@ describe.skip('FacebookRaffle', () => {
 
             cy.mockedRequestWait(
               'POST',
-              '/api/raffle/b29f44c2-1022-408a-925f-63e5f77a12ad/participants',
+              '/api/raffle/11111111-1022-408a-925f-aaaaaaaaaaaa/participants/',
             )
               .its('requestBody')
               .should('deep.eq', {
@@ -218,11 +205,13 @@ describe.skip('FacebookRaffle', () => {
               eventCategory: 'FacebookRaffle',
               eventAction: 'Participate',
             });
-            cy.wait('@LoadData');
+
+            // Once the participant has been registered the the api should be called again
+            cy.mockedRequestWait('GET', '/api/raffle/11111111-1022-408a-925f-aaaaaaaaaaaa/');
           });
 
-          it('should have indicate when the user is already a participant', () => {
-            cy.visit('/facebook/b29f44c2-1022-408a-925f-63e5f77a12ad');
+          it('should indicate when the user is already a participant', () => {
+            cy.visit('/facebook/11111111-1022-408a-925f-aaaaaaaaaaaa/');
             cy.window().then(win => {
               // eslint-disable-next-line no-param-reassign
               win.FB.api = cy
@@ -232,13 +221,10 @@ describe.skip('FacebookRaffle', () => {
                 .as('FbApi');
             });
 
-            // Status is automatically changed by FBProvider when initialised
-            cy.wait('@LoadData').then(() =>
-              cy.window().then(win => {
-                win.cypressEas.statusChange({ status: 'connected', authResponse: true });
-              }),
-            );
+            cy.simulateFbStatusChange({ status: 'connected', authResponse: true });
+
             cy.get('@FbApi').should('be.calledWith', '/me', {});
+
             cy.getComponent('FacebookRaffle__participant-registered').should(
               'contain',
               'Mr Someone',
@@ -246,25 +232,20 @@ describe.skip('FacebookRaffle', () => {
           });
 
           it('Should show the countdown if there are not results', () => {
-            // The draw is scheduled in 2 seconds when mocked
-            const missingSeconds = 2;
-
-            cy.visit('/facebook/b29f44c2-1022-408a-925f-63e5f77a12ad');
-            cy.wait('@LoadData');
+            cy.visit('/facebook/11111111-1022-408a-925f-aaaaaaaaaaaa');
             cy.getComponent('Countdown').should('be.visible');
 
             // Fast forward the countdown
             cy.tick((missingSeconds + 1) * 1000);
 
             // Once the countdown is over, the the api should be called again
-            cy.wait('@LoadData');
+            cy.mockedRequestWait('GET', '/api/raffle/11111111-1022-408a-925f-aaaaaaaaaaaa/');
           });
         });
 
         describe('After results published', () => {
           it('Should show results and the raffle details', () => {
-            cy.visit('/facebook/b29f44c2-1022-408a-925f-63e5f77a12ad');
-            cy.mockedRequestWait('GET', '/api/raffle/b29f44c2-1022-408a-925f-63e5f77a12ad');
+            cy.visit('/facebook/11111111-1022-408a-925f-63e5f77a12ad');
             cy.getComponent('DrawHeading__title').contains('This is the title');
             cy.getComponent('WinnersList__result').should('have.length', 1);
             cy.getComponent('FacebookRaffle__number-of-participants').should('contain', 2);
@@ -275,7 +256,7 @@ describe.skip('FacebookRaffle', () => {
 
           it('Should show share buttons', () => {
             cy.mockWindowOpen();
-            cy.visit('/facebook/b29f44c2-1022-408a-925f-63e5f77a12ad');
+            cy.visit('/facebook/11111111-1022-408a-925f-63e5f77a12ad');
             cy.getComponent('SocialButton__whatsapp').click();
             cy.get('@ga').and('be.calledWith', 'send', {
               hitType: 'event',

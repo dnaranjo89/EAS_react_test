@@ -1,9 +1,9 @@
 [
   {
-    "path": "/api/raffle",
+    "path": "/api/raffle/",
     "method": "POST",
     "response": {
-      "id": "b29f44c2-1022-408a-925f-63e5f77a12ad",
+      "id": "11111111-1022-408a-925f-63e5f77a12ad",
       "created_at": "2018-09-08T11:45:10.535354Z",
       "updated_at": "2018-09-08T11:45:10.535397Z",
       "title": "The title",
@@ -54,7 +54,7 @@
     }
   },
   {
-    "path": "/api/raffle/29080f6b-b3e4-412c-8008-7e26081ea17c/toss",
+    "path": "/api/raffle/29080f6b-b3e4-412c-8008-7e26081ea17c/toss/",
     "method": "POST",
     "response": {
       "created_at": "2018-09-08T11:45:10.578964Z",
@@ -88,10 +88,10 @@
     }
   },
   {
-    "path": "/api/raffle/b29f44c2-1022-408a-925f-63e5f77a12ad",
+    "path": "/api/raffle/11111111-1022-408a-925f-63e5f77a12ad/",
     "method": "GET",
     "response": {
-      "id": "493666b5-6a32-479b-8df6-96735cc54939",
+      "id": "11111111-1022-408a-925f-63e5f77a12ad",
       "created_at": "2018-10-28T12:36:12.499046Z",
       "updated_at": "2018-10-28T12:36:12.499087Z",
       "title": "This is the title",
@@ -128,7 +128,7 @@
       ],
       "participants": [
         {
-          "id": "7ac11a97-909a-4a8f-b2f2-90fda6785669",
+          "id": "7ac11a97-909a-4a8f-b2f2-90fda6785001",
           "created_at": "2018-10-28T12:36:12.509557Z",
           "name": "Mr Someone",
           "facebook_id": "000001"
@@ -143,10 +143,52 @@
     }
   },
   {
-    "path": "/api/raffle/b29f44c2-1022-408a-925f-63e5f77a12ad/participants",
+    "path": "/api/raffle/11111111-1022-408a-925f-aaaaaaaaaaaa/",
+    "method": "GET",
+    "response": {
+      "id": "11111111-1022-408a-925f-aaaaaaaaaaaa",
+      "created_at": "2018-10-28T12:36:12.499046Z",
+      "updated_at": "2018-10-28T12:36:12.499087Z",
+      "title": "This is the title",
+      "description": "That's a nice description",
+      "results": [
+        {
+          "created_at": "2018-10-28T12:36:12.580655Z",
+          "value": null,
+          "schedule_date": "2018-10-28T12:37:09Z"
+        }
+      ],
+      "metadata": [],
+      "private_id": "f9b6c9d0-8454-4fe0-a65e-7d30379343e5",
+      "prizes": [
+        {
+          "id": "db9d161c-f0ba-40f3-9c6f-65e4cfee5b95",
+          "created_at": "2018-10-28T12:36:12.507658Z",
+          "name": "Prize one",
+          "url": null
+        }
+      ],
+      "participants": [
+        {
+          "id": "7ac11a97-909a-4a8f-b2f2-90fda6785001",
+          "created_at": "2018-10-28T12:36:12.509557Z",
+          "name": "Mr Someone",
+          "facebook_id": "000001"
+        },
+        {
+          "id": "c5d7a176-411e-4fe1-ad56-49dff423c6cd",
+          "created_at": "2018-10-28T12:36:12.511651Z",
+          "name": "Participant 2",
+          "facebook_id": null
+        }
+      ]
+    }
+  },
+  {
+    "path": "/api/raffle/11111111-1022-408a-925f-aaaaaaaaaaaa/participants/",
     "method": "POST",
     "response": {
-      "id": "493666b5-6a32-479b-8df6-96735cc54939",
+      "id": "11111111-1022-408a-925f-aaaaaaaaaaaa",
       "created_at": "2018-10-28T12:36:12.499046Z",
       "updated_at": "2018-10-28T12:36:12.499087Z",
       "title": "This is the title",

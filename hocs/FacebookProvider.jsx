@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
-import i18n from 'i18next';
 import { withTranslation } from '../i18n';
 import {
   apiCall,
@@ -30,6 +29,7 @@ class FacebookProvider extends Component {
   }
 
   componentDidMount() {
+    const { i18n } = this.props;
     fbAsyncInit(this.handleStatusChange);
     const locale = i18n.language.replace('-', '_');
     injectScript(locale);
@@ -123,6 +123,7 @@ class FacebookProvider extends Component {
 FacebookProvider.propTypes = {
   children: PropTypes.node.isRequired,
   t: PropTypes.func.isRequired,
+  i18n: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 export default withTranslation('FacebookProvider')(FacebookProvider);

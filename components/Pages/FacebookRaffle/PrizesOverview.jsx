@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
 import classNames from 'classnames/bind';
-import { Prize } from 'echaloasuerte-js-sdk';
 import { withTranslation } from '../../../i18n';
 
 import STYLES from './PrizesOverview.module.scss';
@@ -25,7 +24,15 @@ const PrizesOverview = ({ prizes, t }) => (
 );
 
 PrizesOverview.propTypes = {
-  prizes: PropTypes.arrayOf(PropTypes.instanceOf(Prize)).isRequired,
+  prizes: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      created_at: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
+
+      facebook_id: PropTypes.string,
+    }),
+  ).isRequired,
   t: PropTypes.func.isRequired,
 };
 

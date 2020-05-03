@@ -79,3 +79,20 @@ Cypress.Commands.add('mockFB', () => {
     };
   });
 });
+
+Cypress.Commands.add('simulateFbStatusChange', newStatus => {
+  cy.window().then(win => {
+    const simulateStatusChange = missingAttempts => {
+      if (missingAttempts <= 0) {
+        throw new Error('fbAsyncInit did not run on time');
+      }
+      if (win.cypressEas) {
+        win.cypressEas.statusChange(newStatus);
+      } else {
+        console.log('----------------- SETTIMEOUT simulateStatusChange');
+        setTimeout(() => simulateStatusChange(missingAttempts - 1), 200);
+      }
+    };
+    simulateStatusChange(3);
+  });
+});

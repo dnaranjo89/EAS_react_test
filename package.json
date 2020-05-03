@@ -10,6 +10,8 @@
     "export": "next export",
     "test": "jest --watch --testPathIgnorePatterns config/test.js",
     "test:ci": "jest --ci --testPathIgnorePatterns config/test.js",
+    "test:int1": "cypress open",
+    "test:int2": "npm run start:test",
     "test:integration": "cypress open & npm run start:test",
     "test:integration:ci": "npm run start:test & wait-on http://localhost:3005 && cypress run",
     "lint:scss": "stylelint 'components/**/*.module.scss' --syntax scss",

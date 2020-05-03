@@ -115,7 +115,7 @@ PublishedRafflePage.propTypes = {
         created_at: PropTypes.string.isRequired,
         facebook_id: PropTypes.string,
       }),
-    ).isRequired, // TODO that's rong
+    ).isRequired,
     description: PropTypes.string,
     result: PropTypes.shape({
       created_at: PropTypes.string.isRequired,

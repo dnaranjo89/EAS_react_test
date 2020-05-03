@@ -5,6 +5,7 @@
 const nock = require('nock');
 const groupsJson = require('./fixtures/GroupsGenerator.json');
 const raffleJson = require('./fixtures/Raffle.json');
+const facebookJson = require('./fixtures/FacebookRaffle.json');
 
 function getGroupsFixtures() {
   const callToMock = [
@@ -27,10 +28,21 @@ function getRaffleFixtures() {
   return raffleJson.filter(fixture => callToMock.includes(fixture.path));
 }
 
+function getFacebookRaffleFixtures() {
+  const callToMock = [
+    // A draw with results
+    '/api/raffle/11111111-1022-408a-925f-63e5f77a12ad/',
+    // A request of a schedule draw which doesn't have results yet
+    '/api/raffle/11111111-1022-408a-925f-aaaaaaaaaaaa/',
+  ];
+  return facebookJson.filter(fixture => callToMock.includes(fixture.path));
+}
+
 function mockServerCalls() {
   const groupsFixtures = getGroupsFixtures();
   const raffleFixtures = getRaffleFixtures();
-  const fixtures = [...groupsFixtures, ...raffleFixtures];
+  const facebookRaffleFixtures = getFacebookRaffleFixtures();
+  const fixtures = [...groupsFixtures, ...raffleFixtures, ...facebookRaffleFixtures];
 
   fixtures.forEach(fixture => {
     const { response, method, path } = fixture;

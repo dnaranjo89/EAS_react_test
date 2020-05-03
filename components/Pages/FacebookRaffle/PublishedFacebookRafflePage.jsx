@@ -3,7 +3,8 @@ import * as Sentry from '@sentry/browser';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import Typography from '@material-ui/core/Typography';
-import { RaffleApi, RaffleResult, Participant, Prize } from 'echaloasuerte-js-sdk';
+import { RaffleApi, Participant } from 'echaloasuerte-js-sdk';
+import { useRouter } from 'next/router';
 import { withTranslation } from '../../../i18n';
 import Page from '../../Page/Page.jsx';
 import useLoadDataAfterCountdown from '../../../hooks/useLoadDataAfterCountdown';
@@ -22,15 +23,14 @@ import withFacebookSdk from '../../../hocs/withFacebookSdk.jsx';
 import facebookRaffleOgImage from './facebook_raffle_og_image.png';
 import { getCurrentUrlFromWindow } from '../../../utils';
 import { ANALYTICS_TYPE_FACEBOOK } from '../../../constants/analyticsTypes';
-import withLoadedTranslations from '../../../hocs/withLoadedTranslations.jsx';
 
 const c = classNames.bind(STYLES);
 const raffleApi = new RaffleApi();
 
-const loadData = async drawId => {
+// Need to check what happens when results are published and no one registered
+export const loadData = async drawId => {
   try {
     const draw = await raffleApi.raffleRead(drawId);
-    console.log('draw', draw);
     const { id, private_id: privateId, title, description, participants, prizes, results } = draw;
     const lastToss = results[0];
     return {
@@ -54,14 +54,13 @@ const loadData = async drawId => {
   }
 };
 
-const PublishedFacebookRafflePage = props => {
-  console.log('props', props.draw);
-  const { draw, t, track, facebookContext } = props;
+const PublishedFacebookRafflePage = ({ draw, t, track, facebookContext }) => {
   const { id: drawId, title, description, participants, prizes, result, isLoading } = draw;
   const { username, userId } = facebookContext;
   const [userRegisteredInRaffle, setUserRegisteredInRaffle] = useState(false);
   const [registerFailedErrorMessage, setRegisterFailedErrorMessage] = useState('');
   const [registeringInRaffle, setRegisteringInRaffle] = useState(false);
+  const router = useRouter();
   const shareUrl = getCurrentUrlFromWindow();
 
   useEffect(() => {
@@ -127,7 +126,9 @@ const PublishedFacebookRafflePage = props => {
       });
     }
     setRegisteringInRaffle(false);
-    loadData(props);
+
+    // "Redirecting" to force the data reload
+    router.push(router.pathname, router.asPath);
   };
 
   return (
@@ -196,10 +197,28 @@ PublishedFacebookRafflePage.propTypes = {
   draw: PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,
-    participants: PropTypes.arrayOf(PropTypes.instanceOf(Participant)).isRequired,
-    prizes: PropTypes.arrayOf(PropTypes.instanceOf(Prize)),
+    participants: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        created_at: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
+        facebook_id: PropTypes.string,
+      }),
+    ).isRequired,
+    prizes: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        created_at: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
+        facebook_id: PropTypes.string,
+      }),
+    ).isRequired,
     description: PropTypes.string,
-    result: PropTypes.instanceOf(RaffleResult),
+    result: PropTypes.shape({
+      created_at: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
+      schedule_date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
+      value: PropTypes.arrayOf(PropTypes.shape()),
+    }),
     isOwner: PropTypes.bool,
     isLoading: PropTypes.bool,
   }).isRequired,
@@ -211,15 +230,6 @@ PublishedFacebookRafflePage.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-PublishedFacebookRafflePage.getInitialProps = async ctx => {
-  console.log('-------------------getInitialProps');
-  const { id: drawId } = ctx.query;
-  const draw = await loadData(drawId);
-  return {
-    draw,
-  };
-};
-
-export default withLoadedTranslations(['FacebookPage', 'CommonPublished'])(
-  withTracking(withFacebookSdk(withTranslation('RaffleDraw')(PublishedFacebookRafflePage))),
+export default withTracking(
+  withFacebookSdk(withTranslation('FacebookPage')(PublishedFacebookRafflePage)),
 );
