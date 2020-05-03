@@ -4,7 +4,7 @@ import { environment, isServer } from '../utils';
 
 const API_BASE_PATH = '/api';
 
-const environmentsWithSameHost = ['development', 'production'];
+const environmentsWithSameHost = ['staging', 'production'];
 
 const init = () => {
   const defaultClient = EASApi.ApiClient.instance;

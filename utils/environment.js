@@ -26,7 +26,7 @@ function getEnvironmentFromENV() {
     // eslint-disable-next-line no-console
     console.log(
       chalk.bold.red(
-        'If you are running `npm run build` or `npm run start` you need to specify an environment in REACT_APP_ENV. Possible values [production, local, test]',
+        `If you are running 'npm run build' or 'npm run start' you need to specify an environment in REACT_APP_ENV. (REACT_APP_ENV=${REACT_APP_ENV}, NODE_ENV=${NODE_ENV})`,
       ),
     );
     throw Error('No environment specified');
