@@ -8,8 +8,14 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+          <link
+            href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+            rel="stylesheet"
+          />
 
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />

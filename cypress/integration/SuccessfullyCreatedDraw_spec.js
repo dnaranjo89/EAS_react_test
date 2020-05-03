@@ -53,7 +53,7 @@ describe('Successfully created draw', () => {
           });
         });
 
-        it.skip('Facebook draw', () => {
+        it('Facebook draw', () => {
           cy.visit('/facebook/b29f44c2-1022-408a-925f-63e5f77a12ad/success');
           cy.getComponent('SocialButton__whatsapp').click();
           cy.get('@ga').and('be.calledWith', 'send', {
