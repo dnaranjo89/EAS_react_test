@@ -29,7 +29,6 @@ const SuccessfullyCreatedDraw = ({ t }) => {
   // so that it's shown when the user is owner, this page is show
   useEffect(() => {
     if (!isOwnedByUser) {
-      console.log('pishing', routerPath, drawUrl);
       router.push(`${routerPath}/`, `${drawUrl}/`);
     }
   });

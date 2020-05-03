@@ -36,7 +36,7 @@ const GroupsGeneratorResult = ({ result, t }) => (
 
 GroupsGeneratorResult.propTypes = {
   result: PropTypes.shape({
-    created_at: PropTypes.string.isRequired,
+    created_at: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
     schedule_date: PropTypes.string,
     value: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape())),
   }).isRequired,
