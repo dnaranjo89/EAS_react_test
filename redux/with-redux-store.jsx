@@ -23,12 +23,14 @@ function getInitialState(appContext) {
   const userAgent = isServer
     ? appContext.ctx.req.headers['user-agent']
     : window.navigator.userAgent;
+  const hostname = isServer ? appContext.ctx.req.get('host') : window.location.hostname;
   const deviceType = parserUA(userAgent).device.type;
   const isMobile = deviceType === 'mobile';
   return {
     userRequest: {
       deviceType,
       isMobile,
+      hostname,
     },
   };
 }
