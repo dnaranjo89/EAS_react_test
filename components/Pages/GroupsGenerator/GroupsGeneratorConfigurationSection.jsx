@@ -19,6 +19,7 @@ const GroupsGeneratorConfigurationSection = ({ values, onFieldChange, t }) => (
       validators={[{ rule: 'required' }]}
     />
     <ValidatedTextField
+      id="numberOfGroups"
       name="numberOfGroups"
       label={t('field_label_number_of_groups')}
       placeholder="2"

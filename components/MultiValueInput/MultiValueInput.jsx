@@ -86,8 +86,11 @@ class MultiValueInput extends Component {
   };
 
   render() {
+    const { name } = this.props;
     const {
-      id,
+      // If we don't supply an id, we will use the field name as id
+      // This improves accessibility (by having all fields tied their labels)
+      id = name,
       value: values,
       label,
       messageEmpty,
@@ -137,6 +140,7 @@ class MultiValueInput extends Component {
               />
             ))}{' '}
             <Input
+              id={id}
               onChange={this.onCurrentValueChange}
               type="text"
               value={currentValue}
@@ -192,7 +196,7 @@ MultiValueInput.propTypes = {
 };
 
 MultiValueInput.defaultProps = {
-  id: null,
+  id: undefined,
   delimiters: [','],
   placeholder: null,
   helperText: null,

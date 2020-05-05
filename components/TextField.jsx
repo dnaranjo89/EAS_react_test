@@ -32,6 +32,7 @@ export const styles = {
  * https://github.com/mui-org/material-ui/blob/d183b449df71b84ecc54c225ea0ba681432ce13e/packages/material-ui/src/TextField/TextField.js
  * */
 const TextField = React.forwardRef((props, ref) => {
+  const { name } = props;
   const {
     autoComplete,
     autoFocus = false,
@@ -46,14 +47,16 @@ const TextField = React.forwardRef((props, ref) => {
     fullWidth = false,
     helperText,
     hiddenLabel,
-    id,
+    // EAS Adjust - If we don't supply an id, we will use the name instead
+    // We do it to avoid having fields and labels being tied, which is bad
+    // for accessibility
+    id = name,
     InputLabelProps,
     inputProps,
     InputProps,
     inputRef,
     label,
     multiline = false,
-    name,
     onBlur,
     onChange,
     onFocus,
@@ -150,7 +153,7 @@ const TextField = React.forwardRef((props, ref) => {
     >
       {/* EAS Adjust - We are using a custom - bigger and static - label */}
       {label && (
-        <Typography htmlFor={id} component="label" variant="h3">
+        <Typography htmlFor={id} id={inputLabelId} component="label" variant="h3">
           {label}
         </Typography>
       )}
