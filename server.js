@@ -37,6 +37,14 @@ const handle = app.getRequestHandler();
   await nextI18next.initPromise;
   server.use(nextI18NextMiddleware(nextI18next));
 
+  // Set max-age to 1 year for the fonts
+  server.use(
+    '/static/fonts',
+    express.static(`${__dirname}/public/static/fonts`, {
+      maxage: '365d',
+    }),
+  );
+
   server.get('*', (req, res) => handle(req, res));
 
   await server.listen(port);
