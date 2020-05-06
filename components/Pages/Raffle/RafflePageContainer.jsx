@@ -138,7 +138,7 @@ class RafflePageContainer extends React.Component {
       });
       const drawPath = `/raffle/${draw.id}/success`;
       recentDraws.add(draw, drawPath, scheduleDate);
-      Router.push(drawPath);
+      Router.push(`/raffle/[id]/success`, drawPath);
     } catch (err) {
       this.setState({ APIError: true, loadingRequest: false });
     }

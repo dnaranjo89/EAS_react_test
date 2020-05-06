@@ -88,7 +88,7 @@ class FacebookRafflePageContainer extends Component {
 
       const drawPath = `/facebook/${draw.id}/success`;
       recentDraws.add(draw, drawPath, scheduleDate);
-      Router.push(drawPath);
+      Router.push(`/facebook/[id]/success`, drawPath);
     } catch (err) {
       this.setState({ APIError: true, loadingRequest: false });
     }

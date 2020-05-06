@@ -140,7 +140,7 @@ class GroupsGeneratorPageContainer extends React.Component {
 
       const drawPath = `/groups/${draw.id}/success`;
       recentDraws.add(draw, drawPath, scheduleDate);
-      Router.push(drawPath);
+      Router.push('/groups/[id]/success', drawPath);
     } catch (err) {
       this.setState({ APIError: true, loadingRequest: false });
     }
