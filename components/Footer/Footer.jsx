@@ -6,6 +6,7 @@ import { withTranslation } from '../../i18n';
 import TranslationsSwitch from '../TranslationsSwitch.jsx';
 import STYLES from './Footer.module.scss';
 import { environment } from '../../utils';
+import { TYPE_APP_ENV_PRODUCTION, TYPE_APP_ENV_LOCAL } from '../../constants/environment';
 import Button from '../Button.jsx';
 
 const c = classnames.bind(STYLES);
@@ -16,12 +17,12 @@ const redirect = locale => {
   const { protocol, pathname, search } = window.location;
   let newDomain;
   if (locale === 'en-GB') {
-    if (environment === 'production') {
+    if (environment === TYPE_APP_ENV_PRODUCTION) {
       newDomain = 'chooserandom.com';
     } else {
       newDomain = 'dev.chooserandom.com';
     }
-  } else if (environment === 'production') {
+  } else if (environment === TYPE_APP_ENV_PRODUCTION) {
     newDomain = 'echaloasuerte.com';
   } else {
     newDomain = 'dev.echaloasuerte.com';
@@ -32,7 +33,7 @@ const redirect = locale => {
 
 const Footer = ({ t, i18n }) => {
   const handleChangeLanguage = l => {
-    if (environment === 'local') {
+    if (environment === TYPE_APP_ENV_LOCAL) {
       // Avoid redirecting to ease the translation process in local
       i18n.changeLanguage(l);
     } else {

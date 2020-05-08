@@ -15,6 +15,8 @@ import { refType } from '@material-ui/utils';
 import Select from '@material-ui/core/Select';
 import { withStyles } from '@material-ui/core/styles';
 
+const { TYPE_APP_ENV_PRODUCTION } = require('../constants/environment');
+
 const variantComponent = {
   standard: Input,
   filled: FilledInput,
@@ -83,8 +85,9 @@ const TextField = React.forwardRef((props, ref) => {
     }
   }, [variant, required, label]);
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== TYPE_APP_ENV_PRODUCTION) {
     if (select && !children) {
+      // eslint-disable-next-line no-console
       console.error(
         'Material-UI: `children` must be passed when using the `TextField` component with `select`.',
       );

@@ -6,11 +6,11 @@ const withFonts = require('next-fonts');
 // Use the SentryWebpack plugin to upload the source maps during build step
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const chalk = require('chalk');
-const { getEnvironmentFromENV, isDevelopmentServer } = require('./utils/environment');
+const { getEnvironmentAtBuildTime, isDevelopmentServer } = require('./utils/environment');
 
 const { SENTRY_DSN, SENTRY_ORG, SENTRY_PROJECT } = process.env;
 
-const environment = getEnvironmentFromENV();
+const environment = getEnvironmentAtBuildTime();
 // eslint-disable-next-line no-console
 console.log(chalk.yellow('Using', chalk.underline.bold(environment), 'settings'));
 

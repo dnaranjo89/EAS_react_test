@@ -2,9 +2,11 @@ import * as EASApi from 'echaloasuerte-js-sdk';
 import { apiDomain } from '../config';
 import { environment, isServer } from '../utils';
 
+const { TYPE_APP_ENV_PRODUCTION, TYPE_APP_ENV_STAGING } = require('../constants/environment');
+
 const API_BASE_PATH = '/api';
 
-const environmentsWithSameHost = ['staging', 'production'];
+const environmentsWithSameHost = [TYPE_APP_ENV_STAGING, TYPE_APP_ENV_PRODUCTION];
 
 const init = () => {
   const defaultClient = EASApi.ApiClient.instance;

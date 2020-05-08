@@ -8,12 +8,11 @@ const express = require('express');
 const next = require('next');
 const chalk = require('chalk');
 const nextI18NextMiddleware = require('next-i18next/middleware').default;
+const { isDevelopmentServer } = require('./utils/environment');
 
 const nextI18next = require('./i18n');
 
 const port = process.env.PORT || 3000;
-
-const isDevelopmentServer = process.env.NODE_ENV !== 'production';
 
 // eslint-disable-next-line no-console
 console.log(

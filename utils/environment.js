@@ -1,29 +1,28 @@
+/* eslint-disable no-console */
 const chalk = require('chalk');
+const {
+  TYPE_NODE_ENV_PRODUCTION,
+  TYPE_APP_ENV_LOCAL,
+  APP_ENV_TYPES,
+} = require('../constants/environment');
 
 /** ****************
- * We use two environment variables to define the environment where the app will be running
+ * We use the `NODE_ENV` and `REACT_APP_ENV` environment variables to define the environment where the app will be running.
+ * THIS ENV VARIABLES MUST BE DEFINED AT BUILD AND RUN TIME (so they are available for the server and client)
  *
- * 1) NODE_ENV
- * It specifies whether a production-like server or a development server (with hot reloading, etc) should be used.
- * Possible values:
- * - production:  A production-like server will be used
- * - anything else: Otherwise, a development server will be used (with hot reloading, etc)
- *
- * 2) REACT_APP_ENV
- * It specify which environment should be used. This decides whether analytics and logs are sent
- * and to which accounts, if pages should be indexed, etc.
- * Possible environments:
- * - production (deployed app, both in the prod and dev server)
- * - local (running locally)
- * - test (running battery tests)
+ * PLEASE REFER TO THE DOCS TO UNDERSTAND HOW TO USED THEM: docs/environment.md
  **************** */
 const { NODE_ENV, REACT_APP_ENV } = process.env;
 
-const isDevelopmentServer = NODE_ENV !== 'production';
+const isDevelopmentServer = NODE_ENV !== TYPE_NODE_ENV_PRODUCTION;
 
-function getEnvironmentFromENV() {
+/**
+ * getEnvironmentAtBuildTime should only be used when bundling the app since it's using ENV variables
+ * that are only available then.
+ * @returns {String} One of the environments in APP_ENV_TYPES
+ */
+function getEnvironmentAtBuildTime() {
   if (!isDevelopmentServer && !REACT_APP_ENV) {
-    // eslint-disable-next-line no-console
     console.log(
       chalk.bold.red(
         `If you are running 'npm run build' or 'npm run start' you need to specify an environment in REACT_APP_ENV. (REACT_APP_ENV=${REACT_APP_ENV}, NODE_ENV=${NODE_ENV})`,
@@ -31,10 +30,18 @@ function getEnvironmentFromENV() {
     );
     throw Error('No environment specified');
   }
-  return REACT_APP_ENV || 'local';
+  if (!APP_ENV_TYPES.includes(REACT_APP_ENV)) {
+    console.log(
+      chalk.bold.red(
+        `You haven't specified a valid REACT_APP_ENV. Possible values are [${APP_ENV_TYPES}]`,
+      ),
+    );
+    throw Error('Invalid environment in REACT_APP_ENV');
+  }
+  return REACT_APP_ENV || TYPE_APP_ENV_LOCAL;
 }
 
 module.exports = {
-  getEnvironmentFromENV,
+  getEnvironmentAtBuildTime,
   isDevelopmentServer,
 };
