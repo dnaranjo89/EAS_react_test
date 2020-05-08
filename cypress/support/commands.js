@@ -23,6 +23,8 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+import moment from 'moment';
+import '@testing-library/cypress/add-commands';
 
 Cypress.Commands.add('getComponent', component => cy.get(`[data-testid="${component}"]`));
 Cypress.Commands.add('getError', () => cy.get(`[data-test-has-error]`));
@@ -94,5 +96,19 @@ Cypress.Commands.add('simulateFbStatusChange', newStatus => {
       }
     };
     simulateStatusChange(3);
+  });
+});
+
+Cypress.Commands.add('goBackInTime', (fixtureFile, fixtureName, missingSeconds) => {
+  // fixtureFile = FacebookRaffle
+  cy.fixture(fixtureFile).then(fixtures => {
+    // Find the right fixture
+    const fixtureGetRaffle = fixtures.find(fixture => fixture.path === fixtureName);
+
+    // Set the clock to `missingSeconds` seconds before it's scheduled
+    const { schedule_date: scheduleDateString } = fixtureGetRaffle.response.results[0];
+    const past = moment(scheduleDateString);
+    past.subtract(missingSeconds, 'seconds');
+    cy.clock(past.valueOf(), ['Date', 'setTimeout', 'clearTimeout']);
   });
 });

@@ -1,0 +1,27 @@
+{
+  "certified_draw_description": "If you want to make a public raffle to ensure an impartial result you should create a public raffle.",
+  "create_certificated_draw": "Create a public draw",
+  "draw_subheading": "Simple random number generator. Choose the range and the amount of numbers to generate.",
+  "error_field_message_min_results": "You must generate at least one number",
+  "error_form_invalid_ranges": "The chosen range (numbers between {{min}} and {{max}}) is not valid",
+  "error_form_range_not_big_enough": "The range is not big enough",
+  "field_default_title": "Public raffle",
+  "field_label_allow_repeated": "Allow repeated numbers",
+  "field_label_from": "From",
+  "field_label_number_of_results": "Number of results",
+  "field_label_to": "To",
+  "generate_numbers": "Generate numbers",
+  "generated_numbers": "Generated numbers",
+  "html_description": "Generate random numbers between two numbers, with or without repetitions. ChooseRandom's random number generator is quick and simple.",
+  "html_keywords": "random number, raffle, lottery",
+  "html_title": "Generate random numbers",
+  "page_title_public": "Public raffle with numbers",
+  "page_title_quick": "Generate random numbers",
+  "publish_draw": "Publish raffle",
+  "published_draw_details": "Draw details",
+  "share_draw": "Share this raffle",
+  "step_label_configuration": "Configure the draw",
+  "step_label_general_details": "General details",
+  "step_label_when_to_toss": "Date of the raffle"
+}
+

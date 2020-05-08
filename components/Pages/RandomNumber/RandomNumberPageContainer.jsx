@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { GroupsApi, Groups, DrawTossPayload } from 'echaloasuerte-js-sdk';
-import moment from 'moment';
 import Router, { withRouter } from 'next/router';
+import { RandomNumberApi, RandomNumber, DrawTossPayload } from 'echaloasuerte-js-sdk';
+import moment from 'moment';
 import { withTranslation } from '../../../i18n';
-import GroupsGeneratorPage from './GroupsGeneratorPage.jsx';
-import GroupsGeneratorQuickPage from './GroupsGeneratorQuickPage.jsx';
-import withTracking from '../../../hocs/withTracking.jsx';
-import withLoadedTranslations from '../../../hocs/withLoadedTranslations.jsx';
-import recentDraws from '../../../services/recentDraws';
+import RandomNumberPage from './RandomNumberPage.jsx';
+import RandomNumberQuickPage from './RandomNumberQuickPage.jsx';
 import throttle from '../../../services/throttle';
-import { ANALYTICS_TYPE_GROUPS } from '../../../constants/analyticsTypes';
+import withTracking from '../../../hocs/withTracking.jsx';
+import recentDraws from '../../../services/recentDraws';
+import { ANALYTICS_TYPE_NUMBER } from '../../../constants/analyticsTypes';
 
-const groupsApi = new GroupsApi();
+const randomNumberApi = new RandomNumberApi();
 
-class GroupsGeneratorPageContainer extends React.Component {
+class RandomNumberPageContainer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -29,8 +28,10 @@ class GroupsGeneratorPageContainer extends React.Component {
       values: {
         title: '', // Default title is set in CDM
         description: '',
-        participants: [],
-        numberOfGroups: '2',
+        rangeMin: '1',
+        rangeMax: '10',
+        numberOfResults: '1',
+        allowRepeated: false,
         dateScheduled,
       },
     };
@@ -67,16 +68,19 @@ class GroupsGeneratorPageContainer extends React.Component {
 
   createDraw = () => {
     const { values } = this.state;
-    const { title, description, participants, numberOfGroups } = values;
+    const { title, description, rangeMin, rangeMax, numberOfResults, allowRepeated } = values;
     const isPublic = this.isPublic();
+
     const drawData = {
-      participants: participants.map(participant => ({ name: participant })),
-      number_of_groups: numberOfGroups,
+      range_min: rangeMin,
+      range_max: rangeMax,
+      number_of_results: numberOfResults,
+      allow_repeated_results: allowRepeated,
       title: isPublic && title ? title : null,
       description: isPublic && description ? description : null,
     };
-    const groupGeneratorDraw = Groups.constructFromObject(drawData);
-    return groupsApi.groupsCreate(groupGeneratorDraw);
+    const randomNumberDraw = RandomNumber.constructFromObject(drawData);
+    return randomNumberApi.randomNumberCreate(randomNumberDraw);
   };
 
   handleToss = async () => {
@@ -93,15 +97,14 @@ class GroupsGeneratorPageContainer extends React.Component {
         privateId = draw.private_id;
         this.setState({ privateId });
       }
-
-      const tossResponse = await groupsApi.groupsToss(privateId, {});
+      const tossResponse = await randomNumberApi.randomNumberToss(privateId, {});
       const { track } = this.props;
       track({
         mp: {
-          name: `Toss - ${ANALYTICS_TYPE_GROUPS}`,
-          properties: { drawType: ANALYTICS_TYPE_GROUPS },
+          name: `Toss - ${ANALYTICS_TYPE_NUMBER}`,
+          properties: { drawType: ANALYTICS_TYPE_NUMBER },
         },
-        ga: { action: 'Toss', category: ANALYTICS_TYPE_GROUPS },
+        ga: { action: 'Toss', category: ANALYTICS_TYPE_NUMBER },
       });
       throttle(() => {
         this.setState({
@@ -124,32 +127,42 @@ class GroupsGeneratorPageContainer extends React.Component {
     const { values } = this.state;
     try {
       const draw = await this.createDraw();
+
       const { dateScheduled } = values;
       const drawTossPayload = DrawTossPayload.constructFromObject({ schedule_date: dateScheduled });
-      const tossResponse = await groupsApi.groupsToss(draw.private_id, drawTossPayload);
+      const tossResponse = await randomNumberApi.randomNumberToss(draw.private_id, drawTossPayload);
       const scheduleDate = moment(tossResponse.schedule_date).unix();
+
       const { track } = this.props;
       track({
         mp: {
-          name: `Publish - ${ANALYTICS_TYPE_GROUPS}`,
-          properties: { drawType: ANALYTICS_TYPE_GROUPS, drawId: draw.id },
+          name: `Publish - ${ANALYTICS_TYPE_NUMBER}`,
+          properties: { drawType: ANALYTICS_TYPE_NUMBER, drawId: draw.id },
         },
-        ga: { action: 'Publish', category: ANALYTICS_TYPE_GROUPS, label: draw.id },
+        ga: { action: 'Publish', category: ANALYTICS_TYPE_NUMBER, label: draw.id },
       });
 
-      const drawPath = `/groups/${draw.id}/success`;
+      const drawPath = `/number/${draw.id}/success`;
       recentDraws.add(draw, drawPath, scheduleDate);
-      Router.push('/groups/[id]/success', drawPath);
+      Router.push('/number/[id]/success', drawPath);
     } catch (err) {
-      this.setState({ APIError: true, loadingRequest: false });
+      this.setState({ APIError: true });
     }
   };
 
   handleCheckErrorsInConfiguration = t => {
     const { values } = this.state;
-    const { participants, numberOfGroups } = values;
-    if (participants.length < numberOfGroups) {
-      return t('error_form_not_enough_participants', { numberOfGroups });
+    const rangeMin = parseInt(values.rangeMin, 10);
+    const rangeMax = parseInt(values.rangeMax, 10);
+    const numberOfResults = parseInt(values.numberOfResults, 10);
+    if (rangeMin >= rangeMax) {
+      return t('error_form_invalid_ranges', {
+        min: values.rangeMin,
+        max: values.rangeMax,
+      });
+    }
+    if (!values.allowRepeated && numberOfResults > rangeMax - rangeMin) {
+      return t('error_form_range_not_big_enough');
     }
     return undefined;
   };
@@ -158,7 +171,7 @@ class GroupsGeneratorPageContainer extends React.Component {
     const { APIError, values, quickResult, loadingRequest } = this.state;
 
     return this.isPublic() ? (
-      <GroupsGeneratorPage
+      <RandomNumberPage
         apiError={APIError}
         loadingRequest={loadingRequest}
         values={values}
@@ -167,7 +180,7 @@ class GroupsGeneratorPageContainer extends React.Component {
         handleCheckErrorsInConfiguration={this.handleCheckErrorsInConfiguration}
       />
     ) : (
-      <GroupsGeneratorQuickPage
+      <RandomNumberQuickPage
         apiError={APIError}
         loadingRequest={loadingRequest}
         values={values}
@@ -180,18 +193,14 @@ class GroupsGeneratorPageContainer extends React.Component {
   }
 }
 
-GroupsGeneratorPageContainer.propTypes = {
+RandomNumberPageContainer.propTypes = {
   track: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
   router: PropTypes.shape({
     asPath: PropTypes.string.isRequired,
   }).isRequired,
 };
-GroupsGeneratorPageContainer.defaultProps = {};
 
-export default withLoadedTranslations([
-  'GroupsDraw',
-  'common',
-  'ParticipantsInput',
-  'DrawCreationCommon',
-])(withRouter(withTracking(withTranslation('GroupsDraw')(GroupsGeneratorPageContainer))));
+RandomNumberPageContainer.defaultProps = {};
+
+export default withRouter(withTracking(withTranslation('RandomNumber')(RandomNumberPageContainer)));

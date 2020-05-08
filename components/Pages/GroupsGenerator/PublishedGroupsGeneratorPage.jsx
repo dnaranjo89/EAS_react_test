@@ -119,7 +119,7 @@ PublishedGroupsGeneratorPage.propTypes = {
       value: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape())),
     }),
     isOwner: PropTypes.bool,
-    isLoading: PropTypes.bool,
+    isLoading: PropTypes.bool, // TODO isLoading is probabbly wronglu place, should be outside of the draw
   }).isRequired,
   t: PropTypes.func.isRequired,
 };

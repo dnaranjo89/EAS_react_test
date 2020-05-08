@@ -1,5 +1,5 @@
 /* eslint-disable func-names, prefer-arrow-callback */
-describe.skip('Random Number Page', () => {
+describe('Random Number Page', () => {
   ['macbook-13' /* , 'iphone-5' */].forEach(device => {
     context(`Device ${device}`, () => {
       beforeEach(() => {
@@ -259,7 +259,8 @@ describe.skip('Random Number Page', () => {
         });
       });
 
-      describe.skip('Published page', () => {
+      // TODO Remove the trailing slashes from all the other tests
+      describe('Published page', () => {
         it('Google Analytics pageview event is sent', () => {
           cy.visit('/number/ebdb2628-9fef-438d-9395-de1a4d7bc789');
           cy.get('@ga')
@@ -270,43 +271,28 @@ describe.skip('Random Number Page', () => {
             });
         });
         it('Should show the countdown if there are not results', () => {
-          const now = new Date();
-          now.setHours(now.getHours() + 1);
-          const dateInFuture = now.toISOString();
-          cy.route({
-            method: 'GET',
-            url: '/api/random_number/ebdb2628-9fef-438d-9395-de1a4d7bc789',
-            status: 200,
-            response: {
-              id: 'ee870985-eeef-4457-a914-7e96372a3c69',
-              created_at: '2018-10-28T22:40:41.964247Z',
-              updated_at: '2018-10-28T22:40:41.964294Z',
-              title: 'asdada',
-              description: 'asdas',
-              results: [
-                {
-                  created_at: '2018-10-28T22:40:41.990740Z',
-                  value: null,
-                  schedule_date: dateInFuture,
-                },
-              ],
-              metadata: [],
-              private_id: '6ce5042f-f931-4a79-a716-dfadccc978d0',
-              range_min: 2,
-              range_max: 10,
-              number_of_results: 1,
-              allow_repeated_results: false,
-            },
-          }).as('request');
-          cy.visit('/number/ebdb2628-9fef-438d-9395-de1a4d7bc789');
-          cy.wait('@request');
+          const missingSeconds = 10;
+          cy.goBackInTime(
+            'RandomNumber',
+            '/api/random_number/ebdb2628-9fef-438d-9395-de1a4d7bc789/',
+            missingSeconds,
+          );
+          cy.visit('/number/ebdb2628-9fef-438d-9395-aaaaaaaaaaaa');
           cy.getComponent('Countdown').should('be.visible');
+
+          // Fast forward the countdown
+          cy.tick((missingSeconds + 1) * 1000);
+
+          // Once the countdown is over, the the api should be called again
+          cy.mockedRequestWait('GET', '/api/random_number/ebdb2628-9fef-438d-9395-aaaaaaaaaaaa/');
         });
         it('Should show results and the raffle details', () => {
           cy.visit('/number/ebdb2628-9fef-438d-9395-de1a4d7bc789');
-          cy.mockedRequestWait('GET', '/api/random_number/ebdb2628-9fef-438d-9395-de1a4d7bc789');
-          cy.getComponent('PublishedRandomNumberPage__Title').contains('The title');
+          cy.getComponent('DrawHeading__title').contains('Cool title');
           cy.getComponent('RandomNumberResult__result').should('be.visible');
+
+          cy.findAllByText('Desde 1').should('exist');
+          // TODO go on checking the details
         });
 
         it('Should show share buttons', () => {

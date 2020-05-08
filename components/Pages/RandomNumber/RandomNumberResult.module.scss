@@ -1,0 +1,8 @@
+$results-font-size: 5rem;
+
+.RandomNumberResult {
+  & &__results {
+    font-size: $results-font-size;
+    line-height: $results-font-size;
+  }
+}
