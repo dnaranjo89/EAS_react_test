@@ -292,7 +292,8 @@ describe('Random Number Page', () => {
           cy.getComponent('RandomNumberResult__result').should('be.visible');
 
           cy.findAllByText('Desde 1').should('exist');
-          // TODO go on checking the details
+          cy.findAllByText('Hasta 10').should('exist');
+          cy.findAllByText('Número de resultados 1').should('exist');
         });
 
         it('Should show share buttons', () => {

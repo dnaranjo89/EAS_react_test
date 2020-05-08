@@ -43,7 +43,11 @@ const PublishedRandomNumberPage = props => {
 
         <ShareButtons
           drawType={ANALYTICS_TYPE_NUMBER}
-          sectionTitle={result.value ? t('share_result') : t('share_draw')}
+          sectionTitle={
+            result.value
+              ? t('DrawPublishedCommon:share_result')
+              : t('DrawPublishedCommon:share_draw')
+          }
           url={shareUrl}
         />
         <PublishedDrawDetails sectionTitle={t('published_draw_details')}>

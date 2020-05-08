@@ -17,10 +17,7 @@
   "page_title": "Sorteo con lista de participantes cerrada",
   "publish_draw": "Publicar sorteo",
   "published_draw_details": "Detalles del sorteo",
-  "share_draw": "Compartir sorteo",
   "step_label_configure": "Configura el sorteo",
   "step_label_general_details": "Detalles generales",
-  "step_label_when_to_toss": "Fecha del sorteo",
-  "winners": "Ganadores del sorteo",
-  "share_result": "Comparte el resultado"
+  "step_label_when_to_toss": "Fecha del sorteo"
 }

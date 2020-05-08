@@ -84,7 +84,9 @@ const PublishedGroupsGeneratorPage = props => {
       )}
       <ShareButtons
         drawType={ANALYTICS_TYPE_GROUPS}
-        sectionTitle={result.value ? t('share_result') : t('share_draw')}
+        sectionTitle={
+          result.value ? t('DrawPublishedCommon:share_result') : t('DrawPublishedCommon:share_draw')
+        }
         url={shareUrl}
       />
       <PublishedDrawDetails sectionTitle={t('published_draw_details')}>
@@ -131,7 +133,7 @@ PublishedGroupsGeneratorPage.getInitialProps = async ctx => {
   const draw = await loadData(drawId);
   return {
     draw,
-    namespacesRequired: ['GroupsDraw', 'CommonPublished'],
+    namespacesRequired: ['GroupsDraw', 'DrawPublishedCommon'],
   };
 };
 

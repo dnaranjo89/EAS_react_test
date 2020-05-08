@@ -55,13 +55,6 @@ const PublishedRafflePage = props => {
     return <LoadingSpinner fullpage />;
   }
 
-  const ShareButtonsList = () => (
-    <ShareButtons
-      drawType={ANALYTICS_TYPE_RAFFLE}
-      sectionTitle={t('share_result')}
-      url={shareUrl}
-    />
-  );
   return (
     <Page
       ogImage={raffleOgImage}
@@ -77,12 +70,20 @@ const PublishedRafflePage = props => {
           <ResultsBox title={t('winners')}>
             <WinnersList winners={result.value} />
           </ResultsBox>
-          <ShareButtonsList />
+          <ShareButtons
+            drawType={ANALYTICS_TYPE_RAFFLE}
+            sectionTitle={t('DrawPublishedCommon:share_result')}
+            url={shareUrl}
+          />
         </>
       ) : (
         <>
           <Countdown date={result.schedule_date} />
-          <ShareButtonsList />
+          <ShareButtons
+            drawType={ANALYTICS_TYPE_RAFFLE}
+            sectionTitle={t('DrawPublishedCommon:share_draw')}
+            url={shareUrl}
+          />
         </>
       )}
       <PublishedDrawDetails sectionTitle={t('published_draw_details')}>
@@ -135,7 +136,7 @@ PublishedRafflePage.getInitialProps = async ctx => {
   const draw = await loadData(drawId);
   return {
     draw,
-    namespacesRequired: ['RaffleDraw', 'CommonPublished'],
+    namespacesRequired: ['RaffleDraw', 'DrawPublishedCommon'],
   };
 };
 

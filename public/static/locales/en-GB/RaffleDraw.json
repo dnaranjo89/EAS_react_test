@@ -17,10 +17,8 @@
   "page_title": "Raffle with a closed list of participants",
   "publish_draw": "Publish raffle",
   "published_draw_details": "Raffle details",
-  "share_draw": "Share this raffle",
   "step_label_configure": "Configure the raffle",
   "step_label_general_details": "General details",
   "step_label_when_to_toss": "Date of the raffle",
-  "winners": "Winners of the raffle",
-  "share_result": "Share the result"
+  "winners": "Winners of the raffle"
 }

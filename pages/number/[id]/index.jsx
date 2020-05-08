@@ -50,7 +50,7 @@ PublishedRandomNumberPage.getInitialProps = async ctx => {
     });
   }
   return {
-    namespacesRequired: ['NumberDraw'],
+    namespacesRequired: ['NumberDraw', 'DrawPublishedCommon'],
     draw,
   };
 };

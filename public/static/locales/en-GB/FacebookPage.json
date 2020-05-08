@@ -15,8 +15,6 @@
   "people_registered_already_plural": "There are {{count}} people registered",
   "publish_draw": "Publish raffle",
   "published_raffle_details": "Details of the raffle",
-  "share_draw": "Share this raffle",
-  "share_result": "Share these results",
   "step_label_general_details": "General details",
   "step_label_prizes": "Add the prizes",
   "step_label_when_to_toss": "Date of the raffle",
