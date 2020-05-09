@@ -64,8 +64,8 @@ describe('Random Number Page', () => {
               cy.getComponent('ErrorFeedback').should('not.exist');
             });
 
-            describe('Invalid configurations', function() {
-              it('Should show error when any required field is empty', function() {
+            describe('Invalid configurations', function () {
+              it('Should show error when any required field is empty', function () {
                 cy.visit('/number');
                 cy.getComponent('RandomNumber__from-field').within(() => {
                   cy.getComponent('RandomNumber__from-field-input').clear();
@@ -89,20 +89,16 @@ describe('Random Number Page', () => {
                 });
               });
 
-              it('Should show error when range is invalid', function() {
+              it('Should show error when range is invalid', function () {
                 cy.visit('/number');
-                cy.getComponent('RandomNumber__from-field-input')
-                  .clear()
-                  .type(12);
+                cy.getComponent('RandomNumber__from-field-input').clear().type(12);
                 cy.getComponent('SubmitFormButton').click();
                 cy.getComponent('ErrorFeedback').should('be.visible');
               });
 
-              it('Should show error when range is too small', function() {
+              it('Should show error when range is too small', function () {
                 cy.visit('/number');
-                cy.getComponent('RandomNumber__number-of-results-field-input')
-                  .clear()
-                  .type(12);
+                cy.getComponent('RandomNumber__number-of-results-field-input').clear().type(12);
                 cy.getComponent('SubmitFormButton').click();
                 cy.getComponent('ErrorFeedback').should('be.visible');
                 cy.getComponent('RandomNumber__allow-repeated-field-input').check();
@@ -111,7 +107,7 @@ describe('Random Number Page', () => {
             });
           });
 
-          it('Should have the right default values', function() {
+          it('Should have the right default values', function () {
             cy.visit('/number');
             cy.getComponent('RandomNumber__from-field-input').should('have.value', '1');
             cy.getComponent('RandomNumber__to-field-input').should('have.value', '10');
@@ -122,17 +118,11 @@ describe('Random Number Page', () => {
             cy.getComponent('RandomNumber__allow-repeated-field-input').should('not.exist');
           });
 
-          it('Request sent contains the right data', function() {
+          it('Request sent contains the right data', function () {
             cy.visit('/number');
-            cy.getComponent('RandomNumber__from-field-input')
-              .clear()
-              .type(3);
-            cy.getComponent('RandomNumber__to-field-input')
-              .clear()
-              .type(100);
-            cy.getComponent('RandomNumber__number-of-results-field-input')
-              .clear()
-              .type(2);
+            cy.getComponent('RandomNumber__from-field-input').clear().type(3);
+            cy.getComponent('RandomNumber__to-field-input').clear().type(100);
+            cy.getComponent('RandomNumber__number-of-results-field-input').clear().type(2);
             cy.getComponent('SubmitFormButton').click();
 
             cy.mockedRequestWait('POST', '/api/random_number')
@@ -147,7 +137,7 @@ describe('Random Number Page', () => {
               });
           });
 
-          it('Should send GA event on toss', function() {
+          it('Should send GA event on toss', function () {
             cy.visit('/number');
             cy.getComponent('SubmitFormButton').click();
             cy.get('@ga').should('be.calledWith', 'send', {
@@ -157,7 +147,7 @@ describe('Random Number Page', () => {
             });
           });
 
-          it('Results are shown', function() {
+          it('Results are shown', function () {
             cy.visit('/number');
             cy.getComponent('SubmitFormButton').click();
             cy.mockedRequestWait('POST', '/api/random_number');
@@ -169,28 +159,22 @@ describe('Random Number Page', () => {
           });
         });
 
-        it('Changing data after toss should create a new draw', function() {
+        it('Changing data after toss should create a new draw', function () {
           cy.visit('/number');
           cy.getComponent('SubmitFormButton').click();
-          cy.mockedRequestWait('POST', '/api/random_number')
-            .its('requestBody')
-            .should('contain', {
-              number_of_results: 1,
-            });
+          cy.mockedRequestWait('POST', '/api/random_number').its('requestBody').should('contain', {
+            number_of_results: 1,
+          });
           cy.mockedRequestWait(
             'POST',
             '/api/random_number/6ce5042f-f931-4a79-a716-dfadccc978d0/toss',
           );
           cy.getComponent('RandomNumberResult__result').should('be.visible');
-          cy.getComponent('RandomNumber__number-of-results-field-input')
-            .clear()
-            .type(3);
+          cy.getComponent('RandomNumber__number-of-results-field-input').clear().type(3);
           cy.getComponent('SubmitFormButton').click();
-          cy.mockedRequestWait('POST', '/api/random_number')
-            .its('requestBody')
-            .should('contain', {
-              number_of_results: 3,
-            });
+          cy.mockedRequestWait('POST', '/api/random_number').its('requestBody').should('contain', {
+            number_of_results: 3,
+          });
           cy.mockedRequestWait(
             'POST',
             '/api/random_number/6ce5042f-f931-4a79-a716-dfadccc978d0/toss',
@@ -225,9 +209,7 @@ describe('Random Number Page', () => {
 
           // Go to second step
           cy.getComponent('WizardForm__next-button').click();
-          cy.getComponent('PublicDetails__title-field-input')
-            .clear()
-            .type('The title');
+          cy.getComponent('PublicDetails__title-field-input').clear().type('The title');
           cy.getComponent('PublicDetails__description-field-input')
             .clear()
             .type('A cool description');
@@ -238,16 +220,14 @@ describe('Random Number Page', () => {
           // // Go to third step
           cy.getComponent('WizardForm__next-button').click();
 
-          cy.mockedRequestWait('POST', '/api/random_number')
-            .its('requestBody')
-            .should('deep.eq', {
-              allow_repeated_results: false,
-              description: 'A cool description',
-              number_of_results: 1,
-              range_max: 10,
-              range_min: 1,
-              title: 'The title',
-            });
+          cy.mockedRequestWait('POST', '/api/random_number').its('requestBody').should('deep.eq', {
+            allow_repeated_results: false,
+            description: 'A cool description',
+            number_of_results: 1,
+            range_max: 10,
+            range_min: 1,
+            title: 'The title',
+          });
           cy.mockedRequestWait(
             'POST',
             '/api/random_number/6ce5042f-f931-4a79-a716-dfadccc978d0/toss',

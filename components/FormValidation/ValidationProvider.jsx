@@ -77,7 +77,7 @@ class ValidationProvider extends Component {
   deregisterValidatedField = name => {
     this.setState(
       previousState => {
-        const validations = Object.assign({}, previousState.validations);
+        const validations = { ...previousState.validations };
         delete validations[name];
         return {
           validations,

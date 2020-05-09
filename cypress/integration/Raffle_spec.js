@@ -322,9 +322,7 @@ describe('Raffle Page', () => {
           // Non winners should not be shown
           // TODO we are only checking `#__next` cause we are actually returning the non-winner participants
           // We should change that response from the API
-          cy.get('#__next')
-            .contains('Participant 1')
-            .should('not.be.visible');
+          cy.get('#__next').contains('Participant 1').should('not.be.visible');
         });
 
         it('Should show share buttons', () => {

@@ -11,6 +11,7 @@
     "prefer-destructuring": ["error", { "object": true, "array": false }],
     "prettier/prettier": "error",
     "import/no-extraneous-dependencies": [0],
+    "react/jsx-curly-newline": "off",
     "valid-jsdoc": ["error"],
     "import/extensions": [
       "error",
@@ -21,6 +22,7 @@
     ],
     // "no-warning-comments": ["error", { "terms": ["TODO"], "location": "start" }],
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-props-no-spreading": ["off"]
   }
 }

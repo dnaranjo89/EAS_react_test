@@ -62,9 +62,7 @@ describe('Groups Generator Page', () => {
           cy.getComponent('PublicDetails__title-field-input').should('not.have.value', '');
 
           // Fill title and description and submit the step
-          cy.getComponent('PublicDetails__title-field-input')
-            .clear()
-            .type('The title');
+          cy.getComponent('PublicDetails__title-field-input').clear().type('The title');
           cy.getComponent('PublicDetails__description-field-input').type('A cool description');
           cy.getComponent('WizardForm__next-button').click();
 
@@ -217,9 +215,7 @@ describe('Groups Generator Page', () => {
             cy.visit('/groups');
             // cy.clock();
             cy.getComponent('ParticipantsInput__inputField').type('you, me, him, her,');
-            cy.getComponent('GroupsGenerator__number-of-groups-field-input')
-              .clear()
-              .type(4);
+            cy.getComponent('GroupsGenerator__number-of-groups-field-input').clear().type(4);
             cy.getComponent('SubmitFormButton').click();
 
             cy.get('@ga').should('be.calledWith', 'send', {
@@ -303,12 +299,8 @@ describe('Groups Generator Page', () => {
           cy.visit('/groups/af52a47d-98fd-4685-8510-26d342e16f9b');
           cy.getComponent('DrawHeading__title').contains('Sorteo de grupos aleatorios');
           cy.getComponent('GroupsGeneratorResult__group').should('have.length', 2);
-          cy.getComponent('GroupsGeneratorResult__group')
-            .eq(0)
-            .contains('participant2');
-          cy.getComponent('GroupsGeneratorResult__group')
-            .eq(1)
-            .contains('participant1');
+          cy.getComponent('GroupsGeneratorResult__group').eq(0).contains('participant2');
+          cy.getComponent('GroupsGeneratorResult__group').eq(1).contains('participant1');
         });
 
         it('Should show share buttons', () => {

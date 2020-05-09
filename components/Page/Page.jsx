@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import ReactGA from 'react-ga';
@@ -65,7 +65,7 @@ class Page extends Component {
     const pageDescription = htmlDescription.substring(0, 155);
     const ogImageUrl = this.getDomain() + ogImage;
     return (
-      <Fragment>
+      <>
         <Head>
           <title>{htmlTitle}</title>
           <link rel="canonical" href={absoluteUrl} />
@@ -87,7 +87,7 @@ class Page extends Component {
           {showAdvert && <Advert />}
         </div>
         <Footer />
-      </Fragment>
+      </>
     );
   }
 }

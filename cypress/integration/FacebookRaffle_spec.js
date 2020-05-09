@@ -64,9 +64,7 @@ describe('FacebookRaffle', () => {
             cy.getComponent('PublicDetails__title-field-input').should('not.have.value', '');
 
             // Fill title and description and submit the step
-            cy.getComponent('PublicDetails__title-field-input')
-              .clear()
-              .type('The title');
+            cy.getComponent('PublicDetails__title-field-input').clear().type('The title');
             cy.getComponent('PublicDetails__description-field-input').type('A cool description');
 
             // Go to third step

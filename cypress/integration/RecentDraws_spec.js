@@ -41,9 +41,7 @@ describe.skip('RecentRaffles', () => {
         cy.visit('/recent');
         cy.getComponent('RecentDraws__list-item').within(() => {
           cy.root().should('have.length', 2);
-          cy.root()
-            .first()
-            .click();
+          cy.root().first().click();
           cy.location('pathname').should('eq', '/groups/8f393558-320e-4603-ad4d-00000000000');
         });
       });
@@ -63,9 +61,7 @@ describe.skip('RecentRaffles', () => {
       it('Should be possible to remove an individual draw', () => {
         cy.visit('/recent');
         cy.getComponent('RecentDraws__list-item').should('have.length', 2);
-        cy.getComponent('RecentDraws__remove-draw')
-          .first()
-          .click();
+        cy.getComponent('RecentDraws__remove-draw').first().click();
         cy.getComponent('RecentDraws__modal-confirm').click();
         cy.getComponent('RecentDraws__list-item').should('have.length', 1);
       });

@@ -36,7 +36,7 @@ export const fbAsyncInit = async onStatusChange => {
 
 export const injectScript = locale => {
   // eslint-disable-next-line func-names
-  (function(d, s, id) {
+  (function (d, s, id) {
     const fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {
       return;
@@ -61,14 +61,16 @@ const promisifiedApi = (apiEndpoint, options) =>
  * @return {Promise} - Response from the API
  */
 export const apiCall = async (endpoint, accessToken = null) =>
-  new Promise(async (resolve, reject) => {
+  new Promise((resolve, reject) => {
     log(`Facebook API call: ${endpoint} (Access Token: ${accessToken})`);
     const options = accessToken ? { access_token: accessToken } : {};
-    const response = await promisifiedApi(endpoint, options);
-    if (response && !response.error) {
-      return resolve(response);
-    }
-    return reject(response);
+    promisifiedApi(endpoint, options).then(response => {
+      if (response && !response.error) {
+        resolve(response);
+      } else {
+        reject(response);
+      }
+    });
   });
 
 /**

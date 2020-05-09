@@ -63,10 +63,7 @@ function mockServerCalls() {
 
   fixtures.forEach(fixture => {
     const { response, method, path } = fixture;
-    nock('http://127.0.0.1:8000')
-      .persist()
-      .intercept(path, method)
-      .reply(200, response);
+    nock('http://127.0.0.1:8000').persist().intercept(path, method).reply(200, response);
   });
 }
 

@@ -15,7 +15,7 @@ try {
   };
 
   const environmentConfig = require(`./${environment}`); // eslint-disable-line
-  config = Object.assign({}, baseConfig, environmentConfig);
+  config = { ...baseConfig, ...environmentConfig };
 } catch (e) {
   console.error('No application config could be found.', e);
 }
