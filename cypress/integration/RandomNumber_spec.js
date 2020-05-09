@@ -260,7 +260,7 @@ describe('Random Number Page', () => {
       });
 
       // TODO Remove the trailing slashes from all the other tests
-      describe('Published page', () => {
+      describe.only('Published page', () => {
         it('Google Analytics pageview event is sent', () => {
           cy.visit('/number/ebdb2628-9fef-438d-9395-de1a4d7bc789');
           cy.get('@ga')
@@ -274,7 +274,7 @@ describe('Random Number Page', () => {
           const missingSeconds = 10;
           cy.goBackInTime(
             'RandomNumber',
-            '/api/random_number/ebdb2628-9fef-438d-9395-de1a4d7bc789/',
+            '/api/random_number/ebdb2628-9fef-438d-9395-aaaaaaaaaaaa/',
             missingSeconds,
           );
           cy.visit('/number/ebdb2628-9fef-438d-9395-aaaaaaaaaaaa');
@@ -294,6 +294,8 @@ describe('Random Number Page', () => {
           cy.findAllByText('Desde 1').should('exist');
           cy.findAllByText('Hasta 10').should('exist');
           cy.findAllByText('Número de resultados 1').should('exist');
+
+          // TODO This test sometimes fails cause the site is in english
         });
 
         it('Should show share buttons', () => {

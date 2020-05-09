@@ -5,9 +5,7 @@ import PublishedRandomNumberPage from '../../../components/Pages/RandomNumber/Pu
 const randomNumberApi = new RandomNumberApi();
 
 const loadData = async drawId => {
-  console.log('drawid', drawId);
   const draw = await randomNumberApi.randomNumberRead(drawId);
-  console.log('draw', draw);
   const {
     private_id: privateId,
     title,
@@ -41,7 +39,6 @@ PublishedRandomNumberPage.getInitialProps = async ctx => {
   try {
     draw = await loadData(drawId);
   } catch (error) {
-    console.log('error', error);
     Sentry.withScope(scope => {
       scope.setExtra('message', 'API Error');
       scope.setExtra('Action', 'numbersRead');
@@ -50,7 +47,8 @@ PublishedRandomNumberPage.getInitialProps = async ctx => {
     });
   }
   return {
-    namespacesRequired: ['NumberDraw', 'DrawPublishedCommon'],
+    // TODO we need to make sure that all pages use the getInitialProps consistently
+    namespacesRequired: ['NumberDraw', 'DrawPublishedCommon', 'common'],
     draw,
   };
 };
