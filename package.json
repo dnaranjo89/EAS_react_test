@@ -64,7 +64,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.8.1",
     "react-copy-to-clipboard": "^5.0.2",
-    "react-countdown-now": "^1.3.0",
+    "react-countdown": "^2.2.1",
     "react-dom": "^16.8.1",
     "react-frontload": "^1.0.3",
     "react-ga": "^2.5.3",

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames/bind';
-import CountdownHandler from 'react-countdown-now';
+import CountdownHandler from 'react-countdown';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 import moment from 'moment';
@@ -23,7 +23,6 @@ const Countdown = ({ date, t, i18n }) => {
       {/* TODO this package has been deprecated, need to migrate it to 'react-countdown' */}
       <CountdownHandler
         date={date}
-        zeroPadLength={0}
         renderer={({ days, hours, minutes, seconds, completed }) => {
           if (completed) {
             return <Typography variant="subtitle2">{t('Countdown_reload_page')}</Typography>;
