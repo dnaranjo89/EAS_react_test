@@ -91,7 +91,6 @@ Cypress.Commands.add('simulateFbStatusChange', newStatus => {
       if (win.cypressEas) {
         win.cypressEas.statusChange(newStatus);
       } else {
-        console.log('----------------- SETTIMEOUT simulateStatusChange');
         setTimeout(() => simulateStatusChange(missingAttempts - 1), 200);
       }
     };

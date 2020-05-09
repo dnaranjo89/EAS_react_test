@@ -1,4 +1,4 @@
-// eslint-disable-line no-console
+/* eslint-disable no-console */
 import config from '../../config';
 
 const DEBUG = false;

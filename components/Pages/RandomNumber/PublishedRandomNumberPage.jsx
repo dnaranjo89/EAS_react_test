@@ -16,8 +16,6 @@ import { ANALYTICS_TYPE_NUMBER } from '../../../constants/analyticsTypes';
 const PublishedRandomNumberPage = props => {
   const { draw, t } = props;
 
-  console.log('drawPublishedRandomNumberPage');
-
   const shareUrl = getCurrentUrlFromWindow();
   const { title, result, rangeMin, rangeMax, numberOfResults, allowRepeated, description } = draw;
 

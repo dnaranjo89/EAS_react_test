@@ -67,6 +67,7 @@ async function check() {
   const usedKeysLists = await Promise.all(files.map(file => processFile(file, translationKeysMap)));
   const usedKeys = [].concat(...usedKeysLists);
   const unusedKeys = translationKeys.filter(n => !usedKeys.includes(n));
+  // eslint-disable-next-line no-console
   console.log('unusedKeys', unusedKeys);
 }
 check();

@@ -24,7 +24,7 @@ RandomNumberResult.propTypes = {
     created_at: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
     schedule_date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
     value: PropTypes.arrayOf(PropTypes.number),
-  }),
+  }).isRequired,
 };
 
 export default RandomNumberResult;
