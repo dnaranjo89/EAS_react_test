@@ -19,7 +19,7 @@
     "lint:js": "eslint . --ignore-path .gitignore --ext .js,.jsx",
     "lint:js:fix": "npm run lint:js -- --fix",
     "lint": "npm run lint:js && npm run lint:scss",
-    "analyze": "source-map-explorer build/static/js/1*"
+    "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
     "@date-io/moment": "^1.1.0",
@@ -27,6 +27,7 @@
     "@material-ui/icons": "^4.5.1",
     "@material-ui/pickers": "^3.2.8",
     "@material-ui/utils": "^4.5.2",
+    "@next/bundle-analyzer": "^9.3.6",
     "@sentry/browser": "^5.10.2",
     "@sentry/node": "^5.10.2",
     "@sentry/webpack-plugin": "^1.11.1",
