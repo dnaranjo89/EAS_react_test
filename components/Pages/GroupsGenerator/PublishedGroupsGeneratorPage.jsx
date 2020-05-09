@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import { GroupsApi } from 'echaloasuerte-js-sdk';
-import * as Sentry from '@sentry/node';
-
 import { withTranslation } from '../../../i18n';
 import useLoadDataAfterCountdown from '../../../hooks/useLoadDataAfterCountdown';
 import Page from '../../Page/Page.jsx';
@@ -17,42 +14,6 @@ import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import groupsOgImage from './groups_og_image.png';
 import { getCurrentUrlFromWindow } from '../../../utils';
 import { ANALYTICS_TYPE_GROUPS } from '../../../constants/analyticsTypes';
-
-const groupsApi = new GroupsApi();
-
-const loadData = async drawId => {
-  try {
-    const draw = await groupsApi.groupsRead(drawId);
-    const {
-      id,
-      private_id: privateId,
-      title,
-      description,
-      participants,
-      number_of_groups: numberOfGroups,
-      results,
-    } = draw;
-    const lastToss = results[0];
-    return {
-      id,
-      title,
-      description,
-      participants,
-      numberOfGroups,
-      result: lastToss,
-      isOwner: Boolean(privateId),
-      isLoading: false,
-    };
-  } catch (error) {
-    Sentry.withScope(scope => {
-      scope.setExtra('message', 'API Error');
-      scope.setExtra('Action', 'groupsRead');
-      scope.setExtra('drawId', drawId);
-      Sentry.captureException(error);
-    });
-    throw error;
-  }
-};
 
 const PublishedGroupsGeneratorPage = props => {
   const { draw, t } = props;
@@ -124,17 +85,6 @@ PublishedGroupsGeneratorPage.propTypes = {
     isLoading: PropTypes.bool, // TODO isLoading is probabbly wronglu place, should be outside of the draw
   }).isRequired,
   t: PropTypes.func.isRequired,
-};
-
-PublishedGroupsGeneratorPage.defaultProps = {};
-
-PublishedGroupsGeneratorPage.getInitialProps = async ctx => {
-  const { id: drawId } = ctx.query;
-  const draw = await loadData(drawId);
-  return {
-    draw,
-    namespacesRequired: ['GroupsDraw', 'DrawPublishedCommon'],
-  };
 };
 
 export default withTranslation('GroupsDraw')(PublishedGroupsGeneratorPage);

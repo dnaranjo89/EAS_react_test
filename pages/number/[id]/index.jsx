@@ -35,7 +35,7 @@ const loadData = async drawId => {
 
 PublishedRandomNumberPage.getInitialProps = async ctx => {
   const { id: drawId } = ctx.query;
-  let draw = null;
+  let draw;
   try {
     draw = await loadData(drawId);
   } catch (error) {

@@ -27,33 +27,6 @@ import { ANALYTICS_TYPE_FACEBOOK } from '../../../constants/analyticsTypes';
 const c = classNames.bind(STYLES);
 const raffleApi = new RaffleApi();
 
-// Need to check what happens when results are published and no one registered
-export const loadData = async drawId => {
-  try {
-    const draw = await raffleApi.raffleRead(drawId);
-    const { id, private_id: privateId, title, description, participants, prizes, results } = draw;
-    const lastToss = results[0];
-    return {
-      id,
-      title,
-      description,
-      participants,
-      prizes,
-      result: lastToss,
-      isOwner: Boolean(privateId),
-      isLoading: false,
-    };
-  } catch (error) {
-    Sentry.withScope(scope => {
-      scope.setExtra('message', 'API Error');
-      scope.setExtra('Action', 'raffleRead');
-      scope.setExtra('drawId', drawId);
-      Sentry.captureException(error);
-    });
-    throw error;
-  }
-};
-
 const PublishedFacebookRafflePage = ({ draw, t, track, facebookContext }) => {
   const { id: drawId, title, description, participants, prizes, result, isLoading } = draw;
   const { username, userId } = facebookContext;
