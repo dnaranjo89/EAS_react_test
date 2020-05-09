@@ -107,7 +107,6 @@ const PublishedFacebookRafflePage = ({ draw, t, track, facebookContext }) => {
       htmlKeywords={t('html_keywords')}
       noIndex
       pageType="Facebook Raffle Published"
-      enableHotjar
     >
       <DrawHeading title={title || t('page_title')} subtitle={description} />
       {result.value ? (

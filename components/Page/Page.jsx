@@ -117,7 +117,7 @@ Page.defaultProps = {
   ogImage: defaultOgImage,
   htmlKeywords: '',
   htmlDescription: '',
-  enableHotjar: false,
+  enableHotjar: true,
   showAdvert: true,
   mixpanel: null,
   sidePanel: null,
