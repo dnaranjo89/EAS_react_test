@@ -47,7 +47,6 @@ PublishedRandomNumberPage.getInitialProps = async ctx => {
     });
   }
   return {
-    // TODO we need to make sure that all pages use the getInitialProps consistently
     namespacesRequired: ['DrawNumber', 'CommonPublishedDraw', 'Common'],
     draw,
   };

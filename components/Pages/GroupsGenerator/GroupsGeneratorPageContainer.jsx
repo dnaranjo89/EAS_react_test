@@ -7,7 +7,6 @@ import { withTranslation } from '../../../i18n';
 import GroupsGeneratorPage from './GroupsGeneratorPage.jsx';
 import GroupsGeneratorQuickPage from './GroupsGeneratorQuickPage.jsx';
 import withTracking from '../../../hocs/withTracking.jsx';
-import withLoadedTranslations from '../../../hocs/withLoadedTranslations.jsx';
 import recentDraws from '../../../services/recentDraws';
 import throttle from '../../../services/throttle';
 import { ANALYTICS_TYPE_GROUPS } from '../../../constants/analyticsTypes';
@@ -189,9 +188,6 @@ GroupsGeneratorPageContainer.propTypes = {
 };
 GroupsGeneratorPageContainer.defaultProps = {};
 
-export default withLoadedTranslations([
-  'DrawGroups',
-  'Common',
-  'ParticipantsInput',
-  'CommonCreateDraw',
-])(withRouter(withTracking(withTranslation('DrawGroups')(GroupsGeneratorPageContainer))));
+export default withRouter(
+  withTracking(withTranslation('DrawGroups')(GroupsGeneratorPageContainer)),
+);

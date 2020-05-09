@@ -10,7 +10,6 @@ import throttle from '../../../services/throttle';
 import RafflePage from './RafflePage.jsx';
 import RaffleQuickPage from './RaffleQuickPage.jsx';
 import { ANALYTICS_TYPE_RAFFLE } from '../../../constants/analyticsTypes';
-import withLoadedTranslations from '../../../hocs/withLoadedTranslations.jsx';
 
 const raffleApi = new RaffleApi();
 
@@ -189,10 +188,4 @@ RafflePageContainer.propTypes = {
   }).isRequired,
 };
 
-export default withLoadedTranslations([
-  'DrawRaffle',
-  'Common',
-  'ParticipantsInput',
-  'PrizesInput',
-  'CommonCreateDraw',
-])(withRouter(withTracking(withTranslation('DrawRaffle')(RafflePageContainer))));
+export default withRouter(withTracking(withTranslation('DrawRaffle')(RafflePageContainer)));

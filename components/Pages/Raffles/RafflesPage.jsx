@@ -35,10 +35,6 @@ const RafflesPage = ({ t }) => (
   </Page>
 );
 
-RafflesPage.getInitialProps = async () => ({
-  namespacesRequired: ['Raffles'],
-});
-
 RafflesPage.propTypes = {
   t: PropTypes.func.isRequired,
 };

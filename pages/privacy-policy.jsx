@@ -4,7 +4,7 @@ import PrivacyPolicyPage from '../components/Pages/PrivacyPolicyPage/PrivacyPoli
 const PrivacyPolicy = props => <PrivacyPolicyPage {...props} />;
 
 PrivacyPolicy.getInitialProps = async () => ({
-  namespacesRequired: ['PrivacyPolicyPage'],
+  namespacesRequired: ['PrivacyPolicyPage', 'Common'],
 });
 
 export default PrivacyPolicy;
