@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import { withTranslation } from '../../../i18n';
 import DrawCard from '../../DrawCard/DrawCard.jsx';
 import DrawGroup from './DrawGroup.jsx';
-// import Page from '../../Page/Page.jsx';
+import Page from '../../Page/Page.jsx';
 // import randomNumberIcon from './random_number.png';
 // import randomItemIcon from './random_item.png';
 import arrowIcon from './arrow.svg';
@@ -24,15 +24,21 @@ import STYLES from './Homepage.module.scss';
 const c = classNames.bind(STYLES);
 
 const HomePage = ({ t }) => (
-  <div className={c('HomePage__container')}>
-    <DrawGroup title={t('section_title_online_raffles')}>
-      <DrawCard icon={raffleIcon} href="/raffles">
-        {t('draw_title_raffle')}
-      </DrawCard>
-      <DrawCard icon={groupsIcon} href="/groups">
-        {t('draw_title_groups_generator')}
-      </DrawCard>
-      {/* <DrawCard icon={randomNumber} href="/number">
+  <Page
+    htmlTitle={t('html_title')}
+    htmlDescription={t('html_description')}
+    contentClassName={c('HomePage')}
+    pageType="Homepage"
+  >
+    <div className={c('HomePage__container')}>
+      <DrawGroup title={t('section_title_online_raffles')}>
+        <DrawCard icon={raffleIcon} href="/raffles">
+          {t('draw_title_raffle')}
+        </DrawCard>
+        <DrawCard icon={groupsIcon} href="/groups">
+          {t('draw_title_groups_generator')}
+        </DrawCard>
+        {/* <DrawCard icon={randomNumber} href="/number">
           {t('draw_title_random_number')}
           </DrawCard>
           </div>
@@ -40,21 +46,21 @@ const HomePage = ({ t }) => (
           <div className={c('HomePage__draw-chips-group')}>
 
         </div> */}
-      <DrawCard icon={randomLetter} href="/letter">
-        {t('draw_title_random_letter')}
-      </DrawCard>
-      {/* <DrawCard icon={tournamentIcon} href="https://echaloasuerte.com/draw/new/tournament/">
+        <DrawCard icon={randomLetter} href="/letter">
+          {t('draw_title_random_letter')}
+        </DrawCard>
+        {/* <DrawCard icon={tournamentIcon} href="https://echaloasuerte.com/draw/new/tournament/">
           {t('draw_title_tournament')}
         </DrawCard> */}
-    </DrawGroup>
-    <DrawGroup title={t('simple_draws')}>
-      <DrawCard icon={coinIcon} href="coin/">
-        {t('draw_title_flip_coin')}
-      </DrawCard>
-      <DrawCard icon={arrowIcon} href="/spinner">
-        {t('draw_title_spin_arrow')}
-      </DrawCard>
-      {/* <DrawCard icon={cardsIcon} href="https://echaloasuerte.com/draw/new/cards/">
+      </DrawGroup>
+      <DrawGroup title={t('simple_draws')}>
+        <DrawCard icon={coinIcon} href="coin/">
+          {t('draw_title_flip_coin')}
+        </DrawCard>
+        <DrawCard icon={arrowIcon} href="/spinner">
+          {t('draw_title_spin_arrow')}
+        </DrawCard>
+        {/* <DrawCard icon={cardsIcon} href="https://echaloasuerte.com/draw/new/cards/">
           {t('draw_title_pick_card')}
         </DrawCard>
         <DrawCard icon={diceIcon} href="https://echaloasuerte.com/draw/new/dice/">
@@ -69,11 +75,12 @@ const HomePage = ({ t }) => (
         <DrawCard icon={randomItemIcon} href="https://echaloasuerte.com/draw/new/item/">
           {t('draw_title_associate_items')}
         </DrawCard> */}
-    </DrawGroup>
-    {/* <DrawCard icon={likeIcon} href="/facebook_photo">
+      </DrawGroup>
+      {/* <DrawCard icon={likeIcon} href="/facebook_photo">
         {t('draw_title_facebook_photo')}
       </DrawCard> */}
-  </div>
+    </div>
+  </Page>
 );
 
 HomePage.propTypes = {

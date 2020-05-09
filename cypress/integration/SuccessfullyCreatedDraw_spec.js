@@ -31,7 +31,7 @@ describe('Successfully created draw', () => {
           });
         });
 
-        it.skip('Number draw', () => {
+        it('Number draw', () => {
           cy.visit('/number/b29f44c2-1022-408a-925f-63e5f77a12ad/success');
           cy.getComponent('SocialButton__whatsapp').click();
           cy.get('@ga').and('be.calledWith', 'send', {
@@ -95,10 +95,13 @@ describe('Successfully created draw', () => {
         });
 
         it('Should have a button to redirect to the draw', () => {
+          // We can not assert that the redirect happens, as we would need to mock the target url for Next to work
+          // Asserting that the API call happens is good enough.
+          cy.route('/api/groups/b29f44c2-1022-408a-925f-63e5f77a12ad/').as('redirect');
           cy.mockWindowOpen();
           cy.visit('/groups/b29f44c2-1022-408a-925f-63e5f77a12ad/success');
           cy.getComponent('SuccessfullyCreatedDraw_GoToRaffleButton').click();
-          cy.location('pathname').should('eq', '/groups/b29f44c2-1022-408a-925f-63e5f77a12ad');
+          cy.wait('@redirect');
         });
       });
 
