@@ -19,7 +19,6 @@ const loadData = async drawId => {
     prizes,
     result: lastToss,
     isOwner: Boolean(privateId),
-    isLoading: false,
   };
 };
 

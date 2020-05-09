@@ -24,7 +24,6 @@ const loadData = async drawId => {
     numberOfGroups,
     result: lastToss,
     isOwner: Boolean(privateId),
-    isLoading: false,
   };
 };
 

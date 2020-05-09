@@ -29,7 +29,6 @@ const loadData = async drawId => {
     allowRepeated,
     result: lastToss,
     isOwner: Boolean(privateId),
-    isLoading: false,
   };
 };
 

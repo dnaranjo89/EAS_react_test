@@ -10,7 +10,6 @@ import WinnersList from '../../WinnersList/WinnersList.jsx';
 import ResultsBox from '../../ResultsBox/ResultsBox.jsx';
 import Countdown from '../../Countdown/Countdown.jsx';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
-import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner.jsx';
 import ShareButtons from '../../ShareButtons/ShareButtons.jsx';
 import PublishedDrawDetails from '../../PublishedDrawDetails/PublishedDrawDetails.jsx';
 import raffleOgImage from './raffle_og_image.png';
@@ -32,7 +31,6 @@ const loadData = async drawId => {
       prizes,
       result: lastToss,
       isOwner: Boolean(privateId),
-      isLoading: false,
     };
   } catch (error) {
     Sentry.withScope(scope => {
@@ -47,13 +45,9 @@ const loadData = async drawId => {
 
 const PublishedRafflePage = props => {
   const { draw, t } = props;
-  const { title, description, participants, prizes, result, isLoading } = draw;
+  const { title, description, participants, prizes, result } = draw;
   const shareUrl = getCurrentUrlFromWindow();
   useLoadDataAfterCountdown(result);
-
-  if (isLoading) {
-    return <LoadingSpinner fullpage />;
-  }
 
   return (
     <Page
@@ -124,7 +118,6 @@ PublishedRafflePage.propTypes = {
       value: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape())),
     }),
     isOwner: PropTypes.bool,
-    isLoading: PropTypes.bool,
   }).isRequired,
   t: PropTypes.func.isRequired,
 };

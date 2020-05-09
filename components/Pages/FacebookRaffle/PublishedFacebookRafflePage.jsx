@@ -12,7 +12,6 @@ import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import PrizesOverview from './PrizesOverview.jsx';
 import ResultsBox from '../../ResultsBox/ResultsBox.jsx';
 import Countdown from '../../Countdown/Countdown.jsx';
-import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner.jsx';
 import ShareButtons from '../../ShareButtons/ShareButtons.jsx';
 import STYLES from './PublishedFacebookRafflePage.module.scss';
 import ParticipateWithFbPanel from './ParticipateWithFbPanel.jsx';
@@ -28,7 +27,7 @@ const c = classNames.bind(STYLES);
 const raffleApi = new RaffleApi();
 
 const PublishedFacebookRafflePage = ({ draw, t, track, facebookContext }) => {
-  const { id: drawId, title, description, participants, prizes, result, isLoading } = draw;
+  const { id: drawId, title, description, participants, prizes, result } = draw;
   const { username, userId } = facebookContext;
   const [userRegisteredInRaffle, setUserRegisteredInRaffle] = useState(false);
   const [registerFailedErrorMessage, setRegisterFailedErrorMessage] = useState('');
@@ -48,10 +47,6 @@ const PublishedFacebookRafflePage = ({ draw, t, track, facebookContext }) => {
   }, [participants, userId]);
 
   useLoadDataAfterCountdown(result);
-
-  if (isLoading) {
-    return <LoadingSpinner fullpage />;
-  }
 
   /**
    * Register the user in the current raffle
@@ -193,7 +188,6 @@ PublishedFacebookRafflePage.propTypes = {
       value: PropTypes.arrayOf(PropTypes.shape()),
     }),
     isOwner: PropTypes.bool,
-    isLoading: PropTypes.bool,
   }).isRequired,
   facebookContext: PropTypes.shape({
     username: PropTypes.string,

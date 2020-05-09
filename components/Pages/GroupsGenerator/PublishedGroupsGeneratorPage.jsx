@@ -7,7 +7,6 @@ import Page from '../../Page/Page.jsx';
 import GroupsGeneratorResult from './GroupsGeneratorResult.jsx';
 import ResultsBox from '../../ResultsBox/ResultsBox.jsx';
 import Countdown from '../../Countdown/Countdown.jsx';
-import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner.jsx';
 import ShareButtons from '../../ShareButtons/ShareButtons.jsx';
 import PublishedDrawDetails from '../../PublishedDrawDetails/PublishedDrawDetails.jsx';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
@@ -17,14 +16,10 @@ import { ANALYTICS_TYPE_GROUPS } from '../../../constants/analyticsTypes';
 
 const PublishedGroupsGeneratorPage = props => {
   const { draw, t } = props;
-  const { title, description, participants, numberOfGroups, result, isLoading } = draw;
+  const { title, description, participants, numberOfGroups, result } = draw;
   const shareUrl = getCurrentUrlFromWindow();
 
   useLoadDataAfterCountdown(result);
-
-  if (isLoading) {
-    return <LoadingSpinner fullpage />;
-  }
 
   return (
     <Page
@@ -82,7 +77,6 @@ PublishedGroupsGeneratorPage.propTypes = {
       value: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape())),
     }),
     isOwner: PropTypes.bool,
-    isLoading: PropTypes.bool, // TODO isLoading is probabbly wronglu place, should be outside of the draw
   }).isRequired,
   t: PropTypes.func.isRequired,
 };
