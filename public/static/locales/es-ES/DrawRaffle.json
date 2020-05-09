@@ -19,5 +19,6 @@
   "published_draw_details": "Detalles del sorteo",
   "step_label_configure": "Configura el sorteo",
   "step_label_general_details": "Detalles generales",
-  "step_label_when_to_toss": "Fecha del sorteo"
+  "step_label_when_to_toss": "Fecha del sorteo",
+  "winners": "Ganadores del sorteo"
 }

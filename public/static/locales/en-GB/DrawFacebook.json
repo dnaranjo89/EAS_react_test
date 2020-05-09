@@ -20,5 +20,5 @@
   "step_label_when_to_toss": "Date of the raffle",
   "unable_to_register_in_raffle": "There was an error when trying to register in the raffle. Please try again later",
   "winners": "Winners of the raffle",
-  "you_are_registered_as_username": "You are registered in the raffle as {{username}}"
+  "you_are_registered_as_username": "You are registered in the raffle as {{username}}",
 }

@@ -32,4 +32,4 @@ WinnersList.propTypes = {
   i18n: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export default withTranslation('WinnersList')(WinnersList);
+export default withTranslation('CommonPublishedDraw')(WinnersList);
