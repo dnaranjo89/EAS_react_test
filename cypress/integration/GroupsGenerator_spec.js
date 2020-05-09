@@ -289,7 +289,7 @@ describe('Groups Generator Page', () => {
             cy.clock(past.valueOf(), ['Date', 'setTimeout', 'clearTimeout']);
           });
 
-          cy.visit('/groups/af52a47d-98fd-4685-8510-aaaaaaaaaaaa/');
+          cy.visit('/groups/af52a47d-98fd-4685-8510-aaaaaaaaaaaa');
           cy.getComponent('Countdown').should('be.visible');
 
           // Fast forward the countdown
