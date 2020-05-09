@@ -113,6 +113,6 @@ FacebookRafflePageContainer.propTypes = {
   track: PropTypes.func.isRequired,
 };
 
-export default withLoadedTranslations(['FacebookPage'])(
-  withTracking(withTranslation('FacebookPage')(FacebookRafflePageContainer)),
+export default withLoadedTranslations(['DrawFacebook'])(
+  withTracking(withTranslation('DrawFacebook')(FacebookRafflePageContainer)),
 );

@@ -76,12 +76,8 @@ const HomePage = ({ t }) => (
   </div>
 );
 
-HomePage.getInitialProps = async () => ({
-  namespacesRequired: ['homepage'],
-});
-
 HomePage.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('homepage')(HomePage);
+export default withTranslation('Homepage')(HomePage);

@@ -72,7 +72,7 @@ const PublishedRafflePage = props => {
           </ResultsBox>
           <ShareButtons
             drawType={ANALYTICS_TYPE_RAFFLE}
-            sectionTitle={t('DrawPublishedCommon:share_result')}
+            sectionTitle={t('CommonPublishedDraw:share_result')}
             url={shareUrl}
           />
         </>
@@ -81,7 +81,7 @@ const PublishedRafflePage = props => {
           <Countdown date={result.schedule_date} />
           <ShareButtons
             drawType={ANALYTICS_TYPE_RAFFLE}
-            sectionTitle={t('DrawPublishedCommon:share_draw')}
+            sectionTitle={t('CommonPublishedDraw:share_draw')}
             url={shareUrl}
           />
         </>
@@ -136,8 +136,8 @@ PublishedRafflePage.getInitialProps = async ctx => {
   const draw = await loadData(drawId);
   return {
     draw,
-    namespacesRequired: ['RaffleDraw', 'DrawPublishedCommon'],
+    namespacesRequired: ['DrawRaffle', 'CommonPublishedDraw'],
   };
 };
 
-export default withTranslation('RaffleDraw')(PublishedRafflePage);
+export default withTranslation('DrawRaffle')(PublishedRafflePage);

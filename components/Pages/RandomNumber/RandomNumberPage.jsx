@@ -108,4 +108,4 @@ RandomNumberPage.defaultProps = {
   apiError: false,
 };
 
-export default withTranslation('NumberDraw')(RandomNumberPage);
+export default withTranslation('DrawNumber')(RandomNumberPage);

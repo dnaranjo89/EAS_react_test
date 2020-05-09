@@ -109,4 +109,4 @@ RafflePage.defaultProps = {
 
 const mapStateToProps = state => ({ isMobile: state.userRequest.isMobile });
 
-export default withTranslation('RaffleDraw')(connect(mapStateToProps)(RafflePage));
+export default withTranslation('DrawRaffle')(connect(mapStateToProps)(RafflePage));

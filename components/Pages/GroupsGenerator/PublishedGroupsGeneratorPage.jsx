@@ -46,7 +46,7 @@ const PublishedGroupsGeneratorPage = props => {
       <ShareButtons
         drawType={ANALYTICS_TYPE_GROUPS}
         sectionTitle={
-          result.value ? t('DrawPublishedCommon:share_result') : t('DrawPublishedCommon:share_draw')
+          result.value ? t('CommonPublishedDraw:share_result') : t('CommonPublishedDraw:share_draw')
         }
         url={shareUrl}
       />
@@ -87,4 +87,4 @@ PublishedGroupsGeneratorPage.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('GroupsDraw')(PublishedGroupsGeneratorPage);
+export default withTranslation('DrawGroups')(PublishedGroupsGeneratorPage);

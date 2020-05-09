@@ -27,7 +27,7 @@ const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
 
 MyError.getInitialProps = async ({ res, err, asPath }) => {
   const baseInitialProps = {
-    namespacesRequired: ['homepage'],
+    namespacesRequired: [],
   };
 
   const errorInitialProps = await Error.getInitialProps({ res, err });

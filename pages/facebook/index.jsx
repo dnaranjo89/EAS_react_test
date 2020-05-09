@@ -4,7 +4,7 @@ import FacebookRafflePageContainer from '../../components/Pages/FacebookRaffle/F
 const FacebookPage = props => <FacebookRafflePageContainer {...props} />;
 
 FacebookPage.getInitialProps = async () => ({
-  namespacesRequired: ['FacebookPage', 'DrawPublishedCommon'],
+  namespacesRequired: ['DrawFacebook', 'CommonPublishedDraw'],
 });
 
 export default FacebookPage;

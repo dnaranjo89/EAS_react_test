@@ -190,9 +190,9 @@ RafflePageContainer.propTypes = {
 };
 
 export default withLoadedTranslations([
-  'RaffleDraw',
-  'common',
+  'DrawRaffle',
+  'Common',
   'ParticipantsInput',
   'PrizesInput',
-  'DrawCreationCommon',
-])(withRouter(withTracking(withTranslation('RaffleDraw')(RafflePageContainer))));
+  'CommonCreateDraw',
+])(withRouter(withTracking(withTranslation('DrawRaffle')(RafflePageContainer))));

@@ -43,4 +43,4 @@ FlipCoinPageContainer.propTypes = {
   track: PropTypes.func.isRequired,
 };
 
-export default withLoadedTranslations(['coin', 'common'])(withTracking(FlipCoinPageContainer));
+export default withLoadedTranslations(['DrawCoin', 'Common'])(withTracking(FlipCoinPageContainer));

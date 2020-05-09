@@ -24,6 +24,6 @@ HomePage.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withLoadedTranslations(['homepage', 'common'])(
-  withTranslation('homepage')(HomePage),
+export default withLoadedTranslations(['Homepage', 'Common'])(
+  withTranslation('Homepage')(HomePage),
 );

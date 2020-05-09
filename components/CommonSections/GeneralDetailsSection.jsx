@@ -52,4 +52,4 @@ GeneralDetailsSection.defaultProps = {
   titleRequired: false,
 };
 
-export default withTranslation('DrawCreationCommon')(GeneralDetailsSection);
+export default withTranslation('CommonCreateDraw')(GeneralDetailsSection);

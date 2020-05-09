@@ -43,4 +43,4 @@ GroupsGeneratorResult.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('GroupsDraw')(GroupsGeneratorResult);
+export default withTranslation('DrawGroups')(GroupsGeneratorResult);

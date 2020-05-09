@@ -48,4 +48,4 @@ DateTimePicker.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('DrawCreationCommon')(DateTimePicker);
+export default withTranslation('CommonCreateDraw')(DateTimePicker);

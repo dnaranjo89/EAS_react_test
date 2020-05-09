@@ -47,7 +47,7 @@ class ShareDrawModal extends Component {
           <DialogTitle>{t('share_result_dialog_title')}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              <Trans ns="DrawCreationCommon" i18nKey="share_result_dialog_body" />
+              <Trans ns="CommonCreateDraw" i18nKey="share_result_dialog_body" />
               {/* {t('share_result_dialog_body')} */}
             </DialogContentText>
           </DialogContent>
@@ -90,4 +90,4 @@ ShareDrawModal.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withMobileDialog()(withTranslation('DrawCreationCommon')(ShareDrawModal));
+export default withMobileDialog()(withTranslation('CommonCreateDraw')(ShareDrawModal));

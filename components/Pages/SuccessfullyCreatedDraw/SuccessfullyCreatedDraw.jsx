@@ -75,11 +75,11 @@ const SuccessfullyCreatedDraw = ({ t }) => {
 };
 
 SuccessfullyCreatedDraw.getInitialProps = () => ({
-  namespacesRequired: ['DrawCreationCommon'],
+  namespacesRequired: ['CommonCreateDraw'],
 });
 
 SuccessfullyCreatedDraw.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('DrawCreationCommon')(SuccessfullyCreatedDraw);
+export default withTranslation('CommonCreateDraw')(SuccessfullyCreatedDraw);

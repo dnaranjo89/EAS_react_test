@@ -45,8 +45,8 @@ const PublishedRandomNumberPage = props => {
           drawType={ANALYTICS_TYPE_NUMBER}
           sectionTitle={
             result.value
-              ? t('DrawPublishedCommon:share_result')
-              : t('DrawPublishedCommon:share_draw')
+              ? t('CommonPublishedDraw:share_result')
+              : t('CommonPublishedDraw:share_draw')
           }
           url={shareUrl}
         />
@@ -91,4 +91,4 @@ PublishedRandomNumberPage.propTypes = {
 
 PublishedRandomNumberPage.defaultProps = {};
 
-export default withTranslation('NumberDraw')(PublishedRandomNumberPage);
+export default withTranslation('DrawNumber')(PublishedRandomNumberPage);

@@ -42,7 +42,7 @@ class ArrowPageContainer extends Component {
 }
 
 ArrowPageContainer.getInitialProps = () => ({
-  namespacesRequired: ['Spinner'],
+  namespacesRequired: ['DrawSpinner'],
 });
 
 ArrowPageContainer.propTypes = {

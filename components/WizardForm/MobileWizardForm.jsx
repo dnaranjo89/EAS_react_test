@@ -25,7 +25,7 @@ const MobileWizardForm = ({
 }) => (
   <>
     <div className={c('MobileWizardForm__content')}>{children}</div>
-    {apiError && <ErrorFeedback error={t('DrawCreationCommon:api_error')} />}
+    {apiError && <ErrorFeedback error={t('CommonCreateDraw:api_error')} />}
     <MobileStepper
       steps={numSteps}
       position="static"
@@ -64,4 +64,4 @@ MobileWizardForm.defaultProps = {
   loading: false,
 };
 
-export default withTranslation('DrawCreationCommon')(MobileWizardForm);
+export default withTranslation('CommonCreateDraw')(MobileWizardForm);

@@ -42,7 +42,7 @@ PublishedGroupsGeneratorPage.getInitialProps = async ctx => {
     });
   }
   return {
-    namespacesRequired: ['GroupsDraw', 'DrawPublishedCommon', 'common'],
+    namespacesRequired: ['DrawGroups', 'CommonPublishedDraw', 'Common'],
     draw,
   };
 };

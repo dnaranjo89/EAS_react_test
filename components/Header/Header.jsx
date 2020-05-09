@@ -33,4 +33,4 @@ Header.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('common')(Header);
+export default withTranslation('Common')(Header);

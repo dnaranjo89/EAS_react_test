@@ -60,4 +60,4 @@ Countdown.propTypes = {
   i18n: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export default withTranslation('DrawPublishedCommon')(Countdown);
+export default withTranslation('CommonPublishedDraw')(Countdown);

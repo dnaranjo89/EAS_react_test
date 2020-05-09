@@ -98,4 +98,4 @@ RandomNumberConfigurationSection.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('NumberDraw')(RandomNumberConfigurationSection);
+export default withTranslation('DrawNumber')(RandomNumberConfigurationSection);

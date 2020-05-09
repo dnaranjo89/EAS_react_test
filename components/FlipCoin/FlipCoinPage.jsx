@@ -94,4 +94,4 @@ FlipCoinPage.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('coin')(FlipCoinPage);
+export default withTranslation('DrawCoin')(FlipCoinPage);

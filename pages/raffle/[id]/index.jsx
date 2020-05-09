@@ -46,7 +46,7 @@ PublishedRafflePage.getInitialProps = async ctx => {
   }
   return {
     draw,
-    namespacesRequired: ['RaffleDraw', 'DrawPublishedCommon', 'common'],
+    namespacesRequired: ['DrawRaffle', 'CommonPublishedDraw', 'Common'],
   };
 };
 

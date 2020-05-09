@@ -41,7 +41,7 @@ const DesktopWizard = ({
       })}
     </Stepper>
     <div className={c('WizardForm__content')}>{children}</div>
-    {apiError && <ErrorFeedback error={t('DrawCreationCommon:api_error')} />}
+    {apiError && <ErrorFeedback error={t('CommonCreateDraw:api_error')} />}
     <div className={c('WizardForm__buttons-row')}>
       <Button
         className={c('WizardForm__step-button')}
@@ -83,4 +83,4 @@ DesktopWizard.defaultProps = {
   loading: false,
 };
 
-export default withTranslation('DrawCreationCommon')(DesktopWizard);
+export default withTranslation('CommonCreateDraw')(DesktopWizard);

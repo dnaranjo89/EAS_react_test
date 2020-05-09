@@ -116,4 +116,4 @@ FacebookRafflePage.defaultProps = {
 
 const mapStateToProps = state => ({ isMobile: state.userRequest.isMobile });
 
-export default withTranslation('FacebookPage')(connect(mapStateToProps)(FacebookRafflePage));
+export default withTranslation('DrawFacebook')(connect(mapStateToProps)(FacebookRafflePage));

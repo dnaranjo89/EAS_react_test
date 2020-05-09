@@ -57,7 +57,7 @@ const RandomNumberQuickPage = props => {
         onFormErrorsCheck={() => handleCheckErrorsInConfiguration(t)}
       >
         <RandomNumberConfigurationSection values={values} onFieldChange={onFieldChange} t={t} />
-        {apiError && <ErrorFeedback error={t('DrawCreationCommon:api_error')} />}
+        {apiError && <ErrorFeedback error={t('CommonCreateDraw:api_error')} />}
         <SubmitFormButton label={t('generate_numbers')} disabled={loadingRequest} />
       </ValidationProvider>
 
@@ -100,4 +100,4 @@ RandomNumberQuickPage.defaultProps = {
   quickResult: null,
 };
 
-export default withTranslation('NumberDraw')(RandomNumberQuickPage);
+export default withTranslation('DrawNumber')(RandomNumberQuickPage);

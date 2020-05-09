@@ -122,7 +122,7 @@ const PublishedFacebookRafflePage = ({ draw, t, track, facebookContext }) => {
             <br />
             <ShareButtons
               drawType={ANALYTICS_TYPE_FACEBOOK}
-              sectionTitle={t('DrawPublishedCommon:share_result')}
+              sectionTitle={t('CommonPublishedDraw:share_result')}
               url={shareUrl}
             />
           </ResultsBox>
@@ -157,7 +157,7 @@ const PublishedFacebookRafflePage = ({ draw, t, track, facebookContext }) => {
           <Countdown date={result.schedule_date} />
           <ShareButtons
             drawType={ANALYTICS_TYPE_FACEBOOK}
-            sectionTitle={t('DrawPublishedCommon:share_draw')}
+            sectionTitle={t('CommonPublishedDraw:share_draw')}
             url={shareUrl}
           />
         </>
@@ -204,5 +204,5 @@ PublishedFacebookRafflePage.propTypes = {
 };
 
 export default withTracking(
-  withFacebookSdk(withTranslation('FacebookPage')(PublishedFacebookRafflePage)),
+  withFacebookSdk(withTranslation('DrawFacebook')(PublishedFacebookRafflePage)),
 );
