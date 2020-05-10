@@ -33,6 +33,7 @@ branches:
     - try-next
     - master
     - prod
+    - prod-next
 
 after_success:
   - |
