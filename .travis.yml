@@ -20,7 +20,7 @@ script:
   - git clean -xdf
   - docker pull etcaterva/echaloasuerte:master
   - |
-    if [ "$TRAVIS_BRANCH" == "prod" ]; then
+    if [ "$TRAVIS_BRANCH" == "prod" ] || [ "$TRAVIS_BRANCH" == "prod-next" ] ; then
         app_env=production
     else
         app_env=staging
