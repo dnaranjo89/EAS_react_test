@@ -11,7 +11,7 @@ const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const chalk = require('chalk');
 const { getEnvironmentAtBuildTime, isDevelopmentServer } = require('./utils/environment');
 
-const { SENTRY_DSN, SENTRY_ORG, SENTRY_PROJECT } = process.env;
+const { SENTRY_DSN, SENTRY_ORG, SENTRY_PROJECT, REACT_APP_COMMIT } = process.env;
 
 const environment = getEnvironmentAtBuildTime();
 // eslint-disable-next-line no-console
@@ -31,6 +31,7 @@ module.exports = withBundleAnalyzer(
         withSourceMaps({
           env: {
             APP_ENV: environment,
+            RELEASE_COMMIT: REACT_APP_COMMIT,
           },
           webpack: (config, options) => {
             // In `pages/_app.js`, Sentry is imported from @sentry/node. While

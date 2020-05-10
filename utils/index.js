@@ -2,6 +2,8 @@ const isServer = !(typeof window !== 'undefined' && window.document);
 
 const environment = process.env.APP_ENV;
 
+const releaseCommit = process.env.RELEASE_COMMIT;
+
 /**
  * Returns the current url without hashes or querystring params
  * This function should only be used when we don't need that url
@@ -16,4 +18,4 @@ function getCurrentUrlFromWindow() {
   return `https://${host}${pathname}`;
 }
 
-export { isServer, environment, getCurrentUrlFromWindow };
+export { isServer, environment, releaseCommit, getCurrentUrlFromWindow };

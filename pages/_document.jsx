@@ -2,13 +2,14 @@ import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import theme from '../EasTheme.jsx';
+import { releaseCommit } from '../utils';
 
 export default class MyDocument extends Document {
   render() {
     const { language } = this.props;
 
     return (
-      <Html lang={language}>
+      <Html lang={language} data-release-commit={releaseCommit}>
         <Head>
           <link
             rel="preload"
