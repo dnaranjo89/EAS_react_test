@@ -35,9 +35,12 @@ branches:
     - prod
 
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "prod" ] || [ "$TRAVIS_BRANCH" == "master" ] || [ "$TRAVIS_BRANCH" == "try-next" ]; then
-    docker login -u $DOCKER_USER -p $DOCKER_PASS ;
-    docker push etcaterva/echaloasuerte:$TRAVIS_BRANCH ;
+  - |
+    if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
+        if [ "$TRAVIS_BRANCH" == "prod" ] || [ "$TRAVIS_BRANCH" == "master" ] || [ "$TRAVIS_BRANCH" == "try-next" ]; then
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker push etcaterva/echaloasuerte:$TRAVIS_BRANCH
+        fi
     fi
 
 before_deploy:
