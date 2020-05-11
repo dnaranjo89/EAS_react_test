@@ -62,7 +62,7 @@ before_deploy:
 
 deploy:
   - provider: script
-    script: cd eas-deployment &&  ansible-playbook -i hosts_dev config-eas3.yml --vault-password-file=vault-pass --tags "cd-frontend" --extra-vars "ansible_user=automation echaloasuerte_3_git_branch=try-next echaloasuerte_3_npm_config=''"
+    script: cd eas-deployment &&  ansible-playbook -i hosts_dev config-eas3.yml --vault-password-file=vault-pass --tags "cd-frontend-b" --extra-vars "ansible_user=automation"
     on:
       branch: try-next
 
@@ -72,6 +72,6 @@ deploy:
       branch: master
 
   - provider: script
-    script: cd eas-deployment && git checkout prod && ansible-playbook -i hosts_prod config-eas3.yml --vault-password-file=vault-pass --tags "cd-frontend" --extra-vars "ansible_user=automation echaloasuerte_3_git_branch=prod echaloasuerte_3_npm_config=''"
+    script: cd eas-deployment && git checkout prod && ansible-playbook -i hosts_prod config-eas3.yml --vault-password-file=vault-pass --tags "cd-frontend" --extra-vars "ansible_user=automation echaloasuerte_3_git_branch=prod"
     on:
       branch: prod
