@@ -6,6 +6,7 @@ const NextI18NextInstance = new NextI18Next({
   otherLanguages: ['en-GB'],
   browserLanguageDetection: false,
   serverLanguageDetection: false,
+  defaultNS: 'Common',
 });
 
 module.exports = NextI18NextInstance;
