@@ -72,6 +72,11 @@ deploy:
       branch: master
 
   - provider: script
-    script: cd eas-deployment && git checkout prod && ansible-playbook -i hosts_prod config-eas3.yml --vault-password-file=vault-pass --tags "cd-frontend" --extra-vars "ansible_user=automation echaloasuerte_3_git_branch=prod"
+    script: cd eas-deployment && git checkout prod && ansible-playbook -i hosts_prod config-eas3.yml --vault-password-file=vault-pass --tags "cd-frontend-b" --extra-vars "ansible_user=automation"
+    on:
+      branch: prod-next
+
+  - provider: script
+    script: cd eas-deployment && git checkout prod && ansible-playbook -i hosts_prod config-eas3.yml --vault-password-file=vault-pass --tags "cd-frontend" --extra-vars "ansible_user=automation"
     on:
       branch: prod
