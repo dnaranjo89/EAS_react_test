@@ -37,11 +37,16 @@ branches:
 
 after_success:
   - |
+    # Publish docker images on these branches, only if
+    # this isn't a pull request
+    branches="prod master try-next prod-next"
     if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-        if [ "$TRAVIS_BRANCH" == "prod" ] || [ "$TRAVIS_BRANCH" == "master" ] || [ "$TRAVIS_BRANCH" == "try-next" ]; then
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker push etcaterva/echaloasuerte:$TRAVIS_BRANCH
-        fi
+        for branch in $branches; do
+            if [ "$TRAVIS_BRANCH" == "$branch" ]; then
+                docker login -u $DOCKER_USER -p $DOCKER_PASS
+                docker push etcaterva/echaloasuerte:$TRAVIS_BRANCH
+            fi
+        done
     fi
 
 before_deploy:
