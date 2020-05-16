@@ -10,15 +10,16 @@ const withFonts = require('next-fonts');
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const chalk = require('chalk');
 const { getEnvironmentAtBuildTime, isDevelopmentServer } = require('./utils/environment');
+const { TYPE_APP_ENV_TEST } = require('./constants/environment');
 
-const { SENTRY_DSN, SENTRY_ORG, SENTRY_PROJECT, REACT_APP_COMMIT } = process.env;
+const { REACT_APP_COMMIT } = process.env;
 
 const environment = getEnvironmentAtBuildTime();
 // eslint-disable-next-line no-console
 console.log(chalk.yellow('Using', chalk.underline.bold(environment), 'settings'));
 
 // We need to mock the server side requests when running the integration tests with Cypress
-if (environment === 'test') {
+if (environment === TYPE_APP_ENV_TEST) {
   // eslint-disable-next-line global-require
   const setupServerMock = require('./cypress/serverMock');
   setupServerMock();
@@ -57,7 +58,7 @@ module.exports = withBundleAnalyzer(
             // This is an alternative to manually uploading the source maps
             // I would still like to uncomment the code below to send the sourcemaps to Sentry
             // https://github.com/zeit/next.js/tree/c60511c76d8dc07a4738da5b1677f32dfa1dc52b/examples/with-sentry-simple
-            if (!isDevelopmentServer && SENTRY_DSN && SENTRY_ORG && SENTRY_PROJECT) {
+            if (!isDevelopmentServer && environment !== TYPE_APP_ENV_TEST) {
               config.plugins.push(
                 new SentryWebpackPlugin({
                   include: '.next',
