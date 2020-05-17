@@ -54,10 +54,6 @@ MyError.getInitialProps = async ({ res, err, asPath }) => {
     if (res.statusCode === 404) {
       // If the path has a trailing slash we remove it
       if (asPath.match(/\/$/)) {
-        Sentry.withScope(scope => {
-          scope.setExtra('page', asPath);
-          Sentry.captureMessage('Trailing slash found in the URL');
-        });
         const withoutTrailingSlash = asPath.substr(0, asPath.length - 1);
         if (res) {
           res.writeHead(302, {
@@ -67,14 +63,14 @@ MyError.getInitialProps = async ({ res, err, asPath }) => {
         } else {
           Router.push(withoutTrailingSlash);
         }
+      } else {
+        Sentry.withScope(scope => {
+          scope.setExtra('page', asPath);
+          scope.setTag('pageNotFound', asPath);
+          Sentry.captureMessage('Page not found');
+        });
+        return { ...initialProps, statusCode: 404 };
       }
-
-      Sentry.withScope(scope => {
-        scope.setExtra('page', asPath);
-        scope.setTag('pageNotFound', asPath);
-        Sentry.captureMessage('Page not found');
-      });
-      return { ...initialProps, statusCode: 404 };
     }
 
     if (err) {
