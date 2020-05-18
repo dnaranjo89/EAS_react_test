@@ -4,15 +4,14 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
 import classNames from 'classnames/bind';
-import { withTranslation } from '../../../i18n';
 
 import STYLES from './PrizesOverview.module.scss';
 
 const c = classNames.bind(STYLES);
 
-const PrizesOverview = ({ prizes, t }) => (
+const PrizesOverview = ({ prizes, title }) => (
   <div className={c('PrizesOverview')}>
-    <Typography variant="h2">{t('prizes')}</Typography>
+    <Typography variant="h2">{title}</Typography>
     <ul className={c('PrizesOverview__prizes-list')}>
       {prizes.map((prize, i) => (
         <li key={`prize-${prize.id}-${i}`}>
@@ -33,7 +32,7 @@ PrizesOverview.propTypes = {
       facebook_id: PropTypes.string,
     }),
   ).isRequired,
-  t: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
-export default withTranslation('PrizesOverview')(PrizesOverview);
+export default PrizesOverview;

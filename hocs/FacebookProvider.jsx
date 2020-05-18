@@ -126,4 +126,4 @@ FacebookProvider.propTypes = {
   i18n: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export default withTranslation('FacebookProvider')(FacebookProvider);
+export default withTranslation('DrawFacebook')(FacebookProvider);

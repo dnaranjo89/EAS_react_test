@@ -6,7 +6,8 @@
   "html_keywords": "Sorteo en Facebook, regalar premios, cuenta atrás, sorteo público, unirse a un sorteo",
   "html_title": "Sorteo en Facebook",
   "label_number_of_participants": "Número de participantes:",
-  "label_prizes": "Premios:",
+  "label_prizes_colon": "Premios:",
+  "label_prizes": "Premios",
   "login_with_facebook_to_participate": "Accede con Facebook para participar",
   "or_access_as_someone_else": "O accede como otra persona",
   "page_title": "Sorteo entre usuarios de Facebook",
@@ -20,5 +21,7 @@
   "step_label_when_to_toss": "Fecha del sorteo",
   "unable_to_register_in_raffle": "Ha habido un error al realizar el registro en el sorteo. Por favor inténtelo de nuevo más tarde",
   "winners": "Ganadores del sorteo",
-  "you_are_registered_as_username": "Estas registrado en el sorteo como {{username}}"
+  "you_are_registered_as_username": "Estas registrado en el sorteo como {{username}}",
+  "error_message_impossible_to_log_in": "Ha ocurrido un error al intentar acceder con Facebook.",
+  "error_message_possibly_blocked": "Ha ocurrido un error al intentar acceder con Facebook. Puede que alguna extensión de tu navegador este bloqueando la conexión."
 }

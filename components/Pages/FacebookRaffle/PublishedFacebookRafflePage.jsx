@@ -122,7 +122,7 @@ const PublishedFacebookRafflePage = ({ draw, t, track, facebookContext }) => {
           </ResultsBox>
           <PublishedDrawDetails sectionTitle={t('published_raffle_details')}>
             <Typography variant="body2">
-              {t('label_prizes')} {prizes.map(p => p.name).join(', ')}
+              {t('label_prizes_colon')} {prizes.map(p => p.name).join(', ')}
             </Typography>
             <Typography variant="body2" data-testid="FacebookRaffle__number-of-participants">
               {t('label_number_of_participants')} {participants.length}
@@ -131,7 +131,7 @@ const PublishedFacebookRafflePage = ({ draw, t, track, facebookContext }) => {
         </>
       ) : (
         <>
-          <PrizesOverview prizes={prizes} />
+          <PrizesOverview prizes={prizes} title={t('label_prizes')} />
           <div className={c('PublishedFacebookRafflePage__participate-with-facebook')}>
             <ParticipateWithFbPanel
               userRegisteredInRaffle={userRegisteredInRaffle}

@@ -4,67 +4,6 @@
     "got_it": "Got it",
     "learn_more": "Learn more"
   },
-  "FacebookProvider": {
-    "error_message_impossible_to_log_in": "There was an error when trying to log with Facebook.",
-    "error_message_possibly_blocked": "There was an error when trying to log with Facebook, You may have some extenion in your browser that is blocking the connexion."
-  },
-  "FacebookRaffle": {
-    "draw_subheading": "People will be able to participate by logging in with the Facebook accounts",
-    "field_default_title": "Facebook raffle",
-    "field_label_when_to_toss": "Choose when results will be published",
-    "html_description": "Create a public raffle where participants will be able to join by login with the Facebook accounts.",
-    "html_keywords": "raffle in facebook, assign prizes, countdown, join raffle, public results",
-    "html_title": "Facebook Raffle",
-    "label_number_of_participants": "Number of participants:",
-    "label_prizes": "Prizes:",
-    "login_with_facebook_to_participate": "Login with Facebook to participate",
-    "or_access_as_someone_else": "Or access as someone else",
-    "page_title": "Raffle among Facebook users",
-    "participate_as": "Participate as {{username}}",
-    "people_registered_already": "There is {{count}} person registered",
-    "people_registered_already_plural": "There are {{count}} people registered",
-    "publish_draw": "Publish raffle",
-    "published_raffle_details": "Details of the raffle",
-    "share_draw": "Share this raffle",
-    "share_result": "Share these results",
-    "step_label_general_details": "General details",
-    "step_label_prizes": "Add the prizes",
-    "step_label_when_to_toss": "Date of the raffle",
-    "unable_to_register_in_raffle": "There was an error when trying to register in the raffle. Please try again later",
-    "winners": "Winners of the raffle",
-    "you_are_registered_as_username": "You are registered in the raffle as {{username}}"
-  },
-  "PrivacyPolicy": {
-    "html_title": "Privacy Policy"
-  },
-  "PrizesOverview": {
-    "prizes": "Prizes"
-  },
-  "RandomNumber": {
-    "certified_draw_description": "If you want to make a public raffle to ensure an impartial result you should create a public raffle.",
-    "create_certificated_draw": "Create a public draw",
-    "draw_subheading": "Simple random number generator. Choose the range and the amount of numbers to generate.",
-    "error_field_message_min_results": "You must generate at least one number",
-    "error_form_invalid_ranges": "The chosen range (numbers between {{min}} and {{max}}) is not valid",
-    "error_form_range_not_big_enough": "The range is not big enough",
-    "field_default_title": "Public raffle",
-    "field_label_allow_repeated": "Allow repeated numbers",
-    "field_label_from": "From",
-    "field_label_number_of_results": "Number of results",
-    "field_label_to": "To",
-    "generate_numbers": "Generate numbers",
-    "generated_numbers": "Generated numbers",
-    "html_description": "Generate random numbers between two numbers, with or without repetitions. ChooseRandom's random number generator is quick and simple.",
-    "html_keywords": "random number, raffle, lottery",
-    "html_title": "Generate random numbers",
-    "page_title_public": "Public raffle with numbers",
-    "page_title_quick": "Generate random numbers",
-    "publish_draw": "Publish raffle",
-    "published_draw_details": "Draw details",
-    "step_label_configuration": "Configure the draw",
-    "step_label_general_details": "General details",
-    "step_label_when_to_toss": "Date of the raffle"
-  },
   "RecentDrawsPage": {
     "delete_all_recent_draws_modal_cancel": "Cancel",
     "delete_all_recent_draws_modal_confirm": "Clear history",
@@ -77,26 +16,5 @@
     "empty_list": "You haven't published any raffle",
     "html_title": "Recent Raffles",
     "page_title": "Recent Raffles"
-  },
-  "SpinArrow": {
-    "draw_subheading": "Point to a random direction",
-    "html_description": "Do you need to decide who wil be the chosen one? Spin an arrow online",
-    "html_keywords": "spin arrow online, spinner, game, choose randomly",
-    "html_title": "Spin an arrow online",
-    "learn_more_content": "This arrow works best in mobile devices. Place it in the middle of a group, touch it to make it spin and the pointed person will be the winner. You can also use it as a random compass when you need to know where to go",
-    "learn_more_title": "What can an arrow be used for?",
-    "page_title": "Spin an arrow",
-    "touch_to_toss": "Hit the arrow to make it spin"
-  },
-  "WinnersList": {
-    "prize": "prize"
-  },
-  "WithFieldValidation": {
-    "default_message_min": "It must be at least {{min}}",
-    "default_message_required_field": "This field is required"
-  },
-  "WizardForm": {
-    "back": "Back",
-    "next": "Next"
   }
 }

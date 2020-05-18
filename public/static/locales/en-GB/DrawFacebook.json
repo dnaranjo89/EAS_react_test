@@ -6,7 +6,8 @@
   "html_keywords": "raffle in facebook, assign prizes, countdown, join raffle, public results",
   "html_title": "Facebook Raffle",
   "label_number_of_participants": "Number of participants:",
-  "label_prizes": "Prizes:",
+  "label_prizes_colon": "Prizes:",
+  "label_prizes": "Prizes",
   "login_with_facebook_to_participate": "Login with Facebook to participate",
   "or_access_as_someone_else": "Or access as someone else",
   "page_title": "Raffle among Facebook users",
@@ -21,4 +22,6 @@
   "unable_to_register_in_raffle": "There was an error when trying to register in the raffle. Please try again later",
   "winners": "Winners of the raffle",
   "you_are_registered_as_username": "You are registered in the raffle as {{username}}",
+  "error_message_impossible_to_log_in": "There was an error when trying to log with Facebook.",
+  "error_message_possibly_blocked": "There was an error when trying to log with Facebook, you may have some extension in your browser that is blocking the connexion."
 }
