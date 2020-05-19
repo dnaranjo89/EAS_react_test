@@ -38,7 +38,7 @@ const handle = app.getRequestHandler();
 
   // Set max-age to 1 year for the fonts
   server.use(
-    '/static/fonts',
+    '/_next/static/fonts',
     express.static(`${__dirname}/public/static/fonts`, {
       maxage: '365d',
     }),

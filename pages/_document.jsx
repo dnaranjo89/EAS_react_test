@@ -15,14 +15,14 @@ export default class MyDocument extends Document {
             rel="preload"
             as="font"
             type="font/woff2"
-            href="/static/fonts/fredoka-one-v7-latin-regular.woff2"
+            href="/_next/static/fonts/fredoka-one-v7-latin-regular.woff2"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
             as="font"
             type="font/woff2"
-            href="/static/fonts/montserrat-v14-latin-regular.woff2"
+            href="/_next/static/fonts/montserrat-v14-latin-regular.woff2"
             crossOrigin="anonymous"
           />
 
@@ -38,7 +38,7 @@ export default class MyDocument extends Document {
               font-weight: 400;
               font-display: swap;
               src: local('Montserrat Regular'), local('Montserrat-Regular'),
-                url('/static/fonts/montserrat-v14-latin-regular.woff2') format('woff2'),
+                url('/_next/static/fonts/montserrat-v14-latin-regular.woff2') format('woff2'),
                 /* Chrome 26+, Opera 23+, Firefox 39+ */
                   url('/fonts/montserrat-v14-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
             }
@@ -50,7 +50,7 @@ export default class MyDocument extends Document {
               font-weight: 400;
               font-display: swap;
               src: local('Fredoka One'), local('FredokaOne-Regular'),
-                url('/static/fonts/fredoka-one-v7-latin-regular.woff2') format('woff2'),
+                url('/_next/static/fonts/fredoka-one-v7-latin-regular.woff2') format('woff2'),
                 /* Chrome 26+, Opera 23+, Firefox 39+ */
                   url('/fonts/fredoka-one-v7-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
             }
