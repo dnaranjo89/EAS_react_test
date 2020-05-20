@@ -44,7 +44,8 @@ class Page extends Component {
   getAbsoluteUrl() {
     const { router } = this.props;
     const domain = this.getDomain();
-    return `${domain}${router.asPath}`;
+    const pathWithoutTrailingSlash = router.asPath.replace(/\/$/, '');
+    return `${domain}${pathWithoutTrailingSlash}`;
   }
 
   render() {
