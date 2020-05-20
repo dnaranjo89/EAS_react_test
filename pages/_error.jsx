@@ -1,7 +1,6 @@
 import React from 'react';
 import Error from 'next/error';
 import * as Sentry from '@sentry/node';
-import Router from 'next/router';
 
 import NotFoundPage from '../components/Pages/NotFoundPage/NotFoundPage.jsx';
 
@@ -52,25 +51,12 @@ MyError.getInitialProps = async ({ res, err, asPath }) => {
      */
 
     if (res.statusCode === 404) {
-      // If the path has a trailing slash we remove it
-      if (asPath.match(/\/$/)) {
-        const withoutTrailingSlash = asPath.substr(0, asPath.length - 1);
-        if (res) {
-          res.writeHead(302, {
-            Location: withoutTrailingSlash,
-          });
-          res.end();
-        } else {
-          Router.push(withoutTrailingSlash);
-        }
-      } else {
-        Sentry.withScope(scope => {
-          scope.setExtra('page', asPath);
-          scope.setTag('pageNotFound', asPath);
-          Sentry.captureMessage('Page not found');
-        });
-        return { ...initialProps, statusCode: 404 };
-      }
+      Sentry.withScope(scope => {
+        scope.setExtra('page', asPath);
+        scope.setTag('pageNotFound', asPath);
+        Sentry.captureMessage('Page not found');
+      });
+      return { ...initialProps, statusCode: 404 };
     }
 
     if (err) {
