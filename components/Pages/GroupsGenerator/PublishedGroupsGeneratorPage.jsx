@@ -12,10 +12,15 @@ import PublishedDrawDetails from '../../PublishedDrawDetails/PublishedDrawDetail
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import groupsOgImage from './groups_og_image.png';
 import { getCurrentUrlFromWindow } from '../../../utils';
+import NotFoundPage from '../NotFoundPage/NotFoundPage.jsx';
 import { ANALYTICS_TYPE_GROUPS } from '../../../constants/analyticsTypes';
 
 const PublishedGroupsGeneratorPage = props => {
   const { draw, t } = props;
+
+  // if (!draw) {
+  //   return <NotFoundPage />;
+  // }
   const { title, description, participants, numberOfGroups, result } = draw;
   const shareUrl = getCurrentUrlFromWindow();
 

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { GroupsApi, Groups, DrawTossPayload } from 'echaloasuerte-js-sdk';
 import moment from 'moment';
 import Router, { withRouter } from 'next/router';
+import { logApiError } from '../../../utils/logger';
 import { withTranslation } from '../../../i18n';
 import GroupsGeneratorPage from './GroupsGeneratorPage.jsx';
 import GroupsGeneratorQuickPage from './GroupsGeneratorQuickPage.jsx';
@@ -109,7 +110,8 @@ class GroupsGeneratorPageContainer extends React.Component {
           loadingRequest: false,
         });
       }, tsStart);
-    } catch (err) {
+    } catch (error) {
+      logApiError(error, ANALYTICS_TYPE_GROUPS);
       this.setState({
         APIError: true,
         loadingRequest: false,

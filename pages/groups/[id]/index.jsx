@@ -1,6 +1,7 @@
-import * as Sentry from '@sentry/node';
 import { GroupsApi } from 'echaloasuerte-js-sdk';
+import { logApiError } from '../../../utils/logger';
 import PublishedGroupsGeneratorPage from '../../../components/Pages/GroupsGenerator/PublishedGroupsGeneratorPage.jsx';
+import { ANALYTICS_TYPE_GROUPS } from '../../../constants/analyticsTypes';
 
 const groupsApi = new GroupsApi();
 
@@ -33,12 +34,8 @@ PublishedGroupsGeneratorPage.getInitialProps = async ctx => {
   try {
     draw = await loadData(drawId);
   } catch (error) {
-    Sentry.withScope(scope => {
-      scope.setExtra('message', 'API Error');
-      scope.setExtra('Action', 'groupsRead');
-      scope.setExtra('drawId', drawId);
-      Sentry.captureException(error);
-    });
+    console.log('error', error);
+    logApiError(error, ANALYTICS_TYPE_GROUPS);
   }
   return {
     namespacesRequired: ['DrawGroups', 'CommonPublishedDraw', 'Common'],
