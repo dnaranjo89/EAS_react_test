@@ -47,7 +47,7 @@ const PublishedRafflePage = props => {
   const { draw, t } = props;
   const { title, description, participants, prizes, result } = draw;
   const shareUrl = getCurrentUrlFromWindow();
-  useLoadDataAfterCountdown(result);
+  useLoadDataAfterCountdown(draw);
 
   return (
     <Page

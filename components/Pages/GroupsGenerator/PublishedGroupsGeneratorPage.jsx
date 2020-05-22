@@ -24,7 +24,7 @@ const PublishedGroupsGeneratorPage = props => {
   const { title, description, participants, numberOfGroups, result } = draw;
   const shareUrl = getCurrentUrlFromWindow();
 
-  useLoadDataAfterCountdown(result);
+  useLoadDataAfterCountdown(draw);
 
   return (
     <Page

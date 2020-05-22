@@ -27,24 +27,28 @@ describe('useLoadDataAfterCountdown', () => {
       Date.now = jest.fn(() => someDate);
     });
     it('should request data if there are no results yet', () => {
-      const result = {
-        created_at: '2019-10-26T20:06:57.853Z',
-        schedule_date: '2019-10-26T21:06:53.000Z',
-        value: null,
+      const draw = {
+        result: {
+          created_at: '2019-10-26T20:06:57.853Z',
+          schedule_date: '2019-10-26T21:06:53.000Z',
+          value: null,
+        },
       };
       testHook(() => {
-        useLoadDataAfterCountdown(result, pushMock);
+        useLoadDataAfterCountdown(draw, pushMock);
       });
       expect(pushMock).toHaveBeenCalled();
     });
     it('should not request data if there is a result already', () => {
-      const result = {
-        created_at: '2019-10-26T20:06:57.853Z',
-        schedule_date: '2019-10-26T21:06:53.000Z',
-        value: [],
+      const draw = {
+        result: {
+          created_at: '2019-10-26T20:06:57.853Z',
+          schedule_date: '2019-10-26T21:06:53.000Z',
+          value: [],
+        },
       };
       testHook(() => {
-        useLoadDataAfterCountdown(result, pushMock);
+        useLoadDataAfterCountdown(draw, pushMock);
       });
       expect(pushMock).toHaveBeenCalledTimes(0);
       expect(setTimeout).not.toHaveBeenCalled();
@@ -57,13 +61,15 @@ describe('useLoadDataAfterCountdown', () => {
       Date.now = jest.fn(() => someDate);
     });
     it('should setTimeout to schedule the request', () => {
-      const result = {
-        created_at: '2019-10-26T20:06:57.853Z',
-        schedule_date: '2019-10-26T21:06:53.000Z',
-        value: null,
+      const draw = {
+        result: {
+          created_at: '2019-10-26T20:06:57.853Z',
+          schedule_date: '2019-10-26T21:06:53.000Z',
+          value: null,
+        },
       };
       testHook(() => {
-        useLoadDataAfterCountdown(result, pushMock);
+        useLoadDataAfterCountdown(draw, pushMock);
       });
       expect(pushMock).toHaveBeenCalledTimes(0);
       expect(setTimeout).toHaveBeenCalledWith(expect.anything(), 94608000000);

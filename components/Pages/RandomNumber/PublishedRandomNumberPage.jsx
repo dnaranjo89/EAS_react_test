@@ -19,7 +19,7 @@ const PublishedRandomNumberPage = props => {
   const shareUrl = getCurrentUrlFromWindow();
   const { title, result, rangeMin, rangeMax, numberOfResults, allowRepeated, description } = draw;
 
-  useLoadDataAfterCountdown(result);
+  useLoadDataAfterCountdown(draw);
 
   return (
     <Page

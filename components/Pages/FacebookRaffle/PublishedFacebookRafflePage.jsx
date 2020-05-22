@@ -46,7 +46,7 @@ const PublishedFacebookRafflePage = ({ draw, t, track, facebookContext }) => {
     }
   }, [participants, userId]);
 
-  useLoadDataAfterCountdown(result);
+  useLoadDataAfterCountdown(draw);
 
   /**
    * Register the user in the current raffle
