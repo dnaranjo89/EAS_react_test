@@ -30,17 +30,21 @@ const loadData = async drawId => {
 
 PublishedGroupsGeneratorPage.getInitialProps = async ctx => {
   const { id: drawId } = ctx.query;
-  let draw = null;
   try {
-    draw = await loadData(drawId);
+    const draw = await loadData(drawId);
+    return {
+      namespacesRequired: ['DrawGroups', 'CommonPublishedDraw', 'Common'],
+      draw,
+    };
   } catch (error) {
-    console.log('error', error);
     logApiError(error, ANALYTICS_TYPE_GROUPS);
+    return {
+      namespacesRequired: [],
+      error: {
+        statusCode: error.status || 500,
+      },
+    };
   }
-  return {
-    namespacesRequired: ['DrawGroups', 'CommonPublishedDraw', 'Common'],
-    draw,
-  };
 };
 
 export default PublishedGroupsGeneratorPage;

@@ -1,0 +1,15 @@
+@import '../../variables.module';
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1;
+}
+
+.statusCode {
+  margin-right: $spacing-md;
+  padding: $spacing-sm $spacing-md $spacing-sm 0;
+  border-right: $one-pixel-rem solid rgba(0, 0, 0, 0.3);
+  vertical-align: top;
+}

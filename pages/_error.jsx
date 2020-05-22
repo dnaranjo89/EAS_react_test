@@ -2,7 +2,7 @@ import React from 'react';
 import Error from 'next/error';
 import * as Sentry from '@sentry/node';
 
-import NotFoundPage from '../components/Pages/NotFoundPage/NotFoundPage.jsx';
+import ErrorPage from '../components/Pages/ErrorPage/ErrorPage.jsx';
 
 // eslint-disable-next-line react/prop-types
 const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
@@ -15,18 +15,15 @@ const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
     Sentry.captureException(err);
   }
   // TO IMPROVE
-  // If we could move this page from to pages/404.jsx it would be statically generated on built time
-  // We cannot do that tho cause we need it translated and next-18next doesn't support it
+  // We are handling 404 errors here as well. We would like to use the pages/404.js page but
+  // Nextjs generates that page statically on build, so there is currently no way to translate that page if it's static
   // (the 404 page cannot have getInitialProps)
-  if (statusCode === 404) {
-    return <NotFoundPage />;
-  }
-  return <Error statusCode={statusCode} />;
+  return <ErrorPage statusCode={statusCode} />;
 };
 
 MyError.getInitialProps = async ({ res, err, asPath }) => {
   const baseInitialProps = {
-    namespacesRequired: [],
+    namespacesRequired: ['ErrorPage'],
   };
 
   const errorInitialProps = await Error.getInitialProps({ res, err });

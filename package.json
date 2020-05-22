@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
+    "dev": "NODE_OPTIONS='--inspect' node server.js",
     "start": "NODE_ENV=production node server.js",
     "start:integration": "REACT_APP_ENV=test npm run build && REACT_APP_ENV=test PORT=3005 HTTPS=false npm run start",
     "start:integration:dev": "REACT_APP_ENV=test PORT=3005 HTTPS=false npm run dev",

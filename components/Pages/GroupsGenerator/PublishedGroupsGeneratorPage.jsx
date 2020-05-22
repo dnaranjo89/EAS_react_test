@@ -12,19 +12,18 @@ import PublishedDrawDetails from '../../PublishedDrawDetails/PublishedDrawDetail
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import groupsOgImage from './groups_og_image.png';
 import { getCurrentUrlFromWindow } from '../../../utils';
-import NotFoundPage from '../NotFoundPage/NotFoundPage.jsx';
+import ErrorPage from '../ErrorPage/ErrorPage.jsx';
 import { ANALYTICS_TYPE_GROUPS } from '../../../constants/analyticsTypes';
 
 const PublishedGroupsGeneratorPage = props => {
-  const { draw, t } = props;
+  const { draw, error, t } = props;
+  useLoadDataAfterCountdown(draw);
 
-  // if (!draw) {
-  //   return <NotFoundPage />;
-  // }
+  if (error) {
+    return <ErrorPage {...error} />;
+  }
   const { title, description, participants, numberOfGroups, result } = draw;
   const shareUrl = getCurrentUrlFromWindow();
-
-  useLoadDataAfterCountdown(draw);
 
   return (
     <Page
@@ -83,7 +82,12 @@ PublishedGroupsGeneratorPage.propTypes = {
     }),
     isOwner: PropTypes.bool,
   }).isRequired,
+  error: PropTypes.shape({}),
   t: PropTypes.func.isRequired,
+};
+
+PublishedGroupsGeneratorPage.defaultProps = {
+  error: null,
 };
 
 export default withTranslation('DrawGroups')(PublishedGroupsGeneratorPage);
