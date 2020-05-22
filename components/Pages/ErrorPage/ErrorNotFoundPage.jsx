@@ -8,8 +8,8 @@ import STYLES from './ErrorNotFoundPage.module.scss';
 
 const ErrorNotFoundPage = ({ t }) => (
   <Page
-    htmlTitle={t('not_found_html_title')}
-    htmlDescription={t('not_found_html_title')}
+    htmlTitle={t('not_found_page_html_title')}
+    htmlDescription={t('not_found_page_html_title')}
     pageType="Not Found Page" // pageType won't be used as we are not tracking this page
     contentClassName={STYLES.page}
     showAdvert={false}
@@ -18,11 +18,11 @@ const ErrorNotFoundPage = ({ t }) => (
     <Typography variant="h5" className={STYLES.statusCode}>
       404
     </Typography>
-    <Typography variant="body2">{t('not_found_msg')}</Typography>
+    <Typography variant="body2">{t('not_found_page_msg')}</Typography>
   </Page>
 );
 ErrorNotFoundPage.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('ErrorPage')(ErrorNotFoundPage);
+export default withTranslation('Common')(ErrorNotFoundPage);

@@ -2,5 +2,9 @@
   "brand_name": "ÉchaloASuerte",
   "recent_draws": "Sorteos recientes",
   "privacy_policy": "Política de privacidad",
-  "change_language": "Cambiar idioma"
+  "change_language": "Cambiar idioma",
+  "not_found_page_html_title": "Página no encontrada",
+  "not_found_page_msg": "No hemos encontrado esta página.",
+  "error_page_msg": "Ha habido un error en nuestros servidores. Estamos trabajando para arreglarlo lo antes posible",
+  "error_page_html_title": "Ha habido un error"
 }

@@ -13,14 +13,14 @@ const ErrorPage = ({ t, statusCode }) => {
   }
   return (
     <Page
-      htmlTitle={t('error_html_title')}
-      htmlDescription={t('error_html_title')}
+      htmlTitle={t('error_page_html_title')}
+      htmlDescription={t('error_page_html_title')}
       pageType="Not Found Page" // pageType won't be used as we are not tracking this page
       contentClassName={STYLES.page}
       showAdvert={false}
       enableTracking={false}
     >
-      <Typography variant="body2">{t('error_msg')}</Typography>
+      <Typography variant="body2">{t('error_page_msg')}</Typography>
     </Page>
   );
 };
@@ -33,4 +33,4 @@ ErrorPage.defaultProps = {
   statusCode: null,
 };
 
-export default withTranslation('ErrorPage')(ErrorPage);
+export default withTranslation('Common')(ErrorPage);
