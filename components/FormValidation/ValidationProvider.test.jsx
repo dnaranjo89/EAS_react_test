@@ -7,10 +7,10 @@ import FormValidationFeedback from './FormValidationFeedback.jsx';
 import SubmitFormButton from '../SubmitFormButton/SubmitFormButton.jsx';
 
 jest.mock('@material-ui/core/Input', () => {
-  const ActualInput = jest.requireActual('@material-ui/core/Input');
+  const ActualInput = jest.requireActual('@material-ui/core/Input').default;
   return props => (
     <div data-testid="Input">
-      <ActualInput.default {...props} inputProps={{ 'data-testid': 'Input__input-field' }} />
+      <ActualInput {...props} inputProps={{ 'data-testid': 'Input__input-field' }} />
     </div>
   );
 });

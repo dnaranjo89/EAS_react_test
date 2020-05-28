@@ -3,29 +3,29 @@ import { render, fireEvent } from '@testing-library/react';
 import MultiValueInput from './MultiValueInput.jsx';
 
 jest.mock('@material-ui/core/IconButton', () => {
-  const ActualIcon = jest.requireActual('@material-ui/core/IconButton');
+  const ActualIcon = jest.requireActual('@material-ui/core/IconButton').default;
   const ActualReact = jest.requireActual('React');
   return ActualReact.forwardRef((props, ref) => (
     <div data-testid="AddValueIcon" {...props} ref={ref}>
-      <ActualIcon.default />
+      <ActualIcon />
     </div>
   ));
 });
 
 jest.mock('@material-ui/core/Chip', () => {
-  const ActualChip = jest.requireActual('@material-ui/core/Chip');
+  const ActualChip = jest.requireActual('@material-ui/core/Chip').default;
   return props => (
     <div data-testid="Chip">
-      <ActualChip.default {...props} />
+      <ActualChip {...props} />
     </div>
   );
 });
 
 jest.mock('@material-ui/core/Input', () => {
-  const ActualInput = jest.requireActual('@material-ui/core/Input');
+  const ActualInput = jest.requireActual('@material-ui/core/Input').default;
   return props => (
     <div data-testid="Input">
-      <ActualInput.default {...props} inputProps={{ 'data-testid': 'Input__input-field' }} />
+      <ActualInput {...props} inputProps={{ 'data-testid': 'Input__input-field' }} />
     </div>
   );
 });
