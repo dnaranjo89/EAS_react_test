@@ -12,6 +12,7 @@ import groupsIcon from './groups.svg';
 import coinIcon from './coin.svg';
 import randomLetterIcon from './random_letter.png';
 import diceIcon from './dice.svg';
+// import diceIcon from './dice.svg';
 // import cardsIcon from './cards.svg';
 // import tournamentIcon from './tournament.png';
 // import associateItemsIcon from './associate_items.png';
@@ -37,6 +38,9 @@ const HomePage = ({ t }) => (
         </DrawCard>
         <DrawCard icon={groupsIcon} href="/groups">
           {t('draw_title_groups_generator')}
+        </DrawCard>
+        <DrawCard icon={randomItemIcon} href="/item">
+          {t('draw_title_random_item')}
         </DrawCard>
         {/*
           </div>

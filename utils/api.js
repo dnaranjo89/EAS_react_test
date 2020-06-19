@@ -22,6 +22,7 @@ import {
   URL_SLUG_GROUPS,
   URL_SLUG_RAFFLE,
   URL_SLUG_FACEBOOK,
+  URL_SLUG_ITEM,
 } from '../constants/urlSlugs';
 
 const apisBySlug = {
@@ -30,6 +31,7 @@ const apisBySlug = {
   [URL_SLUG_GROUPS]: GroupsApi,
   [URL_SLUG_RAFFLE]: RaffleApi,
   [URL_SLUG_FACEBOOK]: RaffleApi,
+  [URL_SLUG_ITEM]: RaffleApi,
 };
 
 const drawObjectBySlug = {
@@ -38,6 +40,7 @@ const drawObjectBySlug = {
   [URL_SLUG_GROUPS]: Groups,
   [URL_SLUG_RAFFLE]: Raffle,
   [URL_SLUG_FACEBOOK]: Raffle,
+  [URL_SLUG_ITEM]: Raffle,
 };
 
 const apiDrawTypeBySlug = {
@@ -46,6 +49,7 @@ const apiDrawTypeBySlug = {
   [URL_SLUG_GROUPS]: 'groups',
   [URL_SLUG_RAFFLE]: 'raffle',
   [URL_SLUG_FACEBOOK]: 'raffle',
+  [URL_SLUG_ITEM]: 'raffle',
 };
 
 const apiToss = (urlSlug, privateId, payload = {}) => {

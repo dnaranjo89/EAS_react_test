@@ -1,0 +1,18 @@
+@import '../../variables.module';
+$results-font-size: 5rem;
+
+.Result {
+  display: flex;
+  justify-content: center;
+}
+
+.Item {
+  font-size: $results-font-size;
+  line-height: $results-font-size;
+}
+
+.Card {
+  display: inline-block;
+  margin: $spacing-sm;
+  padding: $spacing-sm;
+}

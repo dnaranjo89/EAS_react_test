@@ -7,13 +7,13 @@ import WhenToTossSection from '../../CommonSections/WhenToTossSection.jsx';
 import WizardForm from '../../WizardForm/WizardForm.jsx';
 import Page from '../../Page/Page.jsx';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
-import RaffleConfigurationSection from './RaffleConfigurationSection.jsx';
+import RandomItemConfigurationSection from './RandomItemConfigurationSection.jsx';
 import LearnMoreSection from '../../LearnMoreSection/LearnMoreSection.jsx';
 import withValidationProvider from '../../FormValidation/withValidationProvider.jsx';
-import raffleOgImage from './raffle_og_image.png';
+import itemOgImage from './random_item_og_image.png';
 
 const GeneralDetailsForm = withValidationProvider(GeneralDetailsSection);
-const ConfigurationForm = withValidationProvider(RaffleConfigurationSection);
+const ConfigurationForm = withValidationProvider(RandomItemConfigurationSection);
 const WhenToTossForm = withValidationProvider(WhenToTossSection);
 
 const RafflePage = ({
@@ -69,9 +69,9 @@ const RafflePage = ({
       htmlTitle={t('html_title')}
       htmlDescription={t('html_description')}
       htmlKeywords={t('html_keywords')}
-      pageType="Raffle"
+      pageType="Random Item"
       showAdvert={!isMobile}
-      ogImage={raffleOgImage}
+      ogImage={itemOgImage}
     >
       <DrawHeading title={t('page_title')} subtitle={t('draw_subheading')} />
       <WizardForm
@@ -109,4 +109,4 @@ RafflePage.defaultProps = {
 
 const mapStateToProps = state => ({ isMobile: state.userRequest.isMobile });
 
-export default withTranslation('DrawRaffle')(connect(mapStateToProps)(RafflePage));
+export default withTranslation('DrawItem')(connect(mapStateToProps)(RafflePage));
