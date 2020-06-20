@@ -1,0 +1,11 @@
+{
+  "field_label_number_of_dice": "Number of dice",
+  "error_field_message_min_results": "You have to roll at least {{min}} die",
+  "error_field_message_max_results": "It not possible to roll more than {{max}} dice",
+  "html_description": "Roll dice online",
+  "html_keywords": "random dice, roll dice, play dice",
+  "html_title": "Roll dice",
+  "label_total": "Total:",
+  "page_title": "Roll dice",
+  "roll": "Roll"
+}

@@ -66,6 +66,8 @@ const withFieldValidation = WrappedComponent => {
             return !String(value).trim();
           case 'min':
             return Number.isNaN(parseFloat(value)) || value < parseInt(validator.value, 10);
+          case 'max':
+            return Number.isNaN(parseFloat(value)) || value > parseInt(validator.value, 10);
           default:
             return true;
         }

@@ -1,0 +1,11 @@
+{
+  "field_label_number_of_dice": "Número de dados",
+  "error_field_message_min_results": "Tienes que lanzar al menos {{min}} dado",
+  "error_field_message_max_results": "No se pueden lanzar mas de {{max}} dados",
+  "html_description": "Lanzar dados",
+  "html_keywords": "jugar a los dados, tirar dados, lanzar dados",
+  "html_title": "Lanzar dados",
+  "label_total": "Total:",
+  "page_title": "Lanzar dados",
+  "roll": "Lanzar"
+}

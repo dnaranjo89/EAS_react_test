@@ -1,0 +1,29 @@
+@import '../../variables.module';
+$results-font-size: 2rem;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.table {
+  width: 100%;
+  height: 15rem;
+
+  @media (min-width: $media-tablet) {
+    height: 30rem;
+  }
+}
+
+.result {
+  font-size: $results-font-size;
+  line-height: $results-font-size;
+}
+
+.card {
+  display: inline-block;
+  margin: $spacing-sm;
+  padding: $spacing-sm;
+}
