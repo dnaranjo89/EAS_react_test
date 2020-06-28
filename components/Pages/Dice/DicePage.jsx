@@ -18,6 +18,7 @@ import TextField from '../../TextField.jsx';
 import withFieldValidation from '../../FormValidation/withFieldValidation.jsx';
 import STYLES from './DicePage.module.scss';
 import diceOgImage from './dice_og_image.png';
+import { ANALYTICS_TYPE_DICE } from '../../../constants/analyticsTypes';
 
 import { isServer } from '../../../utils';
 
@@ -52,7 +53,7 @@ const getResultLabel = result => {
   }
 };
 
-const DicePageContainer = ({ t }) => {
+const DicePageContainer = ({ t, track }) => {
   const [numberOfDice, setNumberOfDice] = useState(1);
   const [dice, setDice] = useState(generateDice(numberOfDice, MAX_NUMBER_DICE));
 
@@ -69,6 +70,10 @@ const DicePageContainer = ({ t }) => {
   };
 
   function handleRollDice() {
+    track({
+      mp: { name: `Toss - ${ANALYTICS_TYPE_DICE}`, properties: { drawType: ANALYTICS_TYPE_DICE } },
+      ga: { action: 'Toss', category: ANALYTICS_TYPE_DICE },
+    });
     setDice(prevDice =>
       Object.values(prevDice).reduce((acc, current) => {
         acc[current.id] = { ...current, result: null };
@@ -174,6 +179,7 @@ const DicePageContainer = ({ t }) => {
 
 DicePageContainer.propTypes = {
   t: PropTypes.func.isRequired,
+  track: PropTypes.func.isRequired,
 };
 
 export default withTracking(withTranslation('DrawDice')(DicePageContainer));

@@ -22,22 +22,6 @@ describe('Roll Dice Page', () => {
           .should('be.calledWith', 'create', 'UA-XXXXX-Y')
           .and('be.calledWith', 'send', { hitType: 'pageview', page: '/dice' });
       });
-
-      it('Analytics pageview and event on toss', () => {
-        cy.mockGA();
-        cy.visit('/dice');
-
-        cy.get('@ga')
-          .should('be.calledWith', 'create', 'UA-XXXXX-Y')
-          .and('be.calledWith', 'send', { hitType: 'pageview', page: '/dice' });
-
-        cy.findByRole('button', { name: /lanzar/i }).click();
-        cy.get('@ga').should('be.calledWith', 'send', {
-          hitType: 'event',
-          eventCategory: 'Dice',
-          eventAction: 'Toss',
-        });
-      });
     });
   });
 });
