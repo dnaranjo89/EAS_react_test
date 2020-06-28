@@ -11,7 +11,7 @@ import arrowIcon from './arrow.svg';
 import groupsIcon from './groups.svg';
 import coinIcon from './coin.svg';
 import randomLetterIcon from './random_letter.png';
-// import diceIcon from './dice.svg';
+import diceIcon from './dice.svg';
 // import cardsIcon from './cards.svg';
 // import tournamentIcon from './tournament.png';
 // import associateItemsIcon from './associate_items.png';
@@ -61,11 +61,11 @@ const HomePage = ({ t }) => (
         <DrawCard icon={arrowIcon} href="/spinner">
           {t('draw_title_spin_arrow')}
         </DrawCard>
+        <DrawCard icon={diceIcon} href="/dice">
+          {t('draw_title_roll_dice')}
+        </DrawCard>
         {/* <DrawCard icon={cardsIcon} href="https://echaloasuerte.com/draw/new/cards/">
           {t('draw_title_pick_card')}
-        </DrawCard>
-        <DrawCard icon={diceIcon} href="https://echaloasuerte.com/draw/new/dice/">
-          {t('draw_title_roll_dice')}
         </DrawCard>
         <DrawCard icon={randomNumberIcon} href="https://echaloasuerte.com/draw/new/number/">
           {t('draw_title_random_number')}
