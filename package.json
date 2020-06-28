@@ -66,7 +66,6 @@
     "redux-thunk": "^2.3.0",
     "sass": "^1.26.5",
     "three": "^0.117.1",
-    "threejs-dice": "^1.1.0",
     "ua-parser-js": "^0.7.19",
     "use-cannon": "^0.4.9",
     "uuid": "^8.1.0"

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-// import asd from 'threejs-dice';
 import PropTypes from 'prop-types';
 
 import { useLoader, useFrame } from 'react-three-fiber';
