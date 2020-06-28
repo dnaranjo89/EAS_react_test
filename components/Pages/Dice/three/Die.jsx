@@ -114,14 +114,16 @@ const Die = ({ setupActions, onResult, active }) => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useFrame(() => {
-    const moving = isMoving(velocityRef, angularVelocityRef);
+    if (active) {
+      const moving = isMoving(velocityRef, angularVelocityRef);
 
-    if (rolling && !moving) {
-      const rotation = getRotation(ref);
-      const result = getResult(rotation);
-      if (result) {
-        setRolling(false);
-        onResult(result);
+      if (rolling && !moving) {
+        const rotation = getRotation(ref);
+        const result = getResult(rotation);
+        if (result) {
+          setRolling(false);
+          onResult(result);
+        }
       }
     }
   });

@@ -105,6 +105,7 @@ const DicePageContainer = ({ t }) => {
     setNumberOfDice(numDice);
   };
 
+  const allDiceAreReady = activeDice.every(die => die.actions.roll);
   return (
     <Page
       htmlTitle={t('html_title')}
@@ -138,11 +139,9 @@ const DicePageContainer = ({ t }) => {
               message: t('error_field_message_max_results', { max: MAX_NUMBER_DICE }),
             },
           ]}
-          data-testid="RandomNumber__number-of-results-field"
-          inputProps={{ 'data-testid': 'RandomNumber__number-of-results-field-input' }}
         />
 
-        <SubmitFormButton label={t('roll')} />
+        <SubmitFormButton label={t('roll')} disabled={!allDiceAreReady} />
       </ValidationProvider>
       <div className={STYLES.table}>
         {!isServer && (
