@@ -1,0 +1,316 @@
+{
+  "accessors": [
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 2973,
+      "max": [
+        1.6601580381393433,
+        1.5571496486663818,
+        1.6446957588195801
+      ],
+      "min": [
+        -1.7814228534698486,
+        -1.5813761949539185,
+        -1.6448317766189575
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 35676,
+      "componentType": 5126,
+      "count": 2973,
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "min": [
+        -0.9999997615814209,
+        -1,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 14682,
+      "max": [
+        2972
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 71352,
+      "componentType": 5126,
+      "count": 2523,
+      "max": [
+        1.6585102081298828,
+        1.5562158823013306,
+        1.6446441411972046
+      ],
+      "min": [
+        -1.773395299911499,
+        -1.5813760757446289,
+        -1.6447587013244629
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 101628,
+      "componentType": 5126,
+      "count": 2523,
+      "max": [
+        0.99571448564529419,
+        1,
+        0.99993747472763062
+      ],
+      "min": [
+        -0.99904519319534302,
+        -0.9961552619934082,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 58728,
+      "componentType": 5125,
+      "count": 7620,
+      "max": [
+        2522
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "beweie (https://sketchfab.com/beweie)",
+      "license": "CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)",
+      "source": "https://sketchfab.com/3d-models/weekly-dice-65fb069d9fd54138971b5ab64b381d2f",
+      "title": "Weekly - Dice"
+    },
+    "generator": "Sketchfab-7.39.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 89208,
+      "byteOffset": 0,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 131904,
+      "byteOffset": 89208,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 221112,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "blinn1",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "blinn2",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.052299999999999999,
+          0.052299999999999999,
+          0.052299999999999999,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.92074838162494832
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "pasted__pSphere51_blinn1_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0
+          },
+          "indices": 2,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "pasted__pSphere51_blinn2_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 4,
+            "POSITION": 3
+          },
+          "indices": 5,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [
+        -0.70710678118654746,
+        -0,
+        -0,
+        0.70710678118654757
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [
+        3
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "8ed3a0024f1441dea298ecb29d23bd01.fbx"
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        5
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        2.3375682830810547,
+        0,
+        0,
+        1
+      ],
+      "name": "group"
+    },
+    {
+      "children": [
+        6,
+        7
+      ],
+      "matrix": [
+        0.40919306874275208,
+        0,
+        0,
+        0,
+        0,
+        0.40919306874275208,
+        0,
+        0,
+        0,
+        0,
+        0.40919306874275208,
+        0,
+        -2.3298683166503906,
+        -0.0071567469276487827,
+        -2.2960073692956939e-05,
+        1
+      ],
+      "name": "pasted__pSphere51"
+    },
+    {
+      "mesh": 0,
+      "name": "pasted__pSphere51_blinn1_0"
+    },
+    {
+      "mesh": 1,
+      "name": "pasted__pSphere51_blinn2_0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
+

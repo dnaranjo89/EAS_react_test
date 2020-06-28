@@ -49,7 +49,7 @@ const DiceTable = ({ dice, onResult, setupActions }) => {
             position={[-2 - positionLeftWall, 0, 0]}
           />
 
-          {Object.values(dice).map(({ id, active }) => (
+          {dice.map(({ id, active }) => (
             <Die
               key={id}
               id={id}

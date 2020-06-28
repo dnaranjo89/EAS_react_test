@@ -146,7 +146,11 @@ const DicePageContainer = ({ t }) => {
       </ValidationProvider>
       <div className={STYLES.table}>
         {!isServer && (
-          <DiceTable dice={dice} setupActions={setupActions} onResult={handleDiceResult} />
+          <DiceTable
+            dice={Object.values(dice)}
+            setupActions={setupActions}
+            onResult={handleDiceResult}
+          />
         )}
       </div>
 
