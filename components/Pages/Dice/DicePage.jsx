@@ -110,7 +110,7 @@ const DicePageContainer = ({ t }) => {
       htmlTitle={t('html_title')}
       htmlDescription={t('html_description')}
       htmlKeywords={t('html_keywords')}
-      pageType="Flip a Coin"
+      pageType="Roll Dice"
       contentClassName={STYLES.container}
       ogImage={diceOgImage}
     >

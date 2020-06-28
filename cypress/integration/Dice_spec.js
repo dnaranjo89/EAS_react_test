@@ -11,7 +11,7 @@ describe('Roll Dice Page', () => {
           .its('body')
           .then(html => {
             expect(html).to.match(/<meta property="og:image".*dice_og_image([^>]+)/);
-            expect(html).to.match(/<meta property="og:title".*Lanza unos dados([^>]+)/);
+            expect(html).to.match(/<meta property="og:title".*Lanzar dados([^>]+)/);
           });
       });
 

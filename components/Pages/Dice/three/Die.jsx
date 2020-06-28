@@ -26,7 +26,7 @@ const getRandomValues = () => ({
 });
 
 const getHiddenPosition = () => ({
-  position: [1000, 1000, 1000],
+  position: [1000, 0, 1000],
   velocity: staticVelocity,
   angularVelocity: staticAngularVelocity,
   rotation: initialRotation,
@@ -43,15 +43,12 @@ const isMoving = (velocity, angularVelocity) =>
 
 const getRotation = die => {
   const { x, z } = die.current.rotation;
-  // console.log('x, z', x, z);
   return { rotationX: parseFloat(x.toFixed(2)), rotationZ: parseFloat(z.toFixed(2)) };
 };
 
 const Die = ({ setupActions, onResult, active }) => {
   const { nodes } = useLoader(GLTFLoader, '/dice/scene.gltf');
   const [rolling, setRolling] = useState(true);
-
-  // const [moving, setMoving] = useState(true);
 
   const {
     position: hiddenDiePosition,
@@ -71,7 +68,6 @@ const Die = ({ setupActions, onResult, active }) => {
     args: [0.3, 0.3, 0.3],
     material: {
       friction: 0,
-      // restitution: 1,
     },
   }));
   const velocityRef = useRef([1, 1, 1]);
@@ -88,13 +84,6 @@ const Die = ({ setupActions, onResult, active }) => {
 
   const roll = () => {
     const { position, velocity, angularVelocity, rotation } = getRandomValues();
-
-    // const [randomPosition, randomVelocity, randomAngularVelocity, randomRotation] = [
-    //   [2.912180748303199, 1.6919967312535948, 2.3919607684760664],
-    //   [-4, -0.5, -5],
-    //   [4, 1, 5],
-    //   [0, 0.2, 0.4],
-    // ];
 
     api.velocity.set(...velocity);
     api.angularVelocity.set(...angularVelocity);
