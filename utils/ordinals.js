@@ -32,7 +32,7 @@ const getOrdinalEsEs = position => {
   return `${position}${sufix}`;
 };
 
-export default function (position, i18n) {
+export default function Ordinals(position, i18n) {
   switch (i18n.language) {
     case 'en-GB':
       return getOrdinalEnGb(position);
