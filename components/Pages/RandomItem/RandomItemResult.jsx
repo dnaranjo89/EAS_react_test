@@ -7,7 +7,6 @@ import STYLES from './RandomItemResult.module.scss';
 const RandomItemResult = ({ result }) => (
   <div className={STYLES.Result} data-testid="RandomItemResult">
     {result.value.map(({ name, id }) => (
-      // eslint-disable-next-line react/no-array-index-key
       <Paper key={id} className={STYLES.Card} elevation={2}>
         <Typography className={STYLES.Item} variant="body1" align="center">
           {name}
