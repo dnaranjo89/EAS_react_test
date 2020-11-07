@@ -16,7 +16,7 @@ const GeneralDetailsForm = withValidationProvider(GeneralDetailsSection);
 const ConfigurationForm = withValidationProvider(RandomItemConfigurationSection);
 const WhenToTossForm = withValidationProvider(WhenToTossSection);
 
-const RafflePage = ({
+const RandomItemPage = ({
   values,
   apiError,
   isMobile,
@@ -87,7 +87,7 @@ const RafflePage = ({
   );
 };
 
-RafflePage.propTypes = {
+RandomItemPage.propTypes = {
   values: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
@@ -103,10 +103,10 @@ RafflePage.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-RafflePage.defaultProps = {
+RandomItemPage.defaultProps = {
   apiError: false,
 };
 
 const mapStateToProps = state => ({ isMobile: state.userRequest.isMobile });
 
-export default withTranslation('DrawItem')(connect(mapStateToProps)(RafflePage));
+export default withTranslation('DrawItem')(connect(mapStateToProps)(RandomItemPage));

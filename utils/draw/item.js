@@ -2,7 +2,7 @@ import { getBaseProps, getBaseFields } from './base';
 
 export const getItemsValuesFromDraw = ({ draw }) => {
   const baseProps = getBaseProps(draw);
-  const { items: itemsObjects, number_of_items: numberOfItemsDirty } = draw;
+  const { participants: itemsObjects, number_of_results: numberOfItemsDirty } = draw;
   const items = itemsObjects.map(i => i.name);
   const numberOfItems = numberOfItemsDirty.toString();
 
@@ -22,8 +22,8 @@ export const getItemsDrawDataFromValues = ({ values, isPublic }) => {
   const { items, numberOfItems } = values;
   return {
     ...baseFields,
-    items: items.map(item => ({ name: item })),
-    number_of_items: numberOfItems,
+    participants: items.map(item => ({ name: item })),
+    number_of_results: numberOfItems,
   };
 };
 

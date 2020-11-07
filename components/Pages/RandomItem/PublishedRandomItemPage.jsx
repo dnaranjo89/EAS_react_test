@@ -4,21 +4,20 @@ import Typography from '@material-ui/core/Typography';
 import { withTranslation } from '../../../i18n';
 import useLoadDataAfterCountdown from '../../../hooks/useLoadDataAfterCountdown';
 import Page from '../../Page/Page.jsx';
-import WinnersList from '../../WinnersList/WinnersList.jsx';
+import RandomItemResult from './RandomItemResult.jsx';
 import ResultsBox from '../../ResultsBox/ResultsBox.jsx';
 import Countdown from '../../Countdown/Countdown.jsx';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
-import PrizesOverview from '../../PrizesOverview/PrizesOverview.jsx';
 import ShareButtons from '../../ShareButtons/ShareButtons.jsx';
 import PublishedDrawDetails from '../../PublishedDrawDetails/PublishedDrawDetails.jsx';
 import itemOgImage from './random_item_og_image.png';
 import { getCurrentUrlFromWindow } from '../../../utils';
-import { ANALYTICS_TYPE_RAFFLE } from '../../../constants/analyticsTypes';
+import { ANALYTICS_TYPE_ITEM } from '../../../constants/analyticsTypes';
 
-const PublishedRafflePage = props => {
+const PublishedRandomItemPage = props => {
   const { draw, t } = props;
   const { values, results } = draw;
-  const { title, description, participants, prizes } = values;
+  const { title, description, items, numberOfItems } = values;
   const result = results[0];
   const shareUrl = getCurrentUrlFromWindow();
   useLoadDataAfterCountdown(result);
@@ -30,47 +29,45 @@ const PublishedRafflePage = props => {
       htmlDescription={description || t('html_description')}
       htmlKeywords={t('html_keywords')}
       noIndex
-      pageType="Raffle Published Draw"
+      pageType="Item Published Draw"
     >
       <DrawHeading title={title || t('page_title')} subtitle={description} />
       {result.value ? (
         <>
-          <ResultsBox title={t('winners')}>
-            <WinnersList winners={result.value} />
+          <ResultsBox title={t('selected_items')}>
+            <RandomItemResult result={result} />
           </ResultsBox>
-          <ShareButtons
-            drawType={ANALYTICS_TYPE_RAFFLE}
-            sectionTitle={t('CommonPublishedDraw:share_result')}
-            url={shareUrl}
-          />
         </>
       ) : (
         <>
-          <PrizesOverview prizes={prizes} />
           <Countdown date={result.schedule_date} />
-          <ShareButtons
-            drawType={ANALYTICS_TYPE_RAFFLE}
-            sectionTitle={t('CommonPublishedDraw:share_draw')}
-            url={shareUrl}
-          />
         </>
       )}
+      <ShareButtons
+        drawType={ANALYTICS_TYPE_ITEM}
+        sectionTitle={t('CommonPublishedDraw:share_result')}
+        url={shareUrl}
+      />
       <PublishedDrawDetails sectionTitle={t('published_draw_details')}>
+        {description && <Typography variant="body2">{description}</Typography>}
         <Typography component="div" variant="body2">
-          {t('label_number_of_participants')} {participants.length}
+          {t('label_number_of_items')} {numberOfItems}
+        </Typography>
+        <Typography component="div" variant="body2">
+          {t('label_items')} {items.join(', ')}
         </Typography>
       </PublishedDrawDetails>
     </Page>
   );
 };
 
-PublishedRafflePage.propTypes = {
+PublishedRandomItemPage.propTypes = {
   draw: PropTypes.shape({
     values: PropTypes.shape({
       title: PropTypes.string,
       description: PropTypes.string,
-      participants: PropTypes.arrayOf(PropTypes.string).isRequired,
-      prizes: PropTypes.arrayOf(PropTypes.string).isRequired,
+      items: PropTypes.arrayOf(PropTypes.string).isRequired,
+      numberOfItems: PropTypes.string.isRequired,
     }).isRequired,
     results: PropTypes.arrayOf(
       PropTypes.shape({
@@ -84,6 +81,6 @@ PublishedRafflePage.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-PublishedRafflePage.defaultProps = {};
+PublishedRandomItemPage.defaultProps = {};
 
-export default withTranslation('DrawRaffle')(PublishedRafflePage);
+export default withTranslation('DrawItem')(PublishedRandomItemPage);

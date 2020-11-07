@@ -21,6 +21,8 @@ const RaffleConfigurationSection = ({ values, onFieldChange, t }) => (
       messageEmpty={t('message_no_items_added')}
       helperText={t('field_help_separate_items_commas')}
       fullWidth
+      data-testid="ItemsInput"
+      inputProps={{ 'data-testid': 'ItemsInput__inputField' }}
       validators={[{ rule: 'required' }]}
     />
     <ValidatedTextField
@@ -31,6 +33,7 @@ const RaffleConfigurationSection = ({ values, onFieldChange, t }) => (
       value={values.numberOfItems}
       margin="normal"
       type="number"
+      data-testid="RandomItem__number-of-items-field"
       validators={[
         { rule: 'required', value: true },
         { rule: 'min', value: 1, message: t('error_field_message_min_items', { min: 1 }) },

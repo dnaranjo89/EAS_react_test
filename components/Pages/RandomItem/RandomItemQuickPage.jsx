@@ -10,7 +10,7 @@ import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import MakeCertifiedDrawPanel from '../../MakeCertifiedDrawPanel/MakeCertifiedDrawPanel.jsx';
 import RandomItemConfigurationSection from './RandomItemConfigurationSection.jsx';
 import LoadingCoin from '../../LoadingCoin/LoadingCoin.jsx';
-import WinnersList from '../../WinnersList/WinnersList.jsx';
+import RandomItemResult from './RandomItemResult.jsx';
 import ValidationProvider from '../../FormValidation/ValidationProvider.jsx';
 import itemOgImage from './random_item_og_image.png';
 import STYLES from './RandomItemQuickPage.module.scss';
@@ -68,7 +68,7 @@ const RandomItemQuickPage = ({
       </ValidationProvider>
       <div ref={resultsRef} className={c('RandomItemQuickPage__quickResults')}>
         {loadingRequest && <LoadingCoin />}
-        {!loadingRequest && quickResult && <WinnersList winners={quickResult.value} />}
+        {!loadingRequest && quickResult && <RandomItemResult result={quickResult} />}
       </div>
     </Page>
   );

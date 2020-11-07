@@ -3,14 +3,14 @@
  * done from the server (when doing SSR).
  */
 const nock = require('nock');
-const groupsJson = require('./fixtures/GroupsGenerator.json');
-const raffleJson = require('./fixtures/Raffle.json');
-const facebookJson = require('./fixtures/FacebookRaffle.json');
-const numberJson = require('./fixtures/RandomNumber.json');
-const letterJson = require('./fixtures/RandomLetter.json');
+const fs = require('fs');
+const path = require('path');
+
+const normalizedPath = path.join(__dirname, 'fixtures');
 
 function mockServerCalls() {
-  const fixturesSets = [groupsJson, raffleJson, facebookJson, numberJson, letterJson];
+  // eslint-disable-next-line global-require, import/no-dynamic-require
+  const fixturesSets = fs.readdirSync(normalizedPath).map(file => require(`./fixtures/${file}`));
   let fixtures = fixturesSets.map(fixturesSet =>
     fixturesSet.filter(fixture => fixture.method === 'GET'),
   );
@@ -19,8 +19,8 @@ function mockServerCalls() {
   fixtures = [].concat(...fixtures);
 
   fixtures.forEach(fixture => {
-    const { response, method, path } = fixture;
-    nock('http://127.0.0.1:8000').persist().intercept(path, method).reply(200, response);
+    const { response, method, path: url } = fixture;
+    nock('http://127.0.0.1:8000').persist().intercept(url, method).reply(200, response);
   });
 }
 

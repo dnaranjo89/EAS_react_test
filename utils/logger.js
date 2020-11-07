@@ -1,10 +1,10 @@
 import * as Sentry from '@sentry/browser';
 import { environment } from '.';
-import { TYPE_APP_ENV_LOCAL } from '../constants/environment';
+import { TYPE_APP_ENV_LOCAL, TYPE_APP_ENV_TEST } from '../constants/environment';
 
 // eslint-disable-next-line import/prefer-default-export
 export const logApiError = (error, drawType) => {
-  if (environment === TYPE_APP_ENV_LOCAL) {
+  if ([TYPE_APP_ENV_LOCAL, TYPE_APP_ENV_TEST].includes(environment)) {
     // eslint-disable-next-line no-console
     console.log(error);
   }

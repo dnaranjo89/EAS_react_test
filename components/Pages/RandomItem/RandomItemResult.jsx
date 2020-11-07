@@ -4,25 +4,25 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import STYLES from './RandomItemResult.module.scss';
 
-const RandomLetterResult = ({ result }) => (
+const RandomItemResult = ({ result }) => (
   <div className={STYLES.Result} data-testid="RandomItemResult">
-    {result.value.map((value, i) => (
+    {result.value.map(({ name, id }) => (
       // eslint-disable-next-line react/no-array-index-key
-      <Paper key={i} className={STYLES.Card} elevation={2}>
+      <Paper key={id} className={STYLES.Card} elevation={2}>
         <Typography className={STYLES.Item} variant="body1" align="center">
-          {value}
+          {name}
         </Typography>
       </Paper>
     ))}
   </div>
 );
 
-RandomLetterResult.propTypes = {
+RandomItemResult.propTypes = {
   result: PropTypes.shape({
     created_at: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
     schedule_date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
-    value: PropTypes.arrayOf(PropTypes.string),
+    value: PropTypes.arrayOf(Object),
   }).isRequired,
 };
 
-export default RandomLetterResult;
+export default RandomItemResult;

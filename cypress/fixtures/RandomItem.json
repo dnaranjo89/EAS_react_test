@@ -1,0 +1,244 @@
+[
+  {
+    "path": "/api/lottery/",
+    "method": "POST",
+    "response": {
+      "id": "723adbec-bc08-4713-97e9-22594a0b3ef0",
+      "created_at": "2020-11-07T11:01:08.705052Z",
+      "updated_at": "2020-11-07T11:01:08.705114Z",
+      "title": null,
+      "description": null,
+      "results": [],
+      "metadata": [
+        {
+          "client": "web",
+          "key": "isQuickDraw",
+          "value": "true"
+        }
+      ],
+      "private_id": "5cd0c818-9857-484e-9060-7347c1bb3fe5",
+      "participants": [
+        {
+          "id": "1a2a60d6-262e-4a70-a71c-b913416a0f38",
+          "created_at": "2020-11-07T11:01:08.720549Z",
+          "name": "mesa",
+          "facebook_id": null
+        },
+        {
+          "id": "cf5214fb-6284-44ef-872e-33999ce7da5d",
+          "created_at": "2020-11-07T11:01:08.723798Z",
+          "name": "silla",
+          "facebook_id": null
+        },
+        {
+          "id": "70f5be0a-f2b7-4003-b144-6219b9ff7017",
+          "created_at": "2020-11-07T11:01:08.727403Z",
+          "name": "tenedor",
+          "facebook_id": null
+        }
+      ],
+      "number_of_results": 1
+    }
+  },
+  {
+    "path": "/api/lottery/5cd0c818-9857-484e-9060-7347c1bb3fe5/toss/",
+    "fixture_description": "Toss quick draw",
+    "method": "POST",
+    "response": {
+      "created_at": "2020-11-07T11:01:08.775021Z",
+      "value": [
+        {
+          "id": "1a2a60d6-262e-4a70-a71c-b913416a0f38",
+          "name": "mesa",
+          "facebook_id": null
+        }
+      ],
+      "schedule_date": null
+    }
+  },
+  {
+    "path": "/api/lottery/ba6caf84-859d-49a3-8f63-549f0c3131ec/toss/",
+    "fixture_description": "Toss edited quick draw",
+    "method": "POST",
+    "response": {
+      "created_at": "2020-11-07T11:04:09.850375Z",
+      "value": [
+        {
+          "id": "7ff908f0-686f-4e53-b7ae-19b4dc32e611",
+          "name": "cuchara",
+          "facebook_id": null
+        }
+      ],
+      "schedule_date": null
+    }
+  },
+  {
+    "path": "/api/lottery/5cd0c818-9857-484e-9060-7347c1bb3fe5/",
+    "fixture_description": "Get quick draw",
+    "method": "GET",
+    "response": {
+      "id": "cd5d530c-fd10-4525-a3b3-8bb0b9d35932",
+      "created_at": "2020-06-06T09:05:29.085412Z",
+      "updated_at": "2020-06-06T09:05:29.085440Z",
+      "title": null,
+      "description": null,
+      "results": [
+        {
+          "created_at": "2020-11-07T12:10:35.157Z",
+          "schedule_date": null,
+          "value": [
+            {
+              "name": "silla",
+              "id": "6d64236f-20f0-4ce8-9446-db82fe557639",
+              "facebook_id": null
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "client": "web",
+          "key": "isQuickDraw",
+          "value": "true"
+        }
+      ],
+      "private_id": "5cd0c818-9857-484e-9060-7347c1bb3fe5",
+      "participants": [
+        {
+          "id": "1a2a60d6-262e-4a70-a71c-b913416a0f38",
+          "created_at": "2020-11-07T11:01:08.720549Z",
+          "name": "mesa",
+          "facebook_id": null
+        },
+        {
+          "id": "cf5214fb-6284-44ef-872e-33999ce7da5d",
+          "created_at": "2020-11-07T11:01:08.723798Z",
+          "name": "silla",
+          "facebook_id": null
+        },
+        {
+          "id": "70f5be0a-f2b7-4003-b144-6219b9ff7017",
+          "created_at": "2020-11-07T11:01:08.727403Z",
+          "name": "tenedor",
+          "facebook_id": null
+        }
+      ],
+      "number_of_results": 1
+    }
+  },
+  {
+    "path": "/api/lottery/43c357b7-91ec-448a-1111-000000000000/toss/",
+    "method": "POST",
+    "fixture_description": "Toss (publish) public draw",
+    "response": {
+      "created_at": "2020-11-07T12:10:35.157Z",
+      "schedule_date": null,
+      "value": [
+        {
+          "name": "silla",
+          "id": "6d64236f-20f0-4ce8-9446-db82fe557639",
+          "facebook_id": null
+        }
+      ]
+    }
+  },
+  {
+    "path": "/api/lottery/ebdb2628-9fef-438d-9395-de1a4d7bc789/",
+    "method": "GET",
+    "response": {
+      "id": "ebdb2628-9fef-438d-9395-de1a4d7bc789",
+      "created_at": "2020-05-08T17:07:44.742004Z",
+      "updated_at": "2020-05-08T17:07:44.742042Z",
+      "title": "Cool title",
+      "description": null,
+      "results": [
+        {
+          "created_at": "2020-11-07T12:10:35.157Z",
+          "schedule_date": "2020-11-07T13:10:35Z",
+          "value": [
+            {
+              "name": "silla",
+              "id": "6d64236f-20f0-4ce8-9446-db82fe557639",
+              "facebook_id": null
+            }
+          ]
+        }
+      ],
+      "metadata": [
+        {
+          "client": "web",
+          "key": "isQuickDraw",
+          "value": "false"
+        }
+      ],
+      "participants": [
+        {
+          "id": "1a2a60d6-262e-4a70-a71c-b913416a0f38",
+          "created_at": "2020-11-07T11:01:08.720549Z",
+          "name": "mesa",
+          "facebook_id": null
+        },
+        {
+          "id": "cf5214fb-6284-44ef-872e-33999ce7da5d",
+          "created_at": "2020-11-07T11:01:08.723798Z",
+          "name": "silla",
+          "facebook_id": null
+        },
+        {
+          "id": "70f5be0a-f2b7-4003-b144-6219b9ff7017",
+          "created_at": "2020-11-07T11:01:08.727403Z",
+          "name": "tenedor",
+          "facebook_id": null
+        }
+      ],
+      "number_of_results": 1
+    }
+  },
+  {
+    "path": "/api/lottery/ebdb2628-9fef-438d-9395-aaaaaaaaaaaa/",
+    "method": "GET",
+    "response": {
+      "id": "ebdb2628-9fef-438d-9395-aaaaaaaaaaaa",
+      "created_at": "2018-10-28T22:45:37.180534Z",
+      "updated_at": "2018-10-28T22:45:37.180601Z",
+      "title": "The title",
+      "description": "A description",
+      "results": [
+        {
+          "created_at": "2020-11-07T12:10:35.157Z",
+          "schedule_date": "2020-11-07T13:10:35Z",
+          "value": null
+        }
+      ],
+      "metadata": [
+        {
+          "client": "web",
+          "key": "isQuickDraw",
+          "value": "false"
+        }
+      ],
+      "private_id": "6ce5042f-f931-4a79-a716-dfadccc978d0",
+      "participants": [
+        {
+          "id": "1a2a60d6-262e-4a70-a71c-b913416a0f38",
+          "created_at": "2020-11-07T11:01:08.720549Z",
+          "name": "mesa",
+          "facebook_id": null
+        },
+        {
+          "id": "cf5214fb-6284-44ef-872e-33999ce7da5d",
+          "created_at": "2020-11-07T11:01:08.723798Z",
+          "name": "silla",
+          "facebook_id": null
+        },
+        {
+          "id": "70f5be0a-f2b7-4003-b144-6219b9ff7017",
+          "created_at": "2020-11-07T11:01:08.727403Z",
+          "name": "tenedor",
+          "facebook_id": null
+        }
+      ],
+      "number_of_results": 1
+    }
+  }
+]

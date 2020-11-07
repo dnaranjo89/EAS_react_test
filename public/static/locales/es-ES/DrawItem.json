@@ -24,5 +24,6 @@
   "step_label_general_details": "Detalles generales",
   "step_label_when_to_toss": "Fecha del sorteo",
   "learn_more_title": "Para que puedo utilizar este sorteo?",
-  "learn_more_content": "Puedes añadir una lista de opciones, nombres, lugares... lo que puedas pensar! Uno o mas elementos de esa lista saldrán elegidos al azar"
+  "learn_more_content": "Puedes añadir una lista de opciones, nombres, lugares... lo que puedas pensar! Uno o mas elementos de esa lista saldrán elegidos al azar",
+  "selected_items": "Elementos seleccionados"
 }

@@ -113,8 +113,8 @@ const RandomItemPageContainer = props => {
 RandomItemPageContainer.propTypes = {
   draw: PropTypes.shape({
     values: PropTypes.shape({
-      participants: PropTypes.arrayOf(PropTypes.string).isRequired,
-      prizes: PropTypes.arrayOf(PropTypes.string).isRequired,
+      items: PropTypes.arrayOf(PropTypes.string).isRequired,
+      numberOfItems: PropTypes.string.isRequired,
     }),
     privateId: PropTypes.string.isRequired,
     results: PropTypes.arrayOf(PropTypes.shape({})),
