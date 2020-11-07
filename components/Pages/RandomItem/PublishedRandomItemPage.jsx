@@ -49,7 +49,6 @@ const PublishedRandomItemPage = props => {
         url={shareUrl}
       />
       <PublishedDrawDetails sectionTitle={t('published_draw_details')}>
-        {description && <Typography variant="body2">{description}</Typography>}
         <Typography component="div" variant="body2">
           {t('label_number_of_items')} {numberOfItems}
         </Typography>

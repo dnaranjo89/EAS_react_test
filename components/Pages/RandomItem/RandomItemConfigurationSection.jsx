@@ -10,7 +10,7 @@ import { withTranslation } from '../../../i18n';
 const ValidatedMultiValueInput = withFieldValidation(MultiValueInput);
 const ValidatedTextField = withFieldValidation(TextField);
 
-const RaffleConfigurationSection = ({ values, onFieldChange, t }) => (
+const RandomItemConfigurationSection = ({ values, onFieldChange, t }) => (
   <SectionPanel>
     <ValidatedMultiValueInput
       name="items"
@@ -43,7 +43,7 @@ const RaffleConfigurationSection = ({ values, onFieldChange, t }) => (
   </SectionPanel>
 );
 
-RaffleConfigurationSection.propTypes = {
+RandomItemConfigurationSection.propTypes = {
   values: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
@@ -54,4 +54,4 @@ RaffleConfigurationSection.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('DrawItem')(RaffleConfigurationSection);
+export default withTranslation('DrawItem')(RandomItemConfigurationSection);
