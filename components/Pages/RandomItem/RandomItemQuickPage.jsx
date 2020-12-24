@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames/bind';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import ErrorFeedback from '../../ErrorFeedback/ErrorFeedback.jsx';
 import SubmitFormButton from '../../SubmitFormButton/SubmitFormButton.jsx';
 import useScrollToResults from '../../../hooks/useScrollToResults';
@@ -30,8 +30,8 @@ const RandomItemQuickPage = ({
   quickResult,
   handleToss,
   handleCheckErrorsInConfiguration,
-  t,
 }) => {
+  const { t } = useTranslation('DrawItem');
   const publicDrawUrl = `/${urlSlug}/public`;
   const resultsRef = React.createRef();
 
@@ -84,7 +84,6 @@ RandomItemQuickPage.propTypes = {
   onFieldChange: PropTypes.func.isRequired,
   handleToss: PropTypes.func.isRequired,
   handleCheckErrorsInConfiguration: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 RandomItemQuickPage.defaultProps = {
@@ -93,4 +92,4 @@ RandomItemQuickPage.defaultProps = {
   apiError: false,
 };
 
-export default withTranslation('DrawItem')(RandomItemQuickPage);
+export default RandomItemQuickPage;

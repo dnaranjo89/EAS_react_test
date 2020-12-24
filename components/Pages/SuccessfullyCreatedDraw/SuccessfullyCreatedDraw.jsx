@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { useRouter } from 'next/router';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import RouterButton from '../../Button.jsx';
 import RecentDraws from '../../../services/recentDraws';
 // import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
@@ -15,7 +14,8 @@ import { getCurrentUrlFromWindow } from '../../../utils';
 import SectionPanel from '../../SectionPanel/SectionPanel.jsx';
 import { analyticsTypesBySlug } from '../../../constants/analyticsTypes';
 
-const SuccessfullyCreatedDraw = ({ t }) => {
+const SuccessfullyCreatedDraw = () => {
+  const { t } = useTranslation('CommonCreateDraw');
   const router = useRouter();
   const drawUrl = getCurrentUrlFromWindow().replace('/success', '');
   // Get the draw type from the url
@@ -78,8 +78,6 @@ SuccessfullyCreatedDraw.getInitialProps = () => ({
   namespacesRequired: ['CommonCreateDraw'],
 });
 
-SuccessfullyCreatedDraw.propTypes = {
-  t: PropTypes.func.isRequired,
-};
+SuccessfullyCreatedDraw.propTypes = {};
 
-export default withTranslation('CommonCreateDraw')(SuccessfullyCreatedDraw);
+export default SuccessfullyCreatedDraw;

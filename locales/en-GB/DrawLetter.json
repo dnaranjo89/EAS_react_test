@@ -1,0 +1,22 @@
+{
+  "certified_draw_description": "If you want to make a public raffle to ensure an impartial result you should create a public raffle.",
+  "create_certificated_draw": "Create a public draw",
+  "draw_subheading": "Simple random letter generator",
+  "error_field_message_min_results": "You must generate at least one letter",
+  "error_form_too_many_letters": "If you want to generate more than {{max}} letters you need to allow repeated letters",
+  "field_default_title": "Public raffle",
+  "field_label_allow_repeated": "Allow repeated letters",
+  "field_label_number_of_results": "Number of letters",
+  "generate_results": "Generate letters",
+  "generated_results": "Generated letters",
+  "html_description": "Generate random letters with or without repetitions. This letter generator is quick and simple.",
+  "html_keywords": "random letter, raffle, lottery",
+  "html_title": "Generate random letters",
+  "page_title_public": "Public raffle with letters",
+  "page_title_quick": "Generate random letters",
+  "publish_draw": "Publish raffle",
+  "published_draw_details": "Draw details",
+  "step_label_configuration": "Configure the draw",
+  "step_label_general_details": "General details",
+  "step_label_when_to_toss": "Date of the raffle"
+}

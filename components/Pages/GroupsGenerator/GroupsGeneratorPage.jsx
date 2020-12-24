@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import withValidationProvider from '../../FormValidation/withValidationProvider.jsx';
 import GeneralDetailsSection from '../../CommonSections/GeneralDetailsSection.jsx';
 import WhenToTossSection from '../../CommonSections/WhenToTossSection.jsx';
@@ -24,8 +24,8 @@ const GroupsGeneratorPage = props => {
     onFieldChange,
     handlePublish,
     isMobile,
-    t,
   } = props;
+  const { t } = useTranslation('DrawGroups');
   const steps = [
     {
       label: t('step_label_configure'),
@@ -99,7 +99,6 @@ GroupsGeneratorPage.propTypes = {
   handlePublish: PropTypes.func.isRequired,
   handleCheckErrorsInConfiguration: PropTypes.func.isRequired,
   isMobile: PropTypes.bool.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 GroupsGeneratorPage.defaultProps = {
@@ -108,4 +107,4 @@ GroupsGeneratorPage.defaultProps = {
 
 const mapStateToProps = state => ({ isMobile: state.userRequest.isMobile });
 
-export default withTranslation('DrawGroups')(connect(mapStateToProps)(GroupsGeneratorPage));
+export default connect(mapStateToProps)(GroupsGeneratorPage);

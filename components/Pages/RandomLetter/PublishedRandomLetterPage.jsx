@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
+import useTranslation from 'next-translate/useTranslation';
 import PublishedDrawDetails from '../../PublishedDrawDetails/PublishedDrawDetails.jsx';
 import useLoadDataAfterCountdown from '../../../hooks/useLoadDataAfterCountdown';
-import { withTranslation } from '../../../i18n';
 import Page from '../../Page/Page.jsx';
 import ShareButtons from '../../ShareButtons/ShareButtons.jsx';
 import RandomLetterResult from './RandomLetterResult.jsx';
@@ -16,8 +16,8 @@ import { getCurrentUrlFromWindow } from '../../../utils';
 import { ANALYTICS_TYPE_LETTER } from '../../../constants/analyticsTypes';
 
 const PublishedRandomLetterPage = props => {
-  const { draw, t } = props;
-
+  const { draw } = props;
+  const { t } = useTranslation('DrawLetter');
   const shareUrl = getCurrentUrlFromWindow();
   const { values, results } = draw;
   const { title, numberOfResults, allowRepeated, description } = values;
@@ -86,9 +86,8 @@ PublishedRandomLetterPage.propTypes = {
       }),
     ),
   }).isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 PublishedRandomLetterPage.defaultProps = {};
 
-export default withTranslation('DrawLetter')(PublishedRandomLetterPage);
+export default PublishedRandomLetterPage;

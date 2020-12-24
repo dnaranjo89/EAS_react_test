@@ -9,7 +9,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { withTranslation } from '../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import STYLES from './TranslationsSwitch.module.scss';
 
 const localeMap = {
@@ -17,8 +17,9 @@ const localeMap = {
   'es-ES': 'Español',
 };
 
-const TranslationsSwitch = ({ available, onChange, t, i18n }) => {
+const TranslationsSwitch = ({ available, onChange }) => {
   const [isModalOpen, openModal] = useState(false);
+  const { t, lang } = useTranslation('Common');
   function handleOpen() {
     openModal(true);
   }
@@ -36,13 +37,13 @@ const TranslationsSwitch = ({ available, onChange, t, i18n }) => {
       <Button onClick={handleOpen} className={STYLES.button}>
         <TranslateIcon fontSize="small" titleAccess={t('change_language')} />
         &nbsp;
-        {localeMap[i18n.language]}
+        {localeMap[lang]}
       </Button>
       <Dialog disableBackdropClick disableEscapeKeyDown open={isModalOpen} onClose={handleClose}>
         <DialogTitle>{t('change_language')}</DialogTitle>
         <DialogContent>
           <FormControl>
-            <Select value={i18n.language} onChange={handleChange}>
+            <Select value={lang} onChange={handleChange}>
               {available.map(item => (
                 <MenuItem key={item} value={item}>
                   {localeMap[item]}
@@ -66,8 +67,6 @@ const TranslationsSwitch = ({ available, onChange, t, i18n }) => {
 TranslationsSwitch.propTypes = {
   available: PropTypes.arrayOf(PropTypes.string).isRequired,
   onChange: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
-  i18n: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export default withTranslation('Common')(TranslationsSwitch);
+export default TranslationsSwitch;

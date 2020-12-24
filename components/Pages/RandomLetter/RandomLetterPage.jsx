@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import withValidationProvider from '../../FormValidation/withValidationProvider.jsx';
 import GeneralDetailsSection from '../../CommonSections/GeneralDetailsSection.jsx';
 import WhenToTossSection from '../../CommonSections/WhenToTossSection.jsx';
@@ -25,8 +25,8 @@ const RandomLetterPage = props => {
     handleCheckErrorsInConfiguration,
     onFieldChange,
     handlePublish,
-    t,
   } = props;
+  const { t } = useTranslation('DrawLetter');
   const steps = [
     {
       label: t('step_label_configuration'),
@@ -98,11 +98,10 @@ RandomLetterPage.propTypes = {
   onFieldChange: PropTypes.func.isRequired,
   handlePublish: PropTypes.func.isRequired,
   handleCheckErrorsInConfiguration: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 RandomLetterPage.defaultProps = {
   apiError: false,
 };
 
-export default withTranslation('DrawLetter')(RandomLetterPage);
+export default RandomLetterPage;

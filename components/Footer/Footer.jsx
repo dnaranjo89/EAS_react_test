@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withTranslation } from '../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import TranslationsSwitch from './TranslationsSwitch.jsx';
 import STYLES from './Footer.module.scss';
 import { environment } from '../../utils';
@@ -27,11 +26,13 @@ const redirect = locale => {
   window.location.replace(targetUrl);
 };
 
-const Footer = ({ t, i18n }) => {
+// TODO Need to allow changing the locale
+const Footer = () => {
+  const { t } = useTranslation('Common');
   const handleChangeLanguage = l => {
     if (environment === TYPE_APP_ENV_LOCAL) {
       // Avoid redirecting to ease the translation process in local
-      i18n.changeLanguage(l);
+      // i18n.changeLanguage(l);
     } else {
       redirect(l);
     }
@@ -47,9 +48,6 @@ const Footer = ({ t, i18n }) => {
   );
 };
 
-Footer.propTypes = {
-  t: PropTypes.func.isRequired,
-  i18n: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-};
+Footer.propTypes = {};
 
-export default withTranslation('Common')(Footer);
+export default Footer;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import GroupsGeneratorPage from './GroupsGeneratorPage.jsx';
 import GroupsGeneratorQuickPage from './GroupsGeneratorQuickPage.jsx';
 import withTracking from '../../../hocs/withTracking.jsx';
@@ -28,8 +28,9 @@ const initialLoadingRequest = false;
 const initialApiError = false;
 
 const GroupsGeneratorPageContainer = props => {
-  const { draw: previousDraw, t, track } = props;
+  const { draw: previousDraw, track } = props;
 
+  const { t } = useTranslation('DrawGroups');
   const [privateId, setPrivateId] = useState(getInitialPrivateId(previousDraw));
   const [values, setValues] = useState(getInitialValues(previousDraw, t));
   const [quickResult, setQuickResult] = useState(getInitialQuickResult(previousDraw));
@@ -47,7 +48,8 @@ const GroupsGeneratorPageContainer = props => {
     setLoadingRequest(initialLoadingRequest);
     setAPIError(initialApiError);
     setValues(getInitialValues(previousDraw, t));
-  }, [previousDraw, t]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [previousDraw]);
 
   const onFieldChange = (fieldName, value) => {
     setQuickResult(null);
@@ -120,10 +122,9 @@ GroupsGeneratorPageContainer.propTypes = {
     results: PropTypes.arrayOf(PropTypes.shape({})),
   }),
   track: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
 };
 GroupsGeneratorPageContainer.defaultProps = {
   draw: null,
 };
 
-export default withTracking(withTranslation('DrawGroups')(GroupsGeneratorPageContainer));
+export default withTracking(GroupsGeneratorPageContainer);

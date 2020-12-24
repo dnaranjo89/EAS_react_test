@@ -5,13 +5,14 @@ import CountdownHandler from 'react-countdown';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 import moment from 'moment';
-import { withTranslation } from '../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import STYLES from './Countdown.module.scss';
 
 const c = classnames.bind(STYLES);
 
-const Countdown = ({ date, t, i18n }) => {
-  moment.locale(i18n.language);
+const Countdown = ({ date }) => {
+  const { t, lang } = useTranslation('CommonPublishedDraw');
+  moment.locale(lang);
   return (
     <div className={c('Countdown')} data-testid="Countdown">
       <Typography variant="subtitle2">
@@ -55,8 +56,6 @@ const Countdown = ({ date, t, i18n }) => {
 
 Countdown.propTypes = {
   date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
-  t: PropTypes.func.isRequired,
-  i18n: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export default withTranslation('CommonPublishedDraw')(Countdown);
+export default Countdown;

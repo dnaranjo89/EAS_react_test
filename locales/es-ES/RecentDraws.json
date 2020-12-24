@@ -1,0 +1,15 @@
+{
+  "delete_all_recent_draws_modal_cancel": "Cancelar",
+  "delete_all_recent_draws_modal_confirm": "Borrar historial",
+  "delete_all_recent_draws_modal_content": "Los sorteos sólamente serán eliminados de tu historial de tiradas recientes, los participantes podrán seguir accediendo a ellos sin tienen los links.",
+  "delete_all_recent_draws_modal_title": "¿Quieres borrar tu historial de sorteos?",
+  "delete_recent_draw_modal_confirm": "Borrar sorteo",
+  "delete_recent_draw_modal_content": "El sorteo sólamente será eliminado de tu historial de sorteos recientes, los participantes que tengan el link podrán seguir accediendo.",
+  "delete_recent_draw_modal_title": "Borrar sorteo de tu historial",
+  "delete_recent_raffles_button_label": "Borrar tu historial de sorteos",
+  "empty_list": "No has realizado ningún sorteo público",
+  "html_title": "Sorteos recientes",
+  "page_title": "Sorteos recientes",
+  "column_title_label": "Titulo",
+  "column_dateSchedule_label": "Fecha programada"
+}

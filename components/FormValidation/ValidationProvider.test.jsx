@@ -15,14 +15,6 @@ jest.mock('@material-ui/core/Input', () => {
   );
 });
 
-jest.mock('react-i18next', () => ({
-  withTranslation: () => Component => {
-    // eslint-disable-next-line no-param-reassign
-    Component.defaultProps = { ...Component.defaultProps, t: key => key };
-    return Component;
-  },
-}));
-
 const ValidatedTextField = withFieldValidation(TextField);
 const mockOnSubmit = jest.fn();
 

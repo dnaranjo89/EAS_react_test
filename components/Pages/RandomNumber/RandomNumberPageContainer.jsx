@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import RandomNumberPage from './RandomNumberPage.jsx';
 import RandomNumberQuickPage from './RandomNumberQuickPage.jsx';
 import withTracking from '../../../hocs/withTracking.jsx';
@@ -30,8 +30,8 @@ const initialLoadingRequest = false;
 const initialApiError = false;
 
 const RandomNumberPageContainer = props => {
-  const { draw: previousDraw, track, t } = props;
-
+  const { draw: previousDraw, track } = props;
+  const { t } = useTranslation('DrawNumber');
   const [privateId, setPrivateId] = useState(getInitialPrivateId(previousDraw));
   const [values, setValues] = useState(getInitialValues(previousDraw, t));
   const [quickResult, setQuickResult] = useState(getInitialQuickResult(previousDraw));
@@ -130,11 +130,10 @@ RandomNumberPageContainer.propTypes = {
     results: PropTypes.arrayOf(PropTypes.shape({})),
   }),
   track: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 RandomNumberPageContainer.defaultProps = {
   draw: null,
 };
 
-export default withTracking(withTranslation('DrawNumber')(RandomNumberPageContainer));
+export default withTracking(RandomNumberPageContainer);

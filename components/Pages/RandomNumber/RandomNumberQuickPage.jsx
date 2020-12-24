@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import SubmitFormButton from '../../SubmitFormButton/SubmitFormButton.jsx';
 import ValidationProvider from '../../FormValidation/ValidationProvider.jsx';
 import Page from '../../Page/Page.jsx';
@@ -23,11 +23,11 @@ const RandomNumberQuickPage = props => {
     onFieldChange,
     handleCheckErrorsInConfiguration,
     loadingRequest,
-    t,
   } = props;
   const publicDrawUrl = '/number/public';
   const resultsRef = useRef(null);
   useScrollToResults(quickResult, resultsRef);
+  const { t } = useTranslation('DrawNumber');
 
   return (
     <Page
@@ -82,7 +82,6 @@ RandomNumberQuickPage.propTypes = {
   handleToss: PropTypes.func.isRequired,
   handleCheckErrorsInConfiguration: PropTypes.func.isRequired,
   quickResult: PropTypes.shape(),
-  t: PropTypes.func.isRequired,
 };
 
 RandomNumberQuickPage.defaultProps = {
@@ -90,4 +89,4 @@ RandomNumberQuickPage.defaultProps = {
   quickResult: null,
 };
 
-export default withTranslation('DrawNumber')(RandomNumberQuickPage);
+export default RandomNumberQuickPage;

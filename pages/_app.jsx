@@ -10,7 +10,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import * as Sentry from '@sentry/node';
 import withReduxStore from '../redux/with-redux-store.jsx';
 import theme from '../EasTheme.jsx';
-import NextI18NextInstance from '../i18n';
 import '../components/styles.scss';
 import EasApi from '../services/EasApi';
 import { environment, isServer } from '../utils';
@@ -68,4 +67,4 @@ class EasApp extends App {
   }
 }
 
-export default withReduxStore(NextI18NextInstance.appWithTranslation(EasApp));
+export default withReduxStore(EasApp);

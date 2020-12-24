@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames/bind';
 import Typography from '@material-ui/core/Typography';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import LearnMoreSection from '../../LearnMoreSection/LearnMoreSection.jsx';
 import Page from '../../Page/Page.jsx';
@@ -12,7 +12,8 @@ import arrowOgImage from './arrow_og_image.png';
 
 const c = classnames.bind(STYLES);
 
-const SpinArrowPage = ({ angle, showTossHelp, animate, handleToss, t }) => {
+const SpinArrowPage = ({ angle, showTossHelp, animate, handleToss }) => {
+  const { t } = useTranslation('DrawSpinner');
   const arrowCss = {
     transform: `rotate(${angle}deg)`,
   };
@@ -55,11 +56,10 @@ SpinArrowPage.propTypes = {
   showTossHelp: PropTypes.bool.isRequired,
   animate: PropTypes.bool,
   handleToss: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 SpinArrowPage.defaultProps = {
   animate: true,
 };
 
-export default withTranslation('DrawSpinner')(SpinArrowPage);
+export default SpinArrowPage;

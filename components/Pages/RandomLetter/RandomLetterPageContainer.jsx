@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import RandomLetterPage from './RandomLetterPage.jsx';
 import RandomLetterQuickPage from './RandomLetterQuickPage.jsx';
 import withTracking from '../../../hocs/withTracking.jsx';
@@ -30,8 +30,8 @@ const initialLoadingRequest = false;
 const initialApiError = false;
 
 const RandomLetterPageContainer = props => {
-  const { draw: previousDraw, track, t } = props;
-
+  const { draw: previousDraw, track } = props;
+  const { t } = useTranslation('DrawLetter');
   const router = useRouter();
   const isPublic = router.asPath.includes('public');
   const [privateId, setPrivateId] = useState(getInitialPrivateId(previousDraw));
@@ -118,11 +118,10 @@ RandomLetterPageContainer.propTypes = {
     results: PropTypes.arrayOf(PropTypes.shape({})),
   }),
   track: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 RandomLetterPageContainer.defaultProps = {
   draw: null,
 };
 
-export default withTracking(withTranslation('DrawLetter')(RandomLetterPageContainer));
+export default withTracking(RandomLetterPageContainer);

@@ -1,0 +1,15 @@
+{
+  "delete_all_recent_draws_modal_cancel": "Cancel",
+  "delete_all_recent_draws_modal_confirm": "Clear history",
+  "delete_all_recent_draws_modal_content": "Raffles are only removed from your history, participants will still be able to access them if they have the link.",
+  "delete_all_recent_draws_modal_title": "Do you want to clear your history of raffles?",
+  "delete_recent_draw_modal_confirm": "Remove raffle",
+  "delete_recent_draw_modal_content": "This raffle will only be removed from your history of recent raffles, participants who have the link will still be able to access it.",
+  "delete_recent_draw_modal_title": "Remove raffle from your history",
+  "delete_recent_raffles_button_label": "Clear your history",
+  "empty_list": "You haven't published any raffle",
+  "html_title": "Recent Raffles",
+  "page_title": "Recent Raffles",
+  "column_title_label": "Title",
+  "column_dateSchedule_label": "Scheduled date"
+}

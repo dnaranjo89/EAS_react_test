@@ -5,7 +5,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import Button from '@material-ui/core/Button';
 import classnames from 'classnames/bind';
-import { withTranslation } from '../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import ErrorFeedback from '../ErrorFeedback/ErrorFeedback.jsx';
 import LoadingButton from '../LoadingButton/LoadingButton.jsx';
 import STYLES from './MobileWizardForm.module.scss';
@@ -21,31 +21,33 @@ const MobileWizardForm = ({
   handleNext,
   handleBack,
   children,
-  t,
-}) => (
-  <>
-    <div className={c('MobileWizardForm__content')}>{children}</div>
-    {apiError && <ErrorFeedback error={t('CommonCreateDraw:api_error')} />}
-    <MobileStepper
-      steps={numSteps}
-      position="static"
-      activeStep={activeStep}
-      className={c('MobileWizardForm__stepper')}
-      nextButton={
-        <LoadingButton size="small" onClick={handleNext} loading={loading}>
-          {activeStep === numSteps - 1 ? submitButtonLabel : t('wizard_next')}
-          <KeyboardArrowRight />
-        </LoadingButton>
-      }
-      backButton={
-        <Button size="small" onClick={handleBack} disabled={loading || activeStep === 0}>
-          <KeyboardArrowLeft />
-          {t('wizard_back')}
-        </Button>
-      }
-    />
-  </>
-);
+}) => {
+  const { t } = useTranslation('CommonCreateDraw');
+  return (
+    <>
+      <div className={c('MobileWizardForm__content')}>{children}</div>
+      {apiError && <ErrorFeedback error={t('CommonCreateDraw:api_error')} />}
+      <MobileStepper
+        steps={numSteps}
+        position="static"
+        activeStep={activeStep}
+        className={c('MobileWizardForm__stepper')}
+        nextButton={
+          <LoadingButton size="small" onClick={handleNext} loading={loading}>
+            {activeStep === numSteps - 1 ? submitButtonLabel : t('wizard_next')}
+            <KeyboardArrowRight />
+          </LoadingButton>
+        }
+        backButton={
+          <Button size="small" onClick={handleBack} disabled={loading || activeStep === 0}>
+            <KeyboardArrowLeft />
+            {t('wizard_back')}
+          </Button>
+        }
+      />
+    </>
+  );
+};
 
 MobileWizardForm.propTypes = {
   numSteps: PropTypes.number.isRequired,
@@ -56,7 +58,6 @@ MobileWizardForm.propTypes = {
   handleNext: PropTypes.func.isRequired,
   handleBack: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 MobileWizardForm.defaultProps = {
@@ -64,4 +65,4 @@ MobileWizardForm.defaultProps = {
   loading: false,
 };
 
-export default withTranslation('CommonCreateDraw')(MobileWizardForm);
+export default MobileWizardForm;

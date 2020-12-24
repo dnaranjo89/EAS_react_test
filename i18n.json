@@ -1,0 +1,35 @@
+{
+  "locales": [
+    "en-GB",
+    "es-ES"
+  ],
+  "defaultLocale": "es-ES",
+  "pages": {
+    "*": [
+      "Common"
+    ],
+    "/": [
+      "Homepage"
+    ],
+    "/about": [
+      "about"
+    ],
+    "/groups": [
+      "DrawGroups",
+      "ParticipantsInput",
+      "CommonCreateDraw",
+      "Common"
+    ],
+    "/groups/public": [
+      "DrawGroups",
+      "ParticipantsInput",
+      "CommonCreateDraw",
+      "Common"
+    ],
+    "rgx:/groups/.*": [
+      "DrawGroups",
+      "CommonPublishedDraw",
+      "Common"
+    ]
+  }
+}

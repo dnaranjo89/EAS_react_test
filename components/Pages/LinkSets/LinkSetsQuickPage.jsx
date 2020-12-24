@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames/bind';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import ErrorFeedback from '../../ErrorFeedback/ErrorFeedback.jsx';
 import SubmitFormButton from '../../SubmitFormButton/SubmitFormButton.jsx';
 import useScrollToResults from '../../../hooks/useScrollToResults';
@@ -30,11 +30,11 @@ const LinkSetsQuickPage = ({
   quickResult,
   handleToss,
   handleCheckErrorsInConfiguration,
-  t,
 }) => {
   const publicDrawUrl = `/${urlSlug}/public`;
   const resultsRef = React.createRef();
 
+  const { t } = useTranslation('DrawLinkSets');
   useScrollToResults(quickResult, resultsRef);
 
   return (
@@ -84,7 +84,6 @@ LinkSetsQuickPage.propTypes = {
   onFieldChange: PropTypes.func.isRequired,
   handleToss: PropTypes.func.isRequired,
   handleCheckErrorsInConfiguration: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 LinkSetsQuickPage.defaultProps = {
@@ -93,4 +92,4 @@ LinkSetsQuickPage.defaultProps = {
   apiError: false,
 };
 
-export default withTranslation('DrawLinkSets')(LinkSetsQuickPage);
+export default LinkSetsQuickPage;

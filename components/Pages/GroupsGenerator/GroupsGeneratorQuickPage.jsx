@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import SubmitFormButton from '../../SubmitFormButton/SubmitFormButton.jsx';
 import ErrorFeedback from '../../ErrorFeedback/ErrorFeedback.jsx';
@@ -24,10 +24,10 @@ const GroupsGeneratorQuickPage = props => {
     onFieldChange,
     handleCheckErrorsInConfiguration,
     loadingRequest,
-    t,
   } = props;
   const publicDrawUrl = '/groups/public';
   const resultsRef = useRef(null);
+  const { t } = useTranslation('DrawGroups');
   useScrollToResults(quickResult, resultsRef);
 
   return (
@@ -82,7 +82,6 @@ GroupsGeneratorQuickPage.propTypes = {
   quickResult: PropTypes.shape({
     value: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape())),
   }),
-  t: PropTypes.func.isRequired,
 };
 
 GroupsGeneratorQuickPage.defaultProps = {
@@ -91,4 +90,4 @@ GroupsGeneratorQuickPage.defaultProps = {
   apiError: false,
 };
 
-export default withTranslation('DrawGroups')(GroupsGeneratorQuickPage);
+export default GroupsGeneratorQuickPage;

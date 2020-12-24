@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import withValidationProvider from '../../FormValidation/withValidationProvider.jsx';
 import GeneralDetailsSection from '../../CommonSections/GeneralDetailsSection.jsx';
 import WhenToTossSection from '../../CommonSections/WhenToTossSection.jsx';
@@ -35,7 +35,8 @@ const GeneralDetailsForm = withValidationProvider(GeneralDetailsSection);
 const WhenToTossForm = withValidationProvider(WhenToTossSection);
 
 const FacebookRafflePage = props => {
-  const { values, isMobile, apiError, onFieldChange, handlePublish, t } = props;
+  const { values, isMobile, apiError, onFieldChange, handlePublish } = props;
+  const { t } = useTranslation('DrawFacebook');
   const steps = [
     {
       label: t('step_label_prizes'),
@@ -108,7 +109,6 @@ FacebookRafflePage.propTypes = {
   apiError: PropTypes.bool,
   onFieldChange: PropTypes.func.isRequired,
   handlePublish: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 FacebookRafflePage.defaultProps = {
@@ -117,4 +117,4 @@ FacebookRafflePage.defaultProps = {
 
 const mapStateToProps = state => ({ isMobile: state.userRequest.isMobile });
 
-export default withTranslation('DrawFacebook')(connect(mapStateToProps)(FacebookRafflePage));
+export default connect(mapStateToProps)(FacebookRafflePage);

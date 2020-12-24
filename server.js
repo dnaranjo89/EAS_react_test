@@ -7,10 +7,7 @@
 const express = require('express');
 const next = require('next');
 const chalk = require('chalk');
-const nextI18NextMiddleware = require('next-i18next/middleware').default;
 const { isDevelopmentServer } = require('./utils/environment');
-
-const nextI18next = require('./i18n');
 
 const port = process.env.PORT || 3000;
 
@@ -31,10 +28,6 @@ const handle = app.getRequestHandler();
 (async () => {
   await app.prepare();
   const server = express();
-
-  // Adding i18next
-  await nextI18next.initPromise;
-  server.use(nextI18NextMiddleware(nextI18next));
 
   // Set max-age to 1 year for the fonts
   server.use(

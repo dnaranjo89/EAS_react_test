@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import FacebookRafflePage from './FacebookRafflePage.jsx';
 import withTracking from '../../../hocs/withTracking.jsx';
 import { publish } from '../../../utils/api';
@@ -24,7 +24,8 @@ const initialLoadingRequest = false;
 const initialApiError = false;
 
 const FacebookRafflePageContainer = props => {
-  const { t, track } = props;
+  const { track } = props;
+  const { t } = useTranslation('DrawFacebook');
 
   const [values, setValues] = useState(getInitialValues(t));
   const [APIError, setAPIError] = useState(initialApiError);
@@ -59,8 +60,7 @@ const FacebookRafflePageContainer = props => {
 };
 
 FacebookRafflePageContainer.propTypes = {
-  t: PropTypes.func.isRequired,
   track: PropTypes.func.isRequired,
 };
 
-export default withTracking(withTranslation('DrawFacebook')(FacebookRafflePageContainer));
+export default withTracking(FacebookRafflePageContainer);

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import GeneralDetailsSection from '../../CommonSections/GeneralDetailsSection.jsx';
 import WhenToTossSection from '../../CommonSections/WhenToTossSection.jsx';
 import WizardForm from '../../WizardForm/WizardForm.jsx';
@@ -24,8 +24,8 @@ const LinkSetsPage = ({
   onFieldChange,
   handlePublish,
   handleCheckErrorsInConfiguration,
-  t,
 }) => {
+  const { t } = useTranslation('DrawLinkSets');
   const steps = [
     {
       label: t('step_label_configure'),
@@ -100,7 +100,6 @@ LinkSetsPage.propTypes = {
   onFieldChange: PropTypes.func.isRequired,
   handlePublish: PropTypes.func.isRequired,
   handleCheckErrorsInConfiguration: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 LinkSetsPage.defaultProps = {
@@ -109,4 +108,4 @@ LinkSetsPage.defaultProps = {
 
 const mapStateToProps = state => ({ isMobile: state.userRequest.isMobile });
 
-export default withTranslation('DrawLinkSets')(connect(mapStateToProps)(LinkSetsPage));
+export default connect(mapStateToProps)(LinkSetsPage);

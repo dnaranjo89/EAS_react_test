@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import useLoadDataAfterCountdown from '../../../hooks/useLoadDataAfterCountdown';
 import Page from '../../Page/Page.jsx';
 import GroupsGeneratorResult from './GroupsGeneratorResult.jsx';
@@ -15,11 +15,12 @@ import { getCurrentUrlFromWindow } from '../../../utils';
 import { ANALYTICS_TYPE_GROUPS } from '../../../constants/analyticsTypes';
 
 const PublishedGroupsGeneratorPage = props => {
-  const { draw, t } = props;
+  const { draw } = props;
   const { values, results } = draw;
   const { title, description, participants, numberOfGroups } = values;
   const result = results[0];
   const shareUrl = getCurrentUrlFromWindow();
+  const { t } = useTranslation('DrawGroups');
 
   useLoadDataAfterCountdown(result);
 
@@ -76,7 +77,6 @@ PublishedGroupsGeneratorPage.propTypes = {
       }),
     ),
   }).isRequired,
-  t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('DrawGroups')(PublishedGroupsGeneratorPage);
+export default PublishedGroupsGeneratorPage;

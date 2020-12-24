@@ -17,7 +17,7 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import Link from '../../Link.jsx';
 
 import STYLES from './RecentDrawsTable.module.scss';
@@ -54,62 +54,64 @@ LinkCell.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const RecentDrawsTable = ({ draws, handleClickRemove, handleDrawClick, t }) => (
-  <div className={STYLES.container}>
-    <MaterialTable
-      icons={tableIcons}
-      columns={[
-        {
-          title: t('column_title_label'),
-          field: 'title',
-          render: rowData => (
-            <LinkCell
-              href={rowData.url.replace(uutidRegex, '[id]')}
-              as={rowData.url}
-              onClick={handleDrawClick}
-            >
-              {rowData.title}
-            </LinkCell>
-          ),
-        },
-        {
-          title: t('column_dateSchedule_label'),
-          field: 'scheduleDate',
-          render: rowData => (
-            <LinkCell
-              href={rowData.url.replace(uutidRegex, '[id]')}
-              as={rowData.url}
-              onClick={handleDrawClick}
-            >
-              {rowData.scheduleDate}
-            </LinkCell>
-          ),
-        },
-      ]}
-      data={draws}
-      title=""
-      actions={[
-        () => ({
-          icon: tableIcons.Delete,
-          tooltip: t('delete_recent_draw_modal_title'),
-          onClick: (event, rowData) => handleClickRemove(rowData.id),
-        }),
-      ]}
-      options={{
-        actionsColumnIndex: -1,
-        cellStyle: {
-          padding: 0,
-        },
-      }}
-      localization={{
-        header: {
-          actions: '',
-        },
-      }}
-    />
-  </div>
-);
-
+const RecentDrawsTable = ({ draws, handleClickRemove, handleDrawClick }) => {
+  const { t } = useTranslation('RecentDraws');
+  return (
+    <div className={STYLES.container}>
+      <MaterialTable
+        icons={tableIcons}
+        columns={[
+          {
+            title: t('column_title_label'),
+            field: 'title',
+            render: rowData => (
+              <LinkCell
+                href={rowData.url.replace(uutidRegex, '[id]')}
+                as={rowData.url}
+                onClick={handleDrawClick}
+              >
+                {rowData.title}
+              </LinkCell>
+            ),
+          },
+          {
+            title: t('column_dateSchedule_label'),
+            field: 'scheduleDate',
+            render: rowData => (
+              <LinkCell
+                href={rowData.url.replace(uutidRegex, '[id]')}
+                as={rowData.url}
+                onClick={handleDrawClick}
+              >
+                {rowData.scheduleDate}
+              </LinkCell>
+            ),
+          },
+        ]}
+        data={draws}
+        title=""
+        actions={[
+          () => ({
+            icon: tableIcons.Delete,
+            tooltip: t('delete_recent_draw_modal_title'),
+            onClick: (event, rowData) => handleClickRemove(rowData.id),
+          }),
+        ]}
+        options={{
+          actionsColumnIndex: -1,
+          cellStyle: {
+            padding: 0,
+          },
+        }}
+        localization={{
+          header: {
+            actions: '',
+          },
+        }}
+      />
+    </div>
+  );
+};
 RecentDrawsTable.propTypes = {
   draws: PropTypes.arrayOf(
     PropTypes.shape({
@@ -120,7 +122,6 @@ RecentDrawsTable.propTypes = {
   ).isRequired,
   handleClickRemove: PropTypes.func.isRequired,
   handleDrawClick: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('RecentDraws')(RecentDrawsTable);
+export default RecentDrawsTable;

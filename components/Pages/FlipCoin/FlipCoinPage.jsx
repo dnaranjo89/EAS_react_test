@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames/bind';
 import Typography from '@material-ui/core/Typography';
-import { withTranslation } from '../../../i18n';
+import withTranslation from 'next-translate/withTranslation';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import Page from '../../Page/Page.jsx';
 import LearnMoreSection from '../../LearnMoreSection/LearnMoreSection.jsx';
@@ -35,17 +35,18 @@ class FlipCoinPage extends Component {
   }
 
   render() {
-    const { coinSide, waitingForInteraction, onFlip, t } = this.props;
+    const { coinSide, waitingForInteraction, onFlip, i18n } = this.props;
+    const { t } = i18n;
     return (
       <Page
-        htmlTitle={t('html_title')}
-        htmlDescription={t('html_description')}
-        htmlKeywords={t('html_keywords')}
+        htmlTitle={t('DrawCoin:html_title')}
+        htmlDescription={t('DrawCoin:html_description')}
+        htmlKeywords={t('DrawCoin:html_keywords')}
         pageType="Flip a Coin"
         ogImage={coinOgImage}
         contentClassName={c('FlipCoinPage')}
       >
-        <DrawHeading title={t('page_title')} subtitle={t('draw_subheading')} />
+        <DrawHeading title={t('DrawCoin:page_title')} subtitle={t('DrawCoin:draw_subheading')} />
 
         <div className={c('FlipCoinPage__container')}>
           <button
@@ -68,7 +69,7 @@ class FlipCoinPage extends Component {
           </button>
           {waitingForInteraction && (
             <Typography variant="subtitle1" align="center">
-              {t('touch_to_toss')}
+              {t('DrawCoin:touch_to_toss')}
             </Typography>
           )}
           <Typography
@@ -77,11 +78,14 @@ class FlipCoinPage extends Component {
             align="center"
             className={c('FlipCoinPage__result')}
           >
-            {coinSide === 'heads' ? t('result_heads') : t('result_tails')}
+            {coinSide === 'heads' ? t('DrawCoin:result_heads') : t('DrawCoin:result_tails')}
           </Typography>
         </div>
 
-        <LearnMoreSection title={t('learn_more_title')} content={t('learn_more_content')} />
+        <LearnMoreSection
+          title={t('DrawCoin:learn_more_title')}
+          content={t('DrawCoin:learn_more_content')}
+        />
       </Page>
     );
   }
@@ -91,7 +95,9 @@ FlipCoinPage.propTypes = {
   coinSide: PropTypes.string.isRequired,
   waitingForInteraction: PropTypes.bool.isRequired,
   onFlip: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
+  i18n: PropTypes.shape({
+    t: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default withTranslation('DrawCoin')(FlipCoinPage);
+export default withTranslation(FlipCoinPage);
