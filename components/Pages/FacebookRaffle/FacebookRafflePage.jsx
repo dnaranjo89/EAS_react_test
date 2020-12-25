@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
+import { isMobile } from 'react-device-detect';
 import withValidationProvider from '../../FormValidation/withValidationProvider.jsx';
 import GeneralDetailsSection from '../../CommonSections/GeneralDetailsSection.jsx';
 import WhenToTossSection from '../../CommonSections/WhenToTossSection.jsx';
@@ -35,7 +35,7 @@ const GeneralDetailsForm = withValidationProvider(GeneralDetailsSection);
 const WhenToTossForm = withValidationProvider(WhenToTossSection);
 
 const FacebookRafflePage = props => {
-  const { values, isMobile, apiError, onFieldChange, handlePublish } = props;
+  const { values, apiError, onFieldChange, handlePublish } = props;
   const { t } = useTranslation('DrawFacebook');
   const steps = [
     {
@@ -105,7 +105,6 @@ FacebookRafflePage.propTypes = {
     numberOfWinners: PropTypes.string,
     dateScheduled: PropTypes.instanceOf(Date),
   }).isRequired,
-  isMobile: PropTypes.bool.isRequired,
   apiError: PropTypes.bool,
   onFieldChange: PropTypes.func.isRequired,
   handlePublish: PropTypes.func.isRequired,
@@ -115,6 +114,4 @@ FacebookRafflePage.defaultProps = {
   apiError: false,
 };
 
-const mapStateToProps = state => ({ isMobile: state.userRequest.isMobile });
-
-export default connect(mapStateToProps)(FacebookRafflePage);
+export default FacebookRafflePage;

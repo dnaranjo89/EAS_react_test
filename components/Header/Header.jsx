@@ -1,9 +1,9 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
 import HistoryIcon from '@material-ui/icons/History';
 import useTranslation from 'next-translate/useTranslation';
+import { isMobile } from 'react-device-detect';
 import Button, { IconButton } from '../Button.jsx';
 import STYLES from './Header.module.scss';
 import logo from './logo_vector.svg';
@@ -12,7 +12,6 @@ const showRecentDrawsEnabled = true;
 
 const Header = () => {
   const router = useRouter();
-  const isMobile = useSelector(state => state.userRequest.isMobile);
   const { t } = useTranslation('Common');
   return (
     <header className={STYLES.container}>

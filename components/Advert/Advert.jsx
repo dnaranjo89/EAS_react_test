@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import classnames from 'classnames/bind';
+import { isMobile } from 'react-device-detect';
+import { isServer } from '../../utils';
 import STYLES from './Advert.module.scss';
 
 const c = classnames.bind(STYLES);
 
 const Advert = () => {
   useEffect(() => {
-    if (window) (window.adsbygoogle = window.adsbygoogle || []).push({});
+    if (!isServer) (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, []);
-  const isMobile = useSelector(state => state.userRequest.isMobile);
+  if (isServer) {
+    return '';
+  }
 
   return (
     <div className={STYLES.container}>

@@ -30,6 +30,10 @@
       "DrawGroups",
       "CommonPublishedDraw",
       "Common"
+    ],
+    "/coin": [
+      "DrawCoin",
+      "Common"
     ]
   }
 }

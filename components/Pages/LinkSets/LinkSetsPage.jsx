@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
+import { isMobile } from 'react-device-detect';
 import GeneralDetailsSection from '../../CommonSections/GeneralDetailsSection.jsx';
 import WhenToTossSection from '../../CommonSections/WhenToTossSection.jsx';
 import WizardForm from '../../WizardForm/WizardForm.jsx';
@@ -19,7 +19,6 @@ const WhenToTossForm = withValidationProvider(WhenToTossSection);
 const LinkSetsPage = ({
   values,
   apiError,
-  isMobile,
   loadingRequest,
   onFieldChange,
   handlePublish,
@@ -95,7 +94,6 @@ LinkSetsPage.propTypes = {
     dateScheduled: PropTypes.instanceOf(Date),
   }).isRequired,
   apiError: PropTypes.bool,
-  isMobile: PropTypes.bool.isRequired,
   loadingRequest: PropTypes.bool.isRequired,
   onFieldChange: PropTypes.func.isRequired,
   handlePublish: PropTypes.func.isRequired,
@@ -106,6 +104,4 @@ LinkSetsPage.defaultProps = {
   apiError: false,
 };
 
-const mapStateToProps = state => ({ isMobile: state.userRequest.isMobile });
-
-export default connect(mapStateToProps)(LinkSetsPage);
+export default LinkSetsPage;

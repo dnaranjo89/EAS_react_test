@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' node server.js",
+    "dev": "NODE_OPTIONS='--inspect' next",
     "start": "next start",
     "start:integration": "REACT_APP_ENV=test npm run build && REACT_APP_ENV=test PORT=3005 HTTPS=false npm run start",
     "start:integration:dev": "REACT_APP_ENV=test PORT=3005 HTTPS=false npm run dev",
@@ -55,6 +55,7 @@
     "react": "^16.13.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-countdown": "^2.2.1",
+    "react-device-detect": "^1.15.0",
     "react-dom": "^16.13.1",
     "react-ga": "^2.5.3",
     "react-i18next": "^11.4.0",
