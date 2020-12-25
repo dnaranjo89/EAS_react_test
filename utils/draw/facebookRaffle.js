@@ -25,10 +25,3 @@ export const getFacebookRaffleDrawDataFromValues = ({ values, isPublic }) => {
     prizes: prizes.map(prize => ({ name: prize })),
   };
 };
-
-export const getFacebookRaffleTranslationFiles = () => [
-  'DrawFacebook',
-  'Common',
-  'CommonDrawRaffle',
-  'CommonPublishedDraw',
-];

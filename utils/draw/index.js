@@ -7,42 +7,17 @@ import {
   URL_SLUG_ITEM,
   URL_SLUG_SETS,
 } from '../../constants/urlSlugs';
-import {
-  getNumberDrawDataFromValues,
-  getNumberValuesFromDraw,
-  getNumberTranslationFiles,
-} from './number';
-import {
-  getLetterDrawDataFromValues,
-  getLetterValuesFromDraw,
-  getLetterTranslationFiles,
-} from './letter';
+import { getNumberDrawDataFromValues, getNumberValuesFromDraw } from './number';
+import { getLetterDrawDataFromValues, getLetterValuesFromDraw } from './letter';
 
-import {
-  getGroupsDrawDataFromValues,
-  getGroupsValuesFromDraw,
-  getGroupsTranslationFiles,
-} from './groups';
-import {
-  getRaffleDrawDataFromValues,
-  getRaffleValuesFromDraw,
-  getRaffleTranslationFiles,
-} from './raffle';
+import { getGroupsDrawDataFromValues, getGroupsValuesFromDraw } from './groups';
+import { getRaffleDrawDataFromValues, getRaffleValuesFromDraw } from './raffle';
 import {
   getFacebookRaffleDrawDataFromValues,
   getFacebookRaffleValuesFromDraw,
-  getFacebookRaffleTranslationFiles,
 } from './facebookRaffle';
-import {
-  getItemsDrawDataFromValues,
-  getItemsValuesFromDraw,
-  getItemsTranslationFiles,
-} from './item';
-import {
-  getLinkSetsDrawDataFromValues,
-  getLinkSetsValuesFromDraw,
-  getLinkSetsTranslationFiles,
-} from './linkSets';
+import { getItemsDrawDataFromValues, getItemsValuesFromDraw } from './item';
+import { getLinkSetsDrawDataFromValues, getLinkSetsValuesFromDraw } from './linkSets';
 
 const getDrawByUrlSlug = {
   [URL_SLUG_NUMBER]: getNumberDrawDataFromValues,
@@ -63,20 +38,8 @@ const getValuesByUrlSlug = {
   [URL_SLUG_ITEM]: getItemsValuesFromDraw,
   [URL_SLUG_SETS]: getLinkSetsValuesFromDraw,
 };
-const getTranslationByUrlSlug = {
-  [URL_SLUG_NUMBER]: getNumberTranslationFiles,
-  [URL_SLUG_LETTER]: getLetterTranslationFiles,
-  [URL_SLUG_GROUPS]: getGroupsTranslationFiles,
-  [URL_SLUG_RAFFLE]: getRaffleTranslationFiles,
-  [URL_SLUG_FACEBOOK]: getFacebookRaffleTranslationFiles,
-  [URL_SLUG_ITEM]: getItemsTranslationFiles,
-  [URL_SLUG_SETS]: getLinkSetsTranslationFiles,
-};
 
 export const getDrawDataFromValues = ({ urlSlug, values, isPublic }) =>
   getDrawByUrlSlug[urlSlug]({ values, isPublic });
 
 export const getValuesFromDraw = ({ urlSlug, draw }) => getValuesByUrlSlug[urlSlug]({ draw });
-
-export const getTranslationFiles = ({ urlSlug, isQuickDraw }) =>
-  getTranslationByUrlSlug[urlSlug]({ isQuickDraw });

@@ -74,10 +74,6 @@ const SuccessfullyCreatedDraw = () => {
   );
 };
 
-SuccessfullyCreatedDraw.getInitialProps = () => ({
-  namespacesRequired: ['CommonCreateDraw'],
-});
-
 SuccessfullyCreatedDraw.propTypes = {};
 
 export default SuccessfullyCreatedDraw;

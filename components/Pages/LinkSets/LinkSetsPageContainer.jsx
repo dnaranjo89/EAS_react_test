@@ -48,7 +48,8 @@ const LinkSetsPageContainer = props => {
     setLoadingRequest(initialLoadingRequest);
     setAPIError(initialApiError);
     setValues(getInitialValues(previousDraw, t));
-  }, [previousDraw, t]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [previousDraw]);
 
   const onFieldChange = (fieldName, value) => {
     setQuickResult(null);

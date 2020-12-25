@@ -64,6 +64,8 @@ const RafflePage = ({
       ),
     },
   ];
+  console.log('render1');
+
   return (
     <Page
       htmlTitle={t('html_title')}

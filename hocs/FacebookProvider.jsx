@@ -31,7 +31,7 @@ class FacebookProvider extends Component {
   componentDidMount() {
     const { i18n } = this.props;
     fbAsyncInit(this.handleStatusChange);
-    const locale = i18n.language.replace('-', '_');
+    const locale = i18n.lang.replace('-', '_');
     injectScript(locale, this.handleStatusChange);
   }
 

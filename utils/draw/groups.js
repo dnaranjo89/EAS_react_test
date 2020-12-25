@@ -25,11 +25,3 @@ export const getGroupsDrawDataFromValues = ({ values, isPublic }) => {
     number_of_groups: numberOfGroups,
   };
 };
-
-export const getGroupsTranslationFiles = ({ isQuickDraw }) => {
-  const commonNamespaces = ['DrawGroups', 'Common'];
-  if (isQuickDraw) {
-    return [...commonNamespaces, 'ParticipantsInput'];
-  }
-  return [...commonNamespaces, 'CommonPublishedDraw'];
-};

@@ -24,11 +24,3 @@ export const getLinkSetsDrawDataFromValues = ({ values, isPublic }) => {
     items_set2: set2,
   };
 };
-
-export const getLinkSetsTranslationFiles = ({ isQuickDraw }) => {
-  const commonNamespaces = ['DrawLinkSets', 'Common'];
-  if (isQuickDraw) {
-    return [...commonNamespaces];
-  }
-  return [...commonNamespaces, 'CommonPublishedDraw'];
-};

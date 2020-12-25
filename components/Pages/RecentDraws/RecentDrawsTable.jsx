@@ -19,6 +19,7 @@ import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import useTranslation from 'next-translate/useTranslation';
 import Link from '../../Link.jsx';
+import { uutidRegex } from '../../../utils';
 
 import STYLES from './RecentDrawsTable.module.scss';
 
@@ -47,8 +48,6 @@ const LinkCell = ({ children, ...props }) => (
     {children}
   </Link>
 );
-
-const uutidRegex = /([0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12})/;
 
 LinkCell.propTypes = {
   children: PropTypes.node.isRequired,
