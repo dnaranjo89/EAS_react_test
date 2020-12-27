@@ -46,7 +46,8 @@ const RandomLetterPageContainer = props => {
     setLoadingRequest(initialLoadingRequest);
     setAPIError(initialApiError);
     setValues(getInitialValues(previousDraw, t, isPublic));
-  }, [previousDraw, t, isPublic]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [previousDraw, isPublic]);
 
   const onFieldChange = (fieldName, value) => {
     setQuickResult(null);

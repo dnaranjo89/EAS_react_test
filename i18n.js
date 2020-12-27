@@ -2,6 +2,7 @@ module.exports = {
   locales: ['en-GB', 'es-ES'],
   defaultLocale: 'es-ES',
   localeDetection: false,
+  logBuild: false,
   pages: {
     '*': ['Common'],
     '/': ['Homepage'],
