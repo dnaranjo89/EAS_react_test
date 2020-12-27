@@ -1,0 +1,29 @@
+@import './variables.module';
+
+// Small devices
+@mixin phone {
+  @media (min-width: #{$media-phone}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin tablet {
+  @media (min-width: #{$media-tablet}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin desktop {
+  @media (min-width: #{$media-desktop}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin widescreen {
+  @media (min-width: #{$media-widescreen}) {
+    @content;
+  }
+}

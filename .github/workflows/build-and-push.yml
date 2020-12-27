@@ -29,8 +29,9 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       branch_name: '${{steps.extract_branch.outputs.branch}}'
-      app_env: '${{steps.set_app_env.outputs.app_env}}'
-      ansible_hosts: '${{steps.set_app_env.outputs.hosts_file}}'
+      app_env: '${{steps.set_app_vars.outputs.app_env}}'
+      ansible_hosts: '${{steps.set_app_vars.outputs.hosts_file}}'
+      deployment_branch_name: '${{steps.set_app_vars.outputs.deployment_branch_name}}'
     steps:
 
       - name: Cache Docker layers
@@ -50,14 +51,16 @@ jobs:
         id: extract_branch
 
       - name: Set app_env var
-        id: set_app_env
+        id: set_app_vars
         run: |
           if [[ "${{github.ref}}" == "refs/heads/prod" ]]; then
               echo "::set-output name=app_env::production"
               echo "::set-output name=hosts_file::hosts_prod"
+              echo "::set-output name=deployment_branch_name::prod"
           else
               echo "::set-output name=app_env::staging"
               echo "::set-output name=hosts_file::hosts_dev"
+              echo "::set-output name=deployment_branch_name::master"
           fi
 
       - name: Build
@@ -69,7 +72,7 @@ jobs:
           tags: etcaterva/echaloasuerte:${{ steps.extract_branch.outputs.branch }}
           build-args: |
             commit_sha=${{ github.sha }}
-            app_env=${{ steps.set_app_env.outputs.app_env }}
+            app_env=${{ steps.set_app_vars.outputs.app_env }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
@@ -124,6 +127,7 @@ jobs:
         with:
           repository: etcaterva/deployment
           submodules: true
+          ref:  ${{ needs.build-docker.outputs.deployment_branch }}
 
       - name: Set up Python 3.9
         uses: actions/setup-python@v1

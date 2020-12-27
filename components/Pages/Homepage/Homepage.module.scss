@@ -1,7 +1,22 @@
 @import '../../variables.module';
+@import '../../mixins.module';
 
 .container {
   display: flex;
+  margin: 0 auto;
   padding-top: $spacing-xl;
+  flex-direction: column;
   justify-content: space-around;
+}
+
+.draws {
+  display: flex;
+  padding-top: $spacing-xs;
+  flex-direction: column;
+  justify-content: center;
+
+  @include tablet {
+    padding-top: $spacing-xl;
+    flex-direction: row;
+  }
 }

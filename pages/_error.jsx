@@ -48,11 +48,12 @@ MyError.getInitialProps = async ({ res, err, asPath }) => {
      */
 
     if (res.statusCode === 404) {
-      Sentry.withScope(scope => {
-        scope.setExtra('page', asPath);
-        scope.setTag('pageNotFound', asPath);
-        Sentry.captureMessage('Page not found');
-      });
+      // Sentry.withScope(scope => {
+      // Uncomment the following code if we want to log 404s
+      //   scope.setExtra('page', asPath);
+      //   scope.setTag('pageNotFound', asPath);
+      //   Sentry.captureMessage('Page not found');
+      // });
       return { ...initialProps, statusCode: 404 };
     }
 

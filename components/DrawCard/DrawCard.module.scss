@@ -1,4 +1,5 @@
 @import '../variables.module';
+@import '../mixins.module';
 
 $eas-card-icon-width: 3.125rem;
 $eas-card-padding: $spacing-xs 0.5rem;
@@ -6,12 +7,17 @@ $eas-card-font-size: 1.125rem;
 
 .DrawCard {
   display: flex;
+  width: auto;
   min-height: $spacing-md;
   margin: $spacing-xs 0;
   padding: $eas-card-padding;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+
+  @include tablet {
+    width: 25rem;
+  }
 
   &__icon {
     width: $eas-card-icon-width;

@@ -5,7 +5,7 @@ const environment = process.env.APP_ENV;
 
 try {
   const baseConfig = {
-    sentryDsn: 'https://31465bb4331a44fc9262616650942a64@o240694.ingest.sentry.io/1413974',
+    sentryDsn: 'https://5062c00c390b4ebc8f3239f85aec1054@o151502.ingest.sentry.io/5571829',
   };
 
   const environmentConfig = require(`./${environment}`); // eslint-disable-line
