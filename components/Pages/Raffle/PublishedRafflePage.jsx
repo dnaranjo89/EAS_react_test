@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import useLoadDataAfterCountdown from '../../../hooks/useLoadDataAfterCountdown';
 import Page from '../../Page/Page.jsx';
 import WinnersList from '../../WinnersList/WinnersList.jsx';
@@ -16,12 +16,13 @@ import { getCurrentUrlFromWindow } from '../../../utils';
 import { ANALYTICS_TYPE_RAFFLE } from '../../../constants/analyticsTypes';
 
 const PublishedRafflePage = props => {
-  const { draw, t } = props;
+  const { draw } = props;
   const { values, results } = draw;
   const { title, description, participants, prizes } = values;
   const result = results[0];
   const shareUrl = getCurrentUrlFromWindow();
   useLoadDataAfterCountdown(result);
+  const { t } = useTranslation('DrawRaffle');
 
   return (
     <Page
@@ -81,9 +82,8 @@ PublishedRafflePage.propTypes = {
       }),
     ).isRequired,
   }).isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 PublishedRafflePage.defaultProps = {};
 
-export default withTranslation('DrawRaffle')(PublishedRafflePage);
+export default PublishedRafflePage;

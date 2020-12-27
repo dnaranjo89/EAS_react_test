@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { v4 as uuidv4 } from 'uuid';
 import Paper from '@material-ui/core/Paper';
 
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import Page from '../../Page/Page.jsx';
 import SubmitFormButton from '../../SubmitFormButton/SubmitFormButton.jsx';
@@ -53,7 +53,8 @@ const getResultLabel = result => {
   }
 };
 
-const DicePageContainer = ({ t, track }) => {
+const DicePageContainer = ({ track }) => {
+  const { t } = useTranslation('DrawDice');
   const [numberOfDice, setNumberOfDice] = useState(1);
   const [dice, setDice] = useState(generateDice(numberOfDice, MAX_NUMBER_DICE));
 
@@ -178,8 +179,7 @@ const DicePageContainer = ({ t, track }) => {
 };
 
 DicePageContainer.propTypes = {
-  t: PropTypes.func.isRequired,
   track: PropTypes.func.isRequired,
 };
 
-export default withTracking(withTranslation('DrawDice')(DicePageContainer));
+export default withTracking(DicePageContainer);

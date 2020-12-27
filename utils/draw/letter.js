@@ -26,11 +26,3 @@ export const getLetterDrawDataFromValues = ({ values, isPublic }) => {
     allow_repeated_results: allowRepeated,
   };
 };
-
-export const getLetterTranslationFiles = ({ isQuickDraw }) => {
-  const commonNamespaces = ['DrawLetter', 'Common'];
-  if (isQuickDraw) {
-    return [...commonNamespaces];
-  }
-  return [...commonNamespaces, 'CommonPublishedDraw'];
-};

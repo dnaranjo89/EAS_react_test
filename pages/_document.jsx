@@ -6,23 +6,23 @@ import { releaseCommit } from '../utils';
 
 export default class MyDocument extends Document {
   render() {
-    const { language, materialUiStyles } = this.props;
+    const { materialUiStyles } = this.props;
 
     return (
-      <Html lang={language} data-release-commit={releaseCommit}>
+      <Html data-release-commit={releaseCommit}>
         <Head>
           <link
             rel="preload"
             as="font"
             type="font/woff2"
-            href="/_next/static/fonts/fredoka-one-v7-latin-regular.woff2"
+            href="/static/fonts/fredoka-one-v7-latin-regular.woff2"
             crossOrigin="anonymous"
           />
           <link
             rel="preload"
             as="font"
             type="font/woff2"
-            href="/_next/static/fonts/montserrat-v14-latin-regular.woff2"
+            href="/static/fonts/montserrat-v14-latin-regular.woff2"
             crossOrigin="anonymous"
           />
 
@@ -35,31 +35,6 @@ export default class MyDocument extends Document {
           {materialUiStyles}
         </Head>
         <body>
-          <style jsx>{`
-            /* montserrat-regular - latin */
-            @font-face {
-              font-family: Montserrat;
-              font-style: normal;
-              font-weight: 400;
-              font-display: swap;
-              src: local('Montserrat Regular'), local('Montserrat-Regular'),
-                url('/_next/static/fonts/montserrat-v14-latin-regular.woff2') format('woff2'),
-                /* Chrome 26+, Opera 23+, Firefox 39+ */
-                  url('/fonts/montserrat-v14-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-            }
-
-            /* fredoka-one-regular - latin */
-            @font-face {
-              font-family: 'Fredoka One';
-              font-style: normal;
-              font-weight: 400;
-              font-display: swap;
-              src: local('Fredoka One'), local('FredokaOne-Regular'),
-                url('/_next/static/fonts/fredoka-one-v7-latin-regular.woff2') format('woff2'),
-                /* Chrome 26+, Opera 23+, Firefox 39+ */
-                  url('/fonts/fredoka-one-v7-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-            }
-          `}</style>
           <Main />
           <NextScript />
         </body>
@@ -68,6 +43,7 @@ export default class MyDocument extends Document {
   }
 }
 
+// TODO for some reason fonts are not being loaded in SSG
 MyDocument.getInitialProps = async ctx => {
   // Resolution order
   //
@@ -102,15 +78,8 @@ MyDocument.getInitialProps = async ctx => {
 
   const initialProps = await Document.getInitialProps(ctx);
 
-  const { res } = ctx;
-  const { locals } = res;
-  const additionalProps = {
-    language: locals.language,
-  };
-
   return {
     ...initialProps,
-    ...additionalProps,
     materialUiStyles: sheets.getStyleElement(),
   };
 };

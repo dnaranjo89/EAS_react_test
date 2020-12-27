@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import SubmitFormButton from '../../SubmitFormButton/SubmitFormButton.jsx';
 import ValidationProvider from '../../FormValidation/ValidationProvider.jsx';
 import Page from '../../Page/Page.jsx';
@@ -27,8 +27,8 @@ const RandomLetterQuickPage = props => {
     onFieldChange,
     handleCheckErrorsInConfiguration,
     loadingRequest,
-    t,
   } = props;
+  const { t } = useTranslation('DrawLetter');
   const publicDrawUrl = `/${urlSlug}/public`;
   const resultsRef = useRef(null);
   useScrollToResults(quickResult, resultsRef);
@@ -79,7 +79,6 @@ RandomLetterQuickPage.propTypes = {
   handleToss: PropTypes.func.isRequired,
   handleCheckErrorsInConfiguration: PropTypes.func.isRequired,
   quickResult: PropTypes.shape(),
-  t: PropTypes.func.isRequired,
 };
 
 RandomLetterQuickPage.defaultProps = {
@@ -87,4 +86,4 @@ RandomLetterQuickPage.defaultProps = {
   quickResult: null,
 };
 
-export default withTranslation('DrawLetter')(RandomLetterQuickPage);
+export default RandomLetterQuickPage;

@@ -1,7 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
+import { isMobile } from 'react-device-detect';
 import withValidationProvider from '../../FormValidation/withValidationProvider.jsx';
 import GeneralDetailsSection from '../../CommonSections/GeneralDetailsSection.jsx';
 import WhenToTossSection from '../../CommonSections/WhenToTossSection.jsx';
@@ -10,14 +10,12 @@ import Page from '../../Page/Page.jsx';
 import RandomNumberConfigurationSection from './RandomNumberConfigurationSection.jsx';
 import randomNumberOgImage from './random_number_og_image.png';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
-import getIsMobile from '../../../redux/selectors/getIsMobile';
 
 const GeneralDetailsForm = withValidationProvider(GeneralDetailsSection);
 const ConfigurationForm = withValidationProvider(RandomNumberConfigurationSection);
 const WhenToTossForm = withValidationProvider(WhenToTossSection);
 
 const RandomNumberPage = props => {
-  const isMobile = useSelector(getIsMobile);
   const {
     values,
     apiError,
@@ -25,8 +23,8 @@ const RandomNumberPage = props => {
     handleCheckErrorsInConfiguration,
     onFieldChange,
     handlePublish,
-    t,
   } = props;
+  const { t } = useTranslation('DrawNumber');
   const steps = [
     {
       label: t('step_label_configuration'),
@@ -101,11 +99,10 @@ RandomNumberPage.propTypes = {
   onFieldChange: PropTypes.func.isRequired,
   handlePublish: PropTypes.func.isRequired,
   handleCheckErrorsInConfiguration: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 RandomNumberPage.defaultProps = {
   apiError: false,
 };
 
-export default withTranslation('DrawNumber')(RandomNumberPage);
+export default RandomNumberPage;

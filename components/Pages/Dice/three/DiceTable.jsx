@@ -7,7 +7,6 @@ import { Physics } from 'use-cannon'; // eslint-disable-line import/no-unresolve
 import Die from './Die.jsx';
 import Plane from './Plane.jsx';
 
-import { withTranslation } from '../../../../i18n';
 import withTracking from '../../../../hocs/withTracking.jsx';
 import STYLES from './DiceTable.module.scss';
 
@@ -70,4 +69,4 @@ DiceTable.propTypes = {
   dice: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
-export default withTracking(withTranslation('DrawDice')(DiceTable));
+export default withTracking(DiceTable);

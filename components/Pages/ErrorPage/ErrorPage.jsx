@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
+import useTranslation from 'next-translate/useTranslation';
 import Page from '../../Page/Page.jsx';
-import { withTranslation } from '../../../i18n';
 import ErrorNotFoundPage from './ErrorNotFoundPage.jsx';
 
 import STYLES from './ErrorPage.module.scss';
 
-const ErrorPage = ({ t, statusCode }) => {
+const ErrorPage = ({ statusCode }) => {
+  const { t } = useTranslation('Common');
   if (statusCode === 404) {
     return <ErrorNotFoundPage />;
   }
@@ -25,7 +26,6 @@ const ErrorPage = ({ t, statusCode }) => {
   );
 };
 ErrorPage.propTypes = {
-  t: PropTypes.func.isRequired,
   statusCode: PropTypes.number,
 };
 
@@ -33,4 +33,4 @@ ErrorPage.defaultProps = {
   statusCode: null,
 };
 
-export default withTranslation('Common')(ErrorPage);
+export default ErrorPage;

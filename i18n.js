@@ -1,12 +1,49 @@
-const NextI18Next = require('next-i18next').default;
-
-const NextI18NextInstance = new NextI18Next({
-  localePath: 'public/static/locales',
-  defaultLanguage: 'es-ES',
-  otherLanguages: ['en-GB'],
-  browserLanguageDetection: false,
-  serverLanguageDetection: false,
-  defaultNS: 'Common',
-});
-
-module.exports = NextI18NextInstance;
+module.exports = {
+  locales: ['en-GB', 'es-ES'],
+  defaultLocale: 'es-ES',
+  localeDetection: false,
+  logBuild: false,
+  pages: {
+    '*': ['Common'],
+    '/': ['Homepage'],
+    '/about': ['about'],
+    'rgx:.*/success': ['CommonCreateDraw'],
+    '/raffles': ['Raffles'],
+    '/recent': ['RecentDraws'],
+    '/privacy-policy': ['PrivacyPolicyPage'],
+    'rgx:/groups': ['DrawGroups', 'ParticipantsInput', 'CommonCreateDraw', 'CommonPublishedDraw'],
+    'rgx:/item': ['DrawItem', 'CommonCreateDraw', 'CommonPublishedDraw'],
+    'rgx:/letter': ['DrawLetter', 'CommonCreateDraw', 'CommonPublishedDraw'],
+    'rgx:/number': ['DrawNumber', 'CommonCreateDraw', 'CommonPublishedDraw'],
+    'rgx:/sets': ['DrawLinkSets', 'CommonCreateDraw', 'CommonPublishedDraw'],
+    'rgx:/raffle': [
+      'DrawRaffle',
+      'CommonDrawRaffle',
+      'ParticipantsInput',
+      'PrizesInput',
+      'CommonCreateDraw',
+      'CommonPublishedDraw',
+    ],
+    'rgx:/facebook': [
+      'DrawFacebook',
+      'CommonDrawRaffle',
+      'ParticipantsInput',
+      'PrizesInput',
+      'CommonCreateDraw',
+      'CommonPublishedDraw',
+    ],
+    '/coin': ['DrawCoin'],
+    '/spinner': ['DrawSpinner'],
+    '/dice': ['DrawDice'],
+  },
+  domains: [
+    {
+      domain: 'local.echaloasuerte.com',
+      defaultLocale: 'es-ES',
+    },
+    {
+      domain: 'local.chooserandom.com',
+      defaultLocale: 'en-GB',
+    },
+  ],
+};

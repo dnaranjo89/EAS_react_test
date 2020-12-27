@@ -9,7 +9,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import withTracking from '../../../hocs/withTracking.jsx';
 import STYLES from './RecentDrawsPage.module.scss';
 import Page from '../../Page/Page.jsx';
@@ -20,7 +20,8 @@ import RecentDrawsTable from './RecentDrawsTable.jsx';
 const c = classnames.bind(STYLES);
 
 const RecentDrawsPage = props => {
-  const { t, track } = props;
+  const { track } = props;
+  const { t } = useTranslation('RecentDraws');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedDrawId, setSelectedDrawId] = useState(null);
 
@@ -126,7 +127,6 @@ const RecentDrawsPage = props => {
 
 RecentDrawsPage.propTypes = {
   track: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
-export default withTracking(withTranslation('RecentDraws')(RecentDrawsPage));
+export default withTracking(RecentDrawsPage);

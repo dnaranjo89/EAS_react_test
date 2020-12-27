@@ -8,7 +8,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import classnames from 'classnames/bind';
-import { withTranslation, Trans } from '../../i18n';
+import useTranslation from 'next-translate/useTranslation';
+
 import PublicModeButton from '../PublicModeButton/PublicModeButton.jsx';
 import STYLES from './ShareDrawModal.module.scss';
 
@@ -32,7 +33,8 @@ class ShareDrawModal extends Component {
 
   render() {
     const { open } = this.state;
-    const { publicDrawUrl, analyticsDrawType, t } = this.props;
+    const { publicDrawUrl, analyticsDrawType } = this.props;
+    const { t } = useTranslation('CommonCreateDraw');
     return (
       <div className={c('ShareDrawModal__button-row')}>
         <Button onClick={this.handleClickOpen} data-testid="ShareDrawButton">
@@ -46,10 +48,7 @@ class ShareDrawModal extends Component {
         >
           <DialogTitle>{t('share_result_dialog_title')}</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              <Trans ns="CommonCreateDraw" i18nKey="share_result_dialog_body" />
-              {/* {t('share_result_dialog_body')} */}
-            </DialogContentText>
+            <DialogContentText>{t('share_result_dialog_body')}</DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button
@@ -87,7 +86,6 @@ class ShareDrawModal extends Component {
 ShareDrawModal.propTypes = {
   publicDrawUrl: PropTypes.string.isRequired,
   analyticsDrawType: PropTypes.string.isRequired, // eslint-disable-line react/forbid-prop-types
-  t: PropTypes.func.isRequired,
 };
 
-export default withMobileDialog()(withTranslation('CommonCreateDraw')(ShareDrawModal));
+export default withMobileDialog()(ShareDrawModal);

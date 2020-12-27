@@ -15,13 +15,11 @@ jest.mock('@material-ui/core/Input', () => {
   );
 });
 
-jest.mock('react-i18next', () => ({
-  withTranslation: () => Component => {
-    // eslint-disable-next-line no-param-reassign
-    Component.defaultProps = { ...Component.defaultProps, t: key => key };
-    return Component;
-  },
-}));
+jest.mock('next-translate/withTranslation', () => Component => {
+  // eslint-disable-next-line no-param-reassign
+  Component.defaultProps = { ...Component.defaultProps, i18n: { t: key => key } };
+  return Component;
+});
 
 const ValidatedTextField = withFieldValidation(TextField);
 const mockOnSubmit = jest.fn();
@@ -66,7 +64,7 @@ describe('ValidationProvider', () => {
       );
       fireEvent.click(getByTestId('SubmitFormButton'));
       expect(mockOnSubmit).not.toHaveBeenCalled();
-      expect(getByText('default_message_required_field')).toBeTruthy();
+      expect(getByText('CommonCreateDraw:default_message_required_field')).toBeTruthy();
     });
 
     it('should show an error when its value is modified to be empty', () => {
@@ -82,27 +80,27 @@ describe('ValidationProvider', () => {
           <SubmitFormButton label="Toss" />
         </ValidationProvider>,
       );
-      expect(getByText('default_message_required_field')).toBeTruthy();
+      expect(getByText('CommonCreateDraw:default_message_required_field')).toBeTruthy();
     });
 
     it('Non-empty strings are valid', () => {
       const { queryByText } = renderFormWithRequiredField('something');
-      expect(queryByText('default_message_required_field')).toBeFalsy();
+      expect(queryByText('CommonCreateDraw:default_message_required_field')).toBeFalsy();
     });
 
     it('Empty strings are invalid', () => {
       const { queryByText } = renderFormWithRequiredField('');
-      expect(queryByText('default_message_required_field')).toBeTruthy();
+      expect(queryByText('CommonCreateDraw:default_message_required_field')).toBeTruthy();
     });
 
     it('Non-empty strings are valid', () => {
       const { queryByText } = renderFormWithRequiredField(['one']);
-      expect(queryByText('default_message_required_field')).toBeFalsy();
+      expect(queryByText('CommonCreateDraw:default_message_required_field')).toBeFalsy();
     });
 
     it('Empty strings are invalid', () => {
       const { queryByText } = renderFormWithRequiredField([]);
-      expect(queryByText('default_message_required_field')).toBeTruthy();
+      expect(queryByText('CommonCreateDraw:default_message_required_field')).toBeTruthy();
     });
   });
 
@@ -114,7 +112,7 @@ describe('ValidationProvider', () => {
           <SubmitFormButton label="Toss" />
         </ValidationProvider>,
       );
-      expect(getByText('default_message_min')).toBeTruthy();
+      expect(getByText('CommonCreateDraw:default_message_min')).toBeTruthy();
       fireEvent.click(getByTestId('SubmitFormButton'));
       expect(mockOnSubmit).not.toHaveBeenCalled();
     });
@@ -126,7 +124,7 @@ describe('ValidationProvider', () => {
           <SubmitFormButton label="Toss" />
         </ValidationProvider>,
       );
-      expect(queryByText('default_message_min')).toBeFalsy();
+      expect(queryByText('CommonCreateDraw:default_message_min')).toBeFalsy();
       fireEvent.click(getByTestId('SubmitFormButton'));
       expect(mockOnSubmit).toHaveBeenCalled();
     });
@@ -138,7 +136,7 @@ describe('ValidationProvider', () => {
           <SubmitFormButton label="Toss" />
         </ValidationProvider>,
       );
-      expect(queryByText('default_message_min')).toBeFalsy();
+      expect(queryByText('CommonCreateDraw:default_message_min')).toBeFalsy();
       fireEvent.click(getByTestId('SubmitFormButton'));
       expect(mockOnSubmit).toHaveBeenCalled();
     });
@@ -150,7 +148,7 @@ describe('ValidationProvider', () => {
           <SubmitFormButton label="Toss" />
         </ValidationProvider>,
       );
-      expect(getByText('default_message_min')).toBeTruthy();
+      expect(getByText('CommonCreateDraw:default_message_min')).toBeTruthy();
       fireEvent.click(getByTestId('SubmitFormButton'));
       expect(mockOnSubmit).not.toHaveBeenCalled();
     });

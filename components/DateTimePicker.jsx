@@ -4,12 +4,13 @@ import Typography from '@material-ui/core/Typography';
 import { MuiPickersUtilsProvider, DateTimePicker as MuiDateTimePicker } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import moment from 'moment';
-import { withTranslation } from '../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import 'moment/locale/es';
 
-const DateTimePicker = ({ id, label, t, i18n, ...props }) => {
+const DateTimePicker = ({ id, label, ...props }) => {
+  const { t, lang } = useTranslation('CommonCreateDraw');
   const { tReady, ...rest } = props; // eslint-disable-line react/prop-types
-  const locale = i18n.language;
+  const locale = lang;
 
   const localeMap = {
     'en-GB': 'en',
@@ -48,4 +49,4 @@ DateTimePicker.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('CommonCreateDraw')(DateTimePicker);
+export default DateTimePicker;

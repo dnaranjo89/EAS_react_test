@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames/bind';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import ErrorFeedback from '../../ErrorFeedback/ErrorFeedback.jsx';
 import SubmitFormButton from '../../SubmitFormButton/SubmitFormButton.jsx';
 import useScrollToResults from '../../../hooks/useScrollToResults';
@@ -27,12 +27,12 @@ const RaffleQuickPage = ({
   quickResult,
   handleToss,
   handleCheckErrorsInConfiguration,
-  t,
 }) => {
   const publicDrawUrl = '/raffle/public';
   const resultsRef = React.createRef();
 
   useScrollToResults(quickResult, resultsRef);
+  const { t } = useTranslation('DrawRaffle');
 
   return (
     <Page
@@ -81,7 +81,6 @@ RaffleQuickPage.propTypes = {
   onFieldChange: PropTypes.func.isRequired,
   handleToss: PropTypes.func.isRequired,
   handleCheckErrorsInConfiguration: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 RaffleQuickPage.defaultProps = {
@@ -90,4 +89,4 @@ RaffleQuickPage.defaultProps = {
   apiError: false,
 };
 
-export default withTranslation('DrawRaffle')(RaffleQuickPage);
+export default RaffleQuickPage;

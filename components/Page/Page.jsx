@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import ReactGA from 'react-ga';
-import { connect } from 'react-redux';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
 import withMixpanel from '../../hocs/withMixpanel.jsx';
@@ -12,11 +11,19 @@ import { hotjar } from '../../services/hotjar';
 import { getExperimentsAllocation } from '../../services/abtest';
 import config from '../../config';
 import defaultOgImage from './logo_og.png';
+import { isServer } from '../../utils';
 import STYLES from './Page.module.scss';
 import Header from '../Header/Header.jsx';
 import Footer from '../Footer/Footer.jsx';
 
 const c = classNames.bind(STYLES);
+
+function getDomain() {
+  if (isServer) {
+    return `https://echaloasuerte.com`;
+  }
+  return window.location.host;
+}
 
 class Page extends Component {
   componentDidMount() {
@@ -36,14 +43,9 @@ class Page extends Component {
     }
   }
 
-  getDomain() {
-    const { hostname } = this.props;
-    return `https://${hostname}`;
-  }
-
-  getAbsoluteUrl() {
+  getCanonicalUrl() {
     const { router } = this.props;
-    const domain = this.getDomain();
+    const domain = getDomain();
     const pathWithoutTrailingSlash = router.asPath.replace(/\/$/, '');
     return `${domain}${pathWithoutTrailingSlash}`;
   }
@@ -60,23 +62,23 @@ class Page extends Component {
       noIndex,
       ogImage,
     } = this.props;
-    const absoluteUrl = this.getAbsoluteUrl();
+    const canonicalUrl = this.getCanonicalUrl();
     const shouldIndexPage = config.indexPages && !noIndex;
     const pageTitle = htmlTitle.substring(0, 60);
     const pageDescription = htmlDescription.substring(0, 155);
-    const ogImageUrl = this.getDomain() + ogImage;
+    const ogImageUrl = getDomain() + ogImage;
     return (
       <>
         <Head>
           <title>{htmlTitle}</title>
-          <link rel="canonical" href={absoluteUrl} />
+          <link rel="canonical" href={canonicalUrl} />
           {!shouldIndexPage && <meta name="robots" content="noindex" />}
           <meta name="description" content={pageDescription} />
           <meta name="keywords" content={htmlKeywords} />
           <meta property="og:title" content={pageTitle} />
           <meta property="og:image" content={ogImageUrl} />
           <meta property="og:description" content={pageDescription} />
-          <meta property="og:url" content={absoluteUrl} />
+          <meta property="og:url" content={canonicalUrl} />
           <meta property="og:type" content="website" />
           <meta property="fb:app_id" content={config.facebookAppId} />
         </Head>
@@ -107,7 +109,6 @@ Page.propTypes = {
     asPath: PropTypes.string.isRequired,
   }).isRequired,
   ogImage: PropTypes.node,
-  hostname: PropTypes.string.isRequired,
   showAdvert: PropTypes.bool,
   sidePanel: PropTypes.node,
 };
@@ -124,8 +125,4 @@ Page.defaultProps = {
   sidePanel: null,
 };
 
-const mapsStateToProps = state => ({
-  hostname: state.userRequest.hostname,
-});
-
-export default withMixpanel(withRouter(connect(mapsStateToProps)(Page)));
+export default withMixpanel(withRouter(Page));

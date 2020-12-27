@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import { useSelector } from 'react-redux';
+import { isMobile } from 'react-device-detect';
 import STYLES from './PageLayout.module.scss';
-import getIsMobile from '../../redux/selectors/getIsMobile';
 
 const c = classNames.bind(STYLES);
 const PageLayout = ({ sidePanel, children, contentClassName }) => {
-  const isMobile = useSelector(getIsMobile);
   if (isMobile) {
     return (
       <>

@@ -21,6 +21,5 @@ ENV REACT_APP_COMMIT=$commit_sha
 ENV NODE_ENV=production
 RUN npm run build
 
-ENV PORT 80
 EXPOSE 80
 CMD ["npm", "start"]

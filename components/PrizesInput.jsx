@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withTranslation } from '../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import MultiValueInput from './MultiValueInput/MultiValueInput.jsx';
 
-const PrizesInput = ({ t, ...other }) => {
-  const { tReady, i18n, ...rest } = other;
+const PrizesInput = props => {
+  const { t } = useTranslation('PrizesInput');
   return (
     <MultiValueInput
       label={t('field_label')}
@@ -14,13 +13,11 @@ const PrizesInput = ({ t, ...other }) => {
       fullWidth
       data-testid="PrizesInput"
       inputProps={{ 'data-testid': 'PrizesInput__inputField' }}
-      {...rest}
+      {...props}
     />
   );
 };
 
-PrizesInput.propTypes = {
-  t: PropTypes.func.isRequired,
-};
+PrizesInput.propTypes = {};
 
-export default withTranslation('PrizesInput')(PrizesInput);
+export default PrizesInput;

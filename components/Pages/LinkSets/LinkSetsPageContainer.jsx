@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import withTracking from '../../../hocs/withTracking.jsx';
 import LinkSetsPage from './LinkSetsPage.jsx';
 import LinkSetsQuickPage from './LinkSetsQuickPage.jsx';
@@ -28,8 +28,9 @@ const initialLoadingRequest = false;
 const initialApiError = false;
 
 const LinkSetsPageContainer = props => {
-  const { draw: previousDraw, t, track } = props;
+  const { draw: previousDraw, track } = props;
 
+  const { t } = useTranslation('DrawLinkSets');
   const [privateId, setPrivateId] = useState(getInitialPrivateId(previousDraw));
   const [values, setValues] = useState(getInitialValues(previousDraw, t));
   const [quickResult, setQuickResult] = useState(getInitialQuickResult(previousDraw));
@@ -47,7 +48,8 @@ const LinkSetsPageContainer = props => {
     setLoadingRequest(initialLoadingRequest);
     setAPIError(initialApiError);
     setValues(getInitialValues(previousDraw, t));
-  }, [previousDraw, t]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [previousDraw]);
 
   const onFieldChange = (fieldName, value) => {
     setQuickResult(null);
@@ -113,7 +115,6 @@ LinkSetsPageContainer.propTypes = {
     privateId: PropTypes.string.isRequired,
     results: PropTypes.arrayOf(PropTypes.shape({})),
   }),
-  t: PropTypes.func.isRequired,
   track: PropTypes.func.isRequired,
 };
 
@@ -121,4 +122,4 @@ LinkSetsPageContainer.defaultProps = {
   draw: null,
 };
 
-export default withTracking(withTranslation('DrawLinkSets')(LinkSetsPageContainer));
+export default withTracking(LinkSetsPageContainer);

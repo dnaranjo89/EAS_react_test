@@ -26,11 +26,3 @@ export const getRaffleDrawDataFromValues = ({ values, isPublic }) => {
     prizes: prizes.map(prize => ({ name: prize })),
   };
 };
-
-export const getRaffleTranslationFiles = ({ isQuickDraw }) => {
-  const commonNamespaces = ['DrawRaffle', 'Common', 'CommonDrawRaffle'];
-  if (isQuickDraw) {
-    return [...commonNamespaces, 'ParticipantsInput', 'PrizesInput'];
-  }
-  return [...commonNamespaces, 'CommonPublishedDraw'];
-};

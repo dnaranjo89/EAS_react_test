@@ -26,11 +26,3 @@ export const getItemsDrawDataFromValues = ({ values, isPublic }) => {
     number_of_results: numberOfItems,
   };
 };
-
-export const getItemsTranslationFiles = ({ isQuickDraw }) => {
-  const commonNamespaces = ['DrawItems', 'Common'];
-  if (isQuickDraw) {
-    return [...commonNamespaces];
-  }
-  return [...commonNamespaces, 'CommonPublishedDraw'];
-};

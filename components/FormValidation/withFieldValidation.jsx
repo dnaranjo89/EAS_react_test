@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from '../../i18n';
+import withTranslation from 'next-translate/withTranslation';
 import { ValidationContext } from './ValidationProvider.jsx';
 
 const withFieldValidation = WrappedComponent => {
@@ -47,12 +47,13 @@ const withFieldValidation = WrappedComponent => {
     }
 
     getDefaultErrorMessage = error => {
-      const { t } = this.props;
+      const { i18n } = this.props;
+      const { t } = i18n;
       switch (error.rule) {
         case 'required':
-          return t('default_message_required_field');
+          return t('CommonCreateDraw:default_message_required_field');
         case 'min':
-          return t('default_message_min', { min: error.value });
+          return t('CommonCreateDraw:default_message_min', { min: error.value });
         default:
           return '';
       }
@@ -116,7 +117,9 @@ const withFieldValidation = WrappedComponent => {
         message: PropTypes.string,
       }),
     ),
-    t: PropTypes.func.isRequired,
+    i18n: PropTypes.shape({
+      t: PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   WithFieldValidation.defaultProps = {
@@ -126,7 +129,7 @@ const withFieldValidation = WrappedComponent => {
 
   WithFieldValidation.contextType = ValidationContext;
 
-  return withTranslation('CommonCreateDraw')(WithFieldValidation);
+  return withTranslation(WithFieldValidation);
 };
 
 export default withFieldValidation;

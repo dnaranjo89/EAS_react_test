@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
-import { withTranslation } from '../i18n';
+import withTranslation from 'next-translate/withTranslation';
 import {
   apiCall,
   fbAsyncInit,
@@ -31,7 +31,7 @@ class FacebookProvider extends Component {
   componentDidMount() {
     const { i18n } = this.props;
     fbAsyncInit(this.handleStatusChange);
-    const locale = i18n.language.replace('-', '_');
+    const locale = i18n.lang.replace('-', '_');
     injectScript(locale, this.handleStatusChange);
   }
 
@@ -63,10 +63,10 @@ class FacebookProvider extends Component {
       let fbErrorMessage;
       switch (ex.error.code) {
         case 1:
-          fbErrorMessage = t('error_message_possibly_blocked');
+          fbErrorMessage = t('DrawFacebook:error_message_possibly_blocked');
           break;
         default:
-          fbErrorMessage = t('error_message_impossible_to_log_in');
+          fbErrorMessage = t('DrawFacebook:error_message_impossible_to_log_in');
       }
       Sentry.withScope(scope => {
         scope.setExtra('message', fbErrorMessage);
@@ -126,4 +126,4 @@ FacebookProvider.propTypes = {
   i18n: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export default withTranslation('DrawFacebook')(FacebookProvider);
+export default withTranslation(FacebookProvider);

@@ -34,11 +34,3 @@ export const getNumberDrawDataFromValues = ({ values, isPublic }) => {
     allow_repeated_results: allowRepeated,
   };
 };
-
-export const getNumberTranslationFiles = ({ isQuickDraw }) => {
-  const commonNamespaces = ['DrawNumber', 'Common'];
-  if (isQuickDraw) {
-    return [...commonNamespaces];
-  }
-  return [...commonNamespaces, 'CommonPublishedDraw'];
-};

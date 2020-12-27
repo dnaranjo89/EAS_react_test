@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import useLoadDataAfterCountdown from '../../../hooks/useLoadDataAfterCountdown';
 import Page from '../../Page/Page.jsx';
 import LinkSetsResult from './LinkSetsResult.jsx';
@@ -15,12 +15,13 @@ import { getCurrentUrlFromWindow } from '../../../utils';
 import { ANALYTICS_TYPE_SETS } from '../../../constants/analyticsTypes';
 
 const PublishedLinkSetsPage = props => {
-  const { draw, t } = props;
+  const { draw } = props;
   const { values, results } = draw;
   const { title, description, set1, set2 } = values;
   const result = results[0];
   const shareUrl = getCurrentUrlFromWindow();
   useLoadDataAfterCountdown(result);
+  const { t } = useTranslation('DrawLinkSets');
 
   return (
     <Page
@@ -77,9 +78,8 @@ PublishedLinkSetsPage.propTypes = {
       }),
     ).isRequired,
   }).isRequired,
-  t: PropTypes.func.isRequired,
 };
 
 PublishedLinkSetsPage.defaultProps = {};
 
-export default withTranslation('DrawLinkSets')(PublishedLinkSetsPage);
+export default PublishedLinkSetsPage;

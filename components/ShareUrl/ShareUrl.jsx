@@ -11,7 +11,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Slide from '@material-ui/core/Slide';
 import * as Sentry from '@sentry/browser';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { withTranslation } from '../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import withTracking from '../../hocs/withTracking.jsx';
 import STYLES from './ShareUrl.module.scss';
 
@@ -21,7 +21,8 @@ function SlideTransition(props) {
   return <Slide {...props} direction="down" />;
 }
 
-const ShareUrl = ({ url, drawType, track, t }) => {
+const ShareUrl = ({ url, drawType, track }) => {
+  const { t } = useTranslation('CommonCreateDraw');
   const inputEl = useRef(null);
   const [state, setState] = React.useState({
     open: false,
@@ -82,8 +83,7 @@ const ShareUrl = ({ url, drawType, track, t }) => {
 ShareUrl.propTypes = {
   url: PropTypes.string.isRequired,
   drawType: PropTypes.string.isRequired,
-  t: PropTypes.func.isRequired,
   track: PropTypes.func.isRequired,
 };
 
-export default withTranslation('CommonCreateDraw')(withTracking(ShareUrl));
+export default withTracking(ShareUrl);

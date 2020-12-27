@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 import Typography from '@material-ui/core/Typography';
 import { RaffleApi, Participant } from 'echaloasuerte-js-sdk';
 import { useRouter } from 'next/router';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import Page from '../../Page/Page.jsx';
 import useLoadDataAfterCountdown from '../../../hooks/useLoadDataAfterCountdown';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
@@ -26,7 +26,7 @@ import { ANALYTICS_TYPE_FACEBOOK } from '../../../constants/analyticsTypes';
 const c = classNames.bind(STYLES);
 const raffleApi = new RaffleApi();
 
-const PublishedFacebookRafflePage = ({ draw, t, track, facebookContext }) => {
+const PublishedFacebookRafflePage = ({ draw, track, facebookContext }) => {
   const { id: drawId, values, results } = draw;
   const { title, description, participants, prizes } = values;
   const result = results[0];
@@ -36,6 +36,8 @@ const PublishedFacebookRafflePage = ({ draw, t, track, facebookContext }) => {
   const [registeringInRaffle, setRegisteringInRaffle] = useState(false);
   const router = useRouter();
   const shareUrl = getCurrentUrlFromWindow();
+
+  const { t } = useTranslation('DrawFacebook');
 
   useEffect(() => {
     if (userId) {
@@ -194,9 +196,6 @@ PublishedFacebookRafflePage.propTypes = {
     userId: PropTypes.string,
   }).isRequired,
   track: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
 };
 
-export default withTracking(
-  withFacebookSdk(withTranslation('DrawFacebook')(PublishedFacebookRafflePage)),
-);
+export default withTracking(withFacebookSdk(PublishedFacebookRafflePage));

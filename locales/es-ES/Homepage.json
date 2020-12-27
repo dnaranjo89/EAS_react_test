@@ -13,7 +13,6 @@
   "draw_title_spin_arrow": "Girar una flecha",
   "draw_title_tournament": "Organizar un torneo",
   "html_description": "Crear sorteos online, lanzar una moneda, crear equipos... Toma cualquier decisión aleatoriamente",
-  "html_title": "Toma decisiones aleatoriamente - ÉchaloASuerte",
-  "section_title_online_raffles": "Sorteos online",
-  "section_title_simple_draws": "Sorteos simples"
+  "html_title": "ÉchaloASuerte - Toma decisiones aleatoriamente",
+  "choose_raffle": "Elige un sorteo"
 }

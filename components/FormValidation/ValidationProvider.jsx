@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import values from 'object.values';
 
 export const ValidationContext = React.createContext();
 
@@ -53,7 +52,7 @@ class ValidationProvider extends Component {
 
   isFormValid = () => {
     const { validations } = this.state;
-    const validationsValues = values(validations);
+    const validationsValues = Object.values(validations);
     const fieldsValid = validationsValues.every(Boolean);
     const formValid = !this.getFormError();
     return fieldsValid && formValid;

@@ -1,23 +1,19 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { useRouter } from 'next/router';
-import { withTranslation } from '../../../i18n';
+import useTranslation from 'next-translate/useTranslation';
 import RouterButton from '../../Button.jsx';
 import RecentDraws from '../../../services/recentDraws';
-// import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import Page from '../../Page/Page.jsx';
-// import LearnMoreSection from '../../LearnMoreSection/LearnMoreSection.jsx';
 import ShareButtons from '../../ShareButtons/ShareButtons.jsx';
-// import ShareUrl from '../../ShareUrl/ShareUrl.jsx';
 import STYLES from './SuccessfullyCreatedDraw.module.scss';
-import { getCurrentUrlFromWindow } from '../../../utils';
 import SectionPanel from '../../SectionPanel/SectionPanel.jsx';
 import { analyticsTypesBySlug } from '../../../constants/analyticsTypes';
 
-const SuccessfullyCreatedDraw = ({ t }) => {
+const SuccessfullyCreatedDraw = () => {
+  const { t } = useTranslation('CommonCreateDraw');
   const router = useRouter();
-  const drawUrl = getCurrentUrlFromWindow().replace('/success', '');
+  const drawUrl = router.asPath.replace('/success', '');
   // Get the draw type from the url
   const drawType = router.pathname.match(/\/([a-zA-Z]+)\/\[id\]/)[1];
   const { id: drawId } = router.query;
@@ -74,12 +70,6 @@ const SuccessfullyCreatedDraw = ({ t }) => {
   );
 };
 
-SuccessfullyCreatedDraw.getInitialProps = () => ({
-  namespacesRequired: ['CommonCreateDraw'],
-});
+SuccessfullyCreatedDraw.propTypes = {};
 
-SuccessfullyCreatedDraw.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-export default withTranslation('CommonCreateDraw')(SuccessfullyCreatedDraw);
+export default SuccessfullyCreatedDraw;
