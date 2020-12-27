@@ -43,6 +43,9 @@ const Footer = () => {
       <Button className={STYLES.button} href="/privacy-policy">
         {t('privacy_policy')}
       </Button>
+      <Button className={STYLES.button} href="mailto:echaloasuerte@gmail.com">
+        {t('contact')}
+      </Button>
       <TranslationsSwitch onChange={handleChangeLanguage} available={availableLocales} />
     </footer>
   );
