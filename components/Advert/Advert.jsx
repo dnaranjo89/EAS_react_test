@@ -19,15 +19,15 @@ const Advert = () => {
       {isMobile ? (
         <ins
           className={c('adsbygoogle', 'advertMobile')}
-          data-ad-client="ca-pub-1409219619115807"
-          data-ad-slot="8571173719"
+          data-ad-client="ca-pub-9142862842848094"
+          data-ad-slot="3953620516"
           // data-adtest="on"
         />
       ) : (
         <ins
           className={c('adsbygoogle', 'advertDesktop')}
-          data-ad-client="ca-pub-1409219619115807"
-          data-ad-slot="1101600000"
+          data-ad-client="ca-pub-9142862842848094"
+          data-ad-slot="5318673076"
           // data-adtest="on"
         />
       )}
