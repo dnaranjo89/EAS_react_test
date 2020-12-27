@@ -16,7 +16,7 @@ import raffleIcon from './raffle.svg';
 import STYLES from './Homepage.module.scss';
 
 const HomePage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('Homepage');
   return (
     <Page
       htmlTitle={t('html_title')}
