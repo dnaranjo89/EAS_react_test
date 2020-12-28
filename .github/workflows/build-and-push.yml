@@ -33,7 +33,6 @@ jobs:
       ansible_hosts: '${{steps.set_app_vars.outputs.hosts_file}}'
       deployment_branch_name: '${{steps.set_app_vars.outputs.deployment_branch_name}}'
     steps:
-
       - name: Cache Docker layers
         uses: actions/cache@v2
         with:
@@ -128,7 +127,7 @@ jobs:
         with:
           repository: etcaterva/deployment
           submodules: true
-          ref:  ${{ needs.build-docker.outputs.deployment_branch }}
+          ref: ${{ needs.build-docker.outputs.deployment_branch }}
 
       - name: Set up Python 3.9
         uses: actions/setup-python@v1
@@ -149,7 +148,7 @@ jobs:
       - name: Load ssh key
         uses: webfactory/ssh-agent@v0.4.1
         with:
-            ssh-private-key: ${{ secrets.AUTOMATION_SSH_KEY }}
+          ssh-private-key: ${{ secrets.AUTOMATION_SSH_KEY }}
 
       - name: run playbook
         run: |
@@ -158,4 +157,4 @@ jobs:
             --tags "cd-frontend" \
             --extra-vars "ansible_user=automation"
         env:
-          ANSIBLE_HOST_KEY_CHECKING: "False"
+          ANSIBLE_HOST_KEY_CHECKING: 'False'

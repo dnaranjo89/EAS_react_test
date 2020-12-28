@@ -16,6 +16,7 @@ COPY . /usr/src/app
 
 ARG commit_sha=none
 ARG app_env=production
+ARG sentry_auth_token
 ENV REACT_APP_ENV=$app_env
 ENV REACT_APP_COMMIT=$commit_sha
 ENV SENTRY_AUTH_TOKEN=$sentry_auth_token

@@ -1,3 +1,5 @@
+# The org and project slug are used by the `SentryWebpackPlugin` to upload the sourcemaps to SentryWebpackPlugin
+# The auth token is also necessary but we are passing it from a secret in the `SENTRY_AUTH_TOKEN`
 [defaults]
 org=et-caterva
 project=eas_frontend
