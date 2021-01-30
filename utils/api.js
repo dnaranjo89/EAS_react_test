@@ -96,7 +96,7 @@ export const toss = async ({
   setQuickResult,
   t,
 }) => {
-  logApiError(new Error('A client error!'), {});
+  logApiError(new Error('A client error 2!'));
   const analyticsType = analyticsTypesBySlug[urlSlug];
   const tsStart = new Date().getTime();
   setLoadingRequest(true);
@@ -130,8 +130,9 @@ export const toss = async ({
       setQuickResult(tossResponse);
     }
   } catch (error) {
+    const options = { tags: { drawType: analyticsType } };
+    logApiError(error, options);
     setAPIError(t('CommonCreateDraw:api_error'));
-    logApiError(error, analyticsType);
     setLoadingRequest(false);
   }
 };
@@ -158,14 +159,14 @@ export const publish = async ({ values, urlSlug, track, setLoadingRequest, setAP
     recentDraws.add(newDraw, drawPath, dateScheduled);
     Router.push(`/${urlSlug}/[id]/success`, drawPathSuccess);
   } catch (error) {
-    logApiError(error, analyticsType);
+    const options = { tags: { drawType: analyticsType } };
+    logApiError(error, options);
     setAPIError(t('CommonCreateDraw:api_error'));
     setLoadingRequest(false);
   }
 };
 
 export const fetchDraw = async ({ urlSlug, drawId }) => {
-  logApiError(new Error('A server Error!'), {});
   const draw = await apiRead({ urlSlug, drawId });
   return getValuesFromDraw({ urlSlug, draw });
 };

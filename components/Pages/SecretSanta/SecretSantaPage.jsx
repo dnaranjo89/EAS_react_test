@@ -104,7 +104,10 @@ const SecretSantaPage = ({ track }) => {
         errorMessage = t('CommonCreateDraw:api_error');
       }
       setAPIError(errorMessage);
-      logApiError(error, analyticsType);
+      const options = {
+        tags: { drawType: analyticsType },
+      };
+      logApiError(error, options);
       setLoadingRequest(false);
     }
   };
