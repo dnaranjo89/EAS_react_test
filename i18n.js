@@ -37,6 +37,7 @@ module.exports = {
     '/coin': ['DrawCoin'],
     '/spinner': ['DrawSpinner'],
     '/dice': ['DrawDice'],
+    '/secret-santa': ['DrawSecretSanta', 'CommonCreateDraw', 'CommonPublishedDraw'],
   },
   domains: [...prodDomains, ...devDomains],
 };
