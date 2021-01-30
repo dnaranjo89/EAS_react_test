@@ -129,8 +129,9 @@ export const toss = async ({
       setQuickResult(tossResponse);
     }
   } catch (error) {
+    const extra = { drawType: analyticsType };
+    logApiError(error, extra);
     setAPIError(t('CommonCreateDraw:api_error'));
-    logApiError(error, analyticsType);
     setLoadingRequest(false);
   }
 };
@@ -157,7 +158,8 @@ export const publish = async ({ values, urlSlug, track, setLoadingRequest, setAP
     recentDraws.add(newDraw, drawPath, dateScheduled);
     Router.push(`/${urlSlug}/[id]/success`, drawPathSuccess);
   } catch (error) {
-    logApiError(error, analyticsType);
+    const extra = { drawType: analyticsType };
+    logApiError(error, extra);
     setAPIError(t('CommonCreateDraw:api_error'));
     setLoadingRequest(false);
   }

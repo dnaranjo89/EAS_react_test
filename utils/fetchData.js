@@ -5,7 +5,8 @@ import { analyticsTypesBySlug } from '../constants/analyticsTypes';
 
 export const serializeResponse = draw => JSON.parse(JSON.stringify(draw));
 
-const fetchData = async ({ drawId, urlSlug }) => {
+const fetchData = async ({ drawId, urlSlug, req }) => {
+  console.log('req', req.headers);
   try {
     // getServerSideProps does a strict serialization which fails when serialising Date
     // By doing stringify & parse we make sure that dates are strings and not Date objects
@@ -17,7 +18,8 @@ const fetchData = async ({ drawId, urlSlug }) => {
     };
   } catch (error) {
     const analyticsType = analyticsTypesBySlug[urlSlug];
-    logApiError(error, analyticsType);
+    const extra = { drawType: analyticsType, drawId };
+    logApiError(error, extra);
     return {
       error: {
         statusCode: error.status || 500,

@@ -202,7 +202,7 @@ describe('Api', () => {
       expect(mockSetAPIError).toHaveBeenCalledWith('translatedError');
       expect(mockLogApiError).toHaveBeenCalledWith(
         new TypeError("Cannot read property 'private_id' of undefined"),
-        'Letter',
+        { drawType: 'Letter' },
       );
       console.log = originalError;
       /* eslint-enable no-console */
@@ -280,6 +280,10 @@ describe('Api', () => {
 
       await publish(mockTossObject);
       expect(mockSetAPIError).toHaveBeenCalledWith('translatedError');
+      expect(mockLogApiError).toHaveBeenCalledWith(
+        new TypeError("Cannot read property 'private_id' of undefined"),
+        { drawType: 'Letter' },
+      );
       console.log = originalError;
       /* eslint-enable no-console */
     });
