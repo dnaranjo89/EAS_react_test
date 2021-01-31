@@ -40,7 +40,7 @@ const ParticipantWithEmail = ({ onAddParticipant, nameError, emailError }) => {
           // type="number"
           margin="normal"
           useCustomLabel={false}
-          className={STYLES.item}
+          className={STYLES.input}
           error={!!nameError}
           helperText={nameError}
 
@@ -58,7 +58,7 @@ const ParticipantWithEmail = ({ onAddParticipant, nameError, emailError }) => {
           // type="number"
           margin="normal"
           useCustomLabel={false}
-          className={STYLES.item}
+          className={STYLES.input}
           error={!!emailError}
           helperText={emailError}
           // fullWidth
@@ -68,7 +68,7 @@ const ParticipantWithEmail = ({ onAddParticipant, nameError, emailError }) => {
         />
 
         <MuiButton
-          className={STYLES.item}
+          className={c(STYLES.button)}
           variant="contained"
           startIcon={<AddIcon />}
           onClick={handleAddParticipant}

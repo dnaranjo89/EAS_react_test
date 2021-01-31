@@ -151,7 +151,6 @@ class MultiValueInput extends Component {
             {helperText}
           </FormHelperText>
         )}
-        <Typography color="textSecondary" variant="caption" />
       </FormControl>
     );
   }

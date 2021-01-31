@@ -7,10 +7,14 @@ import WizardForm from '../../WizardForm/WizardForm.jsx';
 import Page from '../../Page/Page.jsx';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import ParticipantsWithEmailSection from './ParticipantsWithEmailSection.jsx';
+import ExclusionsSection from './ExclusionsSection.jsx';
+import SendSection from './SendSection.jsx';
 
 import withValidationProvider from '../../FormValidation/withValidationProvider.jsx';
 
 const ParticipantsWithEmailSectionForm = withValidationProvider(ParticipantsWithEmailSection);
+const ExclusionsSectionForm = withValidationProvider(ExclusionsSection);
+const SendSectionForm = withValidationProvider(SendSection);
 
 const SecretSantaPage = props => {
   const [values, setValues] = useState({
@@ -37,11 +41,11 @@ const SecretSantaPage = props => {
     },
     {
       label: t('step_label_exclusions'),
-      render: wizardProps => <ParticipantsWithEmailSectionForm {...wizardProps} />,
+      render: wizardProps => <ExclusionsSectionForm {...wizardProps} />,
     },
     {
       label: t('step_label_send'),
-      render: wizardProps => <ParticipantsWithEmailSectionForm {...wizardProps} />,
+      render: wizardProps => <SendSectionForm {...wizardProps} />,
     },
   ];
 

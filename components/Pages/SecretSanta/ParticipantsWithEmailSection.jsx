@@ -3,26 +3,9 @@ import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import ParticipantWithEmail from './ParticipantWithEmail.jsx';
 import withFieldValidation from '../../FormValidation/withFieldValidation.jsx';
-import BoxWithBorder from '../../BoxWithBorder/BoxWithBorder.jsx';
+import ParticipantsList from './ParticipantsList.jsx';
 
 const MIN_PARTICIPANTS = 2;
-
-const ParticipantsList = ({ value, error, helperText }) => {
-  const { t } = useTranslation('DrawSecretSanta');
-  return (
-    <BoxWithBorder error={error}>
-      {value.length === 0 && t('label_no_participants')}
-      <ul>
-        {value.map(participant => (
-          <li>
-            {participant.name}({participant.email})
-          </li>
-        ))}
-      </ul>
-      {helperText}
-    </BoxWithBorder>
-  );
-};
 
 const ParticipantsListWithValidation = withFieldValidation(ParticipantsList);
 
@@ -30,7 +13,7 @@ const ParticipantsWithEmailSection = ({ participants, onFieldChange }) => {
   const [emailError, setEmailError] = useState(null);
   const [nameError, setNameError] = useState(null);
   const { t } = useTranslation('DrawSecretSanta');
-  const onAddParticipant = participant => {
+  const handleAddParticipant = participant => {
     // Name validation
     if (!participant.name) {
       setNameError(t('error_name_is_required'));
@@ -53,10 +36,17 @@ const ParticipantsWithEmailSection = ({ participants, onFieldChange }) => {
     return true;
   };
 
+  const handleRemoveParticipant = email => {
+    onFieldChange(
+      'participants',
+      participants.filter(p => p.email !== email),
+    );
+  };
+
   return (
     <>
       <ParticipantWithEmail
-        onAddParticipant={onAddParticipant}
+        onAddParticipant={handleAddParticipant}
         nameError={nameError}
         emailError={emailError}
       />
@@ -70,6 +60,7 @@ const ParticipantsWithEmailSection = ({ participants, onFieldChange }) => {
           },
         ]}
         value={participants}
+        onParticipantRemove={handleRemoveParticipant}
       />
     </>
   );

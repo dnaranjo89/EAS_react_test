@@ -5,12 +5,24 @@ import STYLES from './BoxWithBorder.module.scss';
 
 const c = classnames.bind(STYLES);
 
-const BoxWithBorder = ({ error, children, ...rest }) => (
-  <div role="presentation" className={c(STYLES.container, { [STYLES.error]: error })} {...rest}>
+const BoxWithBorder = ({ error, children, className, ...rest }) => (
+  <div
+    role="presentation"
+    className={c(STYLES.container, { [STYLES.error]: error }, className)}
+    {...rest}
+  >
     {children}
   </div>
 );
 
-BoxWithBorder.propTypes = {};
+BoxWithBorder.propTypes = {
+  className: PropTypes.string,
+  error: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+};
+BoxWithBorder.defaultProps = {
+  className: null,
+  error: false,
+};
 
 export default BoxWithBorder;
