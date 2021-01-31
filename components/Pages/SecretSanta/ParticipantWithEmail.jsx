@@ -15,15 +15,17 @@ const c = classnames.bind(STYLES);
 
 const ValidatedTextField = withFieldValidation(TextField);
 
-const ParticipantWithEmail = ({ onAddParticipant }) => {
+const ParticipantWithEmail = ({ onAddParticipant, nameError, emailError }) => {
   const { t } = useTranslation('DrawSecretSanta');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
   const handleAddParticipant = () => {
-    onAddParticipant({ name, email });
-    setName('');
-    setEmail('');
+    const success = onAddParticipant({ name, email });
+    if (success) {
+      setName('');
+      setEmail('');
+    }
   };
 
   return (
@@ -39,6 +41,9 @@ const ParticipantWithEmail = ({ onAddParticipant }) => {
           margin="normal"
           useCustomLabel={false}
           className={STYLES.item}
+          error={!!nameError}
+          helperText={nameError}
+
           // fullWidth
           // validators={[{ rule: 'required' }]}
           // data-testid="RandomNumber__from-field"
@@ -54,6 +59,8 @@ const ParticipantWithEmail = ({ onAddParticipant }) => {
           margin="normal"
           useCustomLabel={false}
           className={STYLES.item}
+          error={!!emailError}
+          helperText={emailError}
           // fullWidth
           // validators={[{ rule: 'required' }]}
           // data-testid="RandomNumber__from-field"

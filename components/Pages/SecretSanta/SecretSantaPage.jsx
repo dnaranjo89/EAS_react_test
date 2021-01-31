@@ -13,8 +13,11 @@ import withValidationProvider from '../../FormValidation/withValidationProvider.
 const ParticipantsWithEmailSectionForm = withValidationProvider(ParticipantsWithEmailSection);
 
 const SecretSantaPage = props => {
-  const [values, setValues] = useState({ participants: [] });
-  const { t } = useTranslation('DrawFacebook');
+  const [values, setValues] = useState({
+    participants: [],
+  });
+  //  [{ name: 'David', email: 'whatever@as' }]
+  const { t } = useTranslation('DrawSecretSanta');
   const onFieldChange = (fieldName, value) => {
     setValues(previousState => ({
       ...previousState,
