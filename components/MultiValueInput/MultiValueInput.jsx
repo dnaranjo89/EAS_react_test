@@ -9,6 +9,7 @@ import FormControl from '@material-ui/core/FormControl';
 import classnames from 'classnames/bind';
 import STYLES from './MultiValueInput.module.scss';
 import ValuesList from './ValuesList.jsx';
+import BoxWithBorder from '../BoxWithBorder/BoxWithBorder.jsx';
 
 const c = classnames.bind(STYLES);
 
@@ -121,11 +122,7 @@ class MultiValueInput extends Component {
         <MyInputLabel htmlFor={id} id={inputLabelId} className={c('MultiValueInput__label')}>
           {label}
         </MyInputLabel>
-        <div
-          role="presentation"
-          className={c('MultiValueInput__border', { 'MultiValueInput__border--error': error })}
-          onClick={this.handleDivClick}
-        >
+        <BoxWithBorder error={error} onClick={this.handleDivClick}>
           <div className={c('MultiValueInput__itemsList')}>
             <ValuesList values={values} onValueDelete={this.onValueDelete} />{' '}
             <Input
@@ -148,7 +145,7 @@ class MultiValueInput extends Component {
               {...extra}
             />
           </div>
-        </div>
+        </BoxWithBorder>
         {helperText && (
           <FormHelperText id={helperTextId} {...FormHelperTextProps}>
             {helperText}

@@ -1,0 +1,16 @@
+@import '../variables.module';
+
+$border-radius: 4 * $one-pixel-rem;
+
+.container {
+  margin-top: $spacing-sm;
+  padding: $spacing-xs;
+  border-width: $one-pixel-rem;
+  border-style: solid;
+  border-radius: $border-radius;
+  border-color: $color-gray;
+}
+
+.error {
+  border-color: $color-red;
+}
