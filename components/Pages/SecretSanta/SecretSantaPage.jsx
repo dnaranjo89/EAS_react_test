@@ -18,7 +18,11 @@ const SendSectionForm = withValidationProvider(SendSection);
 
 const SecretSantaPage = props => {
   const [values, setValues] = useState({
-    participants: [],
+    participants: [
+      { name: 'David', email: 'whatever@as', exclusions: [] },
+      { name: 'Pepe', email: 'whatevera@as', exclusions: [] },
+      { name: 'Mario', email: 'w2hatever@as', exclusions: ['whatevera@as'] },
+    ],
   });
   //  [{ name: 'David', email: 'whatever@as' }]
   const { t } = useTranslation('DrawSecretSanta');
@@ -28,12 +32,27 @@ const SecretSantaPage = props => {
       [fieldName]: value,
     }));
   };
+
+  const handleParticipantsChange = participants => {
+    setValues({ participants });
+  };
+
+  const handleExclusionsChange = (participantEmail, exclusionEmailsList) => {
+    setValues(prevValues => ({
+      participants: prevValues.participants.map(p => {
+        if (p.email === participantEmail) {
+          p.exclusions = exclusionEmailsList;
+        }
+        return p;
+      }),
+    }));
+  };
   const steps = [
     {
       label: t('step_label_participants'),
       render: wizardProps => (
         <ParticipantsWithEmailSectionForm
-          onFieldChange={onFieldChange}
+          onFieldChange={handleParticipantsChange}
           participants={values.participants}
           {...wizardProps}
         />
@@ -41,7 +60,13 @@ const SecretSantaPage = props => {
     },
     {
       label: t('step_label_exclusions'),
-      render: wizardProps => <ExclusionsSectionForm {...wizardProps} />,
+      render: wizardProps => (
+        <ExclusionsSectionForm
+          participants={values.participants}
+          onModifyExclusions={handleExclusionsChange}
+          {...wizardProps}
+        />
+      ),
     },
     {
       label: t('step_label_send'),
@@ -64,8 +89,9 @@ const SecretSantaPage = props => {
       <DrawHeading title={t('page_title')} subtitle={t('draw_subheading')} />
       <WizardForm
         steps={steps}
+        initialStep={1}
         onSubmit={handlePublish}
-        submitButtonLabel={t('publish_draw')}
+        submitButtonLabel={t('button_label_send_emails')}
         apiError={apiError}
         isMobile={isMobile}
       />
