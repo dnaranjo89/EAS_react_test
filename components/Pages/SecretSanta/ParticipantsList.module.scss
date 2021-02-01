@@ -1,10 +1,5 @@
 @import '../../variables.module';
 
 .container {
-  padding: $spacing-md;
-  // padding-bottom: $spacing-md;
-}
-
-.list {
-  // $spacing-sm
+  padding: $spacing-md !important; /* stylelint-disable-line declaration-no-important */
 }

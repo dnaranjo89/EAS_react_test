@@ -1,0 +1,14 @@
+@import '../../variables.module';
+
+.container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.button {
+  margin-top: $spacing-md + $spacing-xs;
+}
+
+.input {
+  margin: $spacing-sm;
+}
