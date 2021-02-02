@@ -66,6 +66,24 @@ describe('ExclusionsSection', () => {
       'mario@gmail.com',
     ]);
   });
+
+  it('should not include participants in the dropdown if they already have exclusions', async () => {
+    const onModifyExclusionsMock = jest.fn();
+
+    render(
+      <ExclusionsSection
+        participants={[
+          { name: 'David', email: 'dnaranjo89@gmail.com', exclusions: ['Mario'] },
+          { name: 'Mario', email: 'mario@gmail.com', exclusions: [] },
+        ]}
+        onModifyExclusions={onModifyExclusionsMock}
+      />,
+    );
+
+    userEvent.click(screen.getByRole('button', { name: /open_participant_dropdown/i }));
+    expect(screen.queryByRole('option', { name: /david/i })).not.toBeInTheDocument();
+  });
+
   it('should show an error when an email already exists in the list of participants', async () => {
     const onModifyExclusionsMock = jest.fn();
 

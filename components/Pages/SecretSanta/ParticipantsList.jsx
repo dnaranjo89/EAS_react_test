@@ -6,9 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import classnames from 'classnames/bind';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import DeleteIcon from '@material-ui/icons/Clear';
 import IconButton from '@material-ui/core/IconButton';
 import STYLES from './ParticipantsList.module.scss';
@@ -17,40 +14,47 @@ import BoxWithBorder from '../../BoxWithBorder/BoxWithBorder.jsx';
 
 const c = classnames.bind(STYLES);
 
-const ParticipantsList = ({ name, value, error, helperText, onParticipantRemove }) => {
+export const LIST_TYPES = {
+  EMAILS: 'EMAILS',
+  EXCLUSIONS: 'EXCLUSIONS',
+};
+
+const ParticipantsList = ({ value, error, helperText, onRemove, type }) => {
   const { t } = useTranslation('DrawSecretSanta');
-  const helperTextId = helperText && name ? `${name}-helper-text` : undefined;
 
   return (
     <BoxWithBorder error={error} className={STYLES.container}>
-      {value.length === 0 && <Typography variant="body2">{t('label_no_participants')}</Typography>}
+      {value.length === 0 && (
+        <Typography variant="body2">
+          {type === LIST_TYPES.EMAILS ? t('label_no_participants') : t('label_no_exclusions')}
+        </Typography>
+      )}
       {value.length > 0 && (
         <List dense>
           {value.map(participant => (
-            <ListItem key={participant.email}>
+            <ListItem key={participant.name}>
               <IconButton
                 edge="start"
                 aria-label="delete"
-                onClick={() => onParticipantRemove(participant.email)}
+                onClick={() => onRemove(participant.name)}
               >
                 <DeleteIcon fontSize="small" />
               </IconButton>
-              {participant.name} ({participant.email})
+              {type === LIST_TYPES.EMAILS
+                ? `${participant.name} (${participant.email})`
+                : `${participant.name} ${t('field_label_exclusions')} ${participant.exclusions.join(
+                    ', ',
+                  )}`}
             </ListItem>
           ))}
         </List>
       )}
-      {helperText && (
-        <FormHelperText error={error} id={helperTextId}>
-          {helperText}
-        </FormHelperText>
-      )}
+      {helperText && <FormHelperText error={error}>{helperText}</FormHelperText>}
     </BoxWithBorder>
   );
 };
 
 ParticipantsList.propTypes = {
-  name: PropTypes.string.isRequired,
   value: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -59,7 +63,8 @@ ParticipantsList.propTypes = {
   ).isRequired,
   error: PropTypes.bool,
   helperText: PropTypes.string,
-  onParticipantRemove: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 ParticipantsList.defaultProps = {

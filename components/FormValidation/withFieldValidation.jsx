@@ -109,7 +109,7 @@ const withFieldValidation = WrappedComponent => {
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
-      PropTypes.arrayOf(PropTypes.string),
+      PropTypes.arrayOf(PropTypes.any),
     ]),
     name: PropTypes.string.isRequired,
     validators: PropTypes.arrayOf(

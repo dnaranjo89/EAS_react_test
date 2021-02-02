@@ -8,17 +8,18 @@ import useTranslation from 'next-translate/useTranslation';
 
 import AddIcon from '@material-ui/icons/Add';
 import STYLES from './ExclusionsSection.module.scss';
+import ParticipantsList, { LIST_TYPES } from './ParticipantsList.jsx';
 
 const c = classnames.bind(STYLES);
 const ExclusionsSection = ({ participants, onModifyExclusions }) => {
   const { t } = useTranslation('DrawSecretSanta');
   const [selectedParticipant, setSelectedParticipant] = useState(null);
   const [exclusions, setExclusions] = useState([]);
-  const exclusionEmailsList = exclusions.map(e => e.email);
+  const exclusionNamesList = exclusions.map(e => e.name);
   const handleModifyExclusion = () => {
     setExclusions([]);
     setSelectedParticipant();
-    onModifyExclusions(selectedParticipant.email, exclusionEmailsList);
+    onModifyExclusions(selectedParticipant.name, exclusionNamesList);
   };
 
   const handleChangeSelectedParticipant = (e, currentParticipant, reason) => {
@@ -32,13 +33,16 @@ const ExclusionsSection = ({ participants, onModifyExclusions }) => {
     setSelectedParticipant(currentParticipant);
   };
 
+  const handleRemoveExclusion = () => {};
+
   const participantsWithExclusions = participants.filter(p => p.exclusions.length > 0);
+  const participantsWithoutExclusions = participants.filter(p => p.exclusions.length === 0);
   return (
     <div>
       <div className={STYLES.container}>
         <Autocomplete
-          id="combo-box-demo"
-          options={participants}
+          id="participant"
+          options={participantsWithoutExclusions}
           getOptionLabel={option => option.name}
           style={{ width: 200 }}
           value={selectedParticipant}
@@ -51,7 +55,7 @@ const ExclusionsSection = ({ participants, onModifyExclusions }) => {
         />
         <Autocomplete
           multiple
-          id="tags-outlined"
+          id="exclusions"
           options={
             selectedParticipant
               ? participants.filter(p => p.email !== selectedParticipant.email)
@@ -79,11 +83,11 @@ const ExclusionsSection = ({ participants, onModifyExclusions }) => {
         </MuiButton>
       </div>
       <div>
-        {participantsWithExclusions.map(p => (
-          <div key={p.email}>
-            {p.name} - {p.exclusions.join(', ')}
-          </div>
-        ))}
+        <ParticipantsList
+          value={participantsWithExclusions}
+          type={LIST_TYPES.EXCLUSIONS}
+          onRemove={handleRemoveExclusion}
+        />
       </div>
     </div>
   );
