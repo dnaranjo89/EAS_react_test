@@ -40,11 +40,8 @@ const ParticipantsWithEmailSection = ({ participants, onFieldChange }) => {
     return true;
   };
 
-  const handleRemoveParticipant = email => {
-    onFieldChange(
-      'participants',
-      participants.filter(p => p.email !== email),
-    );
+  const handleRemoveParticipant = name => {
+    onFieldChange(participants.filter(p => p.name !== name));
   };
 
   return (
