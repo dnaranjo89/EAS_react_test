@@ -35,7 +35,11 @@ const ParticipantsList = ({ value, error, helperText, onRemove, type }) => {
             <ListItem key={participant.name}>
               <IconButton
                 edge="start"
-                aria-label="delete"
+                aria-label={
+                  type === LIST_TYPES.EMAILS
+                    ? t('label_remove_participant', { name: participant.name })
+                    : t('label_remove_exclusion', { name: participant.name })
+                }
                 onClick={() => onRemove(participant.name)}
               >
                 <DeleteIcon fontSize="small" />

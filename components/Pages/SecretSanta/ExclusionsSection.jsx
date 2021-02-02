@@ -18,7 +18,7 @@ const ExclusionsSection = ({ participants, onModifyExclusions }) => {
   const exclusionNamesList = exclusions.map(e => e.name);
   const handleModifyExclusion = () => {
     setExclusions([]);
-    setSelectedParticipant();
+    setSelectedParticipant(null);
     onModifyExclusions(selectedParticipant.name, exclusionNamesList);
   };
 
@@ -37,6 +37,7 @@ const ExclusionsSection = ({ participants, onModifyExclusions }) => {
 
   const participantsWithExclusions = participants.filter(p => p.exclusions.length > 0);
   const participantsWithoutExclusions = participants.filter(p => p.exclusions.length === 0);
+
   return (
     <div>
       <div className={STYLES.container}>
