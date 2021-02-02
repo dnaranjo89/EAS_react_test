@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import ParticipantWithEmail from './ParticipantWithEmail.jsx';
 import withFieldValidation from '../../FormValidation/withFieldValidation.jsx';
-import ParticipantsList from './ParticipantsList.jsx';
+import ParticipantsList, { LIST_TYPES } from './ParticipantsList.jsx';
 
 const MIN_PARTICIPANTS = 2;
 
@@ -17,6 +17,10 @@ const ParticipantsWithEmailSection = ({ participants, onFieldChange }) => {
     // Name validation
     if (!participant.name) {
       setNameError(t('error_name_is_required'));
+      return false;
+    }
+    if (participants.find(currentParticipant => currentParticipant.name === participant.name)) {
+      setEmailError(t('error_name_already_registered'));
       return false;
     }
 
@@ -60,7 +64,8 @@ const ParticipantsWithEmailSection = ({ participants, onFieldChange }) => {
           },
         ]}
         value={participants}
-        onParticipantRemove={handleRemoveParticipant}
+        onRemove={handleRemoveParticipant}
+        type={LIST_TYPES.EMAILS}
       />
     </>
   );

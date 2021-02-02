@@ -21,7 +21,7 @@ const SecretSantaPage = props => {
     participants: [
       { name: 'David', email: 'whatever@as', exclusions: [] },
       { name: 'Pepe', email: 'whatevera@as', exclusions: [] },
-      { name: 'Mario', email: 'w2hatever@as', exclusions: ['whatevera@as'] },
+      { name: 'Mario', email: 'w2hatever@as', exclusions: ['David', 'Pedro'] },
     ],
   });
   //  [{ name: 'David', email: 'whatever@as' }]
@@ -37,11 +37,11 @@ const SecretSantaPage = props => {
     setValues({ participants });
   };
 
-  const handleExclusionsChange = (participantEmail, exclusionEmailsList) => {
+  const handleExclusionsChange = (participantName, exclusionNamesList) => {
     setValues(prevValues => ({
       participants: prevValues.participants.map(p => {
-        if (p.email === participantEmail) {
-          p.exclusions = exclusionEmailsList;
+        if (p.name === participantName) {
+          return { ...p, exclusions: exclusionNamesList };
         }
         return p;
       }),
@@ -82,7 +82,7 @@ const SecretSantaPage = props => {
       htmlTitle={t('html_title')}
       htmlDescription={t('html_description')}
       htmlKeywords={t('html_keywords')}
-      pageType="Facebook Raffle"
+      pageType="Secret Santa"
       showAdvert={!isMobile}
       // ogImage={facebookRaffleOgImage} // TODO implement
     >
