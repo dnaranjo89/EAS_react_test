@@ -94,8 +94,10 @@ const SecretSantaPage = props => {
         submitButtonLabel={t('button_label_send_emails')}
         apiError={apiError}
         isMobile={isMobile}
+        learnMoreSection={
+          <LearnMoreSection title={t('learn_more_title')} content={t('learn_more_content')} />
+        }
       />
-      <LearnMoreSection title={t('learn_more_title')} content={t('learn_more_content')} />
     </Page>
   );
 };
