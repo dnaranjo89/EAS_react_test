@@ -22,7 +22,7 @@ const DesktopWizard = ({
   apiError,
   submitButtonLabel,
   loading,
-
+  learnMoreSection,
   children,
 }) => {
   const { t } = useTranslation('CommonCreateDraw');
@@ -63,6 +63,7 @@ const DesktopWizard = ({
           {activeStep === stepLabels.length - 1 ? submitButtonLabel : t('wizard_next')}
         </LoadingButton>
       </div>
+      {activeStep === 0 && learnMoreSection}
     </div>
   );
 };

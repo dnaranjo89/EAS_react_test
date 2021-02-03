@@ -21,6 +21,7 @@ const MobileWizardForm = ({
   handleNext,
   handleBack,
   children,
+  learnMoreSection,
 }) => {
   const { t } = useTranslation('CommonCreateDraw');
   return (
@@ -45,6 +46,7 @@ const MobileWizardForm = ({
           </Button>
         }
       />
+      {activeStep === 0 && learnMoreSection}
     </>
   );
 };
