@@ -1,17 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Trans from 'next-translate/Trans';
+import Typography from '@material-ui/core/Typography';
 
 const SendSection = props => (
   <div>
-    <p>Ya esta todo listo.</p>
-    <p>
-      Cuando pulses 'Enviar correos' enviaremos un correo a cada participante indicandole quien es
-      la persona a la que debe hacerle el regalo
-    </p>
-    <p>
-      Recuerda confirmar con todos los paticipantes que han recibido el correo (puede esta en la
-      carpeta de correo no deseado)
-    </p>
+    <Trans i18nKey="DrawSecretSanta:summary_send" components={[<p />]} />
   </div>
 );
 

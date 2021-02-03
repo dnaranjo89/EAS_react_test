@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
 import useTranslation from 'next-translate/useTranslation';
 
@@ -9,6 +8,7 @@ import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import ParticipantsWithEmailSection from './ParticipantsWithEmailSection.jsx';
 import ExclusionsSection from './ExclusionsSection.jsx';
 import SendSection from './SendSection.jsx';
+import LearnMoreSection from '../../LearnMoreSection/LearnMoreSection.jsx';
 
 import withValidationProvider from '../../FormValidation/withValidationProvider.jsx';
 
@@ -95,6 +95,7 @@ const SecretSantaPage = props => {
         apiError={apiError}
         isMobile={isMobile}
       />
+      <LearnMoreSection title={t('learn_more_title')} content={t('learn_more_content')} />
     </Page>
   );
 };
