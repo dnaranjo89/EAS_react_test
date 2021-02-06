@@ -5,13 +5,14 @@ import TextField from '@material-ui/core/TextField';
 import MuiButton from '@material-ui/core/Button';
 import classnames from 'classnames/bind';
 import useTranslation from 'next-translate/useTranslation';
+import Typography from '@material-ui/core/Typography';
 
 import AddIcon from '@material-ui/icons/Add';
 import STYLES from './ExclusionsSection.module.scss';
 import ParticipantsList, { LIST_TYPES } from './ParticipantsList.jsx';
 
 const c = classnames.bind(STYLES);
-const ExclusionsSection = ({ participants, onModifyExclusions }) => {
+const ExclusionsSection = ({ participants, onExclusionsChange }) => {
   const { t } = useTranslation('DrawSecretSanta');
   const [selectedParticipant, setSelectedParticipant] = useState(null);
   const [exclusions, setExclusions] = useState([]);
@@ -19,7 +20,7 @@ const ExclusionsSection = ({ participants, onModifyExclusions }) => {
   const handleModifyExclusion = () => {
     setExclusions([]);
     setSelectedParticipant(null);
-    onModifyExclusions(selectedParticipant.name, exclusionNamesList);
+    onExclusionsChange(selectedParticipant.name, exclusionNamesList);
   };
 
   const handleChangeSelectedParticipant = (e, currentParticipant, reason) => {
@@ -33,13 +34,18 @@ const ExclusionsSection = ({ participants, onModifyExclusions }) => {
     setSelectedParticipant(currentParticipant);
   };
 
-  const handleRemoveExclusion = () => {};
+  const handleRemoveExclusion = name => {
+    onExclusionsChange(name, []);
+  };
 
   const participantsWithExclusions = participants.filter(p => p.exclusions.length > 0);
   const participantsWithoutExclusions = participants.filter(p => p.exclusions.length === 0);
 
   return (
     <div>
+      <Typography variant="subtitle2" className={STYLES.description}>
+        {t('exclusion_description')}{' '}
+      </Typography>
       <div className={STYLES.container}>
         <Autocomplete
           id="participant"
@@ -79,17 +85,16 @@ const ExclusionsSection = ({ participants, onModifyExclusions }) => {
           variant="contained"
           startIcon={<AddIcon />}
           onClick={handleModifyExclusion}
+          disabled={!selectedParticipant || exclusions.length === 0}
         >
           {t('add_exclusion')}
         </MuiButton>
       </div>
-      <div>
-        <ParticipantsList
-          value={participantsWithExclusions}
-          type={LIST_TYPES.EXCLUSIONS}
-          onRemove={handleRemoveExclusion}
-        />
-      </div>
+      <ParticipantsList
+        value={participantsWithExclusions}
+        type={LIST_TYPES.EXCLUSIONS}
+        onRemove={handleRemoveExclusion}
+      />
     </div>
   );
 };
@@ -100,6 +105,7 @@ ExclusionsSection.propTypes = {
       email: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  onExclusionsChange: PropTypes.func.isRequired,
 };
 
 ExclusionsSection.defaultProps = {};

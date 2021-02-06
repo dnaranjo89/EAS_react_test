@@ -9,7 +9,7 @@ const MIN_PARTICIPANTS = 2;
 
 const ParticipantsListWithValidation = withFieldValidation(ParticipantsList);
 
-const ParticipantsWithEmailSection = ({ participants, onFieldChange }) => {
+const ParticipantsWithEmailSection = ({ participants, onParticipantsChange }) => {
   const [emailError, setEmailError] = useState(null);
   const [nameError, setNameError] = useState(null);
   const { t } = useTranslation('DrawSecretSanta');
@@ -34,14 +34,14 @@ const ParticipantsWithEmailSection = ({ participants, onFieldChange }) => {
       return false;
     }
 
-    onFieldChange('participants', [...participants, participant]);
+    onParticipantsChange([...participants, participant]);
     setNameError(null);
     setEmailError(null);
     return true;
   };
 
   const handleRemoveParticipant = name => {
-    onFieldChange(participants.filter(p => p.name !== name));
+    onParticipantsChange(participants.filter(p => p.name !== name));
   };
 
   return (
@@ -75,7 +75,7 @@ ParticipantsWithEmailSection.propTypes = {
       email: PropTypes.string.isRequired,
     }),
   ).isRequired,
-  onFieldChange: PropTypes.func.isRequired,
+  onParticipantsChange: PropTypes.func.isRequired,
 };
 
 export default ParticipantsWithEmailSection;
