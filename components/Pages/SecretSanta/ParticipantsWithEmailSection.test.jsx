@@ -29,11 +29,14 @@ WrapperProviders.propTypes = {
 
 describe('ParticipantsWithEmailSection', () => {
   it('should add participants', async () => {
-    const onFieldChangeMock = jest.fn();
+    const onParticipantsChangeMock = jest.fn();
 
     render(
       <ValidationProvider onSubmit={mockOnSubmit}>
-        <ParticipantsWithEmailSection participants={[]} onFieldChange={onFieldChangeMock} />
+        <ParticipantsWithEmailSection
+          participants={[]}
+          onParticipantsChange={onParticipantsChangeMock}
+        />
       </ValidationProvider>,
       { wrapper: WrapperProviders },
     );
@@ -46,18 +49,18 @@ describe('ParticipantsWithEmailSection', () => {
 
     userEvent.click(screen.getByRole('button', { name: /add/i }));
 
-    expect(onFieldChangeMock).toHaveBeenCalledWith('participants', [
-      { name: 'David', email: 'dnaranjo89@gmail.com' },
+    expect(onParticipantsChangeMock).toHaveBeenCalledWith([
+      { name: 'David', email: 'dnaranjo89@gmail.com', exclusions: [] },
     ]);
   });
   it('should show an error when an email already exists in the list of participants', async () => {
-    const onFieldChangeMock = jest.fn();
+    const onParticipantsChangeMock = jest.fn();
 
     render(
       <ValidationProvider onSubmit={mockOnSubmit}>
         <ParticipantsWithEmailSection
           participants={[participantDavid]}
-          onFieldChange={onFieldChangeMock}
+          onParticipantsChange={onParticipantsChangeMock}
         />
       </ValidationProvider>,
       { wrapper: WrapperProviders },
@@ -71,20 +74,20 @@ describe('ParticipantsWithEmailSection', () => {
 
     userEvent.click(screen.getByRole('button', { name: /add/i }));
 
-    expect(onFieldChangeMock).not.toHaveBeenCalled();
+    expect(onParticipantsChangeMock).not.toHaveBeenCalled();
     expect(
       screen.getByText(/This email is already included in the list of participants/),
     ).toBeInTheDocument();
   });
 
   it('should show an error when a name already exists in the list of participants', async () => {
-    const onFieldChangeMock = jest.fn();
+    const onParticipantsChangeMock = jest.fn();
 
     render(
       <ValidationProvider onSubmit={mockOnSubmit}>
         <ParticipantsWithEmailSection
           participants={[participantDavid]}
-          onFieldChange={onFieldChangeMock}
+          onParticipantsChange={onParticipantsChangeMock}
         />
       </ValidationProvider>,
       { wrapper: WrapperProviders },
@@ -98,20 +101,20 @@ describe('ParticipantsWithEmailSection', () => {
 
     userEvent.click(screen.getByRole('button', { name: /add/i }));
 
-    expect(onFieldChangeMock).not.toHaveBeenCalled();
+    expect(onParticipantsChangeMock).not.toHaveBeenCalled();
     expect(
       screen.getByText(/This name is already included in the list of participants/),
     ).toBeInTheDocument();
   });
 
   it('should show the list of already added participants', async () => {
-    const onFieldChangeMock = jest.fn();
+    const onParticipantsChangeMock = jest.fn();
 
     render(
       <ValidationProvider onSubmit={mockOnSubmit}>
         <ParticipantsWithEmailSection
           participants={[participantDavid, participantPedro]}
-          onFieldChange={onFieldChangeMock}
+          onParticipantsChange={onParticipantsChangeMock}
         />
       </ValidationProvider>,
       { wrapper: WrapperProviders },
@@ -122,17 +125,17 @@ describe('ParticipantsWithEmailSection', () => {
   });
 
   it('should remove participants', async () => {
-    const onFieldChangeMock = jest.fn();
+    const onParticipantsChangeMock = jest.fn();
 
     render(
       <ParticipantsWithEmailSection
         participants={[participantDavid, participantPedro]}
-        onFieldChange={onFieldChangeMock}
+        onParticipantsChange={onParticipantsChangeMock}
       />,
       { wrapper: WrapperProviders },
     );
 
     userEvent.click(screen.getByRole('button', { name: /remove david/i }));
-    expect(onFieldChangeMock).toHaveBeenCalledWith([participantPedro]);
+    expect(onParticipantsChangeMock).toHaveBeenCalledWith([participantPedro]);
   });
 });

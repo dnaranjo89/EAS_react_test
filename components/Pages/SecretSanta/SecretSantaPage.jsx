@@ -24,14 +24,7 @@ const SecretSantaPage = props => {
       { name: 'Mario', email: 'w2hatever@as', exclusions: ['David', 'Pedro'] },
     ],
   });
-  //  [{ name: 'David', email: 'whatever@as' }]
   const { t } = useTranslation('DrawSecretSanta');
-  const onFieldChange = (fieldName, value) => {
-    setValues(previousState => ({
-      ...previousState,
-      [fieldName]: value,
-    }));
-  };
 
   const handleParticipantsChange = participants => {
     setValues({ participants });
@@ -52,7 +45,7 @@ const SecretSantaPage = props => {
       label: t('step_label_participants'),
       render: wizardProps => (
         <ParticipantsWithEmailSectionForm
-          onFieldChange={handleParticipantsChange}
+          onParticipantsChange={handleParticipantsChange}
           participants={values.participants}
           {...wizardProps}
         />
@@ -63,7 +56,7 @@ const SecretSantaPage = props => {
       render: wizardProps => (
         <ExclusionsSectionForm
           participants={values.participants}
-          onModifyExclusions={handleExclusionsChange}
+          onExclusionsChange={handleExclusionsChange}
           {...wizardProps}
         />
       ),

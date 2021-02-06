@@ -21,7 +21,7 @@ const ParticipantWithEmail = ({ onAddParticipant, nameError, emailError }) => {
   const [email, setEmail] = useState('');
 
   const handleAddParticipant = () => {
-    const success = onAddParticipant({ name, email });
+    const success = onAddParticipant({ name, email, exclusions: [] });
     if (success) {
       setName('');
       setEmail('');

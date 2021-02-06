@@ -31,12 +31,12 @@ WrapperProviders.propTypes = {
 
 describe('ExclusionsSection', () => {
   it('should not include the selected participant in the exclusions dropdown', async () => {
-    const onModifyExclusionsMock = jest.fn();
+    const onExclusionsChangeMock = jest.fn();
 
     render(
       <ExclusionsSection
         participants={[participantDavid, participantMario, participantPedro, participantAntonio]}
-        onModifyExclusions={onModifyExclusionsMock}
+        onExclusionsChange={onExclusionsChangeMock}
       />,
       { wrapper: WrapperProviders },
     );
@@ -62,7 +62,7 @@ describe('ExclusionsSection', () => {
   });
 
   it('should add participants with exclusions', async () => {
-    const onModifyExclusionsMock = jest.fn();
+    const onExclusionsChangeMock = jest.fn();
 
     render(
       <ExclusionsSection
@@ -70,7 +70,7 @@ describe('ExclusionsSection', () => {
           { name: 'David', email: 'dnaranjo89@gmail.com', exclusions: [] },
           { name: 'Mario', email: 'mario@gmail.com', exclusions: [] },
         ]}
-        onModifyExclusions={onModifyExclusionsMock}
+        onExclusionsChange={onExclusionsChangeMock}
       />,
       { wrapper: WrapperProviders },
     );
@@ -85,11 +85,11 @@ describe('ExclusionsSection', () => {
 
     userEvent.click(screen.getByRole('button', { name: /add/i }));
 
-    expect(onModifyExclusionsMock).toHaveBeenCalledWith('David', ['Mario']);
+    expect(onExclusionsChangeMock).toHaveBeenCalledWith('David', ['Mario']);
   });
 
   it('should not include participants in the dropdown if they already have exclusions', async () => {
-    const onModifyExclusionsMock = jest.fn();
+    const onExclusionsChangeMock = jest.fn();
 
     render(
       <ExclusionsSection
@@ -97,12 +97,29 @@ describe('ExclusionsSection', () => {
           { name: 'David', email: 'dnaranjo89@gmail.com', exclusions: ['Mario'] },
           { name: 'Mario', email: 'mario@gmail.com', exclusions: [] },
         ]}
-        onModifyExclusions={onModifyExclusionsMock}
+        onExclusionsChange={onExclusionsChangeMock}
       />,
       { wrapper: WrapperProviders },
     );
 
     userEvent.click(screen.getByRole('button', { name: /Open participants list/i }));
     expect(screen.queryByRole('option', { name: /david/i })).not.toBeInTheDocument();
+  });
+
+  it('should remove exclusions from participant', () => {
+    const onExclusionsChangeMock = jest.fn();
+
+    render(
+      <ExclusionsSection
+        participants={[
+          { name: 'David', email: 'dnaranjo89@gmail.com', exclusions: ['Mario'] },
+          { name: 'Mario', email: 'mario@gmail.com', exclusions: [] },
+        ]}
+        onExclusionsChange={onExclusionsChangeMock}
+      />,
+      { wrapper: WrapperProviders },
+    );
+    userEvent.click(screen.getByRole('button', { name: /Remove exclusions for David/i }));
+    expect(onExclusionsChangeMock).toHaveBeenCalledWith('David', []);
   });
 });
