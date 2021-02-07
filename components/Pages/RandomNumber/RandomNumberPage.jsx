@@ -78,7 +78,7 @@ const RandomNumberPage = props => {
         submitButtonLabel={t('publish_draw')}
         apiError={apiError}
         isMobile={isMobile}
-        loadingRequest={loadingRequest}
+        loading={loadingRequest}
       />
     </Page>
   );

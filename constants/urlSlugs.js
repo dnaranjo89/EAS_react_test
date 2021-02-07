@@ -8,3 +8,4 @@ export const URL_SLUG_LETTER = 'letter';
 export const URL_SLUG_DICE = 'dice';
 export const URL_SLUG_ITEM = 'item';
 export const URL_SLUG_SETS = 'sets';
+export const URL_SLUG_SECRET_SANTA = 'secret-santa';
