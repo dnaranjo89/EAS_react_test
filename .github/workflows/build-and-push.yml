@@ -128,7 +128,7 @@ jobs:
         with:
           repository: etcaterva/deployment
           submodules: true
-          ref: ${{ needs.build-docker.outputs.deployment_branch }}
+          ref: ${{ needs.build-docker.outputs.deployment_branch_name }}
 
       - name: Set up Python 3.9
         uses: actions/setup-python@v1
