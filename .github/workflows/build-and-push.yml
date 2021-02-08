@@ -54,11 +54,11 @@ jobs:
         run: |
           if [[ "${{github.ref}}" == "refs/heads/prod" ]]; then
               echo "::set-output name=app_env::production"
-              echo "::set-output name=hosts_file::hosts_prod"
+              echo "::set-output name=hosts_file::environments/prod/hosts"
               echo "::set-output name=deployment_branch_name::prod"
           else
               echo "::set-output name=app_env::staging"
-              echo "::set-output name=hosts_file::hosts_dev"
+              echo "::set-output name=hosts_file::environments/dev/hosts"
               echo "::set-output name=deployment_branch_name::master"
           fi
 
