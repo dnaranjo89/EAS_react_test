@@ -6,7 +6,7 @@ import Input from '@material-ui/core/Input';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import FilledInput from '@material-ui/core/FilledInput';
 import Typography from '@material-ui/core/Typography';
-// import InputLabel from '@material-ui/core/InputLabel'; // EAS Adjust - code commented out
+import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import ReactDOM from 'react-dom';
@@ -71,6 +71,8 @@ const TextField = React.forwardRef((props, ref) => {
     type,
     value,
     variant = 'standard',
+    // EAS Adjust - Adding this prop to allow choosing between the default label or our custom one
+    useCustomLabel = true,
     ...other
   } = props;
 
@@ -155,16 +157,16 @@ const TextField = React.forwardRef((props, ref) => {
       {...other}
     >
       {/* EAS Adjust - We are using a custom - bigger and static - label */}
-      {label && (
+      {useCustomLabel && label && (
         <Typography htmlFor={id} id={inputLabelId} component="label" variant="h3">
           {label}
         </Typography>
       )}
-      {/* {label && (
+      {!useCustomLabel && label && (
         <InputLabel htmlFor={id} ref={labelRef} id={inputLabelId} {...InputLabelProps}>
           {label}
         </InputLabel>
-      )} */}
+      )}
       {select ? (
         <Select
           aria-describedby={helperTextId}
@@ -336,6 +338,7 @@ TextField.propTypes = {
    * The variant to use.
    */
   variant: PropTypes.oneOf(['standard', 'outlined', 'filled']),
+  useCustomLabel: PropTypes.bool,
 };
 
 export default withStyles(styles, { name: 'MuiTextField' })(TextField);

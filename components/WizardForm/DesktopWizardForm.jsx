@@ -22,7 +22,7 @@ const DesktopWizard = ({
   apiError,
   submitButtonLabel,
   loading,
-
+  learnMoreSection,
   children,
 }) => {
   const { t } = useTranslation('CommonCreateDraw');
@@ -63,6 +63,7 @@ const DesktopWizard = ({
           {activeStep === stepLabels.length - 1 ? submitButtonLabel : t('wizard_next')}
         </LoadingButton>
       </div>
+      {activeStep === 0 && learnMoreSection}
     </div>
   );
 };
@@ -78,11 +79,13 @@ DesktopWizard.propTypes = {
   handleBack: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   children: PropTypes.node.isRequired,
+  learnMoreSection: PropTypes.node,
 };
 
 DesktopWizard.defaultProps = {
   apiError: false,
   loading: false,
+  learnMoreSection: null,
 };
 
 export default DesktopWizard;

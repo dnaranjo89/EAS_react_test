@@ -81,7 +81,7 @@ class WizardForm extends Component {
   }
 
   render() {
-    const { steps, apiError, loading, submitButtonLabel, isMobile } = this.props;
+    const { steps, apiError, loading, submitButtonLabel, isMobile, learnMoreSection } = this.props;
     const stepLabels = steps.map(step => step.label);
     const { activeStep, stepValidations, submittedSteps } = this.state;
 
@@ -100,7 +100,11 @@ class WizardForm extends Component {
       handleBack: this.handleBack,
     };
     return isMobile ? (
-      <MobileWizardForm numSteps={stepLabels.length} {...commonWizardProps}>
+      <MobileWizardForm
+        numSteps={stepLabels.length}
+        learnMoreSection={learnMoreSection}
+        {...commonWizardProps}
+      >
         {content}
       </MobileWizardForm>
     ) : (
@@ -108,6 +112,7 @@ class WizardForm extends Component {
         stepValidations={stepValidations}
         submittedSteps={submittedSteps}
         stepLabels={stepLabels}
+        learnMoreSection={learnMoreSection}
         {...commonWizardProps}
       >
         {content}
@@ -130,12 +135,14 @@ WizardForm.propTypes = {
   submitButtonLabel: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   isMobile: PropTypes.bool.isRequired,
+  learnMoreSection: PropTypes.node,
 };
 
 WizardForm.defaultProps = {
   initialStep: 0,
   loading: false,
   apiError: false,
+  learnMoreSection: null,
 };
 
 export default WizardForm;
