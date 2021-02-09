@@ -11,6 +11,7 @@ import coinIcon from './coin.svg';
 import randomLetterIcon from './random_letter.png';
 import diceIcon from './dice.svg';
 import linkSetsIcon from './link_sets.png';
+import tournamentIcon from './tournament.png';
 import raffleIcon from './raffle.svg';
 
 import STYLES from './Homepage.module.scss';
@@ -45,9 +46,6 @@ const HomePage = () => {
           <DrawCard icon={diceIcon} href="/dice">
             {t('draw_title_roll_dice')}
           </DrawCard>
-          {/* <DrawCard icon={tournamentIcon} href="https://echaloasuerte.com/draw/new/tournament/">
-          {t('draw_title_tournament')}
-        </DrawCard> */}
         </div>
         <div>
           <DrawCard icon={randomNumberIcon} href="/number">
@@ -61,6 +59,9 @@ const HomePage = () => {
           </DrawCard>
           <DrawCard icon={arrowIcon} href="/spinner">
             {t('draw_title_spin_arrow')}
+          </DrawCard>
+          <DrawCard icon={tournamentIcon} href="https://echaloasuerte.com/draw/new/tournament/">
+            {t('draw_title_tournament')}
           </DrawCard>
         </div>
       </div>
