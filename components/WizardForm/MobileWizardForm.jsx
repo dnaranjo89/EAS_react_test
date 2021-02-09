@@ -60,11 +60,13 @@ MobileWizardForm.propTypes = {
   handleNext: PropTypes.func.isRequired,
   handleBack: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
+  learnMoreSection: PropTypes.node,
 };
 
 MobileWizardForm.defaultProps = {
   apiError: false,
   loading: false,
+  learnMoreSection: null,
 };
 
 export default MobileWizardForm;

@@ -2,18 +2,12 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import MuiButton from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
 import AddIcon from '@material-ui/icons/Add';
 import classnames from 'classnames/bind';
 import TextField from '../../TextField.jsx';
-import SectionPanel from '../../SectionPanel/SectionPanel.jsx';
-
-import withFieldValidation from '../../FormValidation/withFieldValidation.jsx';
 import STYLES from './ParticipantWithEmail.module.scss';
 
 const c = classnames.bind(STYLES);
-
-const ValidatedTextField = withFieldValidation(TextField);
 
 const ParticipantWithEmail = ({ onAddParticipant, nameError, emailError }) => {
   const { t } = useTranslation('DrawSecretSanta');
@@ -80,6 +74,15 @@ const ParticipantWithEmail = ({ onAddParticipant, nameError, emailError }) => {
   );
 };
 
-ParticipantWithEmail.propTypes = {};
+ParticipantWithEmail.propTypes = {
+  onAddParticipant: PropTypes.func.isRequired,
+  nameError: PropTypes.string,
+  emailError: PropTypes.string,
+};
+
+ParticipantWithEmail.defaultProps = {
+  nameError: null,
+  emailError: null,
+};
 
 export default ParticipantWithEmail;

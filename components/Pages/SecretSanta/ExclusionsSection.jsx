@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import MuiButton from '@material-ui/core/Button';
-import classnames from 'classnames/bind';
 import useTranslation from 'next-translate/useTranslation';
 import Typography from '@material-ui/core/Typography';
 
@@ -11,7 +10,6 @@ import AddIcon from '@material-ui/icons/Add';
 import STYLES from './ExclusionsSection.module.scss';
 import ParticipantsList, { LIST_TYPES } from './ParticipantsList.jsx';
 
-const c = classnames.bind(STYLES);
 const ExclusionsSection = ({ participants, onExclusionsChange }) => {
   const { t } = useTranslation('DrawSecretSanta');
   const [selectedParticipant, setSelectedParticipant] = useState(null);

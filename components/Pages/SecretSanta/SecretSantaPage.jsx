@@ -12,6 +12,7 @@ import ParticipantsWithEmailSection from './ParticipantsWithEmailSection.jsx';
 import ExclusionsSection from './ExclusionsSection.jsx';
 import SendSection from './SendSection.jsx';
 import LearnMoreSection from '../../LearnMoreSection/LearnMoreSection.jsx';
+import secretSantaOgImage from './secret_santa_og_image.png';
 
 import withValidationProvider from '../../FormValidation/withValidationProvider.jsx';
 import { URL_SLUG_SECRET_SANTA } from '../../../constants/urlSlugs';
@@ -30,9 +31,9 @@ const SecretSantaPage = ({ track }) => {
 
   const [values, setValues] = useState({
     participants: [
-      // { name: 'David', email: 'whatever@as.com', exclusions: [] },
-      // { name: 'Pepe', email: 'whatevera@as.com', exclusions: [] },
-      // { name: 'Mario', email: 'w2hatever@as', exclusions: ['David'] },
+      { name: 'David', email: 'whatever@as.com', exclusions: [] },
+      { name: 'Pepe', email: 'whatevera@as.com', exclusions: [] },
+      { name: 'Mario', email: 'w2hatever@as', exclusions: ['David'] },
     ],
   });
   const { t } = useTranslation('DrawSecretSanta');
@@ -114,7 +115,7 @@ const SecretSantaPage = ({ track }) => {
       htmlKeywords={t('html_keywords')}
       pageType="Secret Santa"
       showAdvert={!isMobile}
-      // ogImage={facebookRaffleOgImage} // TODO implement
+      ogImage={secretSantaOgImage}
     >
       <DrawHeading title={t('page_title')} subtitle={t('draw_subheading')} />
       <WizardForm

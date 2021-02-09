@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
 import Input from '@material-ui/core/Input';
 import { withTheme, styled } from '@material-ui/core/styles';
 import FormHelperText from '@material-ui/core/FormHelperText';
