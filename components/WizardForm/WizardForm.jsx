@@ -135,12 +135,14 @@ WizardForm.propTypes = {
   submitButtonLabel: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   isMobile: PropTypes.bool.isRequired,
+  learnMoreSection: PropTypes.node,
 };
 
 WizardForm.defaultProps = {
   initialStep: 0,
   loading: false,
   apiError: false,
+  learnMoreSection: null,
 };
 
 export default WizardForm;

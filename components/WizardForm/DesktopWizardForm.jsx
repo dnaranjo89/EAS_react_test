@@ -79,11 +79,13 @@ DesktopWizard.propTypes = {
   handleBack: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   children: PropTypes.node.isRequired,
+  learnMoreSection: PropTypes.node,
 };
 
 DesktopWizard.defaultProps = {
   apiError: false,
   loading: false,
+  learnMoreSection: null,
 };
 
 export default DesktopWizard;

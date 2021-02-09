@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Typography from '@material-ui/core/Typography';
-import classnames from 'classnames/bind';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import DeleteIcon from '@material-ui/icons/Clear';
@@ -11,8 +10,6 @@ import IconButton from '@material-ui/core/IconButton';
 import STYLES from './ParticipantsList.module.scss';
 
 import BoxWithBorder from '../../BoxWithBorder/BoxWithBorder.jsx';
-
-const c = classnames.bind(STYLES);
 
 export const LIST_TYPES = {
   EMAILS: 'EMAILS',
