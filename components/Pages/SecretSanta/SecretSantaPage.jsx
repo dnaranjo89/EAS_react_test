@@ -26,13 +26,13 @@ const SendSectionForm = withValidationProvider(SendSection);
 
 const SecretSantaPage = ({ track }) => {
   const [loadingRequest, setLoadingRequest] = useState(false);
-  const [APIError, setAPIError] = useState(false);
+  const [APIError, setAPIError] = useState(null);
 
   const [values, setValues] = useState({
     participants: [
-      { name: 'David', email: 'whatever@as.com', exclusions: [] },
-      { name: 'Pepe', email: 'whatevera@as.com', exclusions: [] },
-      { name: 'Mario', email: 'w2hatever@as.com', exclusions: ['David'] },
+      // { name: 'David', email: 'whatever@as.com', exclusions: [] },
+      // { name: 'Pepe', email: 'whatevera@as.com', exclusions: [] },
+      // { name: 'Mario', email: 'w2hatever@as', exclusions: ['David'] },
     ],
   });
   const { t } = useTranslation('DrawSecretSanta');
@@ -83,7 +83,6 @@ const SecretSantaPage = ({ track }) => {
   const handlePublish = async () => {
     setLoadingRequest(true);
     const analyticsType = analyticsTypesBySlug[urlSlug];
-    console.log('SecretSantaApi', SecretSantaApi);
     const secretSantaApi = new SecretSantaApi();
     try {
       const newDraw = await secretSantaApi.secretSantaCreate({
@@ -103,7 +102,7 @@ const SecretSantaPage = ({ track }) => {
       Router.push(`/${urlSlug}/success`, drawPathSuccess);
     } catch (error) {
       logApiError(error, analyticsType);
-      setAPIError(true);
+      setAPIError('as');
       setLoadingRequest(false);
     }
   };
@@ -120,7 +119,7 @@ const SecretSantaPage = ({ track }) => {
       <DrawHeading title={t('page_title')} subtitle={t('draw_subheading')} />
       <WizardForm
         steps={steps}
-        initialStep={2}
+        initialStep={0}
         onSubmit={handlePublish}
         submitButtonLabel={t('button_label_send_emails')}
         apiError={APIError}

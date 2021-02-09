@@ -12,6 +12,7 @@ import randomLetterIcon from './random_letter.png';
 import diceIcon from './dice.svg';
 import linkSetsIcon from './link_sets.png';
 import raffleIcon from './raffle.svg';
+import secretSantaIcon from './secret_santa.svg';
 
 import STYLES from './Homepage.module.scss';
 
@@ -61,6 +62,9 @@ const HomePage = () => {
           </DrawCard>
           <DrawCard icon={arrowIcon} href="/spinner">
             {t('draw_title_spin_arrow')}
+          </DrawCard>
+          <DrawCard icon={secretSantaIcon} href="/secret-santa">
+            {t('draw_title_secret_santa')}
           </DrawCard>
         </div>
       </div>
