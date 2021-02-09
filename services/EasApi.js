@@ -23,7 +23,7 @@ const init = () => {
     defaultClient.basePath = apiDomain + API_BASE_PATH;
   }
 
-  defaultClient.timeout = 10000;
+  defaultClient.timeout = 30000;
 };
 
 export default {
