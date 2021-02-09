@@ -10,12 +10,13 @@ const SuccessPage = () => {
 
   return (
     <Page htmlTitle={t('html_title')} pageType="Secret Santa Successfully Created" noIndex>
-      <Typography align="center" variant="h1" className={STYLES.Title}>
+      <Typography align="center" variant="h1" className={STYLES.title}>
         {t('congratulations')} <br />
         {t('draw_created')}
       </Typography>
-
-      <Trans i18nKey="DrawSecretSanta:success_details" components={[<p />]} />
+      <div className={STYLES.description}>
+        <Trans i18nKey="DrawSecretSanta:success_details" components={[<p />]} />
+      </div>
     </Page>
   );
 };

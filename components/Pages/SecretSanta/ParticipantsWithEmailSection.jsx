@@ -5,7 +5,7 @@ import ParticipantWithEmail from './ParticipantWithEmail.jsx';
 import withFieldValidation from '../../FormValidation/withFieldValidation.jsx';
 import ParticipantsList, { LIST_TYPES } from './ParticipantsList.jsx';
 
-const MIN_PARTICIPANTS = 2;
+const MIN_PARTICIPANTS = 3;
 
 const ParticipantsListWithValidation = withFieldValidation(ParticipantsList);
 
