@@ -114,6 +114,7 @@ jobs:
   deploy-frontend:
     runs-on: ubuntu-latest
     needs:
+      - build-docker
       - push-docker
     steps:
       - name: Invoke deployment workflow
@@ -123,3 +124,9 @@ jobs:
           repo: etcaterva/deployment
           token: ${{ secrets.AUTOMATION_TOKEN }}
           inputs: '{ "tags": "cd-frontend" }'
+
+      - name: Deployment URL
+        id: set_vars
+        run: |
+          echo "Follow deployment jobs for this branch:"
+          echo "- https://github.com/etcaterva/deployment/actions?query=branch%3A${{ needs.build-docker.outputs.branch_name }}"
