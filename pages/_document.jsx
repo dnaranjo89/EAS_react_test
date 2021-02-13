@@ -43,7 +43,6 @@ export default class MyDocument extends Document {
   }
 }
 
-// TODO for some reason fonts are not being loaded in SSG
 MyDocument.getInitialProps = async ctx => {
   // Resolution order
   //

@@ -83,7 +83,6 @@ const RandomLetterPage = props => {
     </Page>
   );
 };
-// TODO there is something wrong with the keys in the participants input,
 
 RandomLetterPage.propTypes = {
   values: PropTypes.shape({
