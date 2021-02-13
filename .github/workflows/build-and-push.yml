@@ -109,5 +109,5 @@ jobs:
         with:
           workflow: Manually triggered workflow for deployment
           repo: etcaterva/deployment
-          token: ${{ secrets.PERSONAL_TOKEN }}
+          token: ${{ secrets.AUTOMATION_TOKEN }}
           inputs: '{ "tags": "cd-frontend" }'
