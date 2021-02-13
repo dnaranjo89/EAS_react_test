@@ -31,14 +31,13 @@ const SecretSantaPage = ({ track }) => {
 
   const [values, setValues] = useState({
     participants: [
-      { name: 'David', email: 'whatever@as.com', exclusions: [] },
-      { name: 'Pepe', email: 'whatevera@as.com', exclusions: [] },
-      { name: 'Mario', email: 'w2hatever@as', exclusions: ['David'] },
+      // { name: 'Mario', email: 'Mario@asd.fgh', exclusions: [] },
+      // { name: 'Marina', email: 'Marina@asd.fgh', exclusions: [] },
+      // { name: 'Pedro', email: 'Marina@asd.fgh', exclusions: [] },
+      // { name: 'David', email: 'David@asd.fgh', exclusions: ['David'] },
     ],
   });
-  const { t } = useTranslation('DrawSecretSanta');
-
-  // TODO how does email validates in the server?
+  const { t, lang } = useTranslation('DrawSecretSanta');
 
   const handleParticipantsChange = participants => {
     setValues({ participants });
@@ -86,24 +85,29 @@ const SecretSantaPage = ({ track }) => {
     const analyticsType = analyticsTypesBySlug[urlSlug];
     const secretSantaApi = new SecretSantaApi();
     try {
-      const newDraw = await secretSantaApi.secretSantaCreate({
+      await secretSantaApi.secretSantaCreate({
         participants: values.participants,
-        language: 'es', // TODO remove this hardcoded language
+        language: lang.substring(0, 2),
       });
       track({
         mp: {
           name: `Publish - ${analyticsType}`,
-          properties: { drawType: analyticsType, drawId: newDraw.id },
+          properties: { drawType: analyticsType },
         },
-        ga: { action: 'Publish', category: analyticsType, label: newDraw.id },
+        ga: { action: 'Publish', category: analyticsType },
       });
 
-      const drawPath = `/${urlSlug}/${newDraw.id}`;
-      const drawPathSuccess = `${drawPath}/success`;
+      const drawPathSuccess = `${urlSlug}/success`;
       Router.push(`/${urlSlug}/success`, drawPathSuccess);
     } catch (error) {
+      let errorMessage;
+      if (error.status === 400) {
+        errorMessage = t('error_unable_to_match_participants');
+      } else {
+        errorMessage = t('CommonCreateDraw:api_error');
+      }
+      setAPIError(errorMessage);
       logApiError(error, analyticsType);
-      setAPIError('as');
       setLoadingRequest(false);
     }
   };

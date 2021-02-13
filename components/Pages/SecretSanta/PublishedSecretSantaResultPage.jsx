@@ -2,16 +2,16 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
+import PropTypes from 'prop-types';
 import Page from '../../Page/Page.jsx';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import secretSantaOgImage from './secret_santa_og_image.png';
 import STYLES from './PublishedSecretSantaResultPage.module.scss';
 import GifteeName from './GifteeName.jsx';
 
-const PublishedSecretSantaResultPage = () => {
+const PublishedSecretSantaResultPage = ({ result }) => {
   const { t } = useTranslation('DrawSecretSanta');
-  const participantName = 'David';
-  const gifteeName = 'Mario';
+  const { source: participantName, target: gifteeName } = result;
 
   return (
     <Page
@@ -34,6 +34,11 @@ const PublishedSecretSantaResultPage = () => {
   );
 };
 
-PublishedSecretSantaResultPage.propTypes = {};
+PublishedSecretSantaResultPage.propTypes = {
+  result: PropTypes.shape({
+    source: PropTypes.string.isRequired,
+    target: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default PublishedSecretSantaResultPage;

@@ -16,11 +16,11 @@ export const LIST_TYPES = {
   EXCLUSIONS: 'EXCLUSIONS',
 };
 
-const ParticipantsList = ({ value, error, helperText, onRemove, type }) => {
+const ParticipantsList = ({ value, error, helperText, onRemove, type, ...rest }) => {
   const { t } = useTranslation('DrawSecretSanta');
 
   return (
-    <BoxWithBorder error={error} className={STYLES.container}>
+    <BoxWithBorder error={error} className={STYLES.container} {...rest}>
       {value.length === 0 && (
         <Typography variant="body2">
           {type === LIST_TYPES.EMAILS ? t('label_no_participants') : t('label_no_exclusions')}
@@ -50,7 +50,11 @@ const ParticipantsList = ({ value, error, helperText, onRemove, type }) => {
           ))}
         </List>
       )}
-      {helperText && <FormHelperText error={error}>{helperText}</FormHelperText>}
+      {helperText && (
+        <FormHelperText error={error} data-test-has-error>
+          {helperText}
+        </FormHelperText>
+      )}
     </BoxWithBorder>
   );
 };

@@ -5,12 +5,14 @@
   text-align: center;
 
   @media (min-width: $media-tablet) {
+    margin: auto;
     padding-right: $spacing-lg;
     padding-left: $spacing-lg;
   }
 
   @media (min-width: $media-desktop) {
     max-width: 60rem;
+    margin: auto;
     padding-right: $spacing-lg;
     padding-left: $spacing-lg;
   }

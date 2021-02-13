@@ -14,7 +14,7 @@ const SuccessPage = () => {
         {t('congratulations')} <br />
         {t('draw_created')}
       </Typography>
-      <Typography align="center" variant="body1" className={STYLES.description}>
+      <Typography align="center" variant="body1" component="div" className={STYLES.description}>
         <Trans i18nKey="DrawSecretSanta:success_details" components={[<p />]} />
       </Typography>
     </Page>

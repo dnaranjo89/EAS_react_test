@@ -14,19 +14,23 @@ const ParticipantsWithEmailSection = ({ participants, onParticipantsChange }) =>
   const [nameError, setNameError] = useState(null);
   const { t } = useTranslation('DrawSecretSanta');
   const handleAddParticipant = participant => {
+    // Clear validation
+    setNameError(null);
+    setEmailError(null);
+
     // Name validation
     if (!participant.name) {
-      setNameError(t('error_name_is_required'));
+      setNameError(t('error_field_required'));
       return false;
     }
     if (participants.find(currentParticipant => currentParticipant.name === participant.name)) {
-      setEmailError(t('error_name_already_registered'));
+      setNameError(t('error_name_already_registered'));
       return false;
     }
 
     // Email validation
     if (!participant.email) {
-      setEmailError(t('error_email_is_required'));
+      setEmailError(t('error_field_required'));
       return false;
     }
     if (participants.find(currentParticipant => currentParticipant.email === participant.email)) {
@@ -35,8 +39,6 @@ const ParticipantsWithEmailSection = ({ participants, onParticipantsChange }) =>
     }
 
     onParticipantsChange([...participants, participant]);
-    setNameError(null);
-    setEmailError(null);
     return true;
   };
 
@@ -63,6 +65,7 @@ const ParticipantsWithEmailSection = ({ participants, onParticipantsChange }) =>
         value={participants}
         onRemove={handleRemoveParticipant}
         type={LIST_TYPES.EMAILS}
+        data-testid="ParticipantsInput"
       />
     </>
   );
