@@ -69,6 +69,7 @@ const LinkSetsPageContainer = props => {
       setLoadingRequest,
       setAPIError,
       setQuickResult,
+      t,
     });
   };
 
@@ -79,6 +80,7 @@ const LinkSetsPageContainer = props => {
       track,
       setLoadingRequest,
       setAPIError,
+      t,
     });
   };
 

@@ -68,6 +68,7 @@ const RandomNumberPageContainer = props => {
       setLoadingRequest,
       setAPIError,
       setQuickResult,
+      t,
     });
   };
 
@@ -78,6 +79,7 @@ const RandomNumberPageContainer = props => {
       track,
       setLoadingRequest,
       setAPIError,
+      t,
     });
   };
 

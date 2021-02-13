@@ -27,7 +27,7 @@ const MobileWizardForm = ({
   return (
     <>
       <div className={c('MobileWizardForm__content')}>{children}</div>
-      {apiError && <ErrorFeedback error={t('CommonCreateDraw:api_error')} />}
+      {apiError && <ErrorFeedback error={apiError} />}
       <MobileStepper
         steps={numSteps}
         position="static"

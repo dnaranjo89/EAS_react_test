@@ -94,6 +94,7 @@ export const toss = async ({
   track,
   setAPIError,
   setQuickResult,
+  t,
 }) => {
   const analyticsType = analyticsTypesBySlug[urlSlug];
   const tsStart = new Date().getTime();
@@ -128,13 +129,13 @@ export const toss = async ({
       setQuickResult(tossResponse);
     }
   } catch (error) {
+    setAPIError(t('CommonCreateDraw:api_error'));
     logApiError(error, analyticsType);
-    setAPIError(true);
     setLoadingRequest(false);
   }
 };
 
-export const publish = async ({ values, urlSlug, track, setLoadingRequest, setAPIError }) => {
+export const publish = async ({ values, urlSlug, track, setLoadingRequest, setAPIError, t }) => {
   setLoadingRequest(true);
   const analyticsType = analyticsTypesBySlug[urlSlug];
   const { dateScheduled } = values;
@@ -157,7 +158,7 @@ export const publish = async ({ values, urlSlug, track, setLoadingRequest, setAP
     Router.push(`/${urlSlug}/[id]/success`, drawPathSuccess);
   } catch (error) {
     logApiError(error, analyticsType);
-    setAPIError(true);
+    setAPIError(t('CommonCreateDraw:api_error'));
     setLoadingRequest(false);
   }
 };

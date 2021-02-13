@@ -63,7 +63,7 @@ const LinkSetsQuickPage = ({
         onFormErrorsCheck={() => handleCheckErrorsInConfiguration(t)}
       >
         <LinkSetsConfigurationSection values={values} onFieldChange={onFieldChange} t={t} />
-        {apiError && <ErrorFeedback error={t('CommonCreateDraw:api_error')} />}
+        {apiError && <ErrorFeedback error={apiError} />}
         <SubmitFormButton label={t('generate_results')} disabled={loadingRequest} />
       </ValidationProvider>
       <div ref={resultsRef} className={c('LinkSetsQuickPage__quickResults')}>
