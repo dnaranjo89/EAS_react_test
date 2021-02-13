@@ -81,8 +81,10 @@ const RandomItemPage = ({
         apiError={apiError}
         loading={loadingRequest}
         isMobile={isMobile}
+        learnMoreSection={
+          <LearnMoreSection title={t('learn_more_title')} content={t('learn_more_content')} />
+        }
       />
-      <LearnMoreSection title={t('learn_more_title')} content={t('learn_more_content')} />
     </Page>
   );
 };

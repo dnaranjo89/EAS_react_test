@@ -14,7 +14,7 @@ const ErrorPage = ({ statusCode }) => {
   }
   return (
     <Page
-      htmlTitle={t('error_page_html_title')}
+      htmlTitle={`${t('brand_name')} - ${t('error_page_html_title')}`}
       htmlDescription={t('error_page_html_title')}
       pageType="Not Found Page" // pageType won't be used as we are not tracking this page
       contentClassName={STYLES.page}

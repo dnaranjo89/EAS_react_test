@@ -21,6 +21,7 @@ const MobileWizardForm = ({
   handleNext,
   handleBack,
   children,
+  learnMoreSection,
 }) => {
   const { t } = useTranslation('CommonCreateDraw');
   return (
@@ -45,6 +46,7 @@ const MobileWizardForm = ({
           </Button>
         }
       />
+      {activeStep === 0 && learnMoreSection}
     </>
   );
 };
@@ -58,11 +60,13 @@ MobileWizardForm.propTypes = {
   handleNext: PropTypes.func.isRequired,
   handleBack: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
+  learnMoreSection: PropTypes.node,
 };
 
 MobileWizardForm.defaultProps = {
   apiError: false,
   loading: false,
+  learnMoreSection: null,
 };
 
 export default MobileWizardForm;
