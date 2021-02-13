@@ -13,18 +13,6 @@ jobs:
         with:
           node-version: 14
 
-      - name: Install npm packages
-        run: npm ci
-
-      - name: Run linter
-        run: npm run lint
-
-      - name: Run unit tests
-        run: npm run test:ci
-
-      - name: Run integration tests
-        run: npm run test:integration:ci
-
   build-docker:
     runs-on: ubuntu-latest
     outputs:
@@ -71,7 +59,7 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache
 
   push-docker:
-    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/prod'
+    if: github.ref == 'refs/heads/test-workflow-trigger' || github.ref == 'refs/heads/prod'
     runs-on: ubuntu-latest
     needs:
       - build-docker
