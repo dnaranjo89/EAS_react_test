@@ -43,7 +43,7 @@ const DesktopWizard = ({
         })}
       </Stepper>
       <div className={c('WizardForm__content')}>{children}</div>
-      {apiError && <ErrorFeedback error={t('CommonCreateDraw:api_error')} />}
+      {apiError && <ErrorFeedback error={apiError} />}
       <div className={c('WizardForm__buttons-row')}>
         <Button
           className={c('WizardForm__step-button')}

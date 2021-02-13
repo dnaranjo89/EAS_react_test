@@ -50,6 +50,7 @@ const mockBaseTossObject = {
   track: jest.fn(),
   setAPIError: jest.fn(),
   setQuickResult: jest.fn(),
+  t: jest.fn().mockReturnValue('translatedError'),
 };
 
 const mockCreate = jest.fn();
@@ -198,7 +199,7 @@ describe('Api', () => {
       };
 
       await toss(mockTossObject);
-      expect(mockSetAPIError).toHaveBeenCalledWith(true);
+      expect(mockSetAPIError).toHaveBeenCalledWith('translatedError');
       expect(mockLogApiError).toHaveBeenCalledWith(
         new TypeError("Cannot read property 'private_id' of undefined"),
         'Letter',
@@ -278,7 +279,7 @@ describe('Api', () => {
       };
 
       await publish(mockTossObject);
-      expect(mockSetAPIError).toHaveBeenCalledWith(true);
+      expect(mockSetAPIError).toHaveBeenCalledWith('translatedError');
       console.log = originalError;
       /* eslint-enable no-console */
     });

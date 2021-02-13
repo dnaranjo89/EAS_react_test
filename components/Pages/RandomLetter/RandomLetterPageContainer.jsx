@@ -67,6 +67,7 @@ const RandomLetterPageContainer = props => {
       setLoadingRequest,
       setAPIError,
       setQuickResult,
+      t,
     });
   };
 
@@ -77,6 +78,7 @@ const RandomLetterPageContainer = props => {
       track,
       setLoadingRequest,
       setAPIError,
+      t,
     });
   };
 

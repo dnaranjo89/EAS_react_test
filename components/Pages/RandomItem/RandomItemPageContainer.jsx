@@ -69,6 +69,7 @@ const RandomItemPageContainer = props => {
       setLoadingRequest,
       setAPIError,
       setQuickResult,
+      t,
     });
   };
 
@@ -79,6 +80,7 @@ const RandomItemPageContainer = props => {
       track,
       setLoadingRequest,
       setAPIError,
+      t,
     });
   };
 

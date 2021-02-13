@@ -69,6 +69,7 @@ const GroupsGeneratorPageContainer = props => {
       setLoadingRequest,
       setAPIError,
       setQuickResult,
+      t,
     });
   };
 
@@ -79,6 +80,7 @@ const GroupsGeneratorPageContainer = props => {
       track,
       setLoadingRequest,
       setAPIError,
+      t,
     });
   };
 

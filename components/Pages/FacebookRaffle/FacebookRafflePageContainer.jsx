@@ -45,6 +45,7 @@ const FacebookRafflePageContainer = props => {
       track,
       setLoadingRequest,
       setAPIError,
+      t,
     });
   };
 

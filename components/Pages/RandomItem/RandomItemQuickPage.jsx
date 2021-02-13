@@ -63,7 +63,7 @@ const RandomItemQuickPage = ({
         onFormErrorsCheck={() => handleCheckErrorsInConfiguration(t)}
       >
         <RandomItemConfigurationSection values={values} onFieldChange={onFieldChange} t={t} />
-        {apiError && <ErrorFeedback error={t('CommonCreateDraw:api_error')} />}
+        {apiError && <ErrorFeedback error={apiError} />}
         <SubmitFormButton label={t('pick_items')} disabled={loadingRequest} />
       </ValidationProvider>
       <div ref={resultsRef} className={c('RandomItemQuickPage__quickResults')}>
