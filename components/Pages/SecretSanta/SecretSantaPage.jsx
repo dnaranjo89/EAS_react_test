@@ -30,12 +30,7 @@ const SecretSantaPage = ({ track }) => {
   const [APIError, setAPIError] = useState(null);
 
   const [values, setValues] = useState({
-    participants: [
-      // { name: 'Mario', email: 'Mario@asd.fgh', exclusions: [] },
-      // { name: 'Marina', email: 'Marina@asd.fgh', exclusions: [] },
-      // { name: 'Pedro', email: 'Marina@asd.fgh', exclusions: [] },
-      // { name: 'David', email: 'David@asd.fgh', exclusions: ['David'] },
-    ],
+    participants: [],
   });
   const { t, lang } = useTranslation('DrawSecretSanta');
 
