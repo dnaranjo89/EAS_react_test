@@ -9,7 +9,7 @@ const ErrorNotFoundPage = () => {
   const { t } = useTranslation('Common');
   return (
     <Page
-      htmlTitle={t('not_found_page_html_title')}
+      htmlTitle={`${t('brand_name')} - ${t('not_found_page_html_title')}`}
       htmlDescription={t('not_found_page_html_title')}
       pageType="Not Found Page" // pageType won't be used as we are not tracking this page
       contentClassName={STYLES.page}

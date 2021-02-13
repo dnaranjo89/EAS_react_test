@@ -8,10 +8,15 @@ import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
 import secretSantaOgImage from './secret_santa_og_image.png';
 import STYLES from './PublishedSecretSantaResultPage.module.scss';
 import GifteeName from './GifteeName.jsx';
+import ErrorPage from '../ErrorPage/ErrorPage.jsx';
 
-const PublishedSecretSantaResultPage = ({ result }) => {
+const PublishedSecretSantaResultPage = ({ result, error }) => {
   const { t } = useTranslation('DrawSecretSanta');
   const { source: participantName, target: gifteeName } = result;
+
+  if (error) {
+    return <ErrorPage {...error} />;
+  }
 
   return (
     <Page
@@ -39,6 +44,11 @@ PublishedSecretSantaResultPage.propTypes = {
     source: PropTypes.string.isRequired,
     target: PropTypes.string.isRequired,
   }).isRequired,
+  error: PropTypes.shape({}),
+};
+
+PublishedSecretSantaResultPage.defaultProps = {
+  error: null,
 };
 
 export default PublishedSecretSantaResultPage;
