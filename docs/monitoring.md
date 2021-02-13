@@ -22,10 +22,16 @@ We use specific event names in Mixpanel (e.g. we use _Toss - Groups_ instead of 
 | Draw types     |
 | -------------- |
 | Groups         |
-| Spin Arrow     |
-| Coin           |
+| Item           |
+| Link Sets      |
+| Number         |
+| Letter         |
 | Raffle         |
 | FacebookRaffle |
+| Spin Arrow     |
+| Coin           |
+| Dice           |
+| Secret Santa   |
 
 ## Events
 
