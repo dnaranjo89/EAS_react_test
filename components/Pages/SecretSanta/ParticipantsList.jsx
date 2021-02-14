@@ -43,9 +43,9 @@ const ParticipantsList = ({ value, error, helperText, onRemove, type, ...rest })
               </IconButton>
               {type === LIST_TYPES.EMAILS
                 ? `${participant.name} (${participant.email})`
-                : `${participant.name} ${t('field_label_exclusions')} ${participant.exclusions.join(
-                    ', ',
-                  )}`}
+                : `${participant.name} ${t(
+                    'summary_label_exclusions',
+                  )} ${participant.exclusions.join(', ')}`}
             </ListItem>
           ))}
         </List>
