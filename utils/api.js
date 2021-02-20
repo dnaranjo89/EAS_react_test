@@ -14,7 +14,7 @@ import {
   Link,
 } from 'echaloasuerte-js-sdk';
 import Router from 'next/router';
-import { asyncThrottle } from '../services/throttle';
+import throttle from '../services/throttle';
 import { logApiError } from './logger';
 import recentDraws from '../services/recentDraws';
 import { getDrawDataFromValues, getValuesFromDraw } from './draw';
@@ -120,7 +120,7 @@ export const toss = async ({
       },
       ga: { action: 'Toss', category: analyticsType },
     });
-    await asyncThrottle(tsStart);
+    await throttle(tsStart);
     if (shouldRedirect) {
       Router.push(`/${urlSlug}/[id]`, `/${urlSlug}/${privateIdToToss}`);
     } else {

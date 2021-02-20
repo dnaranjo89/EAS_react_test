@@ -9,6 +9,7 @@ import {
   URL_SLUG_DICE,
   URL_SLUG_ITEM,
   URL_SLUG_SETS,
+  URL_SLUG_SECRET_SANTA,
 } from './urlSlugs';
 
 export const ANALYTICS_TYPE_GROUPS = 'Groups';
@@ -21,6 +22,7 @@ export const ANALYTICS_TYPE_LETTER = 'Letter';
 export const ANALYTICS_TYPE_DICE = 'Dice';
 export const ANALYTICS_TYPE_ITEM = 'Item';
 export const ANALYTICS_TYPE_SETS = 'Link Sets';
+export const ANALYTICS_TYPE_SECRET_SANTA = 'Secret Santa';
 
 export const analyticsTypesBySlug = {
   [URL_SLUG_GROUPS]: ANALYTICS_TYPE_GROUPS,
@@ -33,4 +35,5 @@ export const analyticsTypesBySlug = {
   [URL_SLUG_DICE]: ANALYTICS_TYPE_DICE,
   [URL_SLUG_ITEM]: ANALYTICS_TYPE_ITEM,
   [URL_SLUG_SETS]: ANALYTICS_TYPE_SETS,
+  [URL_SLUG_SECRET_SANTA]: ANALYTICS_TYPE_SECRET_SANTA,
 };

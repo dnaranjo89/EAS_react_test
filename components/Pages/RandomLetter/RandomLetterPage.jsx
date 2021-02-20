@@ -78,12 +78,11 @@ const RandomLetterPage = props => {
         submitButtonLabel={t('publish_draw')}
         apiError={apiError}
         isMobile={isMobile}
-        loadingRequest={loadingRequest}
+        loading={loadingRequest}
       />
     </Page>
   );
 };
-// TODO there is something wrong with the keys in the participants input,
 
 RandomLetterPage.propTypes = {
   values: PropTypes.shape({

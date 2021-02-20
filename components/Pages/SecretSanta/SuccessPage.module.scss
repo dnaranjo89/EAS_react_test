@@ -1,0 +1,10 @@
+@import '../../variables.module';
+
+.title {
+  margin: $spacing-lg 0;
+}
+
+.description {
+  max-width: 30rem;
+  margin: auto;
+}

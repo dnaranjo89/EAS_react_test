@@ -3,7 +3,7 @@ import { logApiError } from './logger';
 
 import { analyticsTypesBySlug } from '../constants/analyticsTypes';
 
-const serializeResponse = draw => JSON.parse(JSON.stringify(draw));
+export const serializeResponse = draw => JSON.parse(JSON.stringify(draw));
 
 const fetchData = async ({ drawId, urlSlug }) => {
   // getServerSideProps does a strict serialization which fails when serialising Date

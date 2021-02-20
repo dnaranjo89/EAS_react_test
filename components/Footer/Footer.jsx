@@ -27,7 +27,6 @@ const redirect = locale => {
   window.location.replace(targetUrl);
 };
 
-// TODO Need to allow changing the locale
 const Footer = () => {
   const { t } = useTranslation('Common');
   const handleChangeLanguage = l => {
