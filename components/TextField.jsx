@@ -15,7 +15,7 @@ import { refType } from '@material-ui/utils';
 import Select from '@material-ui/core/Select';
 import { withStyles } from '@material-ui/core/styles';
 
-const { TYPE_APP_ENV_PRODUCTION } = require('../constants/environment');
+const { TYPE_NODE_ENV_PRODUCTION } = require('../constants/environment');
 
 const variantComponent = {
   standard: Input,
@@ -87,7 +87,7 @@ const TextField = React.forwardRef((props, ref) => {
     }
   }, [variant, required, label]);
 
-  if (process.env.NODE_ENV !== TYPE_APP_ENV_PRODUCTION) {
+  if (process.env.NODE_ENV !== TYPE_NODE_ENV_PRODUCTION) {
     if (select && !children) {
       // eslint-disable-next-line no-console
       console.error(
