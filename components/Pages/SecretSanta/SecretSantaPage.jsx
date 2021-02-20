@@ -115,6 +115,7 @@ const SecretSantaPage = ({ track }) => {
       pageType="Secret Santa"
       showAdvert={!isMobile}
       ogImage={secretSantaOgImage}
+      noIndex
     >
       <DrawHeading title={t('page_title')} subtitle={t('draw_subheading')} />
       <WizardForm
