@@ -26,6 +26,7 @@ const DesktopWizard = ({
   children,
 }) => {
   const { t } = useTranslation('CommonCreateDraw');
+  const isLastStep = activeStep === stepLabels.length - 1;
   return (
     <div className={c('WizardForm')}>
       <Stepper className={c('WizardForm__stepper')} activeStep={activeStep} alternativeLabel>
@@ -43,7 +44,7 @@ const DesktopWizard = ({
         })}
       </Stepper>
       <div className={c('WizardForm__content')}>{children}</div>
-      {apiError && <ErrorFeedback error={apiError} />}
+      {isLastStep && apiError && <ErrorFeedback error={apiError} />}
       <div className={c('WizardForm__buttons-row')}>
         <Button
           className={c('WizardForm__step-button')}
@@ -60,7 +61,7 @@ const DesktopWizard = ({
           onClick={handleNext}
           loading={loading}
         >
-          {activeStep === stepLabels.length - 1 ? submitButtonLabel : t('wizard_next')}
+          {isLastStep ? submitButtonLabel : t('wizard_next')}
         </LoadingButton>
       </div>
       {activeStep === 0 && learnMoreSection}

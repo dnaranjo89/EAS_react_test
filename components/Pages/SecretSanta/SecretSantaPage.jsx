@@ -36,6 +36,7 @@ const SecretSantaPage = ({ track }) => {
 
   const handleParticipantsChange = participants => {
     setValues({ participants });
+    setAPIError(null);
   };
 
   const handleExclusionsChange = (participantName, exclusionNamesList) => {
@@ -47,6 +48,7 @@ const SecretSantaPage = ({ track }) => {
         return p;
       }),
     }));
+    setAPIError(null);
   };
   const steps = [
     {

@@ -25,7 +25,7 @@ const getInitialValues = (previousDraw, t) => {
 const getInitialPrivateId = previousDraw => previousDraw?.privateId;
 const getInitialQuickResult = previousDraw => previousDraw?.results[0];
 const initialLoadingRequest = false;
-const initialApiError = false;
+const initialApiError = null;
 
 const GroupsGeneratorPageContainer = props => {
   const { draw: previousDraw, track } = props;
@@ -52,6 +52,7 @@ const GroupsGeneratorPageContainer = props => {
   }, [previousDraw]);
 
   const onFieldChange = (fieldName, value) => {
+    setAPIError(null);
     setQuickResult(null);
     setPrivateId(null);
     setValues(previousState => ({

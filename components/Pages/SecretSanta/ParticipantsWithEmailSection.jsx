@@ -33,6 +33,10 @@ const ParticipantsWithEmailSection = ({ participants, onParticipantsChange }) =>
       setEmailError(t('error_field_required'));
       return false;
     }
+    if (!participant.email.includes('@')) {
+      setEmailError(t('error_invalid_email'));
+      return false;
+    }
     if (participants.find(currentParticipant => currentParticipant.email === participant.email)) {
       setEmailError(t('error_email_already_registered'));
       return false;
