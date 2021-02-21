@@ -43,7 +43,15 @@ const ParticipantsWithEmailSection = ({ participants, onParticipantsChange }) =>
   };
 
   const handleRemoveParticipant = name => {
-    onParticipantsChange(participants.filter(p => p.name !== name));
+    const newParticipants = participants
+      // First remove the participant from the list
+      .filter(p => p.name !== name)
+      // Then remove the participant from any exclusion
+      .map(participant => ({
+        ...participant,
+        exclusions: participant.exclusions.filter(exclusion => exclusion !== name),
+      }));
+    onParticipantsChange(newParticipants);
   };
 
   return (
