@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
+import Typography from '@material-ui/core/Typography';
 import ParticipantWithEmail from './ParticipantWithEmail.jsx';
 import withFieldValidation from '../../FormValidation/withFieldValidation.jsx';
 import ParticipantsList, { LIST_TYPES } from './ParticipantsList.jsx';
@@ -60,6 +61,7 @@ const ParticipantsWithEmailSection = ({ participants, onParticipantsChange }) =>
 
   return (
     <>
+      <Typography variant="body2">{t('add_participants_description')}</Typography>
       <ParticipantWithEmail
         onAddParticipant={handleAddParticipant}
         nameError={nameError}
