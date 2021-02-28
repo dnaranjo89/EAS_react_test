@@ -8,7 +8,7 @@ const {
 
 /** ****************
  * We use the `NODE_ENV` and `REACT_APP_ENV` environment variables to define the environment where the app will be running.
- * THIS ENV VARIABLES MUST BE DEFINED AT BUILD AND RUN TIME (so they are available for the server and client)
+ * THESE ENV VARIABLES MUST BE DEFINED AT BUILD AND RUN TIME (so they are available for the server and client)
  *
  * PLEASE REFER TO THE DOCS TO UNDERSTAND HOW TO USED THEM: docs/environment.md
  **************** */

@@ -124,7 +124,7 @@ export const toss = async ({
     if (shouldRedirect) {
       Router.push(`/${urlSlug}/[id]`, `/${urlSlug}/${privateIdToToss}`);
     } else {
-      setAPIError(false);
+      setAPIError(null);
       setLoadingRequest(false);
       setQuickResult(tossResponse);
     }

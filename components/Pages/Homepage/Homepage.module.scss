@@ -6,7 +6,7 @@
   margin: 0 auto;
   padding-top: $spacing-xl;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .draws {
@@ -19,4 +19,8 @@
     padding-top: $spacing-xl;
     flex-direction: row;
   }
+}
+
+.principles {
+  padding-top: 4 * $spacing-xl;
 }

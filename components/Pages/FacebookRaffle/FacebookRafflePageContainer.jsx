@@ -21,7 +21,7 @@ const getInitialValues = t => {
   return initialValues;
 };
 const initialLoadingRequest = false;
-const initialApiError = false;
+const initialApiError = null;
 
 const FacebookRafflePageContainer = props => {
   const { track } = props;
@@ -32,6 +32,7 @@ const FacebookRafflePageContainer = props => {
   const [loadingRequest, setLoadingRequest] = useState(initialLoadingRequest);
 
   const onFieldChange = (fieldName, value) => {
+    setAPIError(null);
     setValues(previousState => ({
       ...previousState,
       [fieldName]: value,

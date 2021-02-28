@@ -27,7 +27,7 @@ const getInitialValues = (previousDraw, t) => {
 const getInitialPrivateId = previousDraw => previousDraw?.privateId;
 const getInitialQuickResult = previousDraw => previousDraw?.results[0];
 const initialLoadingRequest = false;
-const initialApiError = false;
+const initialApiError = null;
 
 const RandomNumberPageContainer = props => {
   const { draw: previousDraw, track } = props;
@@ -53,6 +53,7 @@ const RandomNumberPageContainer = props => {
   const onFieldChange = (fieldName, value) => {
     setQuickResult(null);
     setPrivateId(null);
+    setAPIError(null);
     setValues(previousState => ({
       ...previousState,
       [fieldName]: value,

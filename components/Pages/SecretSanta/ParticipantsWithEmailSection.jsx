@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
+import Typography from '@material-ui/core/Typography';
 import ParticipantWithEmail from './ParticipantWithEmail.jsx';
 import withFieldValidation from '../../FormValidation/withFieldValidation.jsx';
 import ParticipantsList, { LIST_TYPES } from './ParticipantsList.jsx';
@@ -33,6 +34,10 @@ const ParticipantsWithEmailSection = ({ participants, onParticipantsChange }) =>
       setEmailError(t('error_field_required'));
       return false;
     }
+    if (!participant.email.includes('@')) {
+      setEmailError(t('error_invalid_email'));
+      return false;
+    }
     if (participants.find(currentParticipant => currentParticipant.email === participant.email)) {
       setEmailError(t('error_email_already_registered'));
       return false;
@@ -43,11 +48,20 @@ const ParticipantsWithEmailSection = ({ participants, onParticipantsChange }) =>
   };
 
   const handleRemoveParticipant = name => {
-    onParticipantsChange(participants.filter(p => p.name !== name));
+    const newParticipants = participants
+      // First remove the participant from the list
+      .filter(p => p.name !== name)
+      // Then remove the participant from any exclusion
+      .map(participant => ({
+        ...participant,
+        exclusions: participant.exclusions.filter(exclusion => exclusion !== name),
+      }));
+    onParticipantsChange(newParticipants);
   };
 
   return (
     <>
+      <Typography variant="body2">{t('add_participants_description')}</Typography>
       <ParticipantWithEmail
         onAddParticipant={handleAddParticipant}
         nameError={nameError}
