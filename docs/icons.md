@@ -10,3 +10,5 @@
 | groups      | Gregor Cresnar | [link](https://www.flaticon.com/free-icon/group_179665)     |
 | photo       | smashicons     | [link](https://www.flaticon.com/free-icon/picture_148713)   |
 | secretSanta | freepik        | [link](https://www.flaticon.com/free-icon/giftbox_1140033)  |
+| easy        | Good Ware      | [link](https://www.flaticon.com/free-icon/clean_685156)     |
+| free        | Smashicons     | [link](https://www.flaticon.com/free-icon/coin_1232322)     |

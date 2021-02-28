@@ -13,8 +13,11 @@ import diceIcon from './dice.svg';
 import linkSetsIcon from './link_sets.png';
 import tournamentIcon from './tournament.png';
 import raffleIcon from './raffle.svg';
+import Principle from './Principle.jsx';
 // import secretSantaIcon from './secret_santa.svg';
-
+import easyIcon from './principle_easy.svg';
+import freeIcon from './principle_free.svg';
+import fastIcon from './principle_fast.svg';
 import STYLES from './Homepage.module.scss';
 
 const HomePage = () => {
@@ -69,6 +72,26 @@ const HomePage = () => {
             {t('draw_title_secret_santa')}
           </DrawCard> */}
         </div>
+      </div>
+      <div className={STYLES.principles}>
+        <Principle
+          image={easyIcon}
+          imageAlt={t('principle_easy')}
+          title={t('principle_easy')}
+          description={t('principle_easy_description')}
+        />
+        <Principle
+          image={fastIcon}
+          imageAlt={t('principle_fast')}
+          title={t('principle_fast')}
+          description={t('principle_fast_description')}
+        />
+        <Principle
+          image={freeIcon}
+          imageAlt={t('principle_free')}
+          title={t('principle_free')}
+          description={t('principle_free_description')}
+        />
       </div>
     </Page>
   );

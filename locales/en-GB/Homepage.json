@@ -16,5 +16,11 @@
   "html_description": "Create online raffles, flip a coin, make teams... Take any decision randomly",
   "html_title": "ChooseRandom - Take decisions randomly online",
   "html_keywords": "raffles, randomly, decisions, groups, prizes, fate, chance, luck",
-  "choose_raffle": "Choose a raffle"
+  "choose_raffle": "Choose a raffle",
+  "principle_easy": "Simple",
+  "principle_fast": "Fast",
+  "principle_free": "Free",
+  "principle_easy_description": "All types of raffles are easy to setup and share with the participants.",
+  "principle_fast_description": "Create raffles in less than a minute without registering.",
+  "principle_free_description": "Organise raffles completely for free. Go ahead and give it a try."
 }

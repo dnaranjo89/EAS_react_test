@@ -16,5 +16,11 @@
   "html_description": "Crear sorteos online, lanzar una moneda, crear equipos... Toma cualquier decisión aleatoriamente",
   "html_title": "ÉchaloASuerte - Toma decisiones aleatoriamente",
   "html_keywords": "sorteos, aleatorio, decisiones, grupos, premios, destino, suerte, posibilidad",
-  "choose_raffle": "Elige un sorteo"
+  "choose_raffle": "Elige un sorteo",
+  "principle_easy": "Simple",
+  "principle_fast": "Rápido",
+  "principle_free": "Gratis",
+  "principle_easy_description": "Todo los tipos de sorteos son fáciles de crear y compartir con los participantes.",
+  "principle_fast_description": "Crea sorteos en menos de un minuto sin necesidad de registrarte.",
+  "principle_free_description": "Organiza sorteos completamente gratis. Adelante, entra en cualquiera de ellos y puérbalo."
 }
