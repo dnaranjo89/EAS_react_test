@@ -115,7 +115,7 @@ describe('FacebookRaffle', () => {
           });
         });
 
-        it.only('Should show feedback if there are server errors', () => {
+        it('Should show feedback if there are server errors', () => {
           cy.visit('/facebook');
           cy.route({
             method: 'POST',

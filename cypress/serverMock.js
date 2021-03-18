@@ -20,7 +20,12 @@ function mockServerCalls() {
 
   fixtures.forEach(fixture => {
     const { response, method, path: url } = fixture;
-    nock('http://127.0.0.1:8000').persist().intercept(url, method).reply(200, response);
+    if (url.startsWith('/api')) {
+      nock('http://127.0.0.1:8000').persist().intercept(url, method).reply(200, response);
+    } else {
+      console.log('url', url);
+      nock('http://localhost:3005').persist().intercept(url, method).reply(200, response);
+    }
   });
 }
 
