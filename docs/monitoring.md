@@ -5,6 +5,8 @@
 
 # Business metrics
 
+**Important**: Mixpanel is currently disabled
+
 We send events to Google Analytics (GA) and Mixpanel (MP). The only reason to use Mixpanel is to analise funnels, as the free GA account doesn't allow to build funnels from events.
 
 We use specific event names in Mixpanel (e.g. we use _Toss - Groups_ instead of _Toss_) because the free MP account does not allow using custom events.
