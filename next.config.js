@@ -20,12 +20,12 @@ const environment = getEnvironmentAtBuildTime();
 // eslint-disable-next-line no-console
 console.log(chalk.yellow('Using', chalk.underline.bold(environment), 'settings'));
 
-// We need to mock the server side requests when running the integration tests with Cypress
-if (environment === TYPE_APP_ENV_TEST) {
-  // eslint-disable-next-line global-require
-  const setupServerMock = require('./cypress/serverMock');
-  setupServerMock();
-}
+// // We need to mock the server side requests when running the integration tests with Cypress
+// if (environment === TYPE_APP_ENV_TEST) {
+//   // eslint-disable-next-line global-require
+//   const setupServerMock = require('./cypress/serverMock');
+//   setupServerMock();
+// }
 
 const basePath = '';
 

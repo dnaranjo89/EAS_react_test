@@ -11,6 +11,7 @@ export default function useLoadDataAfterCountdown(result) {
   // eslint-disable-next-line consistent-return
   useEffect(() => {
     const triggerReload = () => {
+      console.log('-----------triggerReload');
       router.push(router.pathname, router.asPath);
     };
 

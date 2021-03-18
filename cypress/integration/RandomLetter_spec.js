@@ -278,7 +278,7 @@ describe('Random Letter Page', () => {
           // Once the countdown is over, the the api should be called again
           cy.mockedRequestWait('GET', '/api/letter/ebdb2628-9fef-438d-9395-aaaaaaaaaaaa/');
         });
-        it('Should show results and the raffle details', () => {
+        it.only('Should show results and the raffle details', () => {
           cy.visit('/letter/ebdb2628-9fef-438d-9395-de1a4d7bc789');
           cy.getComponent('DrawHeading__title').contains('Cool title');
           cy.getComponent('RandomLetterResult').should('be.visible');
