@@ -10,8 +10,11 @@ const getInitialProps = async ({ drawId, urlSlug }) => {
     };
   } catch (error) {
     const analyticsType = analyticsTypesBySlug[urlSlug];
-    const extra = { drawType: analyticsType, drawId };
-    logApiError(error, extra);
+    const options = {
+      tags: { drawType: analyticsType, drawId },
+      // TODO missing IP?
+    };
+    logApiError(error, options);
     return {
       error: {
         statusCode: error.status || 500,

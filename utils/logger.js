@@ -5,16 +5,22 @@ import { environment, releaseCommit } from '.';
 import { TYPE_APP_ENV_LOCAL, TYPE_APP_ENV_TEST } from '../constants/environment';
 
 // eslint-disable-next-line import/prefer-default-export
-export const logApiError = (error, extra) => {
+export const logApiError = (error, options = {}) => {
   if ([TYPE_APP_ENV_LOCAL, TYPE_APP_ENV_TEST].includes(environment)) {
     // eslint-disable-next-line no-console
     console.log(error);
   }
 
   Sentry.withScope(scope => {
+    const { tags = {}, userIp } = options;
     scope.setTag('errorType', 'API error');
-    Object.keys(extra).forEach(key => {
-      scope.setTag(key, extra[key]);
+    if (userIp) {
+      // Manually set the user ip.
+      // We need it when we are on the server since we need to get it from the request headers
+      scope.setUser({ ip_address: userIp });
+    }
+    Object.keys(tags).forEach(key => {
+      scope.setTag(key, tags[key]);
     });
     if (error instanceof Error) {
       Sentry.captureException(error);
@@ -54,6 +60,9 @@ export const initSentry = () => {
         },
       }),
     );
+
+    // TODO no need to check for NEXT_PUBLIC_SENTRY_SERVER_ROOT_DIR
+    // Sentry.setUser({ ip_address: '192.168.00.00' });
   }
 
   Sentry.init({
@@ -63,5 +72,4 @@ export const initSentry = () => {
     integrations,
     release: releaseCommit,
   });
-  // }
 };

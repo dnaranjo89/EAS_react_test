@@ -1,3 +1,4 @@
+import forwarded from 'forwarded';
 import { fetchDraw } from './api';
 import { logApiError } from './logger';
 
@@ -5,8 +6,17 @@ import { analyticsTypesBySlug } from '../constants/analyticsTypes';
 
 export const serializeResponse = draw => JSON.parse(JSON.stringify(draw));
 
+const tempSendErrorLog = req => {
+  const forwardedIps = forwarded(req);
+
+  const options = {
+    userIp: forwardedIps[0],
+  };
+  logApiError(new Error('Manually triggered error on the server'), options);
+};
+
 const fetchData = async ({ drawId, urlSlug, req }) => {
-  console.log('req', req.headers);
+  tempSendErrorLog(req);
   try {
     // getServerSideProps does a strict serialization which fails when serialising Date
     // By doing stringify & parse we make sure that dates are strings and not Date objects
@@ -18,8 +28,13 @@ const fetchData = async ({ drawId, urlSlug, req }) => {
     };
   } catch (error) {
     const analyticsType = analyticsTypesBySlug[urlSlug];
-    const extra = { drawType: analyticsType, drawId };
-    logApiError(error, extra);
+    const forwardedIps = forwarded(req);
+
+    const options = {
+      tags: { drawType: analyticsType, drawId },
+      userIp: forwardedIps[0],
+    };
+    logApiError(error, options);
     return {
       error: {
         statusCode: error.status || 500,
