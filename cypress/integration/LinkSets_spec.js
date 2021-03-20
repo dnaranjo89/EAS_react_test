@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 describe('Link Sets Page', () => {
   ['macbook-13' /* , 'iphone-5' */].forEach(device => {
     context(`Device ${device}`, () => {
@@ -306,29 +304,6 @@ describe('Link Sets Page', () => {
               hitType: 'pageview',
               page: '/sets/a7417c42-34cc-4f38-bae3-8dd5d34321e5',
             });
-        });
-
-        it('Should show the countdown if there are not results', () => {
-          const missingSeconds = 10;
-
-          cy.fixture('LinkSets').then(fixtures => {
-            const fixtureGet = fixtures.find(
-              fixture => fixture.path === '/api/link/b29f44c2-1022-408a-925f-aaaaaaaaaaaa/',
-            );
-            const { schedule_date: scheduleDateString } = fixtureGet.response.results[0];
-            const past = moment(scheduleDateString);
-            past.subtract(missingSeconds, 'seconds');
-            cy.clock(past.valueOf(), ['Date', 'setTimeout', 'clearTimeout']);
-          });
-
-          cy.visit('/sets/b29f44c2-1022-408a-925f-aaaaaaaaaaaa');
-          cy.getComponent('Countdown').should('be.visible');
-
-          // Fast forward the countdown
-          cy.tick((missingSeconds + 1) * 1000);
-
-          // Once the countdown is over, the the api should be called again
-          cy.mockedRequestWait('GET', '/api/link/b29f44c2-1022-408a-925f-aaaaaaaaaaaa/');
         });
 
         it('Should show results and the raffle details', () => {

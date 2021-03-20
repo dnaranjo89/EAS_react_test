@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 describe('Raffle Page', () => {
   ['macbook-13' /* , 'iphone-5' */].forEach(device => {
     context(`Device ${device}`, () => {
@@ -333,29 +331,6 @@ describe('Raffle Page', () => {
               hitType: 'pageview',
               page: '/raffle/b29f44c2-1022-408a-925f-63e5f77a12ad',
             });
-        });
-
-        it('Should show the countdown if there are not results', () => {
-          const missingSeconds = 10;
-
-          cy.fixture('Raffle').then(fixtures => {
-            const fixtureGetRaffle = fixtures.find(
-              fixture => fixture.path === '/api/raffle/b29f44c2-1022-408a-925f-aaaaaaaaaaaa/',
-            );
-            const { schedule_date: scheduleDateString } = fixtureGetRaffle.response.results[0];
-            const past = moment(scheduleDateString);
-            past.subtract(missingSeconds, 'seconds');
-            cy.clock(past.valueOf(), ['Date', 'setTimeout', 'clearTimeout']);
-          });
-
-          cy.visit('/raffle/b29f44c2-1022-408a-925f-aaaaaaaaaaaa');
-          cy.getComponent('Countdown').should('be.visible');
-
-          // Fast forward the countdown
-          cy.tick((missingSeconds + 1) * 1000);
-
-          // Once the countdown is over, the the api should be called again
-          cy.mockedRequestWait('GET', '/api/raffle/b29f44c2-1022-408a-925f-aaaaaaaaaaaa/');
         });
 
         it('Should show results and the raffle details', () => {

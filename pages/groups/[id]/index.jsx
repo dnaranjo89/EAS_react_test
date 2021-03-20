@@ -2,7 +2,7 @@ import React from 'react';
 import GroupsGeneratorPageContainer from '../../../components/Pages/GroupsGenerator/GroupsGeneratorPageContainer.jsx';
 import PublishedGroupsGeneratorPage from '../../../components/Pages/GroupsGenerator/PublishedGroupsGeneratorPage.jsx';
 import ReadPage from '../../../components/Pages/ReadPage.jsx';
-import getInitialProps from '../../../utils/getInitialProps';
+import fetchData from '../../../utils/fetchData';
 import { URL_SLUG_GROUPS } from '../../../constants/urlSlugs';
 
 const GroupsReadPage = props => (
@@ -13,9 +13,10 @@ const GroupsReadPage = props => (
   />
 );
 
-GroupsReadPage.getInitialProps = async ctx => {
-  const { id: drawId } = ctx.query;
-  return getInitialProps({ drawId, urlSlug: URL_SLUG_GROUPS });
+export const getServerSideProps = async ({ req, query }) => {
+  const { id: drawId } = query;
+  const props = await fetchData({ drawId, urlSlug: URL_SLUG_GROUPS, req });
+  return { props };
 };
 
 export default GroupsReadPage;

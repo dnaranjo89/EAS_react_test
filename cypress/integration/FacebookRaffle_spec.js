@@ -115,7 +115,7 @@ describe('FacebookRaffle', () => {
           });
         });
 
-        it.only('Should show feedback if there are server errors', () => {
+        it('Should show feedback if there are server errors', () => {
           cy.visit('/facebook');
           cy.route({
             method: 'POST',
@@ -263,17 +263,6 @@ describe('FacebookRaffle', () => {
               'Mr Someone',
             );
           });
-
-          // it('Should show the countdown if there are not results', () => {
-          //   cy.visit('/facebook/11111111-1022-408a-925f-aaaaaaaaaaaa');
-          //   cy.getComponent('Countdown').should('be.visible');
-
-          //   // Fast forward the countdown
-          //   cy.tick((missingSeconds + 1) * 1000);
-
-          //   // Once the countdown is over, the the api should be called again
-          //   cy.mockedRequestWait('GET', '/api/raffle/11111111-1022-408a-925f-aaaaaaaaaaaa/');
-          // });
         });
 
         describe('After results published', () => {
