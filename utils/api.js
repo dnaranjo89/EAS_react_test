@@ -96,6 +96,7 @@ export const toss = async ({
   setQuickResult,
   t,
 }) => {
+  logApiError(new Error('A client error!'), {});
   const analyticsType = analyticsTypesBySlug[urlSlug];
   const tsStart = new Date().getTime();
   setLoadingRequest(true);
@@ -164,6 +165,7 @@ export const publish = async ({ values, urlSlug, track, setLoadingRequest, setAP
 };
 
 export const fetchDraw = async ({ urlSlug, drawId }) => {
+  logApiError(new Error('A server Error!'), {});
   const draw = await apiRead({ urlSlug, drawId });
   return getValuesFromDraw({ urlSlug, draw });
 };
