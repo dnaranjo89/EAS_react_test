@@ -281,29 +281,6 @@ describe('Random Item Page', () => {
               page: '/item/ebdb2628-9fef-438d-9395-de1a4d7bc789',
             });
         });
-        it('Should show the countdown if there are not results', () => {
-          const missingSeconds = 10;
-          cy.goBackInTime(
-            'RandomItem',
-            '/api/lottery/ebdb2628-9fef-438d-9395-aaaaaaaaaaaa/',
-            missingSeconds,
-          );
-          cy.visit('/item/ebdb2628-9fef-438d-9395-aaaaaaaaaaaa');
-          cy.getComponent('Countdown').should('be.visible');
-
-          // Fast forward the countdown
-          cy.tick((missingSeconds + 1) * 1000);
-
-          // Once the countdown is over, the the api should be called again
-          cy.mockedRequestWait('GET', '/api/lottery/ebdb2628-9fef-438d-9395-aaaaaaaaaaaa/');
-        });
-        it('Should show results and the raffle details', () => {
-          cy.visit('/item/ebdb2628-9fef-438d-9395-de1a4d7bc789');
-          cy.getComponent('DrawHeading__title').contains('Cool title');
-          cy.getComponent('RandomItemResult').should('be.visible');
-
-          cy.findAllByText('Número de elementos a elegir: 1').should('exist');
-        });
 
         it('Should show share buttons', () => {
           cy.mockWindowOpen();

@@ -262,23 +262,7 @@ describe('Random Letter Page', () => {
               page: '/letter/ebdb2628-9fef-438d-9395-de1a4d7bc789',
             });
         });
-        it('Should show the countdown if there are not results', () => {
-          const missingSeconds = 10;
-          cy.goBackInTime(
-            'RandomLetter',
-            '/api/letter/ebdb2628-9fef-438d-9395-aaaaaaaaaaaa/',
-            missingSeconds,
-          );
-          cy.visit('/letter/ebdb2628-9fef-438d-9395-aaaaaaaaaaaa');
-          cy.getComponent('Countdown').should('be.visible');
-
-          // Fast forward the countdown
-          cy.tick((missingSeconds + 1) * 1000);
-
-          // Once the countdown is over, the the api should be called again
-          cy.mockedRequestWait('GET', '/api/letter/ebdb2628-9fef-438d-9395-aaaaaaaaaaaa/');
-        });
-        it.only('Should show results and the raffle details', () => {
+        it('Should show results and the raffle details', () => {
           cy.visit('/letter/ebdb2628-9fef-438d-9395-de1a4d7bc789');
           cy.getComponent('DrawHeading__title').contains('Cool title');
           cy.getComponent('RandomLetterResult').should('be.visible');

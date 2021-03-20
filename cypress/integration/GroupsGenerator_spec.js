@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 describe('Groups Generator Page', () => {
   ['macbook-13' /* , 'iphone-5' */].forEach(device => {
     context(`Device ${device}`, () => {
@@ -325,30 +323,6 @@ describe('Groups Generator Page', () => {
               hitType: 'pageview',
               page: '/groups/43c357b7-91ec-448a-1111-111111111111',
             });
-        });
-
-        it('Should show the countdown if there are not results', () => {
-          const missingSeconds = 10;
-
-          // Set the current time to some seconds before the result should be published
-          cy.fixture('GroupsGenerator').then(fixtures => {
-            const fixtureGetDraw = fixtures.find(
-              fixture => fixture.path === '/api/groups/af52a47d-98fd-4685-8510-aaaaaaaaaaaa/',
-            );
-            const { schedule_date: scheduleDateString } = fixtureGetDraw.response.results[0];
-            const past = moment(scheduleDateString);
-            past.subtract(missingSeconds, 'seconds');
-            cy.clock(past.valueOf(), ['Date', 'setTimeout', 'clearTimeout']);
-          });
-
-          cy.visit('/groups/af52a47d-98fd-4685-8510-aaaaaaaaaaaa');
-          cy.getComponent('Countdown').should('be.visible');
-
-          // Fast forward the countdown
-          cy.tick((missingSeconds + 1) * 1000);
-
-          // Once the countdown is over, the the api should be called again
-          cy.mockedRequestWait('GET', '/api/groups/af52a47d-98fd-4685-8510-aaaaaaaaaaaa/');
         });
 
         it('Should show results and the groups draw details', () => {

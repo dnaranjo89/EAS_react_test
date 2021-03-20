@@ -19,15 +19,6 @@ import './commands';
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-// We need to mock the server side requests when running the integration tests with Cypress
-import serverMock from '../serverMock';
-
-try {
-  serverMock();
-} catch (error) {
-  console.log('error', error);
-}
-
 Cypress.Server.defaults({
   port: 5000,
   delay: 100,
