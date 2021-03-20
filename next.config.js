@@ -14,7 +14,13 @@ const chalk = require('chalk');
 const { getEnvironmentAtBuildTime, isDevelopmentServer } = require('./utils/environment');
 const { TYPE_APP_ENV_TEST } = require('./constants/environment');
 
-const { REACT_APP_COMMIT, SENTRY_AUTH_TOKEN, SENTRY_ORG, SENTRY_PROJECT } = process.env;
+const {
+  REACT_APP_COMMIT,
+  SENTRY_AUTH_TOKEN,
+  SENTRY_ORG,
+  SENTRY_PROJECT,
+  NEXT_PUBLIC_SENTRY_DSN,
+} = process.env;
 
 const environment = getEnvironmentAtBuildTime();
 // eslint-disable-next-line no-console
@@ -82,7 +88,8 @@ module.exports = nextTranslate(
                 SENTRY_AUTH_TOKEN &&
                 SENTRY_ORG &&
                 SENTRY_PROJECT &&
-                REACT_APP_COMMIT
+                REACT_APP_COMMIT &&
+                NEXT_PUBLIC_SENTRY_DSN
               ) {
                 config.plugins.push(
                   new SentryWebpackPlugin({
