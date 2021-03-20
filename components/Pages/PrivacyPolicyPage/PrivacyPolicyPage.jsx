@@ -231,53 +231,6 @@ const PrivacyPolicyPage = () => {
                 </a>
               </p>
             </li>
-            <li>
-              <p>
-                <strong>Mixpanel</strong>
-              </p>
-              <p>Mixpanel es operado por Mixpanel Inc.</p>
-              <p>
-                Puede impedir que Mixpanel use sus datos con fines analíticos inhabilitándolo. Para
-                inhabilitar el servicio de Mixpanel, visite esta página:{' '}
-                <a href="https://mixpanel.com/optout/">https://mixpanel.com/optout/</a>
-              </p>
-              <p>
-                Para más información sobre el tipo de datos que recopila Mixpanel, visite la página
-                de Condiciones de uso de Mixpanel:{' '}
-                <a href="https://mixpanel.com/terms/">https://mixpanel.com/terms/</a>
-              </p>
-            </li>
-            <li>
-              <p>
-                <strong>Hotjar</strong>
-              </p>
-              <p>
-                Usamos Hotjar para entender las necesidades de nuestros usuarios y para optimizar su
-                experiencia.
-              </p>
-              <p>
-                Hotjar usa cookies y otras tecnologias para recopilar informacion sobre el
-                comportamiento de nuestros usuarios y algunos detalles sobre sus dispositivos (en
-                particular las IPs de sus dispositivos almacenadas de forma anonima), tamaño de
-                pantalla, tipo de dispositivo, informacion del navegador, localizacion geografica
-                (sólo pais) e idioma preferido.
-              </p>
-              <p>
-                Ni Horjar ni nosotros usamos esta informacion para indentificar usuarios
-                individuales o para relacionarlo con ninguna otra informacion del usuario. Para mas
-                detalles dirijase a la{' '}
-                <a href="https://www.hotjar.com/legal/policies/privacy">
-                  politica de privacidad de Hotjar
-                </a>
-                .
-              </p>
-              <p>
-                You can opt-out to the creation of a user profile, Hotjar’s storing of data about
-                your usage of our site and Hotjar’s use of tracking cookies on other websites by
-                following this{' '}
-                <a href="https://www.hotjar.com/legal/compliance/opt-out">opt-out link</a>.
-              </p>
-            </li>
           </ul>
           <h2>Enlaces a otros sitios</h2>
           <p>
@@ -505,54 +458,6 @@ const PrivacyPolicyPage = () => {
                 <a href="https://policies.google.com/privacy?hl=en">
                   https://policies.google.com/privacy?hl=en
                 </a>
-              </p>
-            </li>
-            <li>
-              <p>
-                <strong>Mixpanel</strong>
-              </p>
-              <p>Mixpanel is provided by Mixpanel Inc</p>
-              <p>
-                You can prevent Mixpanel from using your information for analytics purposes by
-                opting-out. To opt-out of Mixpanel service, please visit this page:{' '}
-                <a href="https://mixpanel.com/optout/">https://mixpanel.com/optout/</a>
-              </p>
-              <p>
-                For more information on what type of information Mixpanel collects, please visit the
-                Terms of Use page of Mixpanel:{' '}
-                <a href="https://mixpanel.com/terms/">https://mixpanel.com/terms/</a>
-              </p>
-            </li>
-            <li>
-              <p>
-                <strong>Hotjar</strong>
-              </p>
-              <p>
-                We use Hotjar in order to better understand our users’ needs and to optimize this
-                service and experience. Hotjar is a technology service that helps us better
-                understand our users experience (e.g. how much time they spend on which pages, which
-                links they choose to click, what users do and don’t like, etc.) and this enables us
-                to build and maintain our service with user feedback.
-              </p>
-              <p>
-                Hotjar uses cookies and other technologies to collect data on our users’ behavior
-                and their devices (in particular device's IP address (captured and stored only in
-                anonymized form), device screen size, device type (unique device identifiers),
-                browser information, geographic location (country only), preferred language used to
-                display our website). Hotjar stores this information in a pseudonymized user
-                profile.
-              </p>
-              <p>
-                Neither Hotjar nor we will ever use this information to identify individual users or
-                to match it with further data on an individual user. For further details, please see
-                Hotjar’s privacy policy by clicking on{' '}
-                <a href="https://www.hotjar.com/legal/policies/privacy">this link</a>.
-              </p>
-              <p>
-                You can opt-out to the creation of a user profile, Hotjar’s storing of data about
-                your usage of our site and Hotjar’s use of tracking cookies on other websites by
-                following this{' '}
-                <a href="https://www.hotjar.com/legal/compliance/opt-out">opt-out link</a>.
               </p>
             </li>
           </ul>
