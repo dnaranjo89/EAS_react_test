@@ -96,7 +96,6 @@ export const toss = async ({
   setQuickResult,
   t,
 }) => {
-  logApiError(new Error('A client error 2!'));
   const analyticsType = analyticsTypesBySlug[urlSlug];
   const tsStart = new Date().getTime();
   setLoadingRequest(true);
