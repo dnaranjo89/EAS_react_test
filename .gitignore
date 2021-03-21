@@ -38,3 +38,7 @@ logs
 cypress/screenshots
 
 .next
+
+# Env vars defaults when running locally
+# https://nextjs.org/docs/basic-features/environment-variables#default-environment-variables
+.env.local
