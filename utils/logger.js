@@ -68,5 +68,6 @@ export const initSentry = () => {
     environment,
     integrations,
     release: releaseCommit,
+    sampleRate: 0.5,
   });
 };

@@ -41,6 +41,7 @@
     "date-fns": "^2.14.0",
     "echaloasuerte-js-sdk": "^0.3.6",
     "express": "^4.17.1",
+    "http-status-codes": "^2.1.4",
     "intl-pluralrules": "^1.2.2",
     "js-cookie": "^2.2.0",
     "material-table": "^1.60.0",

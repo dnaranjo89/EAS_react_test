@@ -1,4 +1,5 @@
 import requestIp from 'request-ip';
+import { StatusCodes } from 'http-status-codes';
 import { fetchDraw } from './api';
 import { logApiError } from './logger';
 import { analyticsTypesBySlug } from '../constants/analyticsTypes';
@@ -16,14 +17,16 @@ const fetchData = async ({ drawId, urlSlug, req }) => {
       draw,
     };
   } catch (error) {
-    const analyticsType = analyticsTypesBySlug[urlSlug];
-    const userIp = requestIp.getClientIp(req);
+    if (error.status !== StatusCodes.NOT_FOUND) {
+      const analyticsType = analyticsTypesBySlug[urlSlug];
+      const userIp = requestIp.getClientIp(req);
 
-    const options = {
-      tags: { drawType: analyticsType, drawId },
-      userIp,
-    };
-    logApiError(error, options);
+      const options = {
+        tags: { drawType: analyticsType, drawId },
+        userIp,
+      };
+      logApiError(error, options);
+    }
     return {
       error: {
         statusCode: error.status || 500,

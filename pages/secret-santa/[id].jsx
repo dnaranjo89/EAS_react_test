@@ -1,5 +1,6 @@
 import { SecretSantaApi } from 'echaloasuerte-js-sdk';
 import requestIp from 'request-ip';
+import { StatusCodes } from 'http-status-codes';
 import PublishedSecretSantaResultPage from '../../components/Pages/SecretSanta/PublishedSecretSantaResultPage.jsx';
 import { serializeResponse } from '../../utils/fetchData';
 import { logApiError } from '../../utils/logger';
@@ -15,18 +16,20 @@ export const getServerSideProps = async ({ req, query }) => {
     props = serializeResponse({ result });
     return { props };
   } catch (error) {
-    const userIp = requestIp.getClientIp(req);
-    const options = {
-      tags: { drawType: ANALYTICS_TYPE_SECRET_SANTA, resultId },
-      userIp,
-    };
+    if (error.status !== StatusCodes.NOT_FOUND) {
+      const userIp = requestIp.getClientIp(req);
+      const options = {
+        tags: { drawType: ANALYTICS_TYPE_SECRET_SANTA, resultId },
+        userIp,
+      };
 
-    logApiError(error, options);
-    props = {
-      error: {
-        statusCode: error.status || 500,
-      },
-    };
+      logApiError(error, options);
+      props = {
+        error: {
+          statusCode: error.status || 500,
+        },
+      };
+    }
   }
   return props;
 };
