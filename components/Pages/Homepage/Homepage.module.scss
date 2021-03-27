@@ -22,5 +22,9 @@
 }
 
 .principles {
-  padding-top: 4 * $spacing-xl;
+  padding-top: $spacing-xl;
+
+  @include tablet {
+    padding-top: 4 * $spacing-xl;
+  }
 }
