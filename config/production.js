@@ -7,7 +7,8 @@ const config = {
   googleAnalyticsEnabled: true,
   mixpanelEnabled: false,
   sentryEnabled: true,
-  // apiDomain is only used when making calls server side, on the client the calls are relative to the hostname
+  // In local (i.e. a non-production like server) apiDomain is always used
+  // In production apiDomain is only used when making calls server side, on the client the calls are relative to the hostname
   apiDomain: 'https://echaloasuerte.com',
   facebookAppId: '239321593490183',
 };

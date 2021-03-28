@@ -18,7 +18,7 @@ const init = () => {
     // If we are on the client and it's a production-like server (i.e. the API lives in the same host) we use the relative url
     defaultClient.basePath = API_BASE_PATH;
   } else {
-    // If we are on the client but the API lives in a different host we need to use the absolute path
+    // If we are on the client but the API lives in a different host (or it includes a port) we need to use the absolute path
     // This is normally only the case of development, otherwise it may get blocked by CORS
     defaultClient.basePath = apiDomain + API_BASE_PATH;
   }

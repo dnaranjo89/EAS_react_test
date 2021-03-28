@@ -27,7 +27,7 @@ export const logApiError = (error, options = {}) => {
     } else {
       // For some reason our SDK seem to return plain objects instead of errors
       // Sentry does not handle them properly so we need to convert them
-      const errorObject = new Error(error.error.message);
+      const errorObject = new Error(`${error.error.message}: ${error.error.status}`);
       errorObject.stack = error.error.stack;
       Sentry.captureException(errorObject);
     }
