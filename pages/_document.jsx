@@ -1,6 +1,8 @@
 import React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Html, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
+import { HeadWithoutPreload } from '../components/HeadWithoutPreload.jsx';
+
 import theme from '../EasTheme.jsx';
 import { releaseCommit } from '../utils';
 
@@ -10,7 +12,10 @@ export default class MyDocument extends Document {
 
     return (
       <Html data-release-commit={releaseCommit}>
-        <Head>
+        {/* We are using a custom Head to allow deferring Next's scripts
+        This is a hack we would like to get rid of as soon as it's possible
+        Check inside the component for more details */}
+        <HeadWithoutPreload>
           <link
             rel="preload"
             as="font"
@@ -33,7 +38,7 @@ export default class MyDocument extends Document {
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
           {materialUiStyles}
-        </Head>
+        </HeadWithoutPreload>
         <body>
           <Main />
           <NextScript />
