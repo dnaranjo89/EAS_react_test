@@ -29,6 +29,8 @@ export const logApiError = (error, options = {}) => {
       // Sentry does not handle them properly so we need to convert them
       const errorObject = new Error(`${error.error.message}: ${error.error.status}`);
       errorObject.stack = error.error.stack;
+
+      scope.setTag('body', JSON.stringify(error.body));
       Sentry.captureException(errorObject);
     }
   });
