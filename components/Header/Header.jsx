@@ -28,7 +28,12 @@ const Header = () => {
               <HistoryIcon />
             </IconButton>
           ) : (
-            <Button href="/recent" className={STYLES.button} startIcon={<HistoryIcon />}>
+            <Button
+              href="/recent"
+              prefetch={false}
+              className={STYLES.button}
+              startIcon={<HistoryIcon />}
+            >
               {t('recent_draws')}
             </Button>
           )}

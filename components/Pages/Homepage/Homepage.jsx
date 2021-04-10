@@ -47,7 +47,7 @@ const HomePage = () => {
           <DrawCard icon={linkSetsIcon} href="/sets">
             {t('draw_title_link_sets')}
           </DrawCard>
-          <DrawCard icon={diceIcon} href="/dice">
+          <DrawCard icon={diceIcon} href="/dice" prefetch={false}>
             {t('draw_title_roll_dice')}
           </DrawCard>
         </div>
@@ -58,13 +58,17 @@ const HomePage = () => {
           <DrawCard icon={randomLetterIcon} href="/letter">
             {t('draw_title_random_letter')}
           </DrawCard>
-          <DrawCard icon={coinIcon} href="coin/">
+          <DrawCard icon={coinIcon} href="coin/" prefetch={false}>
             {t('draw_title_flip_coin')}
           </DrawCard>
-          <DrawCard icon={arrowIcon} href="/spinner">
+          <DrawCard icon={arrowIcon} href="/spinner" prefetch={false}>
             {t('draw_title_spin_arrow')}
           </DrawCard>
-          <DrawCard icon={tournamentIcon} href="https://echaloasuerte.com/draw/new/tournament/">
+          <DrawCard
+            legacy
+            icon={tournamentIcon}
+            href="https://echaloasuerte.com/draw/new/tournament/"
+          >
             {t('draw_title_tournament')}
           </DrawCard>
           {/* TODO When adding Secret Santa, remember to remove `noindex` */}

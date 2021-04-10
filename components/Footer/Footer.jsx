@@ -40,7 +40,7 @@ const Footer = () => {
 
   return (
     <footer className={STYLES.container}>
-      <Button className={STYLES.button} href="/privacy-policy">
+      <Button className={STYLES.button} href="/privacy-policy" prefetch={false}>
         {t('privacy_policy')}
       </Button>
       <MuiButton className={STYLES.button} href="mailto:echaloasuerte@gmail.com">

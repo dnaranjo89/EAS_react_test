@@ -8,7 +8,7 @@ import STYLES from './DrawCard.module.scss';
 
 const c = classNames.bind(STYLES);
 
-const DrawCard = ({ href, icon, children, legacy }) =>
+const DrawCard = ({ href, icon, children, legacy, prefetch }) =>
   legacy ? (
     <a href={href} className={c('DrawCard__link')}>
       <div className={c('DrawCard')}>
@@ -17,7 +17,7 @@ const DrawCard = ({ href, icon, children, legacy }) =>
       </div>
     </a>
   ) : (
-    <Link href={href}>
+    <Link href={href} prefetch={prefetch}>
       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
       <a className={c('DrawCard__link')}>
         <div className={c('DrawCard')}>
@@ -33,9 +33,11 @@ DrawCard.propTypes = {
   icon: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
   legacy: PropTypes.bool,
+  prefetch: PropTypes.bool,
 };
 
 DrawCard.defaultProps = {
   legacy: false,
+  prefetch: true,
 };
 export default DrawCard;

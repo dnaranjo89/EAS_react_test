@@ -9,9 +9,9 @@ import MuiIconButton from '@material-ui/core/IconButton';
 // eslint-disable-next-line react/prefer-stateless-function
 class ButtonLink extends Component {
   render() {
-    const { href, hrefAs, children, ...rest } = this.props;
+    const { href, hrefAs, prefetch, children, ...rest } = this.props;
     return (
-      <NextLink href={href} as={hrefAs}>
+      <NextLink href={href} as={hrefAs} prefetch={prefetch}>
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a {...rest}>{children}</a>
       </NextLink>
@@ -23,10 +23,12 @@ ButtonLink.propTypes = {
   href: PropTypes.string.isRequired,
   hrefAs: PropTypes.string,
   children: PropTypes.node.isRequired,
+  prefetch: PropTypes.bool,
 };
 
 ButtonLink.defaultProps = {
   hrefAs: null,
+  prefetch: true,
 };
 
 const Button = ({ children, ...rest }) => (
