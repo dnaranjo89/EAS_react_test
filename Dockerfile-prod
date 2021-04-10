@@ -20,7 +20,6 @@ ARG sentry_auth_token
 ENV REACT_APP_ENV=$app_env
 ENV REACT_APP_COMMIT=$commit_sha
 ENV SENTRY_AUTH_TOKEN=$sentry_auth_token
-ENV NODE_ENV=production
 ENV NEXT_PUBLIC_SENTRY_SERVER_ROOT_DIR=/usr/src/app/
 RUN npm run build
 
