@@ -27,7 +27,7 @@ const RandomLetterPage = props => {
   const { t } = useTranslation('DrawLetter');
   const steps = [
     {
-      label: t('step_label_configuration'),
+      label: t('step_label_configure'),
       render: wizardProps => (
         <ConfigurationForm
           values={values}
