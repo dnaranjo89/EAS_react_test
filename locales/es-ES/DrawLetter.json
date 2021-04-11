@@ -1,6 +1,4 @@
 {
-  "certified_draw_description": "Si quieres hacer un sorteo público para asegurar a los participantes una elección imparcial del resultado, te recomendamos que hagas un sorteo público.",
-  "create_certificated_draw": "Crea una tirada certificada",
   "draw_subheading": "Simple generador de letras aleatorias",
   "error_field_message_min_results": "Debes generar al menos 1 letra",
   "error_form_too_many_letters": "Si quieres generarar mas de {{max}} letras tienes que permitir letras repetidas",

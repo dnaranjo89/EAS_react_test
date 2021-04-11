@@ -23,5 +23,7 @@
   "html_title": "Sorteo creado correctamente",
   "share_link": "Comparte este link con quién quieras y podrán ver el resultado en directo",
   "ShareUrl_copy": "Copiar",
-  "ShareUrl_url_copied": "El enlace se ha copiado al portapapeles"
+  "ShareUrl_url_copied": "El enlace se ha copiado al portapapeles",
+  "public_draw_description": "Crea el sorteo públicamente para programarlo para la fecha que desees y poder compartir el resultado con los participantes",
+  "create_public_draw": "Crea el sorteo públicamente"
 }

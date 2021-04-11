@@ -38,11 +38,11 @@ const RandomNumberQuickPage = props => {
       pageType="Random Number Quick Draw"
       sidePanel={
         <MakeCertifiedDrawPanel
-          buttonLabel={t('create_certificated_draw')}
+          buttonLabel={t('CommonCreateDraw:create_public_draw')}
           publicDrawUrl={publicDrawUrl}
           analyticsDrawType={ANALYTICS_TYPE_NUMBER}
         >
-          {t('certified_draw_description')}
+          {t('CommonCreateDraw:public_draw_description')}
         </MakeCertifiedDrawPanel>
       }
     >

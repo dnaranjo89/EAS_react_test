@@ -1,6 +1,4 @@
 {
-  "certified_draw_description": "Create a public raffle to ensure your spectators an impartial result.",
-  "create_certificated_draw": "Create public raffle",
   "draw_subheading": "Pick items from a list",
   "error_form_not_enough_items": "There are not enough items to pick {{numberOfItems}} of them",
   "field_help_separate_items_commas": "Separate the items by commas",

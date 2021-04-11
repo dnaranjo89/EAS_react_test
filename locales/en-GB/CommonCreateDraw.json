@@ -23,5 +23,7 @@
   "html_title": "Raffle successfully created",
   "share_link": "Share this link with everyone and they will be able to see the results live",
   "ShareUrl_copy": "Copy",
-  "ShareUrl_url_copied": "Link copied to clipboard"
+  "ShareUrl_url_copied": "Link copied to clipboard",
+  "public_draw_description": "Create the raffle publicly to schedule whenever you need and be able to share the result with the participants",
+  "create_public_draw": "Create the raffle publicly"
 }

@@ -1,6 +1,4 @@
 {
-  "certified_draw_description": "Si quieres hacer un sorteo público para asegurar a los participantes una elección imparcial del resultado, te recomendamos que hagas un sorteo público.",
-  "create_certificated_draw": "Crea una tirada certificada",
   "draw_subheading": "Simple generador de números aleatorios. Sólo elige el rango y la cantidad de números a generar.",
   "error_field_message_min_results": "Debes generar al menos 1 resultado",
   "error_form_invalid_ranges": "El rango elegido (números entre {{min}} y {{max}}) no es válido",

@@ -1,6 +1,4 @@
 {
-  "certified_draw_description": "If you want to make a public raffle to ensure an impartial result you should create a public raffle.",
-  "create_certificated_draw": "Create a public draw",
   "draw_subheading": "Simple random letter generator",
   "error_field_message_min_results": "You must generate at least one letter",
   "error_form_too_many_letters": "If you want to generate more than {{max}} letters you need to allow repeated letters",

@@ -1,6 +1,4 @@
 {
-  "certified_draw_description": "If you want to make a public raffle to ensure an impartial result you should create a public raffle.",
-  "create_certificated_draw": "Create a raffle publicly",
   "draw_subheading": "Create an online raffle with prizes and share the results.",
   "error_form_not_enough_participants": "There are {{numberOfPrizes}} prizes but only {{count}} participant. Add more participants",
   "error_form_not_enough_participants_pliral": "There are {{numberOfPrizes}} prizes but only {{count}} participants. Add more participants",
