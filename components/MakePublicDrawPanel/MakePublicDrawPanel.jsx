@@ -7,22 +7,21 @@ import CardContent from '@material-ui/core/CardContent';
 import classnames from 'classnames/bind';
 import PublicModeButton from '../PublicModeButton/PublicModeButton.jsx';
 
-import STYLES from './MakeCertifiedDrawPanel.module.scss';
+import STYLES from './MakePublicDrawPanel.module.scss';
 
 const c = classnames.bind(STYLES);
 
-const MakeCertifiedDrawPanel = ({ buttonLabel, publicDrawUrl, analyticsDrawType, children }) => (
-  <Card className={c('MakeCertifiedDrawPanel')}>
+const MakePublicDrawPanel = ({ buttonLabel, publicDrawUrl, analyticsDrawType, children }) => (
+  <Card className={c('MakePublicDrawPanel')}>
     <CardContent>
       <Typography variant="body2" component="p">
         {children}
       </Typography>
     </CardContent>
-    <CardActions className={c('MakeCertifiedDrawPanel__actions')}>
+    <CardActions className={c('MakePublicDrawPanel__actions')}>
       <PublicModeButton
         href={publicDrawUrl}
         hrefAs={publicDrawUrl}
-        data-testid="MakeCertifiedDrawPanel__button"
         trackingData={{
           mp: {
             name: `Start Public Draw - ${analyticsDrawType}`,
@@ -37,11 +36,11 @@ const MakeCertifiedDrawPanel = ({ buttonLabel, publicDrawUrl, analyticsDrawType,
   </Card>
 );
 
-MakeCertifiedDrawPanel.propTypes = {
+MakePublicDrawPanel.propTypes = {
   buttonLabel: PropTypes.string.isRequired,
   publicDrawUrl: PropTypes.string.isRequired,
   analyticsDrawType: PropTypes.string.isRequired, // eslint-disable-line react/forbid-prop-types
   children: PropTypes.node.isRequired,
 };
 
-export default MakeCertifiedDrawPanel;
+export default MakePublicDrawPanel;

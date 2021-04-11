@@ -72,7 +72,7 @@ describe('Random Number Page', () => {
 
         it('Should contain a working link to the public draw', () => {
           cy.visit('/number');
-          cy.getComponent('MakeCertifiedDrawPanel__button').click();
+          cy.findByRole('button', { name: 'Crear sorteo publicamente' }).click();
           cy.get('@ga').should('be.calledWith', 'send', {
             hitType: 'event',
             eventCategory: 'Number',

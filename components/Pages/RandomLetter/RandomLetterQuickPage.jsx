@@ -8,7 +8,7 @@ import RandomLetterConfigurationSection from './RandomLetterConfigurationSection
 import RandomLetterResult from './RandomLetterResult.jsx';
 import ErrorFeedback from '../../ErrorFeedback/ErrorFeedback.jsx';
 import useScrollToResults from '../../../hooks/useScrollToResults';
-import MakeCertifiedDrawPanel from '../../MakeCertifiedDrawPanel/MakeCertifiedDrawPanel.jsx';
+import MakePublicDrawPanel from '../../MakePublicDrawPanel/MakePublicDrawPanel.jsx';
 import LoadingCoin from '../../LoadingCoin/LoadingCoin.jsx';
 import randomLetterOgImage from './random_letter_og_image.png';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
@@ -41,13 +41,13 @@ const RandomLetterQuickPage = props => {
       ogImage={randomLetterOgImage}
       pageType="Random Letter Quick Draw"
       sidePanel={
-        <MakeCertifiedDrawPanel
+        <MakePublicDrawPanel
           buttonLabel={t('CommonCreateDraw:create_public_draw')}
           publicDrawUrl={publicDrawUrl}
           analyticsDrawType={analyticsType}
         >
           {t('CommonCreateDraw:public_draw_description')}
-        </MakeCertifiedDrawPanel>
+        </MakePublicDrawPanel>
       }
     >
       <DrawHeading title={t('page_title_quick')} subtitle={t('draw_subheading')} />

@@ -7,7 +7,7 @@ import SubmitFormButton from '../../SubmitFormButton/SubmitFormButton.jsx';
 import useScrollToResults from '../../../hooks/useScrollToResults';
 import Page from '../../Page/Page.jsx';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
-import MakeCertifiedDrawPanel from '../../MakeCertifiedDrawPanel/MakeCertifiedDrawPanel.jsx';
+import MakePublicDrawPanel from '../../MakePublicDrawPanel/MakePublicDrawPanel.jsx';
 import LinkSetsConfigurationSection from './LinkSetsConfigurationSection.jsx';
 import LoadingCoin from '../../LoadingCoin/LoadingCoin.jsx';
 import LinkSetsResult from './LinkSetsResult.jsx';
@@ -45,13 +45,13 @@ const LinkSetsQuickPage = ({
       ogImage={itemOgImage}
       pageType="Link Sets Quick"
       sidePanel={
-        <MakeCertifiedDrawPanel
+        <MakePublicDrawPanel
           buttonLabel={t('CommonCreateDraw:create_public_draw')}
           publicDrawUrl={publicDrawUrl}
           analyticsDrawType={analyticsType}
         >
           {t('CommonCreateDraw:public_draw_description')}
-        </MakeCertifiedDrawPanel>
+        </MakePublicDrawPanel>
       }
     >
       <DrawHeading title={t('page_title')} subtitle={t('draw_subheading')} />

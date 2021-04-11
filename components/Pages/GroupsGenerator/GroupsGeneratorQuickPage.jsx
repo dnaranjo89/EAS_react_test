@@ -9,7 +9,7 @@ import useScrollToResults from '../../../hooks/useScrollToResults';
 import Page from '../../Page/Page.jsx';
 import GroupsGeneratorConfigurationSection from './GroupsGeneratorConfigurationSection.jsx';
 import GroupsGeneratorResult from './GroupsGeneratorResult.jsx';
-import MakeCertifiedDrawPanel from '../../MakeCertifiedDrawPanel/MakeCertifiedDrawPanel.jsx';
+import MakePublicDrawPanel from '../../MakePublicDrawPanel/MakePublicDrawPanel.jsx';
 import LoadingCoin from '../../LoadingCoin/LoadingCoin.jsx';
 import groupsOgImage from './groups_og_image.png';
 
@@ -38,13 +38,13 @@ const GroupsGeneratorQuickPage = props => {
       ogImage={groupsOgImage}
       pageType="Groups Quick Draw"
       sidePanel={
-        <MakeCertifiedDrawPanel
+        <MakePublicDrawPanel
           buttonLabel={t('CommonCreateDraw:create_public_draw')}
           publicDrawUrl={publicDrawUrl}
           analyticsDrawType={ANALYTICS_TYPE_GROUPS}
         >
           {t('CommonCreateDraw:public_draw_description')}
-        </MakeCertifiedDrawPanel>
+        </MakePublicDrawPanel>
       }
     >
       <DrawHeading title={t('page_title')} subtitle={t('draw_subheading')} />

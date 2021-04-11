@@ -8,7 +8,7 @@ import RandomNumberConfigurationSection from './RandomNumberConfigurationSection
 import RandomNumberResult from './RandomNumberResult.jsx';
 import ErrorFeedback from '../../ErrorFeedback/ErrorFeedback.jsx';
 import useScrollToResults from '../../../hooks/useScrollToResults';
-import MakeCertifiedDrawPanel from '../../MakeCertifiedDrawPanel/MakeCertifiedDrawPanel.jsx';
+import MakePublicDrawPanel from '../../MakePublicDrawPanel/MakePublicDrawPanel.jsx';
 import LoadingCoin from '../../LoadingCoin/LoadingCoin.jsx';
 import randomNumberOgImage from './random_number_og_image.png';
 import DrawHeading from '../../DrawHeading/DrawHeading.jsx';
@@ -37,13 +37,13 @@ const RandomNumberQuickPage = props => {
       ogImage={randomNumberOgImage}
       pageType="Random Number Quick Draw"
       sidePanel={
-        <MakeCertifiedDrawPanel
+        <MakePublicDrawPanel
           buttonLabel={t('CommonCreateDraw:create_public_draw')}
           publicDrawUrl={publicDrawUrl}
           analyticsDrawType={ANALYTICS_TYPE_NUMBER}
         >
           {t('CommonCreateDraw:public_draw_description')}
-        </MakeCertifiedDrawPanel>
+        </MakePublicDrawPanel>
       }
     >
       <DrawHeading title={t('page_title_quick')} subtitle={t('draw_subheading')} />

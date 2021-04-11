@@ -69,7 +69,7 @@ describe('Link Sets Page', () => {
 
         it('Should contain a working link to the public draw', () => {
           cy.visit('/sets');
-          cy.getComponent('MakeCertifiedDrawPanel__button').click();
+          cy.findByRole('button', { name: 'Crea el sorteo públicamente' }).click();
           cy.get('@ga').should('be.calledWith', 'send', {
             hitType: 'event',
             eventCategory: 'Link Sets',

@@ -79,7 +79,7 @@ describe('Raffle Page', () => {
 
         it('Should contain a working link to the public draw', () => {
           cy.visit('/raffle');
-          cy.getComponent('MakeCertifiedDrawPanel__button').click();
+          cy.findByRole('button', { name: 'Crear sorteo publicamente' }).click();
           cy.get('@ga').should('be.calledWith', 'send', {
             hitType: 'event',
             eventCategory: 'Raffle',
